@@ -1,0 +1,51 @@
+{
+  "_comment": "Illustrative only. Real contracts live at specs/<NNN-feature>/contract.v<N>.json. Paths are made up - adjust to your layout. Two hard rules: no two units may own the same path, and role=test units must be dispatchable before role=impl units.",
+  "contract_version": 1,
+  "module": "queue-reorder",
+  "module_root": "Assets/_Project/Scripts/Queue/",
+  "spec_ref": "specs/003-queue-reorder/spec.md",
+  "units": [
+    {
+      "id": "U0-tests",
+      "role": "test",
+      "status": "active",
+      "title": "EditMode coverage for queue reordering",
+      "spec_ref": "R7-queue-reorder",
+      "owns": ["Assets/_Project/Tests/EditMode/QueueReorderTests.cs"],
+      "acceptance": [
+        "QueueReorderTests.Reorder_PreservesCustomerIdentity",
+        "QueueReorderTests.Reorder_FromEmptyQueue_IsIgnored",
+        "QueueReorderTests.Reorder_OutOfRange_IsIgnored"
+      ],
+      "depends_on": [],
+      "interfaces": [],
+      "instructions": "Write failing tests first, straight from the spec scenarios. Cover empty queue, out-of-range index, and identity preservation. Do not touch production code."
+    },
+    {
+      "id": "U1-state",
+      "role": "impl",
+      "status": "active",
+      "title": "Reducer support for queue reordering",
+      "spec_ref": "R7-queue-reorder",
+      "owns": ["Assets/_Project/Scripts/Queue/DinerState.cs"],
+      "acceptance": ["QueueReorderTests.Reorder_PreservesCustomerIdentity"],
+      "depends_on": [],
+      "interfaces": [
+        { "symbol": "DinerActions.ReorderQueue", "signature": "ReorderQueue(int from, int to)" }
+      ],
+      "instructions": "Add a ReorderQueue action and reducer case. The reducer must preserve per-customer patience values by customer id, not by index. Do not modify view code."
+    },
+    {
+      "id": "U2-system",
+      "role": "impl",
+      "status": "active",
+      "title": "QueueSystem applies reorder actions",
+      "spec_ref": "R7-queue-reorder",
+      "owns": ["Assets/_Project/Scripts/Queue/QueueSystem.cs"],
+      "acceptance": ["QueueReorderTests.Reorder_PreservesCustomerIdentity"],
+      "depends_on": ["U1-state"],
+      "interfaces": [],
+      "instructions": "Consume the ReorderQueue action emitted by the reducer. Emit exactly one state change per reorder. Keep the update loop allocation-free."
+    }
+  ]
+}

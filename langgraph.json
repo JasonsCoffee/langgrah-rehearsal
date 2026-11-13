@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "unity_coder": "./src/unity_coder/graph.py:graph"
+  },
+  "env": ".env"
+}

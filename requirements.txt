@@ -1,0 +1,12 @@
+langgraph>=1.0,<2.0
+langchain>=1.0,<2.0
+langchain-core>=1.0,<2.0
+python-dotenv>=1.0
+
+# provider of your choice, e.g. one of:
+# langchain-anthropic
+# langchain-openai
+# langchain-google-genai
+
+# dev
+pytest>=8.0
