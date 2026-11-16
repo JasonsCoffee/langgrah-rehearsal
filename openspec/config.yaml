@@ -1,0 +1,39 @@
+schema: superpowers
+
+context: |
+  This repository builds a stack-agnostic AI coding framework.
+  Read AGENTS.md, HANDOFF.md, docs/README.md, and the relevant phase spec first.
+  The frozen docs/ design is authoritative. OpenSpec artifacts are planning
+  records, not replacements for docs/ or permission to redesign settled rules.
+  src/unity_coder/ and tests/test_core.py are superseded wireframes, not a spec.
+  Follow the handoff build order; do not extend the superseded implementation.
+  Keep core free of Unity, C#, and dotnet; use StackAdapter for stack behavior.
+  Adapter rules determine path case. Use only portable, relative repository paths.
+  Tests are authored and frozen before implementation; impl units cannot edit them.
+  contract_version is the cycle number; defect_class belongs to each unit.
+  Verification blocks. Generated files are exempt from ownership enforcement.
+  openspec/specs/ and openspec/changes/ organize development planning only.
+  Runtime Architect contracts stay at specs/<NNN-feature>/contract.v<N>.json
+  beside spec.md, as specified in docs/boundary-contract.md.
+  Never commit to a mainline branch or push. Do not alter settled decisions.
+
+rules:
+  proposal:
+    - Identify the handoff phase, governing docs, scope, and acceptance criteria.
+    - Record a redesign as a proposed superseding decision; do not overwrite settled entries.
+  design:
+    - Explain how the design preserves the repository non-negotiables.
+    - Keep development planning separate from runtime Architect and graph artifacts.
+  tasks:
+    - Sequence test authoring and freezing before implementation work.
+    - Include offline verification without Unity and the relevant phase acceptance criteria.
+
+operations:
+  apply:
+    guidance:
+      - Follow AGENTS.md and the frozen design even when a planning artifact conflicts.
+      - Flag any new dependency and explain its purpose before adding it.
+  archive:
+    guidance:
+      - Report acceptance criteria met and unmet; do not label a partial phase complete.
+      - Sync planning deltas only into openspec/specs/; never rewrite docs/ to match code.

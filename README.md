@@ -37,7 +37,38 @@ src/            scaffold, predates the design; will be rebuilt
 unity/Editor/   Unity-side test runner entry point
 ```
 
-## Not built yet
+## OpenSpec workflow
+
+The [official OpenSpec](https://github.com/Fission-AI/OpenSpec) 2.0.0 CLI is a
+development-only dependency. It requires Node.js 22.12 or newer. Install it with
+`pnpm install --frozen-lockfile`; Python dependencies remain managed by `uv`.
+Run CLI commands as `pnpm exec openspec <command>`.
+
+All twelve workflows are checked in under `.agents/skills/` for Codex and
+`.codebuddy/skills/` for CodeBuddy: propose, explore, new, continue, apply,
+update, fast-forward, sync, archive, bulk archive, verify, and onboard.
+In Codex, invoke `$openspec-propose` or `$openspec-explore`; in CodeBuddy,
+invoke `/openspec-propose` or `/openspec-explore`. Other workflows use the
+exact skill names in their `SKILL.md` files. Newly installed skills are available
+on the next turn.
+
+`openspec/config.yaml` supplies repository constraints. Planning changes live in
+`openspec/changes/`, with accepted planning deltas in `openspec/specs/`.
+The frozen `docs/` design remains authoritative. Runtime contracts still live at
+`specs/<NNN-feature>/contract.v<N>.json`; this integration does not implement any
+framework phase or change the Architect/graph boundary.
+
+New changes default to the local [Superpowers schema](openspec/schemas/superpowers/README.md):
+brainstorm, proposal, specs, design, tasks, then apply with test freeze, review,
+and fresh verification evidence. Validate it with
+`pnpm exec openspec schema validate superpowers --json`.
+
+To regenerate all twelve skills after installing the pinned CLI, run
+`pnpm run openspec:refresh`. The refresh script isolates generator preferences
+from your global OpenSpec profile. Keep repository guidance in `AGENTS.md` and
+`openspec/config.yaml`, because generated skills are overwritten on refresh.
+
+## Implementation remaining
 
 - Two-phase cycle with the test freeze gate
 - The verification ladder (ownership to conformance to compile to tests)

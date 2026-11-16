@@ -51,6 +51,12 @@ Full list with rationale: `HANDOFF.md` § Non-negotiables, and `docs/decisions.m
 
 ## Conventions
 
+- OpenSpec skills are installed in `.agents/skills/` for Codex and
+  `.codebuddy/skills/` for CodeBuddy. Read `openspec/config.yaml` before using
+  them. `docs/` remains authoritative; OpenSpec artifacts do not supersede the
+  frozen design or change the framework's runtime contract layout.
+- Run the pinned CLI with `pnpm exec openspec` (or `npm exec -- openspec`).
+
 - Python 3.12, managed by `uv`. `uv sync`, `uv run pytest`.
 - `pyproject.toml`, not `requirements.txt`.
 - Type hints on public functions. No `Any` where a real type fits.

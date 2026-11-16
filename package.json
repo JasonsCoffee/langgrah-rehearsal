@@ -1,0 +1,14 @@
+{
+  "name": "langgraph-coding-framework-tooling",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "openspec": "openspec",
+    "openspec:refresh": "node scripts/refresh-openspec.mjs"
+  },
+  "devDependencies": {
+    "@fission-ai/openspec": "2.0.0"
+  }
+}
