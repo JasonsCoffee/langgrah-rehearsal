@@ -13,8 +13,8 @@ from unity_coder.adapters.unity.preparation import PreparedBaseline, freeze_prep
 from unity_coder.adapters.unity.presentation import ImportReport, validate_unity
 
 ROOT = Path(os.environ['ART_REPLACEMENT_ROOT']).resolve()
-EVIDENCE = live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/art-replacement'
-OLD = live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-review/baseline-v2/presentation.v2.json'
+EVIDENCE = live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/art-replacement'
+OLD = live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-review/baseline-v2/presentation.v2.json'
 LAKE = os.environ.get('ART_REPLACEMENT_REVISION') == 'lake'
 if LAKE:
     OLD = EVIDENCE/'presentation.json'

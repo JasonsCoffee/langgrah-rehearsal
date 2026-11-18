@@ -11,7 +11,7 @@ the first adapter. Run commands below from the framework repository root.
 | Try the isolated Unity demonstration | [3. Unity demonstration](#3-unity-demonstration) |
 | Execute a feature from OpenSpec | [4. Feature workflow](#4-feature-workflow) |
 | Check progress or handle a stopped run | [5. Progress and review](#5-progress-and-review) |
-| Review implementation status and limits | [Final verification](openspec/changes/formalize-unity-feature-delivery/verification.md) |
+| Review implementation status and limits | [Final verification](openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/verification.md) |
 
 ## 1. Offline setup
 
@@ -174,6 +174,6 @@ Use `ProductionExecutor.request_cancel()` from the trusted host to request
 cancellation. Already-active operations must settle before the cancelled result.
 
 The implementation checklist is complete. Combined live production acceptance
-still has the limits recorded in [verification.md](openspec/changes/formalize-unity-feature-delivery/verification.md):
+still has the limits recorded in [verification.md](openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/verification.md):
 the model-driven demo awaits human review, and its live accepted constraint flush
 has not been demonstrated. Separate visual-demo approval does not approve that run.

@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-18",
+  "change": "formalize-unity-feature-delivery",
+  "schema": "superpowers",
+  "implementation_commit": "61d357a",
+  "tasks": {
+    "complete": 61,
+    "total": 61
+  },
+  "specs_synced": {
+    "architect-execution": 10,
+    "execution-lifecycle": 13,
+    "parallel-tdd": 13,
+    "presentation-baseline": 8
+  },
+  "relocated_references": {
+    "HANDOFF.md": {
+      "before_sha256": "9a94853b424f7f0f86564d966cb233a22ec192514134affa546874167d6d82dd",
+      "after_sha256": "604b1d1047cd3e894dc80c167e53f264b0c259bad423bacbaaf132525eaf826a"
+    },
+    "QUICKSTART.md": {
+      "before_sha256": "b031d839a4023891fd90c435a6076436bd5902b63b91ba23a032ce49d3f91af4",
+      "after_sha256": "5e2b5f572665e24970923fed4a81150eb199a7a517906bafc6cee064c2b2aeea"
+    },
+    "README.md": {
+      "before_sha256": "b1738f806f8ab9180293aaf1687328fbfa5fbbf70263538cebda5260ebdda65c",
+      "after_sha256": "33f5c649b021334cc823054a439dd998a8f9fbfe20a983ddb15221cbb7a843ee"
+    },
+    "docs/adapters.md": {
+      "before_sha256": "658e3e6f4ed91820bcefe3911a70652dc0e5e9e704f35d5650dc033720ab794f",
+      "after_sha256": "33e6205f6cdf12c36a1a26f49d5e76d3bd2591bda03bc3321e70d9ead6fc5768"
+    },
+    "examples/visual_baseline/art_replacement.py": {
+      "before_sha256": "84d32cd5a6bf1cf5127e74bd320d49d0b1538e525066b31a7f2b92d1830ca706",
+      "after_sha256": "9cb83d2af4baffbff583819a4363b086dfd7995bcc057f142d77e3fba0b5df35"
+    },
+    "examples/visual_baseline/callback_validation.py": {
+      "before_sha256": "2a86e86efe4eff026aee33162629e41ad9d348a173e6c46fc9181249d2a0cf71",
+      "after_sha256": "1d65095d63a833e9f801e8ab38e7edc5ddad48fdd05ab9074dc0b43c471b5a7c"
+    },
+    "examples/visual_baseline/export.py": {
+      "before_sha256": "464e32a0f631248d69e8b82a990462f43ba9577f120ce5cb1e8741ac8b3a64d9",
+      "after_sha256": "1eb225e055dbe4499c532442650d457d5e99de424db8027edf9d1b7b6dfd53dd"
+    },
+    "examples/visual_baseline/review_rehearsal.py": {
+      "before_sha256": "7571d51c04b30af503f9b361dd516f965c1658a9482613d5e0debb6bcbd46694",
+      "after_sha256": "a3b501e5a541b4efe9274c94f16a45ec8a2c024669b308694e52f1ce4ff48d72"
+    }
+  },
+  "validation": "4 main specs passed, 0 failed; known long requirement advisory",
+  "runtime_changes": false,
+  "unity_or_game_operations": false,
+  "acceptance_limits_preserved": true
+}

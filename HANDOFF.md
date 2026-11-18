@@ -19,6 +19,17 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+**Archived — 2026-11-18.** Implementation, follow-up fixes and quick-start guide
+were committed and pushed on codex/framework-implementation (61d357a). All four
+capability specs are synchronized under openspec/specs/ (44 requirements).
+The 61/61-task change and its evidence are preserved at
+openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/.
+OpenSpec has no active changes. Archive is planning completion, not new approval
+of the model-driven Unity candidate: its pending human review and live acceptance
+limits remain recorded. Monopoly code/tests and the dedicated host were untouched.
+The dated entries below retain the verification history.
+
+
 **Production-wiring review follow-up — 2026-11-18.**
 W1–W3 in verification-review.md are resolved: stage-exit counters are retained,
 candidate-bound review guidance reaches Architect observation/reconnect, and
@@ -50,7 +61,7 @@ and no listener remained. All 69 frozen and 125 reviewed file hashes match.
 No runtime code, tests, Unity host files, game content or model budgets changed.
 
 The final phase matrix and exact command outcomes are at the top of
-openspec/changes/formalize-unity-feature-delivery/verification.md; machine-readable
+openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/verification.md; machine-readable
 checks are in final-verification.json. Normal OpenSpec validation passes; strict
 validation reports the existing long independent-judge requirement as a warning.
 This warning remains explicit rather than rewriting the frozen requirement.
@@ -407,7 +418,7 @@ API key** — everything is driven by fakes. Do not skip ahead to phase 6.
 | 6     | Real Unity adapter: `dotnet build` + Test Runner; real model; judge                                    | One real unit completes end to end on a scratch project                                                                                     |
 | 7     | `AGENTS.md` managed block, branch model, cost governor                                                 | A passing run writes constraints with provenance; a tripped ceiling produces `abandon` + dossier                                            |
 
-Extensions are tracked in openspec/changes/formalize-unity-feature-delivery/tasks.md:
+Extensions are tracked in openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/tasks.md:
 offline target policy, external worktree isolation, journal/status recovery,
 presentation protection, and revision-specific review precede real target
 integration. Phase 6 requires a dedicated complete host with one game candidate,

@@ -23,7 +23,7 @@ from unity_coder.core.verification import VerificationRequest, VerificationResul
 ROOT = Path(os.environ['VISUAL_REVIEW_ROOT']).resolve()
 RUN = 'visual-review-live1'
 EVIDENCE = ROOT/'evidence'
-REPO_EVIDENCE = live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-review'
+REPO_EVIDENCE = live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-review'
 SHELL = 'Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs'
 TEST = 'Tests/Runtime/Script/FrameworkVisualDemo/VisualInteractionTests.cs'
 TESTS = live.TESTS + tuple('FrameworkVisualDemo.Tests.Interactions.'+name for name in (
@@ -38,7 +38,7 @@ def save(name: str, value: object) -> None:
 
 
 def baseline_files() -> dict[str, bytes]:
-    manifest = json.loads((live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_text())
+    manifest = json.loads((live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_text())
     return {item['path']:(live.GAME/item['path']).read_bytes() for item in manifest['files']}
 
 
@@ -124,10 +124,10 @@ def main() -> None:
     review=gate(1,token)
     if action=='accept-baseline':
         receipt=json.loads((ROOT/'human-baseline-approval.json').read_text())
-        approved=json.loads((live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-baseline/review.json').read_text())
+        approved=json.loads((live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-baseline/review.json').read_text())
         if receipt['manifest_identity']!=approved['manifest_identity'] or receipt['decision']!='accept':
             raise ValueError('Receipt does not approve this baseline')
-        manifest=json.loads((live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_text())
+        manifest=json.loads((live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_text())
         files=baseline_files()
         if any(sha256(files[r['path']]).hexdigest()!=r['sha256'] for r in manifest['files']):
             raise ValueError('Approved baseline bytes changed')

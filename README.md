@@ -4,7 +4,7 @@ Start with the [quick-start menu](QUICKSTART.md): install, configure models,
 run an isolated demonstration, or prepare a feature handoff.
 
 Implementation checklist: **61/61 tasks complete**. The framework and Unity
-adapter are implemented; [verification evidence and live-acceptance limits](openspec/changes/formalize-unity-feature-delivery/verification.md)
+adapter are implemented; [verification evidence and live-acceptance limits](openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/verification.md)
 remain explicit. For agent handoff, read [HANDOFF.md](HANDOFF.md) and [AGENTS.md](AGENTS.md).
 
 A **general frame for AI coding**: a LangGraph pipeline that turns an Architect's

@@ -56,7 +56,7 @@ def main() -> None:
         if target.exists() and target.read_bytes()!=content:
             raise ValueError('Existing exported baseline differs; choose a new preparation revision')
         target.write_bytes(content)
-    evidence = Path('openspec/changes/formalize-unity-feature-delivery/live-evidence') / (
+    evidence = Path('openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence') / (
         'visual-baseline' if version==1 else 'visual-review/baseline-v2')
     evidence.mkdir(parents=True,exist_ok=True)
     (evidence/f'presentation.v{version}.json').write_bytes(payload)

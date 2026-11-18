@@ -7,7 +7,7 @@ import live
 from unity_coder.core.tdd import BehaviorEvidence, validate_behavior
 from unity_coder.core.verification import VerificationRequest
 
-EVIDENCE=live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/callback-validation'
+EVIDENCE=live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/callback-validation'
 PROBE='Tests/Runtime/Script/FrameworkCallbackProbe/CallbackProbeTests.cs'
 HELPER='Editor/Script/FrameworkVerification/UnityCoderVerifier.cs'
 
@@ -19,7 +19,7 @@ def save(label: str, value: object) -> None:
 
 def main() -> None:
     # Snapshot the accepted demonstration, independently from temporary probes.
-    manifest=json.loads((live.SOURCE/'openspec/changes/formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_bytes())
+    manifest=json.loads((live.SOURCE/'openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/visual-baseline/presentation.v1.json').read_bytes())
     before={row['path']:sha256((live.GAME/row['path']).read_bytes()).hexdigest() for row in manifest['files']}
     helper=live.SOURCE/'unity/Editor/UnityCoderVerifier.cs'
     (live.GAME/HELPER).write_bytes(helper.read_bytes())

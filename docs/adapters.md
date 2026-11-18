@@ -155,7 +155,7 @@ These offline component checks do not establish live editor import or compilatio
 ## Observed target profile (2026-11-16)
 
 Portable read-only source identities are recorded in
-../openspec/changes/formalize-unity-feature-delivery/target-provenance.json.
+../openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/target-provenance.json.
 The 53 SHA-256 entries cover game rules, knowledge indexes, the existing OpenSpec
 source register, original Docs~/Design documents, assembly/loader/package files,
 and host package/settings manifests. Revalidate them before exporting any feature;
