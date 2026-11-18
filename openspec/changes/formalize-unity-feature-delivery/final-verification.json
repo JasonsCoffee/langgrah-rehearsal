@@ -59,5 +59,30 @@
       "files": 125,
       "mismatches": []
     }
+  },
+  "followup": {
+    "date": "2026-11-18",
+    "resolved": [
+      "W1",
+      "W2",
+      "W3"
+    ],
+    "new_frozen_regressions": 11,
+    "frozen_entries": 71,
+    "full_suite": {
+      "passed": 478,
+      "seconds": 193.68,
+      "warnings": 1
+    },
+    "subsequent_boundary_checks": {
+      "passed": 33,
+      "seconds": 17.46,
+      "includes_one_new_test": true
+    },
+    "distinct_tests": 479,
+    "reviewed_files": 127,
+    "reviewed_manifest_sha256": "b456149c90e13857f040a4950b3fc6954ed06d76a96e4e92583a6ae46c82b1e2",
+    "fresh_unity_execution": false,
+    "archived": false
   }
 }

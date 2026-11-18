@@ -1,5 +1,45 @@
 # Implementation evidence
 
+## Production-wiring follow-up — 2026-11-18
+
+W1–W3 from verification-review.md are resolved. Eleven new regressions in two
+files were observed Red and frozen before their associated fixes; all 71 frozen
+hashes match and no earlier frozen test was changed.
+
+- W1: post-stage status retains per-unit counters. The regression observes a failed
+  preparation attempt, cancellation and reconnect without losing the count.
+- W2: production review emits a candidate-bound ReviewPackage, including scope,
+  launch instructions, required interactions, entries, visual references and
+  placeholder limits. Visual metadata is validated against reviewed files; stale,
+  missing or escaping inputs are rejected. Same-request metadata is immutable.
+  Architect observation/reconnect now returns review_package without dispatch.
+  Explicitly code-only contracts receive code/spec review guidance, not an invented
+  scene. Richer visual guidance remains a typed trusted-host callback.
+- W3: confirm_constraints validates exact human approval and evidence provenance,
+  persists the immutable entries and serializes with completion. Finalization and
+  crash recovery reuse those entries. Tests prove a real metadata commit containing
+  one learned statement, no flush for pending/stale/forged input, idempotency,
+  changed-entry refusal and recovery of the same commit after ref publication.
+
+Commands and results:
+
+| Command/check | Result |
+|---|---|
+| `uv run pytest -q tests/test_production_review_delivery.py` before fixes | 10 failed, expected Red; frozen before implementation. |
+| New delivery tests plus executor review-resume and terminal-recovery tests | 16 passed, 77.77 seconds. |
+| `uv run pytest -q` | 478 passed, one existing collection warning, 193.68 seconds. This run collected before the additional observation regression and its boundary fix. |
+| `uv run pytest -q tests/test_review_package_observation.py` before boundary fix | 1 failed, expected missing review_package; frozen before implementation. |
+| Observation regression plus architect_boundary, boundary_reconnect and local_invocation suites after boundary fix | 33 passed, 17.46 seconds. Covers the final boundary change and the extra test; 479 distinct tests across full and focused checks. |
+| Graph dev server with `--allow-blocking --no-browser --port 2025` | Compiled; assistants/search listed unity_coder and its graph endpoint returned all production nodes; owned server stopped, no listener remained. |
+| `pnpm exec openspec validate formalize-unity-feature-delivery` | Exit 0; existing independent-judge requirement-length advisory remains. |
+
+Review order: spec compliance, then implementation/recovery/host-boundary checks.
+Current reviewed-files.json records 127 files against the published implementation
+base plus these uncommitted fixes. No new dependencies, Unity operations, paid
+calls, Monopoly edits/tests, commit, push, synchronization or archive occurred.
+Prior real-Unity acceptance limits still apply: this follow-up proves the new
+wiring with offline disposable Git fixtures, not fresh live human acceptance.
+
 ## Task 12.7 final acceptance scope — 2026-11-18
 
 This section supersedes historical readiness statements below. It records the

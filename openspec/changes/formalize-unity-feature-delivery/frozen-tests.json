@@ -67,5 +67,7 @@
   "tests/test_production_streaming.py": "9705d9716880a151a9a1f45dc7eb44939794c4a7cfd4856a4879bf36ce2962f1",
   "tests/test_production_terminal_recovery.py": "6eaa6cdc46406a10bb15f4f06e05c2ea276e519ec745deb666a089177560db2e",
   "examples/visual_baseline/CallbackProbeTests.cs": "668003ddbcb7a4dcefcc5aaca907e4c9f2bdbd503f15bd6dca3ce8f97dc45c00",
-  "tests/test_production_effect_edges.py": "78b75094f374dc00799a8d44b0822b3ebf7b7ba55fe6cbaaa1c589c5bd3da904"
+  "tests/test_production_effect_edges.py": "78b75094f374dc00799a8d44b0822b3ebf7b7ba55fe6cbaaa1c589c5bd3da904",
+  "tests/test_production_review_delivery.py": "ef2cd944348ad8b5c5056625adf01a72cea8ea905695372d6dbe2a29e1a06e0b",
+  "tests/test_review_package_observation.py": "fb32380fc5db5efd61b886fa6e9e85e82c5534cecdfb24e015c21120860ae3f1"
 }

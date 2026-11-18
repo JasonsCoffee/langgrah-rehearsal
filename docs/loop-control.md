@@ -256,3 +256,7 @@ Restart reuses proven completed effects, including regression restoration and
 metadata completion. Unknown paid results require explicit owner/usage
 reconciliation; no retry silently resets budget. Conflicting commits or ambiguous
 dirty worktrees remain fail-closed and are never automatically reset.
+
+Stage completion now publishes the same per-unit preparation/repair counters as
+in-flight progress. Terminal and awaiting-review snapshots retain those counters;
+reconnect does not replace them with an empty mapping.

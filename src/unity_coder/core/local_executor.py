@@ -12,6 +12,7 @@ from .budget import BudgetLedger, BudgetExhausted
 from .ai_models import ModelError
 from .governor import BudgetGovernor
 from .completion import CandidateCompletion
+from .constraints import LearnedConstraint, accepted_constraints
 from .contracts import Unit, _object, _ref, _items
 from .dispatch import ready_units
 from .dossiers import DossierUnit, emit_dossier
@@ -22,8 +23,8 @@ from .integration import invalidate_dependents
 from .executor import StepResult
 from .loop_control import Attempt, Observation, RetryPolicy, RetryState
 from .ownership import confined_path
-from .review import ReviewGate
-from .storage import atomic_write
+from .review import ReviewGate, ReviewPackage
+from .storage import atomic_write, file_guard
 from .tdd import BehaviorEvidence, TDDCoordinator, UnitTDD, validate_behavior
 from .verification import VerificationRequest, VerificationResult
 from .workspaces import Workspace, WorkspaceCandidate, WorkspaceManager, git
@@ -70,10 +71,12 @@ class LocalExecutionServices:
     def __init__(self, manager: WorkspaceManager, integration: Workspace, budget: BudgetLedger,
                  workers: CodingWorkers, verify: Verifier, review: ReviewGate, *,
                  preflight: Callable[[], None], test_config_paths: tuple[str, ...] = (),
-                 max_attempts: int = 3) -> None:
+                 max_attempts: int = 3,
+                 review_package: Callable[[VerificationRequest], ReviewPackage] | None = None) -> None:
         self.manager, self.integration, self.budget = manager, integration, budget
         self.workers, self.verifier, self.review, self.preflight = workers, verify, review, preflight
         self.contract, self.root = manager.contract, budget.root
+        self.review_package = review_package or self._default_review_package
         self.prefix = review.lifecycle.prefix + f"/services-v{self.contract.contract_version}"
         if (review.lifecycle.run_id != manager.run_id or review.lifecycle.contract_sha256 != self.contract.sha256
             or review.root.resolve() != budget.root.resolve() or budget.path != review.lifecycle.prefix + "/budget.json"):
@@ -134,7 +137,7 @@ class LocalExecutionServices:
                 if intent_path.exists():
                     intent = json.loads(intent_path.read_bytes())
                     if intent['before'] == payload['candidate_revision'] and intent['after'] == head:
-                        completion.complete(evidence.request,())
+                        self._complete(evidence.request)
                         completion_recovered = True
             if (not transaction or transaction.get('complete') or
                 not (completion_recovered or self.effects.reconciles(payload['candidate_revision'],head))):
@@ -167,6 +170,63 @@ class LocalExecutionServices:
 
     def _statuses(self) -> dict[str,str]:
         return {u:self.tdd.state(u).stage for u in self.tdd.units}
+
+    def _default_review_package(self, request: VerificationRequest) -> ReviewPackage:
+        reference = self.contract.presentation_ref
+        raw = confined_path(self.integration.path,reference.path).read_bytes()
+        if sha256(raw).hexdigest() != reference.sha256:
+            raise ValueError('Presentation changed before human review')
+        manifest = _object(json.loads(raw))
+        if manifest:
+            # Visual targets require Architect-authored interaction instructions;
+            # serialized mutations alone do not describe how a human reviews UX.
+            instructions = manifest.get('instructions','')
+            entries = tuple(manifest.get('entries',()))
+            references = tuple(dict.fromkeys(asset['reference'] for asset in manifest.get('assets',())))
+            return ReviewPackage(request,'visual',entries,instructions,(instructions,),references,
+                'Review behavior and layout against the references; placeholder artwork is not final-art polish.')
+        # Empty presentation is an explicit code-only contract, used by headless fixtures.
+        return ReviewPackage(request,'code',(self.contract.spec.path,),
+            'Inspect the candidate source and specification alongside its recorded verification evidence.',
+            tuple(link.criterion for link in self.contract.test_links),(),
+            'No visual presentation is declared; this review does not accept visual artwork or layout.')
+
+    def confirm_constraints(self, request: VerificationRequest, entries: tuple[LearnedConstraint, ...]) -> None:
+        """Trusted host input after human approval, before resuming finalization."""
+        completion = CandidateCompletion(self.manager,self.integration,self.review)
+        with file_guard(self.root,self.prefix+'/constraints.guard'), file_guard(self.root,completion.guard):
+            if self.review.state().get('request') != json.loads(json.dumps(asdict(request))):
+                raise ValueError('Constraint confirmation belongs to another review')
+            original = completion._files(request.candidate_revision).get('AGENTS.md',b'')
+            accepted_constraints(self.review,candidate_revision=request.candidate_revision,
+                contract_version=request.contract_version,original=original,entries=entries)
+            record = {'request':asdict(request),'entries':[asdict(entry) for entry in entries]}
+            content = json.dumps(record,sort_keys=True).encode()
+            path = self.prefix+'/confirmed-constraints.json'
+            existing = confined_path(self.root,path)
+            if existing.exists():
+                if existing.read_bytes() != content:
+                    raise ValueError('Confirmed constraints are immutable')
+                return
+            if confined_path(self.root,completion.path).exists():
+                raise ValueError('Completion already started')
+            atomic_write(self.root,path,content)
+
+    def _completion_entries(self, request: VerificationRequest) -> tuple[LearnedConstraint, ...]:
+        path = confined_path(self.root,self.prefix+'/confirmed-constraints.json')
+        if not path.exists():
+            return ()
+        record = json.loads(path.read_bytes())
+        if record['request'] != json.loads(json.dumps(asdict(request))):
+            raise ValueError('Confirmed constraint candidate changed')
+        return tuple(LearnedConstraint(**entry) for entry in record['entries'])
+
+    def _complete(self, request: VerificationRequest) -> dict[str, object]:
+        # Serialize selection of confirmed entries with confirmation itself, not
+        # just the later Git publication, so a successful confirmation cannot be lost.
+        with file_guard(self.root,self.prefix+'/constraints.guard'):
+            return CandidateCompletion(self.manager,self.integration,self.review).complete(
+                request,self._completion_entries(request))
 
     def progress_snapshot(self) -> tuple[dict[str,str], dict[str,int], str | None]:
         return (self._statuses() | self.activity,{u:self.retry.state(u).failed_attempts + self.tdd.state(u).preparation_attempts
@@ -215,7 +275,7 @@ class LocalExecutionServices:
                                (self.state["evidence_ref"],) if self.state.get("evidence_ref") else ())
         except BudgetExhausted as exc:
             # ThreadPoolExecutor's context has joined all coding callbacks before
-            # this catch; no candidate is applied until every callback returns.
+            # this catch; already admitted candidates remain journaled for the governor.
             result = BudgetGovernor(self.manager,self.integration,self.budget).abandon(
                 reconcile_workers=lambda:True,input_tokens=exc.input_tokens,output_tokens=exc.output_tokens)
             report = StepResult("ended",self._statuses(),result)
@@ -536,10 +596,11 @@ class LocalExecutionServices:
             return StepResult("final_verify",self._statuses())
         if stage == "review":
             evidence = _verification(self.state["verification"])
-            result = self.review.offer(evidence,self._files(),evidence_refs=(self.state["evidence_ref"],))
+            result = self.review.offer(evidence,self._files(),evidence_refs=(self.state["evidence_ref"],),
+                                      package=self.review_package(evidence.request))
             return StepResult("ended",self._statuses(),result)
         if stage == "finalize":
             evidence = _verification(self.state["verification"])
-            result = CandidateCompletion(self.manager,self.integration,self.review).complete(evidence.request,())
+            result = self._complete(evidence.request)
             return StepResult("ended",self._statuses(),result)
         raise ValueError("Unsupported local execution stage")

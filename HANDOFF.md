@@ -19,6 +19,30 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+**Production-wiring review follow-up — 2026-11-18.**
+W1–W3 in verification-review.md are resolved: stage-exit counters are retained,
+candidate-bound review guidance reaches Architect observation/reconnect, and
+confirmed learned constraints persist through metadata completion and crash
+recovery. Eleven new regressions were Red then frozen; all 71 frozen hashes match.
+Full suite: 478 passed (193.68 seconds), followed by 33 passing boundary checks
+including the added observation regression; 479 distinct tests covered. The only
+full-suite warning is the existing TestResult collection warning. Graph compiled
+and listed; owned server stopped. Normal OpenSpec validation passes with the
+existing long-requirement advisory.
+
+Host integration: pass an optional typed review_package callback for richer
+review instructions. After authenticated acceptance and before resuming finalize,
+call services.confirm_constraints(request, entries) for any learned statements.
+The default uses the hashed presentation manifest; an empty manifest explicitly
+means code-only review. No runtime source change on the Unity host is necessary.
+See docs/boundary-contract.md and the latest verification.md section for details.
+
+Monopoly and its tests were untouched; no Unity/model calls or budget resets.
+No commit, push, spec sync or archive in this follow-up. Published base remains
+11c4b574d6538f01a8cb37cb1c6b243f3905c533; reviewed-files.json identifies current
+uncommitted source. Earlier status entries and their hashes/results are historical.
+Live model-driven acceptance remains pending as recorded below.
+
 **Task 12.7 complete — 2026-11-18: 61/61 tracked tasks.**
 Fresh offline suite: 468 passed, one existing collection warning, 144.12 seconds.
 Production graph compiled/listed with all execution nodes; owned server stopped

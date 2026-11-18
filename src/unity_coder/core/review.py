@@ -1,7 +1,7 @@
 """Durable exact-candidate review; authentication belongs to the trusted host."""
 
 from collections.abc import Callable, Mapping
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from hashlib import sha256
 import json
@@ -20,6 +20,29 @@ def _wire(request: VerificationRequest) -> dict[str, object]:
 
 def _snapshot(files: Mapping[str, bytes]) -> dict[str, str]:
     return {portable_path(path): sha256(content).hexdigest() for path, content in files.items()}
+
+
+@dataclass(frozen=True)
+class ReviewPackage:
+    request: VerificationRequest
+    scope: Literal['code', 'visual']
+    entries: tuple[str, ...]
+    launch_instructions: str
+    required_interactions: tuple[str, ...]
+    visual_references: tuple[str, ...]
+    placeholder_limitations: str
+
+    def validate(self, request: VerificationRequest, files: Mapping[str, bytes]) -> None:
+        if self.request != request or self.scope not in ('code', 'visual'):
+            raise ValueError('Review guidance belongs to another candidate or scope')
+        if (not self.launch_instructions.strip() or not self.placeholder_limitations.strip()
+            or not self.required_interactions or any(not item.strip() for item in self.required_interactions)):
+            raise ValueError('Review guidance is incomplete')
+        if self.scope == 'visual' and (not self.entries or not self.visual_references):
+            raise ValueError('Visual review requires entries and design references')
+        for path in (*self.entries, *self.visual_references):
+            if portable_path(path) not in files:
+                raise ValueError('Review reference is outside the reviewed snapshot')
 
 
 class ReviewGate:
@@ -47,7 +70,7 @@ class ReviewGate:
             raise ValueError("Review belongs to another run/contract")
 
     def offer(self, evidence: VerificationResult, files: Mapping[str, bytes], *,
-              evidence_refs: tuple[str, ...]) -> dict[str, object]:
+              evidence_refs: tuple[str, ...], package: ReviewPackage | None = None) -> dict[str, object]:
         request = evidence.request
         self._identity(request)
         if (evidence.status != "passed" or evidence.gate != "tests" or not evidence.full_suite_verified
@@ -62,10 +85,15 @@ class ReviewGate:
             confined_path(self.root, ref)
         record: dict[str, object] = {"request": _wire(request), "candidate_revision": request.candidate_revision,
             "files": _snapshot(files), "evidence_refs": list(evidence_refs), "decision": "pending"}
+        if package is not None:
+            package.validate(request, files)
+            record['package'] = json.loads(json.dumps(asdict(package)))
         with file_guard(self.root, self.guard):
             if confined_path(self.root, self.path).exists():
                 prior = self.state()
                 if prior["request"] == record["request"]:
+                    if prior.get('package') != record.get('package'):
+                        raise ValueError('Review guidance changed without fresh verification')
                     if prior["files"] != record["files"]:
                         raise ValueError("Candidate bytes changed without a new identity")
                     if prior["decision"] != "pending":

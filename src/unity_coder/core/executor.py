@@ -173,7 +173,9 @@ class ProductionExecutor:
             state.update(stage=report.next_stage, steps=steps, pending=None)
             self._write(state)
             used = self.budget.totals()
+            snapshot = getattr(self.services,"progress_snapshot",lambda: ({}, {}, None))()
             self.progress.publish(report.next_stage, units=report.units,
+                                  attempts=snapshot[1],
                                   budget={"input_tokens":used[0],"output_tokens":used[1]})
             return report
 

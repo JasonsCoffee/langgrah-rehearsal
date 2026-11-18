@@ -390,3 +390,31 @@ that same run passed five Green tests and five final Refactor-confirmation tests
 and offered the exact candidate for human review. This is isolated diagnostic
 evidence, not acceptance of the game's UI baseline or its deferred existing tests.
 Real human acceptance remains outstanding.
+
+### Production review guidance and confirmed constraints
+
+Every LocalExecutionServices review offer now supplies a ReviewPackage bound to
+its complete VerificationRequest. The package records code/visual scope, entries,
+launch instructions, required interactions, visual references and placeholder
+limitations. Paths must belong to the reviewed snapshot. A visual package requires
+entries and references; missing guidance or a stale request is rejected. The same
+request cannot silently replace its package. ArchitectBoundary.observe and the
+status CLI expose review_package on reconnect.
+
+The default package uses the hashed Architect presentation manifest's entries,
+instructions and asset references. An empty presentation object explicitly denotes
+a code-only contract; its review asks the human to inspect the specification and
+mapped criteria and makes no visual acceptance claim. Hosts can supply a typed
+review_package callback for richer instructions. The callback is trusted host
+composition, never a model-controlled service selector.
+
+After authenticating exact-candidate acceptance and before resuming finalization,
+the trusted host may call services.confirm_constraints(request, entries), where
+entries is a tuple of LearnedConstraint values. Each entry must carry confirmed
+version, criterion and evidence provenance accepted by the existing constraint
+validator. The collection is persisted immutably, is safe to confirm identically
+again, and is rejected for pending/stale approval, changed entries or completion
+already underway. Empty completion remains valid when no learned entries exist.
+Completion and crash recovery consume the same persisted collection under a guard;
+confirmation cannot race past the selection of entries. The metadata-only parent,
+managed-block preservation, deduplication and archival checks remain mandatory.

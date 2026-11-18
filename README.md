@@ -1,16 +1,17 @@
 # langgraph-coding-framework
 
-> **Status: design phase.** The frozen design lives in [`docs/`](docs/README.md).
-> Nothing in `src/` implements it yet.
->
-> **Taking over or starting cold?** Read [`HANDOFF.md`](HANDOFF.md) first.
-> Agent instructions: [`AGENTS.md`](AGENTS.md).
+Start with the [quick-start menu](QUICKSTART.md): install, configure models,
+run an isolated demonstration, or prepare a feature handoff.
+
+Implementation checklist: **61/61 tasks complete**. The framework and Unity
+adapter are implemented; [verification evidence and live-acceptance limits](openspec/changes/formalize-unity-feature-delivery/verification.md)
+remain explicit. For agent handoff, read [HANDOFF.md](HANDOFF.md) and [AGENTS.md](AGENTS.md).
 
 A **general frame for AI coding**: a LangGraph pipeline that turns an Architect's
 task contract into verified code, in parallel, with a bounded rework loop back to
 the Architect.
 
-The Architect (CodeBuddy + OpenSpec) plans. The graph executes: fan out units,
+The Architect (Codex + OpenSpec) plans. The graph executes: fan out units,
 enforce file ownership, verify through a gate ladder, and route failures to the
 right loop — implementation defects retried inside, contract defects sent back.
 
@@ -33,8 +34,9 @@ an adapter, not a fork.
 ```
 docs/           frozen design — read this first
 contracts/      example task contract (illustrative paths)
-src/            scaffold, predates the design; will be rebuilt
-unity/Editor/   Unity-side test runner entry point
+src/            stack-agnostic executor core and Unity adapter
+unity/Editor/   Unity verification and presentation preparation helpers
+examples/       opt-in isolated coding and visual demonstrations
 ```
 
 ## OpenSpec workflow
@@ -55,8 +57,7 @@ on the next turn.
 `openspec/config.yaml` supplies repository constraints. Planning changes live in
 `openspec/changes/`, with accepted planning deltas in `openspec/specs/`.
 The frozen `docs/` design remains authoritative. Runtime contracts still live at
-`specs/<NNN-feature>/contract.v<N>.json`; this integration does not implement any
-framework phase or change the Architect/graph boundary.
+`specs/<NNN-feature>/contract.v<N>.json`; planning artifacts remain separate from the runtime Architect/graph boundary.
 
 New changes default to the local [Superpowers schema](openspec/schemas/superpowers/README.md):
 brainstorm, proposal, specs, design, tasks, then apply with test freeze, review,
@@ -68,11 +69,9 @@ To regenerate all twelve skills after installing the pinned CLI, run
 from your global OpenSpec profile. Keep repository guidance in `AGENTS.md` and
 `openspec/config.yaml`, because generated skills are overwritten on refresh.
 
-## Implementation remaining
+## Run the framework
 
-- Two-phase cycle with the test freeze gate
-- The verification ladder (ownership to conformance to compile to tests)
-- Trend classification and the escalation backstop
-- Run-scoped locking, per-cycle branches, cost ceilings
-
-Each is specified in `docs/` and needs no further design decisions.
+Use the [quick-start menu](QUICKSTART.md) for setup and commands. Production
+invocation is a trusted host-composed Python API; shell commands provide planning
+export and status. The [framework-apply skill](.agents/skills/framework-apply/SKILL.md)
+describes the Architect handoff, execution and review responsibilities.

@@ -151,6 +151,7 @@ class ArchitectBoundary:
         progress = ProgressStore(self.state_root, self.run_id, contract_version=self.contract.contract_version,
                                  contract_sha256=self.contract.sha256).status()
         result = self._read("result")
+        review_package = None
         action, accepted = "resume" if progress else "start", False
         if result is not None:
             self._identity(result)
@@ -173,6 +174,9 @@ class ArchitectBoundary:
                     expected = result.get("approved_parent") if outcome == "pass" else result.get("candidate_revision")
                     if not expected or request.get("candidate_revision") != expected or record.get("candidate_revision") != expected:
                         raise ValueError("Stale review candidate")
+                    review_package = record.get('package')
+                    if review_package is not None and _object(review_package).get('request') != request:
+                        raise ValueError('Stale review guidance')
                     decision = record.get("decision")
                     if decision not in ("pending", "accept", "implementation", "contract"):
                         raise ValueError("Unknown review decision")
@@ -188,6 +192,7 @@ class ArchitectBoundary:
                     accepted, action = True, "ended"
         mapped = {link.task_ref for link in self.contract.task_links}
         return {"result": result, "progress": progress, "next_action": action,
+                "review_package": review_package,
                 "eligible_tasks": sorted(mapped) if accepted else [],
                 "unmapped_tasks": [task.task_ref for task in self.context.tasks if task.task_ref not in mapped]}
 
