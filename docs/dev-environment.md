@@ -1,14 +1,17 @@
 # Dev environment
 
 Setup for the LangGraph side, on the Architect's Windows workstation, alongside
-Unity. Everything below was resolved against the toolchain currently installed on
-this machine (2026-11-12).
+Unity. The original toolchain observations below date from 2026-11-12 and are
+historical, not installation guarantees on a different workstation. On 2026-11-16,
+`uv --version` reported 0.5.27 and `uv python list --only-installed` confirmed
+managed CPython 3.12.11. Use the Python 3.12 pin and the committed lockfile;
+record actual resolution and smoke checks when provisioning a machine.
 
 Sections 1–4, 7 and 9 are stack-neutral. Sections 5, 6, 8 and the Unity variables
 in `.env` belong to the Unity adapter; a second stack replaces them with its own
 compile and test commands (see `adapters.md`).
 
-## What is already present
+## Historical toolchain observations (2026-11-12)
 
 | Tool | Version | Verdict |
 |---|---|---|
@@ -46,15 +49,12 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
   "langgraph>=1.2",
   "langgraph-cli[inmem]>=0.4",
-  "langchain>=1.0",
-  "langchain-anthropic",
   "tree-sitter>=0.26",
   "tree-sitter-c-sharp>=0.23",
-  "python-dotenv>=1.0",
 ]
 
 [dependency-groups]
-dev = ["pytest>=9", "pytest-asyncio", "debugpy"]
+dev = ["pytest>=9,<10"]
 
 [tool.uv]
 package = true
@@ -79,11 +79,38 @@ langchain-core 1.8.0   pydantic 2.14.3   langsmith 0.14.17
 tree-sitter 0.26.1   tree-sitter-c-sharp 0.23.5
 ```
 
-`[tool.uv] package = true` installs the local package in editable mode, which is
+The current pyproject uses the setuptools build backend for editable installation.
+Provider SDKs and optional debugger dependencies belong to their later milestones.
+Installing the local package in editable mode is
 required because `langgraph.json` points at `./src/unity_coder/graph.py:graph` and
 the nodes import `unity_coder.*`.
 
 ## 3. `.env` and `langgraph.json`
+
+AI configuration now has a separate local template: fill `ai.local.toml`, which
+is ignored by Git. `ai.example.toml` is the shareable blank template. Both coder
+and judge require `provider`, `model` and `api_key`; `base_url` is optional for a
+custom endpoint. Use different model identities; temperature defaults to zero.
+D-28 permits explicit `temperature_mode = "provider"` for an approved judge,
+omitting the unsupported temperature parameter. Optional `effort` preserves the
+chosen reasoning effort. The model boundary
+loads this file explicitly; graph startup does not make provider requests.
+Run `uv run python -m unity_coder.ai_check` for a short opt-in connectivity probe.
+The model/API-key variables in the earlier `.env`
+example below are superseded for this setup. Keep host and tracing settings in
+`.env`.
+
+The implemented provider is OpenRouter, using its documented
+[Chat Completions endpoint](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request).
+Requests require support for the supplied parameters and disable provider
+fallbacks. A model that cannot honor temperature zero requires explicit approval
+of provider-controlled temperature; connectivity failure alone does not authorize
+either that exception or a model substitution.
+Transport errors omit response bodies and credentials, have bounded timeouts,
+and do not trigger automatic paid retries. `ModelCalls` reserves budget before
+dispatch, records intent, persists replies before reconciling actual usage, and
+retains uncertain reservations across restart. Production executor integration
+remains a separate acceptance requirement.
 
 ```bash
 # .env  (gitignored) - copy from .env.example, fill in on each machine
@@ -110,11 +137,11 @@ the repository, because it is meant to be copied between machines.
 
 `langgraph.json` stays as it is — `"dependencies": ["."]` and `"env": ".env"`.
 
-## 4. LangSmith account
+## 4. Optional LangSmith account
 
-Free tier is enough. Without it you lose Studio and tracing, and tracing is the
-only practical way to debug a graph with cycles, fan-out, and interrupts —
-`print` does not scale to a run that fans out to six coders across three cycles.
+Tracing is optional. Local graph compilation, listing, and the offline suite must
+work without provider or tracing keys. Durable local status and evidence remain
+the source of execution truth; remote traces are a debugging aid.
 
 ## 5. Run the dev server
 
@@ -160,25 +187,50 @@ Not a style preference:
 - `langgraph dev` watches the project tree for hot reload. Nest the graph inside a
   Unity project and the watcher sees `Library/` — tens of thousands of files — and
   reloads continuously.
-- The boundary says the graph writes exactly one managed block into the repo.
-  Keeping the code in a separate directory makes that boundary physical rather
-  than merely stated.
+- Coding units write only owned implementation/test files in external module
+  worktrees. Accepted completion additionally flushes one managed convention
+  block; planning inputs remain read-only to execution (D-26).
 
 The current layout already does this.
 
-## 8. Prepare a verification worktree
+## 8. Prepare external coding worktrees and a complete verification host
 
-`Library/` is single-writer, so batchmode cannot run against the project while the
-editor has it open. Create a second copy to verify against:
+The first target is an independent game repository mounted at
+`Assets/JJGame/monopoly/` in a larger Unity project. A module worktree is not a
+Unity project; an outer repository checkout alone does not populate nested repos.
+Provision a dedicated complete host at an authorized location, recording every
+required nested revision and package/settings identity before using it. Keep the
+user's interactive project unchanged. Never put coding worktrees beneath Assets.
 
-```bash
-cd <path to the Unity project>
-git worktree add ../verify-wt main
+```text
+game baseline -> external test worktrees -> reviewed Red -> frozen tests
+              -> parallel external implementation worktrees
+              -> coordinator integration revision
+              -> blocking worker -> complete fixed host / one game mount
+              -> sequential EditMode -> full suite -> human review
 ```
 
-Point `--project-root` at `../verify-wt` when verifying while you are working in the
-editor. Cost: the first import in a fresh worktree takes minutes and the copy costs
-disk; reap worktrees older than a few days.
+Architect preparation uses the existing game's OpenSpec, `Docs~/` original
+designs/wiki, and `.codex/reference/` API evidence. Export hashed source provenance
+and coding rules. Preserve the target assembly/resource conventions documented in
+adapters.md. Coding tools cannot mutate other worktrees, shared Git metadata, or
+the editor; worktrees alone do not enforce these restrictions.
+
+Only the worker materializes candidates into the host's single game mount,
+preserving tracked metadata and deleting only stale previously managed files.
+Reject links escaping the mount and shared-host drift. Reconcile import-generated
+metadata into the candidate before gates; permit only configured caches, logs,
+and request evidence outside delivered game content. Keep the snapshot fixed
+for the whole ladder and acquire exclusive access to the host.
+
+The installed `cn.jj.unity-operator` provides HTTP, not MCP. Validate the exact
+host identity through bounded discovery; use a game-local `IUnityOpCommand` with
+`TestRunnerApi` callbacks and durable request-specific evidence. Refresh, nested
+command success, compilation, and test completion are distinct states. Reconcile
+Domain Reload and lost Bridge task IDs before any retry. Do not install a shared
+package or launch another editor to mask missing connectivity. Installed source
+has been inspected; live connectivity, new-file compile inclusion, and real tests
+remain unverified. Batchmode is a separately validated future transport.
 
 ## 9. Windows tuning
 
@@ -206,7 +258,7 @@ If a test needs Unity or a provider key, the boundary has leaked into the code.
 Run these in order before writing pipeline code:
 
 ```bash
-uv run python -c "import langgraph, tree_sitter; print(langgraph.__version__)"
+uv run python -c "from importlib.metadata import version; print(version('langgraph'))"
 uv run langgraph dev --allow-blocking        # Studio opens, graph listed
 dotnet build <unity>/Assembly-CSharp.csproj  # rung 3 works at all
 uv run pytest
@@ -220,11 +272,25 @@ Then close the two design unknowns:
 2. Time one EditMode run on the real project. This sets the cycle budget in
    `loop-control.md`.
 
+## Live compile inclusion
+
+Live acceptance update: the Bridge compile backend includes new files. Running
+`uv run python examples/isolated_demo/compile_inclusion.py` against the authorized
+dedicated host added a temporary source with a unique #error marker. Its failed
+compile callback arrived 1.092 seconds after request creation. Cleanup removed
+only that owned source and its generated metadata. A ParrelSync promotional dialog
+blocked reload and caused a recovery timeout; after closing it, a fresh compile
+callback passed in 0.790 seconds and all five isolated tests passed. These callback
+timings exclude import, reload and dialog time; they are not full ladder timings.
+The exact pre-probe snapshot was restored. Evidence and the retained timeout are
+under the active change's live-evidence/compile-inclusion/. No csproj fallback is
+needed for this validated Editor compile backend; this does not validate dotnet.
+
 ## Deliberately not set up
 
 | Thing | Why not |
 |---|---|
 | Docker | only needed for `langgraph build` / `up`, which is a deployment concern |
-| LangSmith Deployment | running locally for now; the graph is a pure function of `(contract, run_id)` |
+| LangSmith Deployment | running locally with durable local state and evidence |
 | Node / LangGraph.js | the graph is Python; Node is present but unused |
 | A second machine | decided in `decisions.md` D-17 — co-locate for v0 |

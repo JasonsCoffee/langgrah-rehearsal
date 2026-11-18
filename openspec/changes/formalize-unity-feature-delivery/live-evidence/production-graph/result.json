@@ -1,0 +1,1 @@
+{"candidate_revision": "03dd25d38c16cb2f08ea5053c342e30af658733e", "contract_sha256": "ec0819d24a1305fe02680fc5b4d38b8dbfdc08d66c38da15dbed05abe21787f4", "contract_version": 1, "evidence_refs": [], "format_version": 1, "outcome": "operational", "reason": "Model transport requires reconciliation", "run_id": "production-graph-live1"}

@@ -1,0 +1,58 @@
+[
+  {
+    "path": ".",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJAOT/builtin",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJBifrost/bifrost",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJBifrost/unitypackage",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJCore/core",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJForward/tkforward",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJGame/monopoly",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJGame/tkhall",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJService/tkgameservice",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJService/tkmatchservice",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJWidget/figure",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJWidget/tkgamewidget",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJWidget/tkmatchwidget",
+    "tracked_changes": []
+  },
+  {
+    "path": "uframework/Assets/JJWidget/widgetsdk",
+    "tracked_changes": []
+  }
+]

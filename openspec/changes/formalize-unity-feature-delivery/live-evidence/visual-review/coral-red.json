@@ -1,0 +1,61 @@
+{
+  "request": {
+    "request_id": "coral-red-e646b5e06c27",
+    "run_id": "visual-review-live1",
+    "contract_version": 2,
+    "contract_sha256": "visual-review-contract-v2",
+    "candidate_revision": "e646b5e06c27d1cfb82fb895695940d3dd525ee969b3111c1e1ec77c89d8c6e9",
+    "presentation_sha256": "visual-presentation-v2",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+    ],
+    "full_suite": true
+  },
+  "gate": "tests",
+  "status": "failed",
+  "related_units": [],
+  "violations": [],
+  "failed_tests": [
+    "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+  ],
+  "test_result": {
+    "discovered": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+    ],
+    "executed": [
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "passed": [
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "failed": [
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+    ],
+    "skipped": [],
+    "inconclusive": [],
+    "operational_error": null
+  },
+  "full_suite_verified": false,
+  "behavioral": true
+}

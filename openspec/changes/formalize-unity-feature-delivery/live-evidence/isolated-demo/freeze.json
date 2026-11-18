@@ -1,0 +1,12 @@
+{
+  "Editor/Script/FrameworkDemo/Code.meta": "a6811cb8f5fd2b2dd26ac7efc74082cc95be6e492ab54b2b7266febd18c31b8d",
+  "Editor/Script/FrameworkDemo/Tests.meta": "e9646b7b3a8681b51d8a63ba104d0c3d10c7b0727c6cd0b76363c2bddc9fde3d",
+  "Editor/Script/FrameworkDemo/Code/CreditCalculator.cs.meta": "92eb26e9e174012d01a5224da26deb3b18b6d5ab87a93b56c4b418583342ef9b",
+  "Editor/Script/FrameworkDemo/Code/Framework.Demo.Code.asmdef": "8f8b0bea0bd18ae570033becd68dc0fbd93a64b45092376d69317eb1614282fa",
+  "Editor/Script/FrameworkDemo/Code/Framework.Demo.Code.asmdef.meta": "1f5a69533718432da9d5f503139047ce702e2d930030b4ec88c2bab2f2b1fc6f",
+  "Editor/Script/FrameworkDemo/Code/ScoreCalculator.cs.meta": "282a2ea9623ec542cf0835f1ee4f14603c931dd640eb14ac0b2dfcac95be2f60",
+  "Editor/Script/FrameworkDemo/Tests/Framework.Demo.Tests.asmdef": "9f162262f56df383d3a3feb2d8fc074816b942c9bbbe955a895a5e36b607fbe8",
+  "Editor/Script/FrameworkDemo/Tests/Framework.Demo.Tests.asmdef.meta": "2c66c5e84556c536d6de8b104453639bf839c29c568d67c84662a9a437bb5444",
+  "Editor/Script/FrameworkDemo/Tests/FrameworkDemoTests.cs": "deba11aa26b1d49b37bc0ae173bf9471891e9c62bde7270471038a0f82915870",
+  "Editor/Script/FrameworkDemo/Tests/FrameworkDemoTests.cs.meta": "bcc83ee1c696fba7fd61adb6a2a38fd3658e3ce48c74a5e2ff5c8aee9373cac8"
+}

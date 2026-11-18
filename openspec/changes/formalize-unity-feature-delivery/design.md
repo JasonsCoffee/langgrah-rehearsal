@@ -1,5 +1,10 @@
 # Design
 
+Adopted follow-up D-28: the user approved provider-controlled temperature for the
+selected judge. Temperature zero remains the default; explicit local policy omits
+the parameter and preserves reasoning effort. Judge independence, evidence-only
+context and deterministic escalation rules remain unchanged. No automatic fallback.
+
 ## Context
 
 See proposal.md for motivation and brainstorm.md for user decisions versus
@@ -31,6 +36,11 @@ artwork, or merge/push into mainline. Real Unity and paid models are integration
 milestones after the offline foundation, not test-suite requirements.
 
 ## Decisions
+
+Application begins on 2026-11-16 with the reviewed behavioral defaults adopted.
+The first milestone appends superseding authoritative decisions before any
+runtime implementation. Deployment prerequisites remain explicit; they do not
+permit target writes, host provisioning, or paid calls beyond available scope.
 
 ### 1. Adopt superseding decisions before runtime changes
 

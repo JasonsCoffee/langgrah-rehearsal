@@ -1,0 +1,27 @@
+{
+  "request": {
+    "request_id": "callback-1794968160601385000-compile",
+    "run_id": "callback-validation",
+    "contract_version": 1,
+    "contract_sha256": "isolated-callback-diagnostics",
+    "candidate_revision": "36a7dc188fa2985239e571782bf9263971e8de3558d80af85de20ee127b362fa",
+    "presentation_sha256": "accepted-lake-presentation",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+    ],
+    "full_suite": false
+  },
+  "compilation": {
+    "passed": true,
+    "violations": [],
+    "operational_error": null
+  },
+  "tests": null
+}

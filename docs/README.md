@@ -1,6 +1,6 @@
 # Design specs
 
-Frozen design for the Architect ⇄ LangGraph pipeline. These documents are the
+Adopted design for the Codex/OpenSpec Architect ⇄ LangGraph pipeline. These documents are the
 contract; code is written against them, not the other way round.
 
 Starting cold, or another agent taking over? Read `../HANDOFF.md` first — it gives
@@ -33,9 +33,10 @@ Start with `boundary-contract.md`. Everything else assumes its vocabulary:
 
 ## Status
 
-Design phase. Nothing in `src/` has been written against these specs yet — the
-existing scaffold predates every decision here and will be rebuilt. Treat
-`src/` and `tests/` as a wireframe for reference only.
+Application began 2026-11-16. D-19 through D-27 adopt the reviewed extensions;
+the original D-01 through D-18 entries remain unchanged historical decisions.
+HANDOFF.md records actual implementation and acceptance status. The superseded
+wireframe must be rebuilt; it is not a reference implementation.
 
 Open items are listed at the end of each document and consolidated in
 `decisions.md`.

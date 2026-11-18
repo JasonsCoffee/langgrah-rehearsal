@@ -1,0 +1,26 @@
+{
+  "request": {
+    "request_id": "repaired-interaction-85a61ff4b6cb",
+    "run_id": "visual-review-live1",
+    "contract_version": 1,
+    "contract_sha256": "visual-review-contract-v1",
+    "candidate_revision": "85a61ff4b6cb607843c4a32e97bc67b09d004ef6fd394f76f3697e72c836da70",
+    "presentation_sha256": "visual-presentation-v1",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState"
+    ],
+    "full_suite": true
+  },
+  "compilation": {
+    "passed": true,
+    "violations": [],
+    "operational_error": null
+  },
+  "tests": null
+}

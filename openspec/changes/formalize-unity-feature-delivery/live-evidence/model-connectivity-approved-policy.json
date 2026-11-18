@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-17",
+  "decision": "D-28",
+  "probe": "uv run python -m unity_coder.ai_check",
+  "exit_code": 0,
+  "project_code_sent": false,
+  "coder": {
+    "model": "deepseek/deepseek-v4.1-flash",
+    "status": "connected",
+    "expected_reply": true,
+    "input_tokens": 39,
+    "output_tokens": 18,
+    "temperature_mode": "zero"
+  },
+  "judge": {
+    "model": "openai/gpt-6-astra",
+    "status": "connected",
+    "expected_reply": true,
+    "input_tokens": 15,
+    "output_tokens": 5,
+    "temperature_mode": "provider",
+    "effort": "medium"
+  }
+}

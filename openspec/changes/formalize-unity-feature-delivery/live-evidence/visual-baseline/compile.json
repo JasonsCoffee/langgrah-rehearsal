@@ -1,0 +1,24 @@
+{
+  "request": {
+    "request_id": "visual-baseline-compile-b02c0d915610",
+    "run_id": "visual-baseline-v1",
+    "contract_version": 1,
+    "contract_sha256": "isolated-preparation",
+    "candidate_revision": "b02c0d9156103eac8639b28d3a0c7a664fc4b3d626c2ea9d6f05a98e1ba15be0",
+    "presentation_sha256": "preparation",
+    "coding_profile_sha256": "target-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "full_suite": true
+  },
+  "compilation": {
+    "passed": true,
+    "violations": [],
+    "operational_error": null
+  },
+  "tests": null
+}

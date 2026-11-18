@@ -1,0 +1,47 @@
+{
+  "candidate_revision": "85a61ff4b6cb607843c4a32e97bc67b09d004ef6fd394f76f3697e72c836da70",
+  "decision": "contract",
+  "evidence_refs": [
+    "evidence/repaired-interaction.json"
+  ],
+  "files": {
+    "Editor/ArtSource~/FrameworkVisualDemo/design.md": "744d7a86ab4d7103534e5b5a852f44d5d4c9124ab04afb6f77e02ca1d4c53aea",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo.meta": "7d3cbf0c9beffaf4b061c9a2e5da65b874ff2b214b32472e0771228e820e93a6",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity": "c59e94a0ae29154822418548a03a5797d94b0c23a6690ac9e68f2e37722acb25",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity.meta": "96a99483b0c43ef69058e3f09e2deb520c93313a9470e901a37208781a976367",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo.meta": "3ae11efc688d456d57190eb976ec0b506aec29653b44f517859826ab4f82fd05",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png": "94bdc81eb37c682c818e8d5b1cdfca546532c3b48faf2a9aa8d169ba2df54782",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png.meta": "58b8fb763b4fb59bc0f0ff2668db1277f36ffa2b15bf656369e008a0a3881be8",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo.meta": "14bf9693ca5564bc3daae2989fd9c5346a8d694618783b22398e63f5c57ab1ff",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab": "355d22c55060ff0258a2027875a0e8c1123d92846548335e0fff4d97f11e1d45",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab.meta": "9628dea6cacc58cf500ef4715d421cca3301eb05e6d55a132a06132417f1b560",
+    "Runtime/Script/FrameworkVisualDemo.meta": "8862bcc5706352e14f1c3e0162b2d144afceeaf597f0d3a50f7ac40ff7390ba7",
+    "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs": "88d82b1b7b1f3c474ce7c73d54d6e885ba52d2d19cf6cf0acbb1da8c24430713",
+    "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs.meta": "89599dcf76955a77466843414021e9484135783ec41f13023a28090baac93001"
+  },
+  "request": {
+    "candidate_revision": "85a61ff4b6cb607843c4a32e97bc67b09d004ef6fd394f76f3697e72c836da70",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "contract_sha256": "visual-review-contract-v1",
+    "contract_version": 1,
+    "environment_sha256": "dedicated-host",
+    "full_suite": true,
+    "presentation_sha256": "visual-presentation-v1",
+    "request_id": "repaired-interaction-85a61ff4b6cb",
+    "run_id": "visual-review-live1",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState"
+    ]
+  },
+  "action": "rework",
+  "reviewer": "chat-user",
+  "findings": [
+    "Change the primary button to warm coral"
+  ],
+  "reviewed_utc": "2026-11-17T17:01:52.177342+00:00",
+  "contract_version": 1
+}

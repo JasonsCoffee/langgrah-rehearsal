@@ -1,0 +1,120 @@
+{
+  "files": [
+    {
+      "sha256": "7bb252f617fa7beb3a65176655fa1c564d53821a20fd4d4b4a0ec59635b8617b",
+      "path": "uframework/Packages/manifest.json"
+    },
+    {
+      "sha256": "43d03c08acc8516df193c4dbb539b028905c13b6cc6c175d8910aa3d165d9ee1",
+      "path": "uframework/Packages/packages-lock.json"
+    },
+    {
+      "sha256": "a62d6179012a530b80ad1150ad24db6764c156899a04113d57e39d64d55cb502",
+      "path": "uframework/ProjectSettings/ProjectVersion.txt"
+    },
+    {
+      "sha256": "89293552dcb8e1f9e28d9ef23171d8f2ca92d371789aba25176682bcd2c0d466",
+      "path": "uframework/Assets/JJGame/monopoly/Editor/Script/FrameworkVerification/UnityCoderVerifier.cs"
+    },
+    {
+      "sha256": "958b48550a5601141528fca4a207c3ca8fffdc0d44330110cd23af51d243531d",
+      "path": "uframework/Assets/JJGame/monopoly/Editor/Script/FrameworkVerification/Framework.Verification.Editor.asmdef"
+    }
+  ],
+  "packages_resolved_and_live_compilation_verified": true,
+  "reload_recovery_evidence": "compile-inclusion/compile-inclusion-summary.json",
+  "exact_project_bridge_verified": true,
+  "date": "2026-11-17",
+  "coding_worktrees_external_to_assets": true,
+  "evidence": "real-model/real-model-live1-summary.json",
+  "unity_project_relative": "uframework",
+  "game_relative": "uframework/Assets/JJGame/monopoly",
+  "shared_tracked_drift": false,
+  "repositories": [
+    {
+      "path": ".",
+      "commit": "d37d8aa429a5780a4424c8e18efcaff1ef537886",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJAOT/builtin",
+      "commit": "0403ec0fcfa3ed97a8581affd5d4943b78fb8588",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJBifrost/bifrost",
+      "commit": "3116f11eb321e4bf8dc165519e9c7a231535c09c",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJBifrost/unitypackage",
+      "commit": "7cc589323e582c3a35ff5c9e7a199a429475c018",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJCore/core",
+      "commit": "9c252a0ddad9463d9d96b02fdbb7fe8fc79c7be7",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJForward/tkforward",
+      "commit": "4ec1f86bdb940048d701d8196e7d3579007995cb",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJGame/monopoly",
+      "commit": "4bdfa8b16f3caa55d9531429823b8546d99f989e",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJGame/tkhall",
+      "commit": "57671c629d8dd1a42bd2f46e95e2e53a1143337c",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJService/tkgameservice",
+      "commit": "bb416988ade1612108b4a915926ad9023b330483",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJService/tkmatchservice",
+      "commit": "15b62392f33421fc3e82e618108ddd33653351bf",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJWidget/figure",
+      "commit": "a2673b0fc0936b56d28694ed42296d5c5c628676",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJWidget/tkgamewidget",
+      "commit": "28dd50264cee00f39d3226d13cf117a08367a11b",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJWidget/tkmatchwidget",
+      "commit": "5f5ae30fa9105a8d6f87a77107f9d98aab2dc23a",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    },
+    {
+      "path": "uframework/Assets/JJWidget/widgetsdk",
+      "commit": "757b689c2165d0c0f490c713f9fed7a6f19a0e6f",
+      "tracked_clean": true,
+      "branch": "dfw-hecan-20261026"
+    }
+  ],
+  "independent_game_root_verified": true
+}

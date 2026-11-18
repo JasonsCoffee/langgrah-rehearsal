@@ -1,0 +1,22 @@
+{
+  "request": {
+    "request_id": "isolated-7-partial-shared",
+    "run_id": "isolated-demo",
+    "contract_version": 1,
+    "contract_sha256": "ec0819d24a1305fe02680fc5b4d38b8dbfdc08d66c38da15dbed05abe21787f4",
+    "candidate_revision": "1061d5729858e1ee183c90b3cbd2734b9d836b4fe6fec0e5183059bb4f3e0c0f",
+    "presentation_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "coding_profile_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "environment_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "test_selection": [
+      "FrameworkDemo.Tests.Acceptance.SharedRewardUsesBothComponents"
+    ],
+    "full_suite": false
+  },
+  "compilation": {
+    "passed": true,
+    "violations": [],
+    "operational_error": null
+  },
+  "tests": null
+}

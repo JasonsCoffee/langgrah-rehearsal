@@ -1,0 +1,22 @@
+# Copy to ai.local.toml and fill in that ignored local file.
+# Required for each role: provider, model, api_key.
+# provider identifies the API service; model is its exact model ID.
+# Optional: base_url for a custom endpoint or compatible API gateway.
+# The coder and judge must use different models. Temperature defaults to 0.
+# Approved D-28 exception: temperature_mode = "provider" omits temperature.
+# Optional: effort = "medium" (or another supported reasoning effort) per role.
+# Optional: upstream_provider = "<provider-slug>" pins one OpenRouter endpoint.
+# This preserves the model and disables automatic provider fallback.
+# Check connections with: uv run python -m unity_coder.ai_check
+
+[coder]
+provider = ""
+model = ""
+api_key = ""
+base_url = ""
+
+[judge]
+provider = ""
+model = ""
+api_key = ""
+base_url = ""

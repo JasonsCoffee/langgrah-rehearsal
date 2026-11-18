@@ -1,0 +1,1249 @@
+{
+  "revision": "visual-baseline-v1",
+  "files": [
+    [
+      "Runtime/Script/FrameworkVisualDemo.meta",
+      "8862bcc5706352e14f1c3e0162b2d144afceeaf597f0d3a50f7ac40ff7390ba7"
+    ],
+    [
+      "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs",
+      "88d82b1b7b1f3c474ce7c73d54d6e885ba52d2d19cf6cf0acbb1da8c24430713"
+    ],
+    [
+      "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs.meta",
+      "89599dcf76955a77466843414021e9484135783ec41f13023a28090baac93001"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo.meta",
+      "14bf9693ca5564bc3daae2989fd9c5346a8d694618783b22398e63f5c57ab1ff"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab",
+      "355d22c55060ff0258a2027875a0e8c1123d92846548335e0fff4d97f11e1d45"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab.meta",
+      "9628dea6cacc58cf500ef4715d421cca3301eb05e6d55a132a06132417f1b560"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo.meta",
+      "3ae11efc688d456d57190eb976ec0b506aec29653b44f517859826ab4f82fd05"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+      "94bdc81eb37c682c818e8d5b1cdfca546532c3b48faf2a9aa8d169ba2df54782"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png.meta",
+      "58b8fb763b4fb59bc0f0ff2668db1277f36ffa2b15bf656369e008a0a3881be8"
+    ],
+    [
+      "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo.meta",
+      "7d3cbf0c9beffaf4b061c9a2e5da65b874ff2b214b32472e0771228e820e93a6"
+    ],
+    [
+      "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+      "c59e94a0ae29154822418548a03a5797d94b0c23a6690ac9e68f2e37722acb25"
+    ],
+    [
+      "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity.meta",
+      "96a99483b0c43ef69058e3f09e2deb520c93313a9470e901a37208781a976367"
+    ],
+    [
+      "Editor/ArtSource~/FrameworkVisualDemo/design.md",
+      "744d7a86ab4d7103534e5b5a852f44d5d4c9124ab04afb6f77e02ca1d4c53aea"
+    ]
+  ],
+  "entries": [
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab"
+  ],
+  "missing_scripts": [],
+  "unresolved_bindings": [],
+  "asset_ids": [
+    [
+      "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+      "23a896cd15dd2cd48ae64a1c61b6a9f2"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab",
+      "bcdfb9bab6b4357428c8ee005dbf2f06"
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+      "b942a0f6ce0780649b1a94738f85199c"
+    ]
+  ],
+  "serialized_asset_ids": [
+    [
+      "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+      "DXlOvSOrAC/1zC1P2McnhO4R/OxFIowYstcROcoprckWOjW4bLC+MpU="
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab",
+      "XSlL43ikASqkCajdGq5fL6AJPhei+ORPaTgYiXgBu5V8ifqiZ+Ih8sg="
+    ],
+    [
+      "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+      "XXMbt3utBX0ND/2WTcj7hB3KcF5c7mUnTY4lRzap/KVUC8e8ybCYYg8="
+    ]
+  ],
+  "bindings": [
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.confirmButton",
+      "Confirm"
+    ],
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.resetButton",
+      "Reset"
+    ],
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.statusText",
+      "Status"
+    ],
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.heroImage",
+      "Landscape"
+    ]
+  ],
+  "hierarchy": [
+    ".",
+    "Eyebrow",
+    "Title",
+    "Subtitle",
+    "Landscape",
+    "DestinationLabel",
+    "Destination",
+    "Divider",
+    "Explorers",
+    "ExplorersCaption",
+    "Duration",
+    "DurationCaption",
+    "Reward",
+    "RewardCaption",
+    "Status",
+    "Confirm",
+    "Confirm/Label",
+    "Reset",
+    "Reset/Label",
+    "Footer"
+  ],
+  "launchable": true,
+  "layout": {
+    "status": "success",
+    "prefabPath": "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab",
+    "prefabGuid": "bcdfb9bab6b4357428c8ee005dbf2f06",
+    "revision": "93c6cf8ec9d68c04e389043ea1213b86",
+    "nodes": [
+      {
+        "path": ".",
+        "objectId": "2207570149589803837",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            1.0
+          ],
+          "anchorMax": [
+            0.5,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            -540.0,
+            0.0
+          ],
+          "sizeDelta": [
+            1080.0,
+            2160.0
+          ],
+          "offsetMin": [
+            -540.0,
+            -2160.0
+          ],
+          "offsetMax": [
+            540.0,
+            0.0
+          ],
+          "size": [
+            1080.0,
+            2160.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Image",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [
+          {
+            "imageType": "Simple",
+            "raycastTarget": false,
+            "fillCenter": true,
+            "pixelsPerUnitMultiplier": 1.0,
+            "sprite": null,
+            "missingSliceBorder": false
+          }
+        ],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Eyebrow",
+        "objectId": "3932321071786773925",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -140.0
+          ],
+          "sizeDelta": [
+            900.0,
+            50.0
+          ],
+          "offsetMin": [
+            90.0,
+            -190.0
+          ],
+          "offsetMax": [
+            990.0,
+            -140.0
+          ],
+          "size": [
+            900.0,
+            50.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Title",
+        "objectId": "8586282672537833044",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -230.0
+          ],
+          "sizeDelta": [
+            900.0,
+            220.0
+          ],
+          "offsetMin": [
+            90.0,
+            -450.0
+          ],
+          "offsetMax": [
+            990.0,
+            -230.0
+          ],
+          "size": [
+            900.0,
+            220.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Subtitle",
+        "objectId": "3810768077448744919",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            94.0,
+            -475.0
+          ],
+          "sizeDelta": [
+            890.0,
+            65.0
+          ],
+          "offsetMin": [
+            94.0,
+            -540.0
+          ],
+          "offsetMax": [
+            984.0,
+            -475.0
+          ],
+          "size": [
+            890.0,
+            65.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Landscape",
+        "objectId": "2326119729120963731",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -600.0
+          ],
+          "sizeDelta": [
+            900.0,
+            562.5
+          ],
+          "offsetMin": [
+            90.0,
+            -1162.5
+          ],
+          "offsetMax": [
+            990.0,
+            -600.0
+          ],
+          "size": [
+            900.0,
+            562.5
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Image",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [
+          {
+            "imageType": "Simple",
+            "raycastTarget": false,
+            "fillCenter": true,
+            "pixelsPerUnitMultiplier": 1.0,
+            "sprite": {
+              "path": "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+              "guid": "b942a0f6ce0780649b1a94738f85199c",
+              "localId": "21300000",
+              "name": "expedition_placeHolder",
+              "size": [
+                768.0,
+                480.0
+              ],
+              "border": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pixelsPerUnit": 100.0
+            },
+            "missingSliceBorder": false
+          }
+        ],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "DestinationLabel",
+        "objectId": "1935903415648917314",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            94.0,
+            -1225.0
+          ],
+          "sizeDelta": [
+            890.0,
+            40.0
+          ],
+          "offsetMin": [
+            94.0,
+            -1265.0
+          ],
+          "offsetMax": [
+            984.0,
+            -1225.0
+          ],
+          "size": [
+            890.0,
+            40.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Destination",
+        "objectId": "2563625907168324718",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1280.0
+          ],
+          "sizeDelta": [
+            900.0,
+            85.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1365.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1280.0
+          ],
+          "size": [
+            900.0,
+            85.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Divider",
+        "objectId": "4866739658641640505",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1410.0
+          ],
+          "sizeDelta": [
+            900.0,
+            2.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1412.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1410.0
+          ],
+          "size": [
+            900.0,
+            2.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Image",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [
+          {
+            "imageType": "Simple",
+            "raycastTarget": false,
+            "fillCenter": true,
+            "pixelsPerUnitMultiplier": 1.0,
+            "sprite": null,
+            "missingSliceBorder": false
+          }
+        ],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Explorers",
+        "objectId": "744940083007200149",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1470.0
+          ],
+          "sizeDelta": [
+            280.0,
+            75.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1545.0
+          ],
+          "offsetMax": [
+            370.0,
+            -1470.0
+          ],
+          "size": [
+            280.0,
+            75.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "ExplorersCaption",
+        "objectId": "6648575165341294647",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1550.0
+          ],
+          "sizeDelta": [
+            280.0,
+            40.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1590.0
+          ],
+          "offsetMax": [
+            370.0,
+            -1550.0
+          ],
+          "size": [
+            280.0,
+            40.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Duration",
+        "objectId": "4853828219435310272",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            400.0,
+            -1470.0
+          ],
+          "sizeDelta": [
+            280.0,
+            75.0
+          ],
+          "offsetMin": [
+            400.0,
+            -1545.0
+          ],
+          "offsetMax": [
+            680.0,
+            -1470.0
+          ],
+          "size": [
+            280.0,
+            75.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "DurationCaption",
+        "objectId": "467354336084593205",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            400.0,
+            -1550.0
+          ],
+          "sizeDelta": [
+            280.0,
+            40.0
+          ],
+          "offsetMin": [
+            400.0,
+            -1590.0
+          ],
+          "offsetMax": [
+            680.0,
+            -1550.0
+          ],
+          "size": [
+            280.0,
+            40.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Reward",
+        "objectId": "7329959480233485607",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            710.0,
+            -1470.0
+          ],
+          "sizeDelta": [
+            280.0,
+            75.0
+          ],
+          "offsetMin": [
+            710.0,
+            -1545.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1470.0
+          ],
+          "size": [
+            280.0,
+            75.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "RewardCaption",
+        "objectId": "3928331091049905035",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            710.0,
+            -1550.0
+          ],
+          "sizeDelta": [
+            280.0,
+            40.0
+          ],
+          "offsetMin": [
+            710.0,
+            -1590.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1550.0
+          ],
+          "size": [
+            280.0,
+            40.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Status",
+        "objectId": "7663193065482933529",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1640.0
+          ],
+          "sizeDelta": [
+            900.0,
+            60.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1700.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1640.0
+          ],
+          "size": [
+            900.0,
+            60.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Confirm",
+        "objectId": "612193890607708089",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1760.0
+          ],
+          "sizeDelta": [
+            900.0,
+            112.0
+          ],
+          "offsetMin": [
+            90.0,
+            -1872.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1760.0
+          ],
+          "size": [
+            900.0,
+            112.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Image",
+            "raycastTarget": true
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [
+          {
+            "imageType": "Simple",
+            "raycastTarget": true,
+            "fillCenter": true,
+            "pixelsPerUnitMultiplier": 1.0,
+            "sprite": null,
+            "missingSliceBorder": false
+          }
+        ],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Confirm/Label",
+        "objectId": "4591951282124033180",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            0.0,
+            0.0
+          ],
+          "sizeDelta": [
+            900.0,
+            112.0
+          ],
+          "offsetMin": [
+            0.0,
+            -112.0
+          ],
+          "offsetMax": [
+            900.0,
+            0.0
+          ],
+          "size": [
+            900.0,
+            112.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Reset",
+        "objectId": "7550695930729339494",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -1900.0
+          ],
+          "sizeDelta": [
+            900.0,
+            112.0
+          ],
+          "offsetMin": [
+            90.0,
+            -2012.0
+          ],
+          "offsetMax": [
+            990.0,
+            -1900.0
+          ],
+          "size": [
+            900.0,
+            112.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Image",
+            "raycastTarget": true
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [
+          {
+            "imageType": "Simple",
+            "raycastTarget": true,
+            "fillCenter": true,
+            "pixelsPerUnitMultiplier": 1.0,
+            "sprite": null,
+            "missingSliceBorder": false
+          }
+        ],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Reset/Label",
+        "objectId": "3312208492168593768",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            0.0,
+            0.0
+          ],
+          "sizeDelta": [
+            900.0,
+            112.0
+          ],
+          "offsetMin": [
+            0.0,
+            -112.0
+          ],
+          "offsetMax": [
+            900.0,
+            0.0
+          ],
+          "size": [
+            900.0,
+            112.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      },
+      {
+        "path": "Footer",
+        "objectId": "3427132555315044905",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.0,
+            1.0
+          ],
+          "anchorMax": [
+            0.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            1.0
+          ],
+          "anchoredPosition": [
+            90.0,
+            -2070.0
+          ],
+          "sizeDelta": [
+            900.0,
+            35.0
+          ],
+          "offsetMin": [
+            90.0,
+            -2105.0
+          ],
+          "offsetMax": [
+            990.0,
+            -2070.0
+          ],
+          "size": [
+            900.0,
+            35.0
+          ]
+        },
+        "safeArea": null,
+        "graphics": [
+          {
+            "type": "Text",
+            "raycastTarget": false
+          }
+        ],
+        "layout": [],
+        "text": [],
+        "images": [],
+        "rawImages": [],
+        "spriteSwap": [],
+        "states": []
+      }
+    ]
+  },
+  "import_settings": {
+    "width": 768,
+    "height": 480,
+    "type": "Sprite Single",
+    "mipmaps": false,
+    "sRGB": true,
+    "compression": "Uncompressed"
+  }
+}

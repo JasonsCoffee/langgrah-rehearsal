@@ -1,0 +1,15 @@
+{
+  "noEngineReferences": false,
+  "autoReferenced": true,
+  "references": [
+    "jj.UnityOperator.Editor",
+    "UnityEditor.TestRunner",
+    "UnityEngine.TestRunner",
+    "jj.Json.Runtime"
+  ],
+  "name": "Framework.Verification.Editor",
+  "includePlatforms": [
+    "Editor"
+  ],
+  "overrideReferences": false
+}

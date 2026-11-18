@@ -193,3 +193,140 @@ The duplication drifts, and the general path never gets exercised.
 | csproj explicit includes may yield false greens at rung 3 | trusting the compile gate | validate on day one; demote rung 3 if unreliable |
 | `k = 3`, token ceilings | trusting the loop bounds | replace with measurements after the first real run |
 | Ladder timings on the target project | sizing the cycle budget | measure rungs 3 and 4 |
+
+## D-19 — Codex with OpenSpec delegates apply through versioned artifacts
+
+Adopted 2026-11-16. Refines D-01 and D-15; supersedes the CodeBuddy identity in
+the original handoff. Codex owns planning, export, contract revision, task
+reconciliation, and archive. LangGraph owns execution. Runtime contracts remain
+under specs/<NNN-feature>/; OpenSpec is not a second runtime contract store.
+format_version identifies wire compatibility; contract_version remains the cycle.
+The contract includes explicit task/test relationships and hashed source/profile
+references. Status/result records provide observability, not execution commands.
+
+**Why:** the boundary needs reviewable inputs and unambiguous completion evidence.
+**Rejected:** replacing delegation with a custom schema alone, or hidden chat state.
+
+## D-20 — Ownership may migrate only at a contract-version boundary
+
+Supersedes D-04's permanent reservation of superseded files; preserves D-02.
+Retain all historical unit records. Explicit migrations name source, destination,
+paths, and rationale; current writable paths have exactly one active owner.
+Surviving claims cannot change silently. Additions need justification, stay within
+declared role scope, and retain growth/run limits. Frozen test roles and target
+write policy cannot be bypassed by migration.
+
+**Why:** permanent historical claims make retired code unmaintainable.
+**Rejected:** removing history, dynamic repartitioning, or budget-resetting new runs.
+
+## D-21 — TDD is evidenced Red, Green, and verified Refactor
+
+Extends D-06. Independently authored tests receive scenario/validity review and
+observed baseline results, then all phase-A files/configuration freeze before
+implementation dispatch. Prepared compilable shells allow behavioral Red.
+Invalid setup, syntax failures, zero tests, unexpected skips, and missing tooling
+are not Red or Green. Already-passing behavior needs independent coverage review.
+Refactor preserves ownership/bindings and needs passing evidence or a recorded
+no-change decision. Defective frozen tests return for Architect revision.
+
+**Why:** immutable tests alone prove neither useful coverage nor actual TDD.
+**Rejected:** implementers editing their tests or deliberately breaking satisfied code.
+
+## D-22 — Shared failures preserve multiple related units
+
+Supersedes D-07's unique attribution by acceptance name; preserves the ladder.
+Declare test author and implementing unit IDs separately. Evidence identifies the
+snapshot, contributing patches, and involved unit set; classification remains per
+unit under D-10/D-12. Coordinate bounded repairs within existing ownership or
+escalate ambiguous scope/interface defects. Never bisect or blame by file/test name.
+
+**Why:** one behavioral test can legitimately span several implementation units.
+**Rejected:** inventing a unique culprit or allowing coordinated repair to expand scope.
+
+## D-23 — Retry policy is deterministic across TDD stages
+
+Supersedes D-11's ambiguous regression timing and the conflicting original action
+table. Expected baseline Red consumes tokens but not implementation repair attempts.
+STALLED escalates immediately. First regression restores safe owned state and
+permits one retry within k; second regression or failed-attempt exhaustion escalates
+regardless of judge output. A successful final permitted attempt passes. Compare
+normalized equivalent evidence; stage transitions and human repair do not reset
+the cycle's repair allowance or run-level budgets. Keep new-cycle windows bounded
+by retained resource accounting.
+
+**Why:** cosmetic change and stage changes cannot create artificial convergence.
+**Rejected:** unlimited implementation verdicts and resetting counters on refactor.
+
+## D-24 — Presentation is an Architect-prepared immutable baseline
+
+Extends D-02/D-06/D-18. The Architect reuses or prepares feature assets, scenes,
+prefabs, required component shells, and explicit bindings before freeze. Art is
+placeholder delivery material plus an artist contract. Preserve layout, importer
+settings, serialized interfaces, and identities; generated-file ownership
+exemptions do not bypass integrity or target scope. Runtime mutations are declared.
+Final-art replacement is a separate validated and human-reviewed change.
+
+**Why:** coders need real interfaces and humans need a coherent experience to review.
+**Rejected:** coding agents inventing or repairing frozen layouts, final-art polish
+as a prerequisite, and hardcoding Unity presentation concerns into core.
+
+## D-25 — External module worktrees feed one dedicated complete verifier
+
+Refines D-08/D-13/D-14/D-17. Isolate coding and integration outside Unity-imported
+directories. The game repository is separate from the complete host. Only the
+coordinator integrates; only the worker materializes an identified candidate at
+the authorized game mount in a dedicated full host with fixed dependencies.
+Keep the user's starting tree untouched and retain candidates on abort. Worktrees
+need host-enforced filesystem/command restrictions; shared Git metadata is protected.
+Record operation intent before filesystem effects and reconcile after crashes.
+
+**Why:** checkpoints and worktree separation alone do not make effects transactional.
+**Rejected:** duplicates under Assets/, shared live edits, and blind patch replay.
+
+## D-26 — Accepted pass requires revision-specific human approval
+
+Refines D-05/D-14. All-green automatic execution yields awaiting_human_review.
+Review the exact contract/baseline/candidate and required interactions. Implementation
+findings stay within execution where feasible; requirement/layout findings return
+for revision. Repaired content needs new evidence and approval. Flush confirmed
+constraints only after approval, preserving provenance and the 40-entry archive
+policy. A metadata-only completion commit records its approved parent and cannot
+alter reviewed execution content. Never merge/push automatically.
+
+**Why:** EditMode results cannot prove visual fidelity or complete experience.
+**Rejected:** treating automated green as final acceptance or every human finding
+as a contract defect.
+
+## D-27 — Target policy and existing editor capabilities are execution inputs
+
+Refines D-08/D-18 for the first target. Export hashed applicable rules and source
+provenance from the game knowledge/wiki/OpenSpec; core remains stack-agnostic.
+The allowed target game mount is independent of contract ownership and cannot
+expand. For monopoly it is Assets/JJGame/monopoly/; shared source/settings remain
+read-only. Reuse Unity Operator HTTP behind a blocking VerifyTransport, adding
+only a game-local test command. Bridge task/menu success is not test completion;
+durable request identity, callback results, bounded reload recovery, and exact
+project identity are mandatory. Missing tooling is operational, never unit blame.
+
+**Why:** the target already supplies editor control and has strict hot-update rules.
+**Rejected:** new MCP infrastructure without need, modifying shared packages, and
+allowing coding units arbitrary editor commands. Live operation remains unverified
+until the dedicated target milestone.
+
+## D-28 — Explicit provider-controlled judge temperature
+
+Supersedes only the mandatory temperature-zero clause of D-12. The user approved
+provider-controlled temperature for the configured reasoning judge after the
+strict request failed and its catalog entry omitted temperature support.
+Temperature zero remains the default; an explicit `temperature_mode = "provider"`
+omits that parameter instead of guessing a supported value. Preserve configured
+reasoning effort and record the policy in durable paid-call identity. Never switch
+temperature policy or models automatically after a provider error.
+
+Judge independence, full patched-file evidence, exclusion of coder notes and
+authorship, and deterministic retry/escalation backstops remain mandatory.
+Provider-controlled temperature is not a claim of deterministic output.
+
+**Why:** the selected judge can be used without requesting an unsupported control.
+**Rejected:** silent parameter dropping, automatic model substitution, and treating
+temperature zero as a guarantee of reproducibility.

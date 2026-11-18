@@ -1,0 +1,15 @@
+{
+  "identity": "f4cc3ef153d1451bdbd9d66ecf65fc592d9655b4ecc2c3ae0278100ef3d7e465",
+  "changed_files": [
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png"
+  ],
+  "guards": [
+    "separate_change",
+    "compatible",
+    "reviewed",
+    "references_preserved",
+    "old_manifest_rejects_new_bytes"
+  ],
+  "protected_files": 13,
+  "review_decision": "pending"
+}

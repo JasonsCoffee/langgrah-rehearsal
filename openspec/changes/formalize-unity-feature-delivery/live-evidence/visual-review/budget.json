@@ -1,0 +1,27 @@
+{
+  "calls": {},
+  "cycles": {
+    "1": {
+      "lineages": {
+        "preview": [
+          "preview"
+        ]
+      },
+      "sha256": "visual-review-contract-v1"
+    },
+    "2": {
+      "lineages": {
+        "preview": [
+          "preview"
+        ]
+      },
+      "sha256": "visual-review-contract-v2"
+    }
+  },
+  "limits": [
+    100000,
+    32768,
+    3,
+    2
+  ]
+}

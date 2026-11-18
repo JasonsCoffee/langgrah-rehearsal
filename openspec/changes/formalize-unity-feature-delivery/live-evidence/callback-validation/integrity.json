@@ -1,0 +1,21 @@
+{
+  "original_files": 3595,
+  "changed": [],
+  "presentation_unchanged": true,
+  "helper_sha256": "ebe44611dcaadfe919b41d6a94bb3af0a46f4459fdd4e535d0829cbd0d05d153",
+  "presentation_files": {
+    "Runtime/Script/FrameworkVisualDemo.meta": "8862bcc5706352e14f1c3e0162b2d144afceeaf597f0d3a50f7ac40ff7390ba7",
+    "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs": "88d82b1b7b1f3c474ce7c73d54d6e885ba52d2d19cf6cf0acbb1da8c24430713",
+    "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs.meta": "89599dcf76955a77466843414021e9484135783ec41f13023a28090baac93001",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo.meta": "14bf9693ca5564bc3daae2989fd9c5346a8d694618783b22398e63f5c57ab1ff",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab": "8ac71ebab7cf172d89e051c88a98991a5943a596aab61d6631d5af7de2ff62db",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab.meta": "9628dea6cacc58cf500ef4715d421cca3301eb05e6d55a132a06132417f1b560",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo.meta": "3ae11efc688d456d57190eb976ec0b506aec29653b44f517859826ab4f82fd05",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png": "31df123159e7efde331740a8e347c27dab71ccb15e472df7d03688cdb2ac94ab",
+    "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png.meta": "58b8fb763b4fb59bc0f0ff2668db1277f36ffa2b15bf656369e008a0a3881be8",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo.meta": "7d3cbf0c9beffaf4b061c9a2e5da65b874ff2b214b32472e0771228e820e93a6",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity": "c59e94a0ae29154822418548a03a5797d94b0c23a6690ac9e68f2e37722acb25",
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity.meta": "96a99483b0c43ef69058e3f09e2deb520c93313a9470e901a37208781a976367",
+    "Editor/ArtSource~/FrameworkVisualDemo/design.md": "300d21a743aee0b1cb27d3224f78bd4f199f9dd959140f3fad3dd1219bb93167"
+  }
+}

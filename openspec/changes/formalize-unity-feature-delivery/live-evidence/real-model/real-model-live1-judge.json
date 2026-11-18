@@ -1,0 +1,10 @@
+{
+  "A": {
+    "defect_class": "implementation",
+    "explanation": "Both calculators always return 0, contradicting the specified behavior. CreditCalculator should return 13 for (10, 3) and preserve 10 for (10, -3); ScoreCalculator should return 60 for (40, 20), making the shared reward 73. The failing tests align with the specification, so the defect is in the implementations, not the contract."
+  },
+  "B": {
+    "defect_class": "implementation",
+    "explanation": "Both calculators unconditionally return 0 instead of implementing the specified behavior. ScoreCalculator must add scores and cap the result at 100, explaining ScoresAreAdded and ScoresAreCapped. SharedRewardUsesBothComponents also fails because CreditCalculator does not add positive credits and ScoreCalculator does not add scores. The test expectations match the stated contract."
+  }
+}

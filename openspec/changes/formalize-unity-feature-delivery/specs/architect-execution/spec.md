@@ -66,7 +66,7 @@ Between consecutive versions the Architect SHALL explicitly declare ownership tr
 - **THEN** the executor rejects the revision
 
 ### Requirement: Two failure loops and independent judging
-Implementation defects SHALL remain inside execution; contract defects SHALL return through a dossier. Classification SHALL be per unit with shared evidence references where needed. Judges MUST use a different model at temperature zero, read criteria, spec, evidence, and patched files, and receive no coder notes or authorship signals.
+Implementation defects SHALL remain inside execution; contract defects SHALL return through a dossier. Classification SHALL be per unit with shared evidence references where needed. Judges MUST use a different model, default to temperature zero unless provider-controlled temperature is explicitly approved under D-28, read criteria, spec, evidence, and patched files, and receive no coder notes or authorship signals. Provider-controlled temperature MUST omit the temperature parameter, preserve configured reasoning effort, and never activate as automatic fallback.
 
 #### Scenario: Mixed defects in one candidate
 - **WHEN** evidence supports an implementation defect in one unit and a contract defect in another

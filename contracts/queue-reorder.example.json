@@ -1,9 +1,24 @@
 {
-  "_comment": "Illustrative only. Real contracts live at specs/<NNN-feature>/contract.v<N>.json. Paths are made up - adjust to your layout. Two hard rules: no two units may own the same path, and role=test units must be dispatchable before role=impl units.",
+  "_comment": "Illustrative only. Paths are relative to the target game repository, not its Unity host. Replace profile hashes with verified artifact identities before execution. Tests freeze before implementation; shared tests do not uniquely identify a culprit.",
+  "format_version": 1,
   "contract_version": 1,
   "module": "queue-reorder",
-  "module_root": "Assets/_Project/Scripts/Queue/",
+  "module_root": "Runtime/Script/Queue",
+  "test_roots": ["Tests/Runtime/Script"],
   "spec_ref": "specs/003-queue-reorder/spec.md",
+  "spec_sha256": "<verified-sha256>",
+  "presentation_ref": { "path": "specs/003-queue-reorder/presentation.json", "sha256": "<verified-sha256>" },
+  "coding_profile_ref": { "path": "specs/003-queue-reorder/coding-profile.json", "sha256": "<verified-sha256>" },
+  "environment_ref": { "path": "specs/003-queue-reorder/environment.json", "sha256": "<verified-sha256>" },
+  "task_links": [
+    { "task_ref": "queue-reorder:1.1", "unit_ids": ["U0-tests", "U1-state", "U2-system"], "criteria": ["R7-queue-reorder"] }
+  ],
+  "test_links": [
+    { "test_id": "QueueReorderTests.Reorder_PreservesCustomerIdentity", "author_unit": "U0-tests", "implementing_units": ["U1-state", "U2-system"], "criterion": "R7-queue-reorder" },
+    { "test_id": "QueueReorderTests.Reorder_FromEmptyQueue_IsIgnored", "author_unit": "U0-tests", "implementing_units": ["U1-state"], "criterion": "R7-queue-reorder" },
+    { "test_id": "QueueReorderTests.Reorder_OutOfRange_IsIgnored", "author_unit": "U0-tests", "implementing_units": ["U1-state"], "criterion": "R7-queue-reorder" }
+  ],
+  "ownership_migrations": [],
   "units": [
     {
       "id": "U0-tests",
@@ -11,7 +26,7 @@
       "status": "active",
       "title": "EditMode coverage for queue reordering",
       "spec_ref": "R7-queue-reorder",
-      "owns": ["Assets/_Project/Tests/EditMode/QueueReorderTests.cs"],
+      "owns": ["Tests/Runtime/Script/QueueReorderTests.cs"],
       "acceptance": [
         "QueueReorderTests.Reorder_PreservesCustomerIdentity",
         "QueueReorderTests.Reorder_FromEmptyQueue_IsIgnored",
@@ -27,8 +42,8 @@
       "status": "active",
       "title": "Reducer support for queue reordering",
       "spec_ref": "R7-queue-reorder",
-      "owns": ["Assets/_Project/Scripts/Queue/DinerState.cs"],
-      "acceptance": ["QueueReorderTests.Reorder_PreservesCustomerIdentity"],
+      "owns": ["Runtime/Script/Queue/DinerState.cs"],
+      "acceptance": ["QueueReorderTests.Reorder_PreservesCustomerIdentity", "QueueReorderTests.Reorder_FromEmptyQueue_IsIgnored", "QueueReorderTests.Reorder_OutOfRange_IsIgnored"],
       "depends_on": [],
       "interfaces": [
         { "symbol": "DinerActions.ReorderQueue", "signature": "ReorderQueue(int from, int to)" }
@@ -41,7 +56,7 @@
       "status": "active",
       "title": "QueueSystem applies reorder actions",
       "spec_ref": "R7-queue-reorder",
-      "owns": ["Assets/_Project/Scripts/Queue/QueueSystem.cs"],
+      "owns": ["Runtime/Script/Queue/QueueSystem.cs"],
       "acceptance": ["QueueReorderTests.Reorder_PreservesCustomerIdentity"],
       "depends_on": ["U1-state"],
       "interfaces": [],

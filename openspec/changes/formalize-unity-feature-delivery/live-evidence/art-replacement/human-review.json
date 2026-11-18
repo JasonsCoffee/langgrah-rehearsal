@@ -1,0 +1,9 @@
+{
+  "decision": "request_changes",
+  "accepted": false,
+  "source": "explicit user replies",
+  "candidate_revision": "61b193bac7fe1a69f509254c696dc51658a09a057f403900938f78a7fdcc3ba9",
+  "answer": "Request visual changes",
+  "reviewer": "chat-user",
+  "requested_change": "there should be a lake"
+}

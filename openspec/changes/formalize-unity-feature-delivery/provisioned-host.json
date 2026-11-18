@@ -1,0 +1,118 @@
+{
+  "game_relative": "uframework/Assets/JJGame/monopoly",
+  "package_lock_present": false,
+  "date": "2026-11-16",
+  "editor_opened": false,
+  "unity_project_relative": "uframework",
+  "packages_resolved": false,
+  "files": [
+    {
+      "sha256": "7bb252f617fa7beb3a65176655fa1c564d53821a20fd4d4b4a0ec59635b8617b",
+      "path": "uframework/Packages/manifest.json"
+    },
+    {
+      "sha256": "a62d6179012a530b80ad1150ad24db6764c156899a04113d57e39d64d55cb502",
+      "path": "uframework/ProjectSettings/ProjectVersion.txt"
+    }
+  ],
+  "repositories": [
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "d37d8aa429a5780a4424c8e18efcaff1ef537886",
+      "shallow": true,
+      "path": ".",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "0403ec0fcfa3ed97a8581affd5d4943b78fb8588",
+      "shallow": true,
+      "path": "uframework/Assets/JJAOT/builtin",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "3116f11eb321e4bf8dc165519e9c7a231535c09c",
+      "shallow": true,
+      "path": "uframework/Assets/JJBifrost/bifrost",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "7cc589323e582c3a35ff5c9e7a199a429475c018",
+      "shallow": true,
+      "path": "uframework/Assets/JJBifrost/unitypackage",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "9c252a0ddad9463d9d96b02fdbb7fe8fc79c7be7",
+      "shallow": true,
+      "path": "uframework/Assets/JJCore/core",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "4ec1f86bdb940048d701d8196e7d3579007995cb",
+      "shallow": true,
+      "path": "uframework/Assets/JJForward/tkforward",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "4bdfa8b16f3caa55d9531429823b8546d99f989e",
+      "shallow": true,
+      "path": "uframework/Assets/JJGame/monopoly",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "57671c629d8dd1a42bd2f46e95e2e53a1143337c",
+      "shallow": true,
+      "path": "uframework/Assets/JJGame/tkhall",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "bb416988ade1612108b4a915926ad9023b330483",
+      "shallow": true,
+      "path": "uframework/Assets/JJService/tkgameservice",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "15b62392f33421fc3e82e618108ddd33653351bf",
+      "shallow": true,
+      "path": "uframework/Assets/JJService/tkmatchservice",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "a2673b0fc0936b56d28694ed42296d5c5c628676",
+      "shallow": true,
+      "path": "uframework/Assets/JJWidget/figure",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "28dd50264cee00f39d3226d13cf117a08367a11b",
+      "shallow": true,
+      "path": "uframework/Assets/JJWidget/tkgamewidget",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "5f5ae30fa9105a8d6f87a77107f9d98aab2dc23a",
+      "shallow": true,
+      "path": "uframework/Assets/JJWidget/tkmatchwidget",
+      "tracked_clean": true
+    },
+    {
+      "branch": "dfw-hecan-20261026",
+      "commit": "757b689c2165d0c0f490c713f9fed7a6f19a0e6f",
+      "shallow": true,
+      "path": "uframework/Assets/JJWidget/widgetsdk",
+      "tracked_clean": true
+    }
+  ]
+}

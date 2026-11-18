@@ -1,0 +1,27 @@
+{
+  "request": {
+    "request_id": "art-compatible-92e7ca321be8",
+    "run_id": "art-compatible-lake-1",
+    "contract_version": 1,
+    "contract_sha256": "visual-review-contract-v1",
+    "candidate_revision": "92e7ca321be8462a445cf1d7acc0e5f566509cadd41ea4ca6a04cce30381dba3",
+    "presentation_sha256": "visual-presentation-v1",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.CoralPresentation.PrimaryButtonUsesTheRequestedWarmCoral"
+    ],
+    "full_suite": true
+  },
+  "compilation": {
+    "passed": true,
+    "violations": [],
+    "operational_error": null
+  },
+  "tests": null
+}

@@ -1,0 +1,18 @@
+{
+  "tests/fixtures/contracts/valid.json": "943eedc19d2abf12ab6f2d95aac7fb79bc0ccca9d45f68f49a7a32e948452b05",
+  "tests/test_contracts.py": "4ec6e03b158854c037f28b1b1f3e5288879926ace8b0168e2e006d7e99a269a7",
+  "tests/test_target_profiles.py": "00d484894c2815f5e404fdd1de7767310d2935e139be000ef94fd241a06bb58f",
+  "tests/test_adapters.py": "de194ed34406b12464653ab4471710916fcdc718ef2304b51685b4b4b5834bf7",
+  "tests/fixtures/csharp/View.cs": "52ad874faa6a212f2a6442eadb00ae5e87173e6861faaac7e293b074130f9bd9",
+  "tests/test_tdd.py": "5a9cd878c9aea7af40cbbfbb5f58870fa977fa93ecbd42b47365d03de97da456",
+  "tests/test_dispatch.py": "45940a2fabd2875e7b91a56729fc02d202c1b9c53f6a64b6d86c70ab913df9cb",
+  "tests/test_tdd_integrity.py": "103dee392fb252173fcc827079ff9f1adaa513928089593055e3603aff52da98",
+  "tests/test_verification.py": "e105e7862b288686e37b5dc2da780f835316fc1bf12ca26c074b6e5d01d435c4",
+  "tests/test_integration_failures.py": "47c09dd039d09e99f287e3628514dfdf35b65d4d491cad91975ac12e50481b3d",
+  "tests/test_verification_binary.py": "1f1b778f79cf616f3e60671fe1d80115e37fb28086e39cf33e5f0b0c25fd818f",
+  "tests/test_loop_control.py": "4edca8eeaa50ee701a712431f8ef9366b25e3ec9ad52dee85e4d0cb89976faa5",
+  "tests/test_dossiers.py": "ae2745f00a5b5fdbb2350e66c157876a07c2734481f503d4584a4808e7660297",
+  "tests/test_workspaces.py": "56d5ddb06418603b3aafdca406087bb0cf6a1998bd3e42a1151fdbd65799ab3f",
+  "tests/test_recovery.py": "71d37d13a846521edb4b54aacf7f093f9ffdf520f2ca244a827f0ecbe760ab94",
+  "tests/test_progress.py": "8d038712b1f148f7db623d4faf3c5a6b38ef4863e0a917d06a13692ca74a0901"
+}

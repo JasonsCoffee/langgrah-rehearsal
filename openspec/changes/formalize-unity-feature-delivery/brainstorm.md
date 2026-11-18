@@ -122,6 +122,20 @@ recommended default a separately approved runtime decision.
 
 ## Open questions
 
+### Application review: adopted 2026-11-16
+
+The implementation request adopts the reviewed design and recommended behavioral
+defaults: version-boundary ownership migrations, external isolated worktrees,
+durable status/result/review records, immediate STALLED escalation, one bounded
+regression retry, expected-Red exclusion from repair counts, coverage-reviewed
+already-satisfied cases, and revision-bound human approval. No scope-changing
+question blocks the offline milestones. Host locations/credentials and live
+Unity connectivity remain deployment preflight inputs, not guessed permissions.
+
+Phase 0 uses pytest's native empty-suite exit code 5 as expected collection
+evidence; it must not masquerade as a passing behavior suite. Subsequent phases
+require exit code 0 from the actual suite and graph dev-server acceptance.
+
 No blocking questions prevent a coherent proposal. Recommended defaults are
 specified for review in design.md and are subject to adoption before runtime
 implementation. Unity version, package set, target project path, and model

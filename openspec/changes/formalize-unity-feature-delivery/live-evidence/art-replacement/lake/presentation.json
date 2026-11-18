@@ -1,0 +1,116 @@
+{
+  "revision": "art-compatible-lake-1",
+  "files": [
+    {
+      "path": "Runtime/Script/FrameworkVisualDemo.meta",
+      "sha256": "8862bcc5706352e14f1c3e0162b2d144afceeaf597f0d3a50f7ac40ff7390ba7"
+    },
+    {
+      "path": "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs",
+      "sha256": "88d82b1b7b1f3c474ce7c73d54d6e885ba52d2d19cf6cf0acbb1da8c24430713"
+    },
+    {
+      "path": "Runtime/Script/FrameworkVisualDemo/ExpeditionPreviewShell.cs.meta",
+      "sha256": "89599dcf76955a77466843414021e9484135783ec41f13023a28090baac93001"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo.meta",
+      "sha256": "14bf9693ca5564bc3daae2989fd9c5346a8d694618783b22398e63f5c57ab1ff"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab",
+      "sha256": "8ac71ebab7cf172d89e051c88a98991a5943a596aab61d6631d5af7de2ff62db"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab.meta",
+      "sha256": "9628dea6cacc58cf500ef4715d421cca3301eb05e6d55a132a06132417f1b560"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo.meta",
+      "sha256": "3ae11efc688d456d57190eb976ec0b506aec29653b44f517859826ab4f82fd05"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+      "sha256": "31df123159e7efde331740a8e347c27dab71ccb15e472df7d03688cdb2ac94ab"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png.meta",
+      "sha256": "58b8fb763b4fb59bc0f0ff2668db1277f36ffa2b15bf656369e008a0a3881be8"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo.meta",
+      "sha256": "7d3cbf0c9beffaf4b061c9a2e5da65b874ff2b214b32472e0771228e820e93a6"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+      "sha256": "c59e94a0ae29154822418548a03a5797d94b0c23a6690ac9e68f2e37722acb25"
+    },
+    {
+      "path": "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity.meta",
+      "sha256": "96a99483b0c43ef69058e3f09e2deb520c93313a9470e901a37208781a976367"
+    },
+    {
+      "path": "Editor/ArtSource~/FrameworkVisualDemo/design.md",
+      "sha256": "300d21a743aee0b1cb27d3224f78bd4f199f9dd959140f3fad3dd1219bb93167"
+    }
+  ],
+  "interfaces": [
+    {
+      "symbol": "FrameworkVisualDemo.ExpeditionPreviewShell.confirmButton",
+      "signature": "Button confirmButton"
+    },
+    {
+      "symbol": "FrameworkVisualDemo.ExpeditionPreviewShell.resetButton",
+      "signature": "Button resetButton"
+    },
+    {
+      "symbol": "FrameworkVisualDemo.ExpeditionPreviewShell.statusText",
+      "signature": "Text statusText"
+    },
+    {
+      "symbol": "FrameworkVisualDemo.ExpeditionPreviewShell.heroImage",
+      "signature": "Image heroImage"
+    }
+  ],
+  "entries": [
+    "Runtime/Resource/monopoly/Scenes/FrameworkVisualDemo/VisualBaseline.unity",
+    "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab"
+  ],
+  "mutations": [
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.statusText",
+      "text"
+    ],
+    [
+      "FrameworkVisualDemo.ExpeditionPreviewShell.statusText",
+      "color"
+    ]
+  ],
+  "assets": [
+    {
+      "id": "expedition-landscape",
+      "path": "Runtime/Resource/monopoly/UI/Images/FrameworkVisualDemo/expedition_placeHolder.png",
+      "purpose": "Northern Ridge geometric landscape",
+      "reference": "Editor/ArtSource~/FrameworkVisualDemo/design.md",
+      "dimensions": [
+        768,
+        480
+      ],
+      "transparency": false,
+      "variants": [
+        "normal"
+      ],
+      "import_requirements": [
+        "Sprite Single; sRGB; no mipmaps; uncompressed; centered pivot; 100 PPU"
+      ],
+      "usage": [
+        "Runtime/Resource/monopoly/UI/Prefabs/FrameworkVisualDemo/ExpeditionBriefing.prefab"
+      ],
+      "acceptance": [
+        "Preserve GUID, dimensions, crop, references and import settings; separate reviewed change"
+      ]
+    }
+  ],
+  "reused": [],
+  "instructions": "Open the VisualBaseline scene in the dedicated host. Select portrait Game view, enter Play Mode, review layout, click Preview ready state then Reset preview. No game bootstrap or gameplay is attached. Approval is pending and must name this manifest identity."
+}

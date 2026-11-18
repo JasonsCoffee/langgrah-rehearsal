@@ -1,0 +1,13 @@
+{
+  "kind": "deterministic fixture callbacks, not real model calls",
+  "timings": {
+    "A": {
+      "start": 368496.609,
+      "finish": 368496.687
+    },
+    "B": {
+      "start": 368496.609,
+      "finish": 368496.703
+    }
+  }
+}

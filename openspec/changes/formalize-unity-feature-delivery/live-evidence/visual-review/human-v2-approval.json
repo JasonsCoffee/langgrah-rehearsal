@@ -1,0 +1,8 @@
+{
+  "quote": "Approve v2 and its interactions",
+  "candidate_revision": "4c66aaf33a38893a6488f678be469af8e2439950cc79cb434611616209bde834",
+  "source": "Explicit user answer to exact-candidate v2 review question",
+  "reviewer": "chat-user",
+  "scope": "isolated visual-review rehearsal",
+  "decision": "accept"
+}

@@ -1,0 +1,17 @@
+{
+  "change_id": "art-incompatible-1",
+  "separate_change": true,
+  "coding_cycle_active": false,
+  "delivery_sha256": "6178c7a836b39305ae975e5e434288c4d4fbb45fcfe5d79a95522cffe0e66857",
+  "width": 320,
+  "height": 320,
+  "opaque": true,
+  "compatible": false,
+  "applied": false,
+  "before_sha256": "94bdc81eb37c682c818e8d5b1cdfca546532c3b48faf2a9aa8d169ba2df54782",
+  "guid": "b942a0f6ce0780649b1a94738f85199c",
+  "local_id": "21300000",
+  "review_decision": "pending",
+  "reason": "Dimensions or opacity violate the artist contract; reject delivery or revise contract separately",
+  "unchanged": true
+}

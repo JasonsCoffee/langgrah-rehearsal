@@ -1,0 +1,35 @@
+{
+  "request": {
+    "request_id": "v1-step2-red",
+    "run_id": "production-graph-live1",
+    "contract_version": 1,
+    "contract_sha256": "ec0819d24a1305fe02680fc5b4d38b8dbfdc08d66c38da15dbed05abe21787f4",
+    "candidate_revision": "03dd25d38c16cb2f08ea5053c342e30af658733e",
+    "presentation_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "coding_profile_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "environment_sha256": "1200e7133b68dce1ba4a0cfbc7df454ccb5d0557c642c14c1ac099a3c7f1f894",
+    "test_selection": [
+      "FrameworkDemo.Tests.Acceptance.CreditsAreAdded",
+      "FrameworkDemo.Tests.Acceptance.NegativeCreditsAreIgnored",
+      "FrameworkDemo.Tests.Acceptance.ScoresAreAdded",
+      "FrameworkDemo.Tests.Acceptance.ScoresAreCapped",
+      "FrameworkDemo.Tests.Acceptance.SharedRewardUsesBothComponents"
+    ],
+    "full_suite": true
+  },
+  "gate": "tests",
+  "status": "operational",
+  "related_units": [],
+  "violations": [
+    {
+      "code": "operational",
+      "file": "",
+      "symbol": "",
+      "message": "No exact-project Bridge with FrameworkVerify tooling"
+    }
+  ],
+  "failed_tests": [],
+  "test_result": null,
+  "full_suite_verified": false,
+  "behavioral": false
+}

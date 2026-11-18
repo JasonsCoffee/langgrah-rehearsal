@@ -1,0 +1,279 @@
+{
+  "test_framework": "com.unity.test-framework@2.0.1-exp.2",
+  "resource_root": "Runtime/Resource/monopoly",
+  "editor_assembly": "jj.Monopoly.Editor",
+  "operator_package": "cn.jj.unity-operator@0.0.1",
+  "engine": "Tuanjie 1.9.2 / Unity 2022.3.62t10",
+  "allowed_mount": "Assets/JJGame/monopoly",
+  "runtime_assembly": "jj.Reserve04.Runtime",
+  "sources": [
+    {
+      "path": ".codex/reference/README.md",
+      "sha256": "42c0d06a251d55700e30a6e6fb38f66d7a3843bf492ee0ed6cb644e6ae75f911",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/10-hotfix-forbidden.md",
+      "sha256": "36afdb3e7085c665a09e4d730d2a0c669b408f98d630b92f0f719e51825fe6a8",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/20-module-boundaries.md",
+      "sha256": "f391f5a7fc5a5a187d93172d642909d3dcc713106854a0170df3ea3e4589499a",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/30-code-placement.md",
+      "sha256": "4f2053cf719285584649485e3ea9b061362c925bf38d250ad14f87219de85c21",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/40-di-and-entry.md",
+      "sha256": "ab0fe29170a519e269172f61e7fe4a8e1d03af13b86a5f4d47d53bd8920830c0",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/50-git-workflow.md",
+      "sha256": "9b30f70c904ffb65a9e956679eb2176fd0a9eab641a22bfadf09b9d30f562fde",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/60-knowledge-first.md",
+      "sha256": "b0c1fdb8f5db391578199de5d12c91868e785112ac2ea3d79746b281ec8d634e",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/70-write-scope.md",
+      "sha256": "012c672c0eeb534ceb95821021e8ffd833215dab92838c16c4f79f286e5ef296",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/80-verify-before-done.md",
+      "sha256": "e66e2bb6cbd1af15bfa17f03fe13ddc0b045fd7e88c38ec6fd303b4a114bb17f",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/85-no-reinvent.md",
+      "sha256": "5f11df8ab26131767c9bf819b48327d2b314e0a213d4b00b0a63b5a055f57770",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": ".codex/rules/90-review-checklist.md",
+      "sha256": "f3270e4fddb2cbd455dab4bc20730e92c4d79e432acbf7b6595bae2c0e4c6300",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "a4779501a1af600726524be8f82f3b0538fddbf8a6fbf0b9be67076c5abdd66b",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/AGENTS.md",
+      "sha256": "f9b82d79869255a13aabe9a4b27962a361aa8c8209fa46799cf45816c48aeebc",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/《大赢家》美术需求清单.xlsx",
+      "sha256": "c27d1e46872e2a9fc31de7ff921873473a22e5c5b60a5e43fd7a5c87a5970304",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/.workbuddy/memory/2026-10-29.md",
+      "sha256": "2599d3f35ba6b6b956deceb6d57eff293fc61c57215f240099e8572b8efc7211",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/.workbuddy/memory/2026-11-07.md",
+      "sha256": "d15d565d91d23fa6fca88043da1f41383e9fbc294047b42cd940c81a65293e3a",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/.workbuddy/memory/2026-11-11.md",
+      "sha256": "43f96c6c5e5b9db04c41bf3e9290d1552892122cc09fbb315d593385f9a36613",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/.workbuddy/memory/MEMORY.md",
+      "sha256": "9b8dda0656ae5b39cc2f08edf04c85b1b1330b767e91462c911d0a6a138f4477",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/overview.md",
+      "sha256": "28f53add68871908e761a68edf24c346fc4be637cd759cc6927f519e39c28332",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/大富翁局内玩法策划案.docx",
+      "sha256": "d9665c0adfead85c74034175886a769e8d13c66ce6e63f8d65bf1e419c084f92",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/大赢家局内玩法-用户故事_精简版.md",
+      "sha256": "03c68f119458574345de19a2874314497a2a7bf7032466417ceaf5243366062b",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/大赢家局内玩法-用户故事.md",
+      "sha256": "12f6fe8699563f70bc9df4d061931c594b878d1cc9633065dbd11cba556f9634",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/大赢家局内玩法-需求分析.md",
+      "sha256": "e08e4946eceb99115a90b7321dc2c16570d6a44a17cde3c3e9874edb90d80bfe",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/InGame/大赢家需求会-会议记录.txt",
+      "sha256": "05202d51da14b771d5e8a4661867e78b69995ea6545579708adb2a79c3e18595",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/11-10 大厅系统设计-会议纪要.md",
+      "sha256": "cb3393c383e46eb42c4f4f4d426b76535710a406944a79da559eb03df76887ed",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/11-10 大厅系统设计-听记原文.txt",
+      "sha256": "b872e386625ebb95aba144949a9fbb815dc9ff0574f3496ea1172eaf11f9352a",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/overview.md",
+      "sha256": "dbb5a14cd3eeb47560bf2f8422df15af07e517d093fca3a13a19cbd1e88c27fa",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/大赢家主界面策划案.docx",
+      "sha256": "0ea481c3a41678c896cc5dd3c05c90bedc92d384bf536eb4be76d021e5f6da0e",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/大赢家局外主界面-用户故事_精简版.md",
+      "sha256": "806d99fdba8487f2e9b3881705ae5c8615a6e7d925d2ee0c20feed33ba7d6bc3",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/大赢家局外主界面-用户故事.md",
+      "sha256": "7e55a016d1e0802e356f6805ff6bf9d5aa61f384fa5589dc5a0380300762aa47",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/Lobby/大赢家局外主界面-需求分析.md",
+      "sha256": "597158ceb061be3eb3e8eb6a69fb3b3ddd853b56ad08cbb48c228d731b6c8441",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/事件的插图.pptx",
+      "sha256": "6876eb581ec9a6acc75e9720d398ad1aada82eef352c45a75ae641684dc465eb",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/事件系统策划案.docx",
+      "sha256": "a33fcded580e78fb8e78b3318b8180dbf30565236cd52ccf801f77fbfab6021f",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/单局收租大富翁原型设计.docx",
+      "sha256": "fb32138cbcc5130871f10e470eb00236c40e86c3b4b37771bb5bac75c2b5d8be",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/卡片系统策划案.docx",
+      "sha256": "b5aa2ee5bac220147d61d37c686fa9f4b1356e01feaa993b32484d7933a396da",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/大赢家-局内UE说明-可编辑版.pptx",
+      "sha256": "124a941f9750d57391e2b7288e3de6308b94d5b5dc31afb5ab73df95cb700588",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/大赢家主界面策划案.docx",
+      "sha256": "f72a296ba30c0d5ae429525943a0b5f840b0e117b4051a29562490f0d087284f",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/大赢家局内.pptx",
+      "sha256": "fbc4c5c5ae70496eab2aab2810d2e2996ec8f1d72a88e735da5272b88ce199ba",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/大赢家局内玩法策划案.docx",
+      "sha256": "0c5f2c97b340f2c793c2740009f936b0a4122f6547950345764a0ad712de0cbc",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/大赢家局外.pptx",
+      "sha256": "0b74251b22b525768a280945ae8380b79b98b002eb6a0d53a3b6763dc90df582",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/彩票系统策划案.docx",
+      "sha256": "f0c15f3a5a8af41f6759cf715b14e87041c2fefe246bff08130afb9e923a244d",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/Design/数值平衡表.xlsx",
+      "sha256": "fbe18490ab5707feb42ba895da068374db8cfd9eee427fce850cb7595a21045d",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Docs~/wiki/index.md",
+      "sha256": "ddb2374189d71820bd1190588a031701dc09b981c0ff522d359633844dd69dea",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Editor/Script/jj.Monopoly.Editor.asmdef",
+      "sha256": "8357cfc02c2b8dfdb1438a1e413b49d382eb77536061b7c764cbe26044b63f9d",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "openspec/README.md",
+      "sha256": "d592e9077754a39fa7a963f5f73e25041c6a1c4a1f708de6f8548449309b0892",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "openspec/references/source-register.md",
+      "sha256": "2103f724023968e1f9bba1d9959d290ef6899bfac4dc686be5620d6d884d6f85",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "package.json",
+      "sha256": "f505a30efc18cab03ddac7356cc231159fa97cc6df0fb32df18b16c484e2f408",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Runtime/Script/jj.Reserve04.Runtime.asmdef",
+      "sha256": "dcc678cbbefc993eac65cec40f66f6592df80676ee4631e53fba411b41cfbce7",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Runtime/Script/Reserve04ModuleLoader.cs",
+      "sha256": "f083308c31fc7e6e27aff2202d5db7704f4f59bedad542aa1d8901dd0c16dd67",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "Tests/Runtime/Script/jj.Monopoly.Tests.Runtime.asmdef",
+      "sha256": "16d0d981441d193208dbd1165ce32ce49692be4d160ba81a5423ec6706f5e4cd",
+      "root": "GAME_ROOT"
+    },
+    {
+      "path": "ProjectSettings/ProjectVersion.txt",
+      "sha256": "a62d6179012a530b80ad1150ad24db6764c156899a04113d57e39d64d55cb502",
+      "root": "UNITY_HOST_SOURCE"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "7bb252f617fa7beb3a65176655fa1c564d53821a20fd4d4b4a0ec59635b8617b",
+      "root": "UNITY_HOST_SOURCE"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "sha256": "43d03c08acc8516df193c4dbb539b028905c13b6cc6c175d8910aa3d165d9ee1",
+      "root": "UNITY_HOST_SOURCE"
+    }
+  ],
+  "observed_date": "2026-11-16",
+  "purpose": "Read-only target provenance; revalidate before export, not a runnable deployment profile",
+  "test_assembly": "jj.Monopoly.Tests.Runtime"
+}

@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-18",
+  "task": "12.7",
+  "git_base": "4c6ab4e8f51a9e700a785c998d5be6bc8852f720",
+  "uncommitted_worktree": true,
+  "pytest": {
+    "command": "uv run pytest -q",
+    "exit_code": 0,
+    "passed": 468,
+    "warnings": 1,
+    "seconds": 144.12
+  },
+  "graph": {
+    "command": "uv run langgraph dev --allow-blocking --no-browser --port 2025",
+    "compiled": true,
+    "listed": "unity_coder",
+    "nodes": [
+      "__start__",
+      "reconnect",
+      "prepare",
+      "red",
+      "code",
+      "verify",
+      "refactor",
+      "final_verify",
+      "review",
+      "finalize",
+      "repair",
+      "rework",
+      "__end__"
+    ],
+    "owned_server_stopped": true,
+    "listener_remaining": false,
+    "intentional_interrupt_exit": 1
+  },
+  "openspec_validation": {
+    "normal_exit": 0,
+    "strict_exit": 1,
+    "warning": "Independent-judge requirement exceeds 500 characters"
+  },
+  "fresh_unity_execution": false,
+  "fresh_model_calls": false,
+  "game_changes": false,
+  "runtime_changes": false,
+  "live_acceptance_limits": [
+    "Model-driven candidate still awaiting human review",
+    "No live accepted metadata-only completion",
+    "No new live production recovery/cancellation/migration rehearsal",
+    "Existing Monopoly full-suite failures deferred"
+  ],
+  "manifests": {
+    "frozen-tests.json": {
+      "sha256": "ba3aecf3e6811bf4da98425ed6eddbf05ee51d38852c5197b946f7a9ecc1a20f",
+      "files": 69,
+      "mismatches": []
+    },
+    "reviewed-files.json": {
+      "sha256": "b1ffdcb49e950cca567cbcef9ec6a57f867fa1e4088ad1abe818a4d51dfe81df",
+      "files": 125,
+      "mismatches": []
+    }
+  }
+}

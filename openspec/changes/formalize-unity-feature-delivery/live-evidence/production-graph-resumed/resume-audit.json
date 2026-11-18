@@ -1,0 +1,26 @@
+{
+  "run_id": "production-graph-live1",
+  "budget_reset": false,
+  "previous_budget_records_preserved": true,
+  "known_actual_tokens": [
+    2821,
+    4845
+  ],
+  "uncertain_reserved_tokens": [
+    10368,
+    12320
+  ],
+  "conservative_totals": [
+    13189,
+    17165
+  ],
+  "same_model": "deepseek/deepseek-v4.1-flash",
+  "explicit_upstream": "alibaba",
+  "automatic_fallback": false,
+  "diagnostic_http_status": 429,
+  "failed_upstream": "Baidu",
+  "limit_source": "upstream_provider_shared_pool",
+  "frozen_files_preserved": 10,
+  "candidate_revision": "fb0ae7307066d1bec4152c45e0b13b3153aca8ab",
+  "human_accepted": false
+}

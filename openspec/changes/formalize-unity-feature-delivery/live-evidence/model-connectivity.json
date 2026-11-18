@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-17",
+  "probe": "uv run python -m unity_coder.ai_check",
+  "exit_code": 1,
+  "project_code_sent": false,
+  "coder": {
+    "configured_model": "deepseek/deepseek-v4.1-flash",
+    "returned_model": "deepseek/deepseek-v4.1-flash",
+    "status": "connected",
+    "expected_reply": true,
+    "input_tokens": 39,
+    "output_tokens": 17
+  },
+  "judge": {
+    "configured_model": "openai/gpt-6-astra",
+    "status": "operational",
+    "http_status": 404,
+    "temperature_requested": 0,
+    "effort_requested": "medium",
+    "listed_in_catalog": true,
+    "temperature_advertised": false,
+    "diagnosis": "Catalog lacks temperature support; strict required-parameter routing is the suspected cause. No fallback or policy change attempted."
+  }
+}

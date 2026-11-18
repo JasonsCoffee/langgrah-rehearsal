@@ -1,0 +1,46 @@
+{
+  "request": {
+    "request_id": "approved-baseline-392b0472e908",
+    "run_id": "visual-review-live1",
+    "contract_version": 1,
+    "contract_sha256": "visual-review-contract-v1",
+    "candidate_revision": "392b0472e9083b27e9bad61cb5dee73452486b177ed4cc49de2d7daf8082a47b",
+    "presentation_sha256": "visual-presentation-v1",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "full_suite": true
+  },
+  "gate": "tests",
+  "status": "passed",
+  "related_units": [],
+  "violations": [],
+  "failed_tests": [],
+  "test_result": {
+    "discovered": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "executed": [
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "passed": [
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "failed": [],
+    "skipped": [],
+    "inconclusive": [],
+    "operational_error": null
+  },
+  "full_suite_verified": true,
+  "behavioral": true
+}

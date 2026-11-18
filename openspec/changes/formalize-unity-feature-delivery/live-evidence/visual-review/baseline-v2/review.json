@@ -1,0 +1,11 @@
+{
+  "manifest_identity": "7150c88cae377b3622c22f1eb6e2c05f308de2f4c7dc33be7ef7e413c64b223a",
+  "presentation_sha256": "e68613f29135d917181adecdcc673029338d56ba2f1c1607c094f5d72709b33b",
+  "decision": "pending",
+  "baseline_revision": "visual-baseline-v2",
+  "source": "isolated synthetic design",
+  "protected_file_count": 13,
+  "existing_game_tests_executed": false,
+  "manual_preview": "Recorded separately by the reviewer; never inferred by export",
+  "automated_playmode_acceptance": false
+}

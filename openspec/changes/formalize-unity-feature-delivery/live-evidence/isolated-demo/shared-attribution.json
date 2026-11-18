@@ -1,0 +1,11 @@
+{
+  "evidence_id": "390327ee0b635df49a3bd761e2c3059f3ab18539806c7260f2d656fa70159c2d",
+  "implementing_units": [
+    "A",
+    "B"
+  ],
+  "test_authors": [
+    "T"
+  ],
+  "action": "wait for declared B candidate; do not blame or retry A"
+}

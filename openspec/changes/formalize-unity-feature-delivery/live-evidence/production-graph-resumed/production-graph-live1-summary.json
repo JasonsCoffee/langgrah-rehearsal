@@ -1,0 +1,18 @@
+{
+  "run_id": "production-graph-live1",
+  "outcome": "awaiting_human_review",
+  "coder": "deepseek/deepseek-v4.1-flash",
+  "judge": "openai/gpt-6-astra",
+  "usage": [
+    13189,
+    17165
+  ],
+  "integration_commit": "fb0ae7307066d1bec4152c45e0b13b3153aca8ab",
+  "stages": {
+    "T": "test_reviewed",
+    "A": "complete",
+    "B": "complete"
+  },
+  "exported_graph_exercised": true,
+  "human_accepted": false
+}

@@ -1,8 +1,13 @@
 .venv/
+.uv-cache/
+.langgraph_api/
+build/
+dist/
 __pycache__/
 *.pyc
 .pytest_cache/
 .env
+ai.local.toml
 .agent/
 *.egg-info/
 node_modules/

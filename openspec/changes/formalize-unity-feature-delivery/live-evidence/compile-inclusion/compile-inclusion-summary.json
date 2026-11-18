@@ -1,0 +1,8 @@
+{
+  "new_file_failure_observed": true,
+  "restored_compile_passed": true,
+  "snapshot_preserved": true,
+  "restored_tests_passed": 5,
+  "recovery": "Dismissed blocking ParrelSync notice; previous timeout preserved; fresh request completed",
+  "snapshot": "42ce69afc8f52d94e8234625756f375a821e930fdaaed1a2d6714cd650d4d071"
+}

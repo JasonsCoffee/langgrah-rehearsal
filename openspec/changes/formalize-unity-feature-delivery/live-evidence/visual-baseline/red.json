@@ -1,0 +1,35 @@
+{
+  "request": {
+    "request_id": "visual-baseline-red",
+    "run_id": "visual-baseline-v1",
+    "contract_version": 1,
+    "contract_sha256": "isolated-preparation",
+    "candidate_revision": "visual-preparation-red",
+    "presentation_sha256": "preparation",
+    "coding_profile_sha256": "target-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "full_suite": true
+  },
+  "compilation": null,
+  "tests": {
+    "executed": [
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "passed": [],
+    "failed": [
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "skipped": [],
+    "inconclusive": [],
+    "operational_error": null
+  }
+}

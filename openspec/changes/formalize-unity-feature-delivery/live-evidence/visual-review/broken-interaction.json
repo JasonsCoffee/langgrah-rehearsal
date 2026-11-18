@@ -1,0 +1,57 @@
+{
+  "request": {
+    "request_id": "broken-interaction-81d1c57a83f2",
+    "run_id": "visual-review-live1",
+    "contract_version": 1,
+    "contract_sha256": "visual-review-contract-v1",
+    "candidate_revision": "81d1c57a83f2bc040007c417a8bcb5e550d9d7ab66b6e0da14a0828e770b4fe5",
+    "presentation_sha256": "visual-presentation-v1",
+    "coding_profile_sha256": "isolated-demo-profile",
+    "environment_sha256": "dedicated-host",
+    "test_selection": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState"
+    ],
+    "full_suite": true
+  },
+  "gate": "tests",
+  "status": "failed",
+  "related_units": [],
+  "violations": [],
+  "failed_tests": [
+    "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady"
+  ],
+  "test_result": {
+    "discovered": [
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap",
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState"
+    ],
+    "executed": [
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady",
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "passed": [
+      "FrameworkVisualDemo.Tests.Interactions.ResetRestoresThePreparedPreviewState",
+      "FrameworkVisualDemo.Tests.Preparation.PlaceholderImportsWithArtistDimensionsAndStableSpriteIdentity",
+      "FrameworkVisualDemo.Tests.Preparation.PrefabHasNoMissingScriptsAndAllExplicitBindingsResolve",
+      "FrameworkVisualDemo.Tests.Preparation.ReviewSceneLoadsItsPrefabWithoutGameBootstrap"
+    ],
+    "failed": [
+      "FrameworkVisualDemo.Tests.Interactions.ConfirmUsesThePreparedBindingToShowReady"
+    ],
+    "skipped": [],
+    "inconclusive": [],
+    "operational_error": null
+  },
+  "full_suite_verified": false,
+  "behavioral": true
+}

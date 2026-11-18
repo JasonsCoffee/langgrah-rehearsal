@@ -1,0 +1,19 @@
+{
+  "change_id": "art-compatible-lake-1",
+  "separate_change": true,
+  "coding_cycle_active": false,
+  "delivery_sha256": "31df123159e7efde331740a8e347c27dab71ccb15e472df7d03688cdb2ac94ab",
+  "width": 768,
+  "height": 480,
+  "opaque": true,
+  "compatible": true,
+  "applied": true,
+  "before_sha256": "2c9c8703801a66ae194331bee195b46597cdd890c835c835d65a819152460698",
+  "guid": "b942a0f6ce0780649b1a94738f85199c",
+  "local_id": "21300000",
+  "review_decision": "pending",
+  "references_preserved": true,
+  "after_sha256": "31df123159e7efde331740a8e347c27dab71ccb15e472df7d03688cdb2ac94ab",
+  "metadata_sha256": "58b8fb763b4fb59bc0f0ff2668db1277f36ffa2b15bf656369e008a0a3881be8",
+  "prefab_sha256": "8ac71ebab7cf172d89e051c88a98991a5943a596aab61d6631d5af7de2ff62db"
+}

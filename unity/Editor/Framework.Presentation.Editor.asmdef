@@ -1,0 +1,7 @@
+{
+  "name": "Framework.Presentation.Editor",
+  "references": ["jj.UnityOperator.Editor", "jj.Json.Runtime", "jj.Reserve04.Runtime", "Unity.ugui"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true,
+  "noEngineReferences": false
+}

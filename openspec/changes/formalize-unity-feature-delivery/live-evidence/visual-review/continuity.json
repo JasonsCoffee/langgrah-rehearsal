@@ -1,0 +1,14 @@
+{
+  "run_id": "visual-review-live1",
+  "contract_versions": [
+    1,
+    2
+  ],
+  "budget_totals": [
+    0,
+    0
+  ],
+  "model_calls": 0,
+  "budget_reset": false,
+  "review_boundary": "live component rehearsal, not a new exported-graph run"
+}
