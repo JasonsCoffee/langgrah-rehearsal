@@ -1,5 +1,35 @@
 # Implementation evidence
 
+## Accepted model-driven demo — 2026-11-18
+
+This supersedes earlier pending-review statements for production-graph-live1.
+Explicit human approval of `fb0ae7307066d1bec4152c45e0b13b3153aca8ab` was recorded
+through ReviewGate. The exported graph finalized with **pass** at direct-child
+completion `225c2751539bd1d5c8ef264108d6d93fbad68735` on
+`agent/production-graph-live1/cycle-1`. The reviewed Git tree is unchanged and the
+isolated worktree is clean. No learned constraints were supplied.
+
+The [acceptance audit](live-evidence/production-graph-accepted/acceptance-audit.json)
+hashes the copied review, result, completion, executor, status and budget records.
+Budget bytes match the resumed evidence exactly: 13,189 input / 17,165 output
+accounted tokens, including retained uncertain usage. Existing five-test EditMode
+results remain the verification evidence. Finalization invoked no model or Unity
+and changed no Monopoly files or existing tests.
+
+Phase 6 now has an accepted code-only model-driven run through completion;
+presentation and lake-art acceptance remain separate demonstrations. Phase 7 now
+has live empty-constraint completion, not a live nonempty learned-constraint write.
+All 61 archived tasks remain complete. Remaining live-validation limits include
+production recovery/cancellation, ownership migration, nonempty learned-constraint
+flush, and a combined model-driven visual feature delivery. Actual-project delivery
+belongs to the Architect; automatic mainline merge/push remains prohibited.
+PlayMode policy, other adapters and remote workers remain future scope.
+
+This evidence/documentation update adds no runtime implementation. No fresh pytest
+or graph-dev-server run is claimed; earlier dated verification sections and counts
+below remain historical. Existing Monopoly failures remain deferred.
+
+
 ## Production-wiring follow-up — 2026-11-18
 
 W1–W3 from verification-review.md are resolved. Eleven new regressions in two

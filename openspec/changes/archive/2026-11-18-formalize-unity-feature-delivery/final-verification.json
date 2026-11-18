@@ -84,5 +84,26 @@
     "reviewed_manifest_sha256": "b456149c90e13857f040a4950b3fc6954ed06d76a96e4e92583a6ae46c82b1e2",
     "fresh_unity_execution": false,
     "archived": false
+  },
+  "acceptance_followup": {
+    "date": "2026-11-18",
+    "outcome": "pass",
+    "run_id": "production-graph-live1",
+    "approved_parent": "fb0ae7307066d1bec4152c45e0b13b3153aca8ab",
+    "completion_revision": "225c2751539bd1d5c8ef264108d6d93fbad68735",
+    "audit_ref": "live-evidence/production-graph-accepted/acceptance-audit.json",
+    "supersedes_live_acceptance_limits": [
+      "Model-driven candidate still awaiting human review",
+      "No live accepted metadata-only completion"
+    ],
+    "remaining_live_limits": [
+      "Nonempty learned-constraint flush",
+      "Production recovery/cancellation and ownership migration rehearsal",
+      "Combined model-driven visual feature delivery"
+    ],
+    "fresh_unity_execution": false,
+    "fresh_model_calls": false,
+    "budget_unchanged": true,
+    "reviewed_tree_unchanged": true
   }
 }

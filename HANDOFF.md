@@ -19,14 +19,32 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+**Model-driven demo accepted — 2026-11-18.** Explicit human approval of
+`fb0ae7307066d1bec4152c45e0b13b3153aca8ab` was recorded for production-graph-live1.
+The exported graph finalized with pass at completion commit
+`225c2751539bd1d5c8ef264108d6d93fbad68735` on its managed cycle branch. Reviewed
+files are unchanged, the isolated worktree is clean, and the budget is preserved.
+No model calls, Unity tests, host edits or Monopoly changes occurred. No learned
+statements were supplied: nonempty constraint flush is still only verified offline.
+This supersedes all older pending-review statements below.
+
+Durable evidence and acceptance audit:
+openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/live-evidence/production-graph-accepted/.
+Current acceptance scope and remaining live-validation limits are at the top of
+that change's verification.md. All 61 archived tasks remain complete. Next work is
+a separately scoped real feature/Architect delivery workflow or broader live
+rehearsals. Demo acceptance is not Monopoly delivery or approval of a combined
+model-driven visual feature. No automatic mainline merge or push.
+
+
 **Archived — 2026-11-18.** Implementation, follow-up fixes and quick-start guide
 were committed and pushed on codex/framework-implementation (61d357a). All four
 capability specs are synchronized under openspec/specs/ (44 requirements).
 The 61/61-task change and its evidence are preserved at
 openspec/changes/archive/2026-11-18-formalize-unity-feature-delivery/.
-OpenSpec has no active changes. Archive is planning completion, not new approval
-of the model-driven Unity candidate: its pending human review and live acceptance
-limits remain recorded. Monopoly code/tests and the dedicated host were untouched.
+OpenSpec has no active changes. Archive itself was planning completion; the later
+explicit model-driven acceptance is recorded above. Remaining live-validation
+limits are retained. Monopoly code/tests and the dedicated host were untouched.
 The dated entries below retain the verification history.
 
 

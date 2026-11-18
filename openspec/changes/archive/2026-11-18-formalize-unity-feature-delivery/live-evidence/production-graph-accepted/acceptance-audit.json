@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-18",
+  "run_id": "production-graph-live1",
+  "outcome": "pass",
+  "approved_parent": "fb0ae7307066d1bec4152c45e0b13b3153aca8ab",
+  "completion_revision": "225c2751539bd1d5c8ef264108d6d93fbad68735",
+  "branch": "agent/production-graph-live1/cycle-1",
+  "human_approval": "Ok, approve candidate fb0ae7307066. Go ahead and finalize the demo run. Leave the Monopoly game and its existing tests alone.",
+  "approval_source": "Explicit user message in the operator Codex session; imported through ReviewGate.decide",
+  "reviewed_tree_unchanged": true,
+  "worktree_clean": true,
+  "budget_identical_to_resumed_evidence": true,
+  "fresh_unity_tests": false,
+  "fresh_model_calls": false,
+  "learned_constraints_added": 0,
+  "scope": "Isolated code-only demo; no game integration or visual approval",
+  "finalization_recovery": "Initial operator wiring stopped before completion effects. Reconciled the pending finalize operation; durable receipt consumed by the exported graph. No budget reset.",
+  "evidence_sha256": {
+    "review.json": "c468bb19aa5689090d2b4e92c670f01ccc810050a3869d17bc7c85597ba613ff",
+    "result.json": "c6f934627463929935b468e2cd1cfb1fcbdd59d1c2a3fb7865f8074f13ebd235",
+    "completion-v1.json": "d58748093e7098aa21d9a94d43b5dc2f801fa06428f1d82d9c40a6d7d301535f",
+    "executor-v1.json": "218028bcf062f75c849ffc5494b948b1c5150c5e01f9f1797d3951cf5f678772",
+    "status.json": "5ae373c70c38d77c8c71d2de1eba6be542a1ae3e7923045b96abf536e2d9c9a3",
+    "budget.json": "12c36cb0d47b9555d5ade852ea372aaf04edd7846c1810bce9e1477d96e88b54"
+  }
+}
