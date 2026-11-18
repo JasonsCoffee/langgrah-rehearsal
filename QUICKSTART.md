@@ -117,6 +117,32 @@ For presentation preparation and review, see the separate
 
 ## 4. Feature workflow
 
+The Architect is Codex using OpenSpec outside the LangGraph execution boundary.
+Load the maintained [framework-architect skill](.agents/skills/framework-architect/SKILL.md)
+to bootstrap a fresh session with the framework's current instructions. It locates
+the framework checkout, reads its authoritative docs, and routes handoff mechanics
+through framework-apply. It does not install or automatically configure a target
+execution host.
+
+Example invocation:
+
+```text
+$framework-architect
+Framework checkout: <framework-root>
+Target project and allowed module: <target-root>, <allowed-module>
+Existing OpenSpec change or feature: <change-name-or-feature-description>
+Design sources: <design-and-visual-reference-locations>
+Prepare the baseline and validated execution handoff; show readiness before execution.
+```
+
+For an existing run, ask the same skill to inspect and resume `<run-id>` with its
+existing state root and budget. To execute new work, explicitly request preparation
+and execution through the configured dedicated host. The skill is available in
+this checkout; for other workspaces install its folder under your Codex skills
+directory or supply the skill file directly. A global copy still needs the framework
+checkout location (or the optional `FRAMEWORK_ROOT` environment variable). Keep
+installed copies in sync with the versioned skill when it changes.
+
 1. **Plan:** use `$openspec-explore` and `$openspec-propose` in the target's existing
    OpenSpec project. Resolve design/wiki/rule conflicts before export.
 2. **Prepare:** have the Architect create compilable shells, explicit bindings,
