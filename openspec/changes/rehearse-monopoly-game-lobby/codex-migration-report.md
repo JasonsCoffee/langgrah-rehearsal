@@ -434,3 +434,32 @@ Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), trusted overlay and runti
 remain unchanged. See `evidence/green-candidate-v66.json`. **Not awaiting human
 review yet**: Green, Refactor and final verification remain to be established.
 
+
+Cycle-66 Green compiled unsuccessfully at `48bcbb766137998ce0264b726169b014adabc56e`:
+CS0103 (Injector) in the rehearsal panel and two JJCK0009 logging errors, all
+owned by SHELL. Native post-audited evidence SHA256 is
+`3856723fdf3fd5cadaf5b6e9abb33fbe7c902ab99a98b5c3338f347331e21dd1`.
+The owner attribution worked. The independent Judge was not sent: target
+ContextWorkers rejected its 2,091,989-byte context against a legacy 2MB fence,
+before any ledger entry, model receipt, SDK receipt or claim existed.
+The process exited with its native verify transaction still pending; no model
+transport or uncertain paid usage is fabricated for this local error.
+
+Target-only wiring now lets the Codex route use its existing exact final-prompt
+staging guard (at most three parts) and aggregate reservations. Other routes keep
+their original byte fence. No token-policy file, configured model/effort, runtime,
+trusted overlay, frozen test or usage record was changed. Recovery is bound to
+the exact pending transaction, candidate and actual compile evidence, proves zero
+submission, obtains the real independent Judge reply, then records only that
+reply through DurableEffects. Native pending-stage reconciliation reuses the
+completed Unity effect. It neither reruns verification nor invents a verdict.
+Seven new offline checks failed before implementation and were frozen at SHA256
+`2e409f825fcd6e4d74bb09c804b0238a871eb924ebc211d2f230608838040874`.
+All 16 selected recovery/staging/attribution/restoration checks pass. Baseline
+accounting remains 108,712,549 / 6,104,399 with all 23 uncertain reservations.
+The 125m/12m/80 limits remain active. Not awaiting human review yet.
+
+Skill instructions correctly require effect/usage reconciliation, actual Judge
+routing and no replay. They leave the mechanics of a pending host-local exception
+to target wiring; this helper supplies that proof without changing the coordinator.
+

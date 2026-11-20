@@ -262,8 +262,9 @@ class ContextWorkers:
             content=compact_author_context(unit.id,unit.owns,content)
         size=len(json.dumps(content,ensure_ascii=False).encode())
         print('CONTEXT',unit.id,size,'UTF-8 bytes',flush=True)
-        if size>self.max_context_bytes:
-            raise ValueError('Curated context exceeds the bounded per-call input plan')
+        from codex_context_recovery import enforce_context_limit
+        enforce_context_limit(size,self.max_context_bytes,
+                              self.coder.client.config.provider,self.judge_calls.client.config.provider)
         return content
 
     def worker(self,limit=None):
@@ -652,6 +653,9 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RECONCILE_CONTEXT_V66')=='1':
+            from codex_context_recovery import reconcile
+            reconcile(state,contract,budget,services,workers,integration.path)
         if os.environ.get('LOBBY_RESTORE_FULL_BASELINE_V66')=='1':
             from full_baseline_restoration import restore
             executor.resume_operational(reconcile=lambda: restore(state,contract,budget,services,integration.path,workers))
