@@ -1,0 +1,63 @@
+{
+  "contract_version": 66,
+  "contract_sha256": "65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b",
+  "retained_candidate": "b53644293a4b41c3d1253e32acb5334781fcaeab",
+  "governor_restored_revision": "9e82778db1a2cdc65537112573667d2022350259",
+  "proven_coherent_red_baseline": "e1afab81deee0958d7b96373cd46369e337df45c",
+  "limits": [
+    125000000,
+    12000000,
+    80
+  ],
+  "accounted_tokens": [
+    121784141,
+    6187439
+  ],
+  "uncertain_reservations": 24,
+  "outcome": "abandon",
+  "reason": "budget",
+  "human_accepted": false,
+  "requested_input_ceiling_not_approved": 150000000,
+  "native_evidence_sha256": "c2aa02d7e6aaadcd351e768ded60229cfe94b602204a849ce15b5e2fe81e3188",
+  "frozen_count": 189,
+  "frozen_map_sha256": "03aeaba0e7597069ab59c1a98f9b0a664f3f7e7ff64e73c36d5939779fce32c5",
+  "selected_results": {
+    "executed": 126,
+    "passed": 31,
+    "failed": 95,
+    "skipped": 0,
+    "inconclusive": 0,
+    "suite_errors": 0,
+    "failure_states": {
+      "Failed": 92,
+      "Failed:Error": 3
+    },
+    "failed_by_author": {
+      "TEST-APPEAR": 14,
+      "TEST-CARDS": 6,
+      "TEST-VIP": 5,
+      "TEST-HARNESS": 1,
+      "TEST-QUEUE": 2,
+      "TEST-PARTY": 5,
+      "TEST-MATCH": 2,
+      "TEST-PRES-CORE": 7,
+      "TEST-PRES-NFR": 3,
+      "TEST-RECORDS": 20,
+      "TEST-CHAT-STATE": 5,
+      "TEST-CHAT": 5,
+      "TEST-CHAT-MSG": 4,
+      "TEST-SOCIAL": 8,
+      "TEST-PARTNER-RECS": 4,
+      "TEST-FRIEND-REQUESTS": 4
+    }
+  },
+  "pending_judge_units": [
+    "SHELL",
+    "SOCIAL"
+  ],
+  "completed_judge_units": [
+    "ECON",
+    "MATCH",
+    "RECORDS"
+  ]
+}

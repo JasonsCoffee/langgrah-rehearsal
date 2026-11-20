@@ -19,6 +19,18 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Current terminal state: **cycle 66 abandon/budget**, accounted
+**121,784,141 / 6,187,439**, active **125m/12m/80**, all **24** uncertain reservations
+retained. Last tested candidate `b53644293a4b41c3d1253e32acb5334781fcaeab` compiled;
+126 tests executed: **31 pass / 95 fail / 0 skipped**. Native mixed-batch
+classification is setup (92 assertions plus three body errors). Judge completed
+ECON/MATCH/RECORDS implementation classifications; SHELL/SOCIAL remain incomplete.
+The governor restored the working checkout to 9e82778; all 189 frozen bytes remain
+intact in retained Git, coherent Red baseline and host. Pending 150m approval has
+not been applied. Not awaiting human review. See the concise rehearsal report,
+exact budget-stop evidence and recovery-plan-v67.md. Older snapshots are history.
+
+
 Latest isolated backend rehearsal: cycle 66, step-ten verification of
 `ee15fa739ab864f8b8df4bd1a16745ebb92dabdc`; not awaiting human review.
 699 offline checks passed and the pinned graph compiled/listed. Limits remain
