@@ -203,6 +203,7 @@ class ContextWorkers:
             path=self.root/SPEC/name
             if path.exists():content[SPEC+name]=path.read_text(encoding='utf-8')
         content.update(late_guidance(self.root,SPEC))
+        content.update(getattr(self,'supplemental_context',{}).get(unit.id,{}))
         if unit.id in ('TEST-CARDS','TEST-VIP'):
             for name in ('architect-findings.v22.md','catalog-consistency.v23.json'):
                 path=self.root/SPEC/name
@@ -607,6 +608,13 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RECONCILE_BASELINE_COMPILE')=='1':
+            from baseline_compile_route import arm
+            routed=arm(state,contract,budget,services,integration.path,workers,settings)
+            executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,routed)
+            if executor.stage()=='ended':
+                executor.resume_operational(reconcile=lambda:routed.guard() is None)
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_RECORDS_V61')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
             from codex_lobby import reconcile_records_timeout

@@ -147,3 +147,31 @@ All sixteen author scopes / 125 mapped test IDs are source-approved. Native full
 baseline verification v62-step3-red started against candidate
 `61837dbbc5e7cf4271ca3960c1e81466e8d1ec49`. This milestone is not global test freeze,
 implementation dispatch, executed-test success, visual approval or human acceptance.
+
+The first actual full baseline reached the compile rung and failed CS0535:
+RecordingDeviceRating did not implement inherited IAsyncContext.Context. No tests
+executed and no behavioral Red was claimed. Native outcome was operational / No
+behavioral baseline available, accounting 88,307,913 / 5,659,618 with all eighteen
+uncertain reservations retained. The compiler artifact remains unmodified.
+
+Separate framework follow-up: LocalExecutionServices' baseline path stops when a
+compile failure has no TestResult instead of routing owned, unfrozen fixture
+repairs. Compiler diagnostics also retain host-mount-prefixed paths, so this target
+must explicitly map them to module ownership. No fake TestResult was supplied to
+merge compiler failure into behavioral evidence, and no coordinator runtime file
+was changed.
+
+Target-host wiring supplies an ExecutionServices decorator bound to that actual
+candidate, full selection, compiler artifact and declared test ownership. It uses
+the existing legal red-to-prepare edge, native preparation counters and exhaustion
+backstop. Durable intent/receipt records prevent double increments on reconnect.
+The original source approval is invalidated; the normal delegated author and fresh
+independent review must run again before a new baseline. Actual IServiceBase and
+UniTask inherited-interface excerpts, with full-source hashes, are supplied as
+read-only context. No C# fixture or feature implementation was handwritten.
+
+Ten routing cases were frozen Red before implementation, SHA256
+`ec13b7757ad79b3aaef6738cc502aa8d48052a61b7ee6aff5575b5bd87bc64e9`.
+All 233 selected host/backend/rehearsal checks passed; the focused route/reuse
+checks also passed after pending-operation reconnect wiring. This is rehearsal
+host recovery, not a generic runtime fix or human acceptance.
