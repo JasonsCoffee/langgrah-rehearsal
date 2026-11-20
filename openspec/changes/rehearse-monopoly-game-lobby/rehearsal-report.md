@@ -2,11 +2,13 @@
 
 Current continuation: cycle 64, same run, active **125m input / 12m output / 80
 cycles** through authenticated native recovery. All 185 test/config files remain
-globally protected; cycle 63 established real behavioral Red for all 125 selected
-tests. Cycle 64 completed independent preparation review (14 exact prior reviews
-reused, two fresh Judge reviews) and is executing the full Red selection before
-Green. Accounted usage is 99,141,064 / 6,018,141, including all 23 uncertain
-reservations. Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), the original
+globally protected; cycles 63 and 64 established real behavioral Red for all 125
+selected tests. Cycle 64 completed independent preparation review (14 exact prior
+reviews reused, two fresh Judge reviews) and all five delegated Green proposals.
+Candidate `651c60ac70136310b7bc3fda7d17efd9464b1784` is undergoing full Green
+verification. Six runtime source files changed; all 185 frozen hashes still match.
+Accounted usage is 101,457,441 / 6,050,326, including all 23 uncertain
+reservations. The full offline suite passes 659 tests. Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), the original
 81,134-file host baseline and trusted overlay remain. **Not awaiting human review
 yet.** The isolated backend branch contains the saved wiring; mainline is untouched.
 See [codex-migration-report.md](codex-migration-report.md) for exact native
