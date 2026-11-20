@@ -275,3 +275,14 @@ Three new continuation checks were frozen Red, and one fail-closed guard was
 frozen Red with its legacy-compatibility case already passing. All 32 selected
 continuation, activation, recovery, staging and compaction checks pass. Framework
 coordinator runtime and trusted overlay remain unchanged.
+
+Native recovery completed into cycle 64 with limits **125,000,000 input /
+12,000,000 output / 80 cycles**, preserving **98,809,814 / 6,017,526** accounting
+and all 23 unknown reservations. Baseline candidate:
+`02460607473eb7be1cb5919f3daa1de160c92d0d`; contract:
+`3736a09ad5d104d5da479ae114e3f8735070999d86a2472f1497efbccb933151`.
+The original 81,134-file baseline/import check passed with baseline SHA256
+`12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0`.
+The completed recovery, historical terminal evidence and frozen continuation
+manifest are retained in trusted state. Cycle 64 is continuing through native
+review, Red and delegated implementation; this remains pending human review.
