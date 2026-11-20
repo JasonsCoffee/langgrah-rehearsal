@@ -378,6 +378,9 @@ class ContextWorkers:
         return explanation
 
     def code(self,unit,stage,files,feedback,operation_id):
+        restored_note=getattr(self,'restored_baseline_note','')
+        if stage=='test_authoring' and restored_note and self.approved_review(unit):
+            return WorkerPatch({},'Retain exact unchanged test files with their actual positive independent source review after baseline-only runtime restoration')
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
             allowed=getattr(self,'supplemental_authoring',{}).get(unit.id)
             if allowed:
@@ -391,6 +394,7 @@ class ContextWorkers:
         if stage=='green' and getattr(self,'services',None) is not None:
             from compile_repair_context import mechanical_feedback
             feedback+=mechanical_feedback(self.services.state,self.contract.sha256)
+            feedback+=restored_note
         recovered=getattr(self,'reconciled_worker_patch',None)
         if recovered and stage=='test_authoring' and recovered['unit']==unit.id and recovered['operation']==operation_id:
             if unit.role!='test' or self.services.tdd.frozen:
@@ -541,11 +545,16 @@ def main():
     from frozen_budget_continuation import protected_tests
     carried_tests=protected_tests(state,contract_source,version)
     frozen+=carried_tests
+    baseline_frozen=frozen
+    from full_baseline_restoration import extra_protection,assert_tests,context as restored_context
+    additional_protection=extra_protection(state,version)
+    frozen+=tuple(p for p in additional_protection if p not in frozen)
     manager=WorkspaceManager(module,root/'worktrees',contract,rules,run_id=RUN_ID,
         imported_roots=(Path(os.environ['UNITY_HOST'])/'Assets',),frozen_paths=frozen)
     integration_path=root/'worktrees'/RUN_ID/('integration-v'+str(version))
     baseline=active['candidate']
     integration=manager.reopen_integration(version,baseline) if integration_path.exists() else manager.create_integration(version,baseline)
+    assert_tests(state,version,integration.path)
     context=discover_context(framework,json.loads((framework/'.agent/lobby-apply.json').read_bytes()),
         sources=json.loads((framework/'.agent/lobby-sources.json').read_bytes()))
     boundary=ArchitectBoundary(framework,state,RUN_ID,contract,context)
@@ -572,6 +581,9 @@ def main():
         workers.supplemental_context=prior_context(state,module,version)
         from supplemental_frozen_coverage import author_scope
         workers.supplemental_authoring=author_scope(state,version)
+    restored_files,restored_note=restored_context(state,module,version)
+    for unit,files in restored_files.items():workers.supplemental_context.setdefault(unit,{}).update(files)
+    workers.restored_baseline_note=restored_note
     host=OverlayHost()
     from bridge_discovery_retry import DiscoveryRetryTransport
     def record_discovery_retry(proof):
@@ -598,9 +610,10 @@ def main():
         authenticate_human=authenticate_human)
     def preflight():
         host.preflight()
-        for path in frozen:
+        for path in baseline_frozen:
             if (integration.path/path).read_bytes() != git(module,'show',baseline+':'+path):
                 raise ValueError('Protected input changed: '+path)
+        assert_tests(state,version,integration.path)
     def verify(request,source,patches):
         print('VERIFY',request.request_id,request.candidate_revision,len(request.test_selection),flush=True)
         metadata=host.materialize(source,request.candidate_revision)
@@ -639,6 +652,11 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESTORE_FULL_BASELINE_V66')=='1':
+            from full_baseline_restoration import restore
+            executor.resume_operational(reconcile=lambda: restore(state,contract,budget,services,integration.path,workers))
+            frozen=tuple(dict.fromkeys(frozen+extra_protection(state,version)))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_ROUTE_FROZEN_TEST_V65')=='1':
             from frozen_review_rework import arm
             routed=arm(state,contract,budget,services,integration.path)
