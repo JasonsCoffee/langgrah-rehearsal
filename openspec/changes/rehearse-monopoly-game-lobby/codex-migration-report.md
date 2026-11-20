@@ -383,3 +383,30 @@ followed by two existing-co-implementer mapping checks (SHA256
 All passed after wiring. The latest complete offline suite passes **680 tests**
 in 246.03 seconds with the existing collection warning. Models, usage/reservation
 history, trusted overlay, runtime coordinator and adapter code remain unchanged.
+
+The mixed cycle-66 baseline compiled and executed 126 tests with eight passes and
+118 failures. Runtime body errors (including missing-account and null-reference
+errors) prevented behavioral Red. Combining a restored SHELL stub with full peer
+service proposals was insufficient. Native preparation incorrectly invalidated
+all sixteen approved authors from the mixed batch; the frozen guard stopped
+before any further test writing. No positive behavioral outcome was claimed.
+
+Operational reconciliation restored all active runtime owners byte-for-byte from
+the actual proven pre-Green Git snapshot through native apply journals. All full
+paid proposals remain at 651c60ac70136310b7bc3fda7d17efd9464b1784 and are supplied
+per owner as read-only reapplication/repair context. No C# implementation was
+handwritten. Restored candidate: e1afab81deee0958d7b96373cd46369e337df45c.
+All 189 current test/configuration hashes were preserved, including the new case.
+Every positive source approval was revalidated against actual SDK receipts and
+settled charges, then reapplied using public TDD approval APIs; actual attempt
+counts remain one. This reconciles implementation-induced baseline errors without
+fabricating reviews, resetting counters or changing tests. The same cycle is
+repeating real preparation/Red before implementation; accounting remains
+105,684,886/6,054,724 with 23 uncertain reservations.
+
+Four exact-blob/positive-review checks were frozen Red (SHA256
+7562f56bfb96a74e54f504b1ec7b3a3d9b8e721dd4bfc4f148d2ea95557d3563).
+Twenty-eight restoration/freeze/recovery checks pass. Historical superseded
+units are excluded from execution reconciliation; they and all evidence remain
+preserved. The generic mixed-batch attribution defect remains a separate runtime
+follow-up. Native coordinator, adapter and trusted overlay files are unchanged.

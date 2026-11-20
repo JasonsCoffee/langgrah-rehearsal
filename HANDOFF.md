@@ -19,6 +19,21 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Latest operational reconciliation (2026-11-21): cycle 66 remains active with the
+same 125m/12m/80 limits and 23 uncertain reservations. Its mixed baseline compiled
+and executed 126 tests (8 passed, 118 failed), but runtime body errors made the
+batch nonbehavioral. No valid new Red or implementation was claimed. All five
+runtime owners were then restored through native apply journals to exact blobs
+from the proven pre-Green snapshot, retaining their complete paid proposals at
+651c60ac70136310b7bc3fda7d17efd9464b1784 as per-owner read-only repair input.
+Restored candidate: e1afab81deee0958d7b96373cd46369e337df45c. All 189 current
+test/configuration files are protected and unchanged. Actual positive source
+reviews were validated against SDK/settled receipts and restored via public TDD
+approval APIs; real preparation counters remain one, not reset. Expected no-op
+preparation is reusing those approvals before another actual 126-test Red.
+Accounting remains 105,684,886/6,054,724. Do not replay consumed restoration flags.
+Not awaiting review. Older statuses below are historical snapshots.
+
 Latest continuation (2026-11-21): **cycle 66**, same run; Coder (GPT-6.2 Sol,
 low), Judge (GPT-6.1 Sol, medium), **125m/12m/80**, 23 historical uncertain
 reservations. A genuine negative frozen-test review in cycle 65 found that the
