@@ -1,5 +1,15 @@
 # Lobby rehearsal verification
 
+Current Green candidate: `48bcbb766137998ce0264b726169b014adabc56e`, cycle 66.
+All five configured-Coder implementations are admitted. The original host
+baseline preflight completed and sequential `v66-step8-verify` is active for all
+126 selections. All 189 frozen files still match; the original 185 remain
+unchanged. Accounting including 23 historical uncertain reservations is
+**108,712,549 input / 6,104,399 output**, under **125m / 12m / 80 cycles**.
+Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), trusted overlay and runtime
+remain unchanged. See `evidence/green-candidate-v66.json`. **Not awaiting human
+review yet**: Green, Refactor and final verification remain to be established.
+
 Current execution: **cycle 66**, `v66-step5-red` compiled successfully and
 executed **126/126 assertion failures, zero passes or skips**, at coherent
 baseline `e1afab81deee0958d7b96373cd46369e337df45c`. Evidence SHA256:

@@ -1,0 +1,27 @@
+{
+  "contract_version": 66,
+  "contract_sha256": "65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b",
+  "candidate": "48bcbb766137998ce0264b726169b014adabc56e",
+  "stage": "verify",
+  "request_id": "v66-step8-verify",
+  "test_count": 126,
+  "frozen_file_count": 189,
+  "frozen_map_sha256": "03aeaba0e7597069ab59c1a98f9b0a664f3f7e7ff64e73c36d5939779fce32c5",
+  "accounted_tokens": {
+    "input_tokens": 108712549,
+    "output_tokens": 6104399
+  },
+  "limits": [
+    125000000,
+    12000000,
+    80
+  ],
+  "uncertain_reservations": 23,
+  "models": {
+    "coder": "gpt-6.2-sol",
+    "coder_effort": "low",
+    "judge": "gpt-6.1-sol",
+    "judge_effort": "medium"
+  },
+  "human_accepted": false
+}
