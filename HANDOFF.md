@@ -19,6 +19,17 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Codex lobby activation update (2026-11-20): the user approved reported-usage
+accounting without hard per-request caps. The two-model live pilot passed and
+native cycle 60 resumed through the trusted host. Coder (GPT-6.2 Sol, low) repaired
+Chat State and Judge (GPT-6.1 Sol, medium) approved it; fifteen of sixteen author
+scopes / 101 of 125 mapped IDs are source-approved. Records has six actual Judge
+findings still under delegated repair. The first 60-second Coder failure retains
+its full reservation; production uses 180 seconds, totals remain 100m/12m/80 and
+all seventeen uncertain charges remain. No global freeze, implementation, selected
+Unity execution or human acceptance yet. See the active change's
+codex-migration-report.md and external native status/result for current progress.
+
 Codex worker backend preparation (2026-11-20): initial framework/rehearsal state was committed as 6ff8d8b before edits. Work is isolated on codex/codex-worker-backend; the prior resilience commit 826b425 remains separate. The adapter, native accounting hooks and consent-gated two-call pilot pass 583 offline framework tests plus all 138 rehearsal checks. The graph compiled/listed. Real read-only ephemeral-session metadata preflight passed; no inference turn was started. The installed protocol has usage events but no hard request token caps, so dispatch-accounting mode needs explicit approval of the proposed model/control policy before a live pilot and conditional migration. The lobby state/usage/sixteen unknown reservations and overlay remain unchanged at operational cycle 60. See docs/codex-worker-backend.md and docs/codex-backend-validation.json. Earlier entries below are history.
 
 

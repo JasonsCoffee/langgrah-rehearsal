@@ -44,7 +44,7 @@ def retained_coder_request_failure(state: Path, call_id: str, receipt: dict, res
 def retained_run_reservations(state: Path, ledger: dict) -> list[str]:
     import json
     from hashlib import sha256
-    retained=[]
+    retained=[];codex_uncertain=0
     for call_id,charge in ledger['calls'].items():
         if 'actual' in charge:continue
         record=json.loads((state/'.agent/runs/monopoly-game-lobby/model-calls'/(sha256(call_id.encode()).hexdigest()+'.json')).read_bytes())
@@ -62,11 +62,12 @@ def retained_run_reservations(state: Path, ledger: dict) -> list[str]:
             from codex_lobby import retained_codex_call
             proof=json.loads((state/'model-authorizations/codex-retained-calls.json').read_bytes())['calls'][call_id]
             retained_codex_call(state,call_id,charge,proof)
+            codex_uncertain+=1
         else:retained_sol_review_failure(state,call_id,record,charge)
         retained.append(call_id)
     expected=15 if 'v51-step4-prepare-review-TEST-SOCIAL' in ledger['calls'] else 14
     if 'v60-step4-prepare-review-TEST-CHAT-STATE' in ledger['calls']:expected+=1
-    expected+=sum('actual' not in c and k.startswith('v60-step6-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE') for k,c in ledger['calls'].items())
+    expected+=codex_uncertain
     if len(retained)!=expected:raise ValueError('Uncertain reservation set changed')
     return retained
 

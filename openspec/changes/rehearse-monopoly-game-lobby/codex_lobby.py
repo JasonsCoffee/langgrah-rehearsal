@@ -1,16 +1,25 @@
 """Trusted, explicitly authorized Codex composition for the retained lobby run."""
+from __future__ import annotations
 from dataclasses import asdict
 from hashlib import sha256
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 from unity_coder.core.ai_models import AIConfig
+from unity_coder.core.budget import BudgetLedger
 from unity_coder.core.codex_backend import CodexModelClient, CodexPolicy
 from unity_coder.core.codex_stdio import CodexStdioExchange
 from unity_coder.core.ownership import confined_path
 from unity_coder.core.storage import atomic_write
 from unity_coder.core.workspaces import git
 
+if TYPE_CHECKING:
+    from unity_coder.core.contracts import Contract
+    from unity_coder.core.local_executor import LocalExecutionServices
+    from lobby_production_host import ContextWorkers
+
 PRODUCTION_TIMEOUT_SECONDS=180
+EXTENDED_PRODUCTION_TIMEOUT_SECONDS=600
 
 
 def validate_activation(raw: bytes, profile: dict, grant: dict, pilot: dict, limits: list[int]) -> None:
@@ -34,7 +43,7 @@ def validate_activation(raw: bytes, profile: dict, grant: dict, pilot: dict, lim
         raise ValueError('Exact explicit Codex approval and verified independent pilot required')
 
 
-def clients(root: Path, state: Path, budget):
+def clients(root: Path, state: Path, budget: BudgetLedger) -> tuple[AIConfig,list[CodexModelClient]]:
     """Select new clients without editing the existing local provider config."""
     raw=Path(__file__).with_name('codex-backend.proposed.json').read_bytes()
     profile=json.loads(raw)
@@ -62,14 +71,17 @@ def clients(root: Path, state: Path, budget):
             or receipt['reply']['model']!=policy.model
             or sdk['policy_sha256']!=policy.sha256):
             raise ValueError('Pilot lacks matching actual Codex usage and independent receipts')
-        client=CodexModelClient(policy,state,working,exchange=CodexStdioExchange(),
+        client=CodexModelClient(policy,state,working,exchange=CodexStdioExchange(
+            max_timeout_seconds=EXTENDED_PRODUCTION_TIMEOUT_SECONDS),
             authorize=lambda digest,expected=policy.sha256:digest==expected,
-            timeout=PRODUCTION_TIMEOUT_SECONDS)
+            timeout=PRODUCTION_TIMEOUT_SECONDS,session_timeout=EXTENDED_PRODUCTION_TIMEOUT_SECONDS)
         result.append(client)
     return AIConfig(result[0].config,result[1].config),result
 
 
-def reconcile(state,contract,budget,services,integration,settings,workers):
+def reconcile(state: Path, contract: Contract, budget: BudgetLedger,
+              services: LocalExecutionServices, integration: Path, settings: AIConfig,
+              workers: ContextWorkers) -> bool:
     """Native resume, retaining the actual admitted paid Chat State source."""
     from operational_transport import retained_run_reservations
     from full_file_admission import admitted_full_file
@@ -125,7 +137,9 @@ def retained_codex_call(state: Path, call: str, charge: dict, proof: dict) -> li
     return charge['reserved']
 
 
-def reconcile_timeout(state,contract,budget,services,integration,settings):
+def reconcile_timeout(state: Path, contract: Contract, budget: BudgetLedger,
+                      services: LocalExecutionServices, integration: Path,
+                      settings: AIConfig) -> bool:
     """Continue with a new operation after the first production dispatch stopped."""
     from operational_transport import retained_run_reservations
     run=state/'.agent/runs/monopoly-game-lobby'
@@ -145,5 +159,32 @@ def reconcile_timeout(state,contract,budget,services,integration,settings):
     atomic_write(state,'recovery-authorizations/v60-codex-deadline-resume.json',json.dumps({
         'candidate':result['candidate_revision'],'contract_sha256':contract.sha256,
         'retained_uncertain':retained,'usage':budget.totals(),'production_timeout_seconds':PRODUCTION_TIMEOUT_SECONDS,
+        'pilot_timeout_seconds':60,'prior_call_replayed':False,'human_accepted':False},indent=2).encode())
+    return True
+
+
+def reconcile_records_timeout(state: Path, contract: Contract, budget: BudgetLedger,
+                              services: LocalExecutionServices, integration: Path,
+                              settings: AIConfig) -> bool:
+    """Retain the exact cycle-61 failed author effect before a longer new call."""
+    from operational_transport import retained_run_reservations
+    run=state/'.agent/runs/monopoly-game-lobby'
+    result=json.loads((run/'result.json').read_bytes());transaction=services.effects.read('transaction')
+    call='v61-step2-prepare-TEST-RECORDS-TEST-RECORDS'
+    worker=services.effects.read('worker-'+call)
+    if (contract.contract_version!=61 or contract.sha256!='5e85a3d0370970a1cc61fe8c06184e99e90cde67dbf8ddab1bb01e3f9e8847ae'
+        or result['outcome']!='operational' or result['candidate_revision']!='9f5e7f2e2de316ab2ea46d2e75b44367539219b9'
+        or git(integration,'rev-parse','HEAD').decode().strip()!=result['candidate_revision']
+        or git(integration,'status','--porcelain') or services.tdd.frozen
+        or not transaction['complete'] or transaction['operation']!='v61-step2-prepare'
+        or not worker or 'result' in worker
+        or settings.coder.model!='gpt-6.2-sol' or settings.judge.model!='gpt-6.1-sol'):
+        raise ValueError('Exact cycle-61 Codex failed-dispatch identity changed')
+    retained=retained_run_reservations(state,budget._read())
+    if len(retained)!=18:raise ValueError('All eighteen uncertain reservations must remain')
+    atomic_write(state,'recovery-authorizations/v61-codex-deadline-resume.json',json.dumps({
+        'candidate':result['candidate_revision'],'contract_sha256':contract.sha256,
+        'retained_uncertain':retained,'usage':budget.totals(),
+        'production_timeout_seconds':EXTENDED_PRODUCTION_TIMEOUT_SECONDS,
         'pilot_timeout_seconds':60,'prior_call_replayed':False,'human_accepted':False},indent=2).encode())
     return True

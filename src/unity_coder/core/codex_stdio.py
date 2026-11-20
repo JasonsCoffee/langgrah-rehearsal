@@ -54,9 +54,11 @@ class StdioRpc:
 
     def _next(self) -> dict:
         remaining = self.deadline-monotonic()
-        if remaining<=0:raise ModelError('Codex RPC deadline exceeded')
+        if remaining<=0:raise ModelError('Codex RPC deadline exceeded',diagnostics={
+            'transport':'codex_stdio','failure_kind':'deadline'})
         try:message=self.messages.get(timeout=remaining)
-        except Empty:raise ModelError('Codex RPC deadline exceeded') from None
+        except Empty:raise ModelError('Codex RPC deadline exceeded',diagnostics={
+            'transport':'codex_stdio','failure_kind':'deadline'}) from None
         if message is None:raise ModelError('Codex RPC stream ended unexpectedly')
         if 'id' in message and 'method' in message:
             self._send({'jsonrpc':'2.0','id':message['id'],
@@ -100,7 +102,11 @@ class StdioRpc:
 class CodexStdioExchange:
     """Fresh proposal-only sessions; invoked only after host policy approval."""
     def __init__(self, *, executable: str = 'codex', disabled_mcp: tuple[str,...] | None = None,
-                 rpc_factory: Callable[[list[str],float],RpcSession] = StdioRpc) -> None:
+                 rpc_factory: Callable[[list[str],float],RpcSession] = StdioRpc,
+                 max_timeout_seconds: float = 180) -> None:
+        if type(max_timeout_seconds) not in (int,float) or not 0<max_timeout_seconds<=600:
+            raise ValueError('Explicit Codex transport allowance must be at most 600 seconds')
+        self.max_timeout_seconds=max_timeout_seconds
         self.executable,self.rpc_factory = executable,rpc_factory
         if disabled_mcp is None:
             config=Path.home()/'.codex/config.toml'
@@ -126,7 +132,7 @@ class CodexStdioExchange:
         if (request.get('sandbox')!='read-only' or request.get('tools_enabled') is not False
             or request.get('fresh_context') is not True
             or request.get('budget_enforcement')!='dispatch_accounting'
-            or not isinstance(request.get('timeout'),(int,float)) or not 0<request['timeout']<=180):
+            or not isinstance(request.get('timeout'),(int,float)) or not 0<request['timeout']<=self.max_timeout_seconds):
             raise ModelError('Unsafe or unsupported Codex session policy')
         rpc=self.rpc_factory(self._command(),request['timeout'])
         submitted=False
@@ -174,6 +180,6 @@ class CodexStdioExchange:
                 if event.get('method')=='turn/completed':break
         except ModelError as error:
             if not submitted:
-                raise ModelError(str(error),diagnostics={'input_tokens':0,'output_tokens':0}) from None
+                raise ModelError(str(error),diagnostics=error.diagnostics|{'input_tokens':0,'output_tokens':0}) from None
             raise
         finally:rpc.close()

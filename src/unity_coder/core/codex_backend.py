@@ -105,9 +105,14 @@ class CodexModelClient(ModelClient):
     """Native paid-call client; authorization comes only from trusted host code."""
     def __init__(self, policy: CodexPolicy, state: Path, working_root: Path, *,
                  exchange: Callable[[dict], Iterable[dict]],
-                 authorize: Callable[[str], bool], timeout: float = 60) -> None:
+                 authorize: Callable[[str], bool], timeout: float = 60,
+                 session_timeout: float | None = None) -> None:
         super().__init__(ModelConfig(policy.role,'codex',policy.model,'',
             base_url='stdio://codex-app-server',effort=policy.effort,temperature_mode='provider'),timeout=timeout)
+        session_timeout=timeout if session_timeout is None else session_timeout
+        if type(session_timeout) not in (int,float) or not 0<session_timeout<=600:
+            raise ValueError('Codex session deadline must be bounded to 600 seconds')
+        self.session_timeout=session_timeout
         self.policy,self.state,self.working_root = policy,state,working_root.resolve(strict=True)
         if self.state.resolve().is_relative_to(self.working_root):
             raise ValueError('Codex worker root must exclude trusted receipt state')
@@ -146,7 +151,7 @@ class CodexModelClient(ModelClient):
         request = {'operation_id':operation_id,'role':self.policy.role,'model':self.policy.model,
             'effort':self.policy.effort,'prompt':prompt,'cwd':str(self.working_root),
             'input_allocation':self.reserve_input(prompt),'output_allocation':max_output_tokens,
-            'budget_enforcement':self.policy.budget_mode,'timeout':self.timeout,
+            'budget_enforcement':self.policy.budget_mode,'timeout':self.session_timeout,
             'sandbox':'read-only','tools_enabled':False,'fresh_context':True}
         events = None
         try:

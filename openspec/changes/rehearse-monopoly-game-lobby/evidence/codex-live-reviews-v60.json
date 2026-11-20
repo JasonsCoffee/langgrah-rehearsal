@@ -1,0 +1,59 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "contract_version": 60,
+  "reviews": [
+    {
+      "operation_id": "v60-step5-prepare-review-TEST-CHAT-STATE",
+      "receipt_sha256": "05281ac69573cc784f704121d5d5fbe1413042382bfcb0504bf9b64fe85edfdf",
+      "component": "Judge",
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "decision": {
+        "valid": false,
+        "explanation": "All five mapped tests are active and contain substantive behavioral assertions, but L13-11 imposes invalid presentation constraints. ChatAssertNoListAffordancesInHistory rejects Primary merely for remaining under Scroll.content, even when inactive; hiding the partner-list button is valid and does not require reparenting it. ChatAssertHistoryExactMembership uses ChatHistoryRowsForId, which rejects any ancestor clipping and requires the whole row on screen, despite the contract explicitly allowing partially clipped scrollable history. Correct these oracles and the map's claim of scroll-aware visibility. Expected failures against nonfunctional stubs are legitimate; this is test-preparation review only, not execution or human acceptance."
+      },
+      "usage": [
+        163039,
+        465
+      ]
+    },
+    {
+      "operation_id": "v60-step7-prepare-review-TEST-CHAT-STATE",
+      "receipt_sha256": "9f460cb9347c9f75ca64dacc388ea1ab6b26ae45f4e3154830e96ff2147a7750",
+      "component": "Judge",
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "decision": {
+        "valid": true,
+        "explanation": "All five mapped methods are active, substantive behavioral tests with no disabled or vacuous test bodies. Coverage includes latest-message ordering and empty states, shared unread snapshots and live badges, Friends return routes, exact message identity/membership and peer-history replacement, and the cross-screen social journey. Observers record actual outputs without manufacturing them. Failures against nonfunctional stubs are expected. This is source-based preparation validation only; compilation, execution and image67 visual review remain unproven, and no human acceptance is granted."
+      },
+      "usage": [
+        161712,
+        359
+      ]
+    },
+    {
+      "operation_id": "v60-step7-prepare-review-TEST-RECORDS",
+      "receipt_sha256": "d2b5b1544f9d7226c3c53227486447258e334cf98f4c9f9c6c037372daa80a3c",
+      "component": "Judge",
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "decision": {
+        "valid": false,
+        "explanation": "All 24 named tests are enabled and contain substantive behavioral assertions; no Ignore/Explicit markers or empty bodies were found. Preparation coverage is nevertheless incomplete. (1) Story_L8_03 installs a real modifier but never injects or observes IDeviceRatingService/IQualityMatchingService, and has no resolution/render-scale assertion. Its acceptance map explicitly leaves these mandatory checks open; this is not an authorized waiver. (2) Story_L5_08 does not attempt an actual pointer interaction with disabled Next or further scrolling after exhaustion and verify unchanged page/request counts. It also does not verify that UI page requests retain the captured snapshot timestamp. (3) Story_L5_06/07 cover inside/outside cutoffs but omit the explicitly required exact inclusive cutoff and changed-window UI copy observations. (4) Story_L6_02 checks two records for one account, not the required all-player pool/rake reconciliation. A coherent independently supplied multi-account fixture can establish this without implementing production gameplay. (5) Story_L6_06 supplies Rank=0 and BankruptcyOrder=5 yet requires displayed rank 5; this does not prove preservation of an independently supplied final bankruptcy rank, as required by the records oracle. (6) Story_L5_11 verifies that every persisted entry has a matching rendered line but does not reject additional fabricated rendered journal entries, so reconciliation is not fully one-to-one. Expected failures against nonfunctional runtime stubs are legitimate and are not the rejection reason. This is source-only test-preparation review, not execution evidence or human acceptance."
+      },
+      "usage": [
+        150373,
+        468
+      ]
+    }
+  ],
+  "accounted_tokens": [
+    82833907,
+    5550369
+  ],
+  "uncertain_reservations": 17,
+  "human_accepted": false,
+  "global_tests_frozen": false,
+  "selected_unity_tests_passed": false
+}

@@ -77,3 +77,42 @@ operation. Seven additional tests were frozen Red before this wiring, SHA256
 `768d0766926188eb12a4a223e4adc5db68444ff05d92302a7b15dee703eb0d13`.
 All 201 selected backend, recovery and rehearsal checks passed. The unknown call
 is never replayed under its old identity or treated as zero usage.
+
+Step seven produced a real Coder repair (164,112 input / 4,127 output) and admitted
+its hash-bound edits as candidate `5f25bb128f734a6a78e2dd3f6a514c23586f754f`.
+The independent Judge then approved Chat State source preparation (161,712 input /
+359 output), explicitly leaving compilation, execution and visual review pending.
+Fifteen of sixteen author scopes, 101 of 125 mapped IDs, are source-approved;
+Records is the remaining author. This validates the live same-run Codex path,
+not completion of the feature or a globally frozen test suite.
+
+Cycle 60 ended in genuine Records preparation exhaustion at candidate
+`aa54f724edcadb041e2c15023a355ec6284ccf3e`, accounting 83,451,949 / 5,562,581.
+Native consecutive transition created cycle 61 with contract
+`5e85a3d0370970a1cc61fe8c06184e99e90cde67dbf8ddab1bb01e3f9e8847ae`.
+Fresh independent reviews reached Records after the other fifteen scopes passed;
+NFR required and received a delegated repair proving UI-origin unread snapshot
+consumption. Records still requires Settings/help/fixture-isolation repairs.
+
+The first cycle-61 Records author call stopped after 180.14 seconds without an
+answer or known usage. Its full 722,293 / 65,536 reservation remains alongside the
+previous seventeen, accounting 86,544,044 / 5,638,037 at that stop. The native
+candidate is `9f5e7f2e2de316ab2ea46d2e75b44367539219b9`. Timing again supports a
+deadline diagnosis, but the historical empty diagnostic is not rewritten.
+
+The production Codex session now has an explicit bounded 600-second allowance,
+independent of the unchanged shared HTTP client 180-second guard. The pilot is
+still 60 seconds; the standard stdio transport default remains 180. The first
+startup exposed the shared constructor guard before inference or reservation;
+the adapter now carries a separate session_timeout rather than weakening that
+HTTP guard. New deadlines emit sanitized diagnostic codes, not secret-bearing
+provider bodies. Models, efforts, totals, call claims and prior receipts remain.
+
+Six deadline cases and four HTTP/session separation cases were frozen Red before
+implementation. SHA256 respectively
+`0e9beadafa9b0f3033267e825d69ccf5f86a3803e0aef1b2d8e1bce1a4d3398e`
+and `92029a849013910bf84f7ce341d43498a68e222994d642587c509eb5f8060156`.
+All 211 selected backend/recovery/rehearsal checks passed. Public operational
+recovery continues cycle 61 with a new call identity and eighteen uncertain
+reservations retained. No test was globally frozen or feature implementation
+dispatched by this evidence update.
