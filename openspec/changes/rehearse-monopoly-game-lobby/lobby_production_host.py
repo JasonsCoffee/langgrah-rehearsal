@@ -380,9 +380,20 @@ class ContextWorkers:
 
     def code(self,unit,stage,files,feedback,operation_id):
         restored_note=getattr(self,'restored_baseline_note','')
+        if stage=='green' and restored_note:
+            from full_baseline_restoration import coding_note
+            restored_note=coding_note(self.coder.calls.budget.root,self.contract.contract_version,unit.id,self.root,restored_note)
         if stage=='test_authoring' and restored_note and self.approved_review(unit):
             return WorkerPatch({},'Retain exact unchanged test files with their actual positive independent source review after baseline-only runtime restoration')
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
+            if self.contract.contract_version==67:
+                from doubled_budget_continuation import reusable_source
+                from full_baseline_restoration import descriptor
+                value=descriptor(self.coder.calls.budget.root,67)
+                if value and value.get('recovery_id')=='lobby-double-v66':
+                    actual={p:sha256((self.root/p).read_bytes()).hexdigest() for p in unit.owns}
+                    if reusable_source(unit.owns,actual,value['tests']):
+                        return WorkerPatch({},'Retain exact frozen authored source; obtain actual independent source review in this cycle')
             allowed=getattr(self,'supplemental_authoring',{}).get(unit.id)
             if allowed:
                 from supplemental_frozen_coverage import new_author_paths

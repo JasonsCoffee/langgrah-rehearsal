@@ -59,7 +59,7 @@ def context(state: Path,module: Path,version: int) -> tuple[dict[str,dict[str,st
             body['readonly-retained-proposal/'+path]=raw.decode('utf-8')
         body['readonly-retained-proposal/provenance.json']=json.dumps({
             'retained_candidate':value['retained_candidate'],'restored_baseline':value['baseline'],
-            'current_owned_files_are_proven_baseline_stubs':True,'all_tests_unchanged':True})
+            'baseline_was_restored_before_coding':True,'all_tests_unchanged':True})
         result[unit]=body
     note=('\nBASELINE RESTORATION FACT: all implementation owners were restored to their exact proven pre-Green '
         'runtime snapshots because the mixed baseline contained runtime errors. Your full prior PAID model '
@@ -67,7 +67,21 @@ def context(state: Path,module: Path,version: int) -> tuple[dict[str,dict[str,st
         'proposal into your owned files, preserving all workflows. The current stubs do not mean the prior '
         'work was discarded. Keep every test/configuration file unchanged. SHELL must also repair the three '
         'supplied async analyzer diagnostics while preserving cancellation and awaited completion semantics.')
-    return result,note
+    for body in result.values():
+        if value.get('previous_evidence'):
+            body['readonly-previous-verification/evidence.json']=json.dumps(value['previous_evidence'],ensure_ascii=False)
+    return result,value.get('note',note)
+
+
+def coding_note(state: Path,version: int,unit: str,source: Path,note: str) -> str:
+    value=descriptor(state,version)
+    if not value or unit not in value['owned']:return note
+    if all((source/p).read_bytes()==git(source,'show',value['baseline']+':'+p) for p in value['owned'][unit]):
+        return note
+    return ('\nCURRENT SOURCE FACT: owned files have changed since baseline restoration. Repair the supplied '
+            'current files, retaining already-admitted repairs and full workflows. The retained paid proposal '
+            'is historical reference; reapply missing workflows only where absent. Do not reset repaired code. '
+            'Address every applicable current mechanical failure; preserve all frozen test/configuration bytes.')
 
 
 def assert_tests(state: Path,version: int,integration: Path) -> None:

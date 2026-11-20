@@ -25,6 +25,9 @@ def protected_tests(state: Path, source: Path, version: int) -> tuple[str,...]:
             raise ValueError('Existing frozen tests require an explicit continuation for this cycle')
         return ()
     manifest=json.loads(path.read_bytes())
+    if manifest.get('kind')=='doubled_budget':
+        from doubled_budget_continuation import protect
+        return protect(state,source,version,manifest)
     if manifest.get('kind')=='supplemental_frozen_coverage':
         from supplemental_frozen_coverage import validate_manifest
         return check_frozen_sources(source,validate_manifest(state,source,version,manifest))
@@ -51,6 +54,9 @@ def protected_tests(state: Path, source: Path, version: int) -> tuple[str,...]:
 def activation_limits(state: Path, limits: list[int], ledger: dict, original: list[int]) -> list[int]:
     """A historical backend grant stays immutable; native token authority is separate."""
     if limits==original:return original
+    if limits==[250000000,24000000,160,2]:
+        from doubled_budget_continuation import activation
+        return activation(state,ledger,original)
     if limits!=[125000000,12000000,80,2]:raise ValueError('Unrecognized Codex aggregate amendment')
     run=state/'.agent/runs/monopoly-game-lobby'
     intent=json.loads((run/'recoveries/lobby-extend-125m.json').read_bytes())
