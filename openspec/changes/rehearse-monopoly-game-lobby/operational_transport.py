@@ -58,10 +58,15 @@ def retained_run_reservations(state: Path, ledger: dict) -> list[str]:
         elif call_id=='v29-step7-prepare-TEST-PARTY-TEST-PARTY':retained_coder_body_timeout(state,call_id,record,charge)
         elif call_id=='v51-step4-prepare-review-TEST-SOCIAL':retained_sol_key_limit_v51(state,call_id,record,charge)
         elif call_id=='v60-step4-prepare-review-TEST-CHAT-STATE':retained_judge_key_limit_v60(state,call_id,record,charge)
+        elif record['identity'].get('worker_backend')=='codex_app_server':
+            from codex_lobby import retained_codex_call
+            proof=json.loads((state/'model-authorizations/codex-retained-calls.json').read_bytes())['calls'][call_id]
+            retained_codex_call(state,call_id,charge,proof)
         else:retained_sol_review_failure(state,call_id,record,charge)
         retained.append(call_id)
     expected=15 if 'v51-step4-prepare-review-TEST-SOCIAL' in ledger['calls'] else 14
     if 'v60-step4-prepare-review-TEST-CHAT-STATE' in ledger['calls']:expected+=1
+    expected+=sum('actual' not in c and k.startswith('v60-step6-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE') for k,c in ledger['calls'].items())
     if len(retained)!=expected:raise ValueError('Uncertain reservation set changed')
     return retained
 

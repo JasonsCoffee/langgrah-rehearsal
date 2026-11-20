@@ -10,6 +10,8 @@ from unity_coder.core.ownership import confined_path
 from unity_coder.core.storage import atomic_write
 from unity_coder.core.workspaces import git
 
+PRODUCTION_TIMEOUT_SECONDS=180
+
 
 def validate_activation(raw: bytes, profile: dict, grant: dict, pilot: dict, limits: list[int]) -> None:
     """A proposal or successful transport alone grants no production authority."""
@@ -62,7 +64,7 @@ def clients(root: Path, state: Path, budget):
             raise ValueError('Pilot lacks matching actual Codex usage and independent receipts')
         client=CodexModelClient(policy,state,working,exchange=CodexStdioExchange(),
             authorize=lambda digest,expected=policy.sha256:digest==expected,
-            timeout=profile['timeout_seconds'])
+            timeout=PRODUCTION_TIMEOUT_SECONDS)
         result.append(client)
     return AIConfig(result[0].config,result[1].config),result
 
@@ -101,4 +103,47 @@ def reconcile(state,contract,budget,services,integration,settings,workers):
         'retained_uncertain':retained,'usage':budget.totals(),'source_sha256':hashes,
         'roles':{'coder':settings.coder.model,'judge':settings.judge.model},
         'human_accepted':False,'next_judge_call':'v60-step5-prepare-review-TEST-CHAT-STATE'},indent=2).encode())
+    return True
+
+
+def retained_codex_call(state: Path, call: str, charge: dict, proof: dict) -> list[int]:
+    """Never refund or replay an uncertain call; bind its original receipt/claim."""
+    key=sha256(call.encode()).hexdigest()
+    raw=(state/'.agent/runs/monopoly-game-lobby/model-calls'/(key+'.json')).read_bytes()
+    receipt=json.loads(raw);identity=receipt['identity']
+    claim=json.loads((state/'codex-claims'/identity['backend_policy_sha256']/(key+'.json')).read_bytes())
+    if (proof.get('receipt_sha256')!=sha256(raw).hexdigest() or proof.get('charge')!=charge
+        or 'actual' in charge or 'reply' in receipt or 'failure' not in receipt
+        or identity.get('worker_backend')!='codex_app_server' or identity.get('provider')!='codex'
+        or identity.get('call_id')!=call or charge.get('unit')!=identity.get('unit_id')
+        or not call.startswith('v'+str(charge['version'])+'-')
+        or claim!={'operation_id':call,'policy_sha256':identity['backend_policy_sha256'],
+                   'prompt_sha256':identity['prompt_sha256']}
+        or len(charge.get('reserved',[]))!=2
+        or any(type(n) is not int or n<=0 for n in charge['reserved'])):
+        raise ValueError('Uncertain Codex usage must retain its exact original claim and reservation')
+    return charge['reserved']
+
+
+def reconcile_timeout(state,contract,budget,services,integration,settings):
+    """Continue with a new operation after the first production dispatch stopped."""
+    from operational_transport import retained_run_reservations
+    run=state/'.agent/runs/monopoly-game-lobby'
+    result=json.loads((run/'result.json').read_bytes());transaction=services.effects.read('transaction')
+    call='v60-step6-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE'
+    worker=services.effects.read('worker-'+call)
+    if (contract.contract_version!=60 or contract.sha256!='5597cb71b2157b83cb4ee618133ba0cf9d708de54542479474f712173d1e7012'
+        or result['outcome']!='operational' or result['candidate_revision']!='0519b568003ae4f820122ec8ef94016a068597f2'
+        or git(integration,'rev-parse','HEAD').decode().strip()!=result['candidate_revision']
+        or git(integration,'status','--porcelain') or services.tdd.frozen
+        or not transaction['complete'] or transaction['operation']!='v60-step6-prepare'
+        or not worker or 'result' in worker
+        or settings.coder.model!='gpt-6.2-sol' or settings.judge.model!='gpt-6.1-sol'):
+        raise ValueError('Exact Codex failed-dispatch recovery identity changed')
+    retained=retained_run_reservations(state,budget._read())
+    if len(retained)!=17:raise ValueError('All seventeen uncertain reservations must remain')
+    atomic_write(state,'recovery-authorizations/v60-codex-deadline-resume.json',json.dumps({
+        'candidate':result['candidate_revision'],'contract_sha256':contract.sha256,
+        'retained_uncertain':retained,'usage':budget.totals(),'production_timeout_seconds':PRODUCTION_TIMEOUT_SECONDS,
+        'pilot_timeout_seconds':60,'prior_call_replayed':False,'human_accepted':False},indent=2).encode())
     return True

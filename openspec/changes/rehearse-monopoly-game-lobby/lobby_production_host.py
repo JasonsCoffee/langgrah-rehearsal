@@ -603,6 +603,11 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_CODEX_TIMEOUT_V60')=='1':
+            if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
+            from codex_lobby import reconcile_timeout
+            executor.resume_operational(reconcile=lambda: reconcile_timeout(state,contract,budget,services,integration.path,settings))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_V60')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
             from codex_lobby import reconcile
