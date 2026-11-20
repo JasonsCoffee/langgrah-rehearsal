@@ -46,6 +46,10 @@ class ModelCalls:
                         temperature_mode=config.temperature_mode,
                         upstream_provider=config.upstream_provider,
                         prompt_sha256=sha256(prompt.encode()).hexdigest(), output_limit=max_output_tokens)
+        backend_identity = self.client.request_identity()
+        if set(backend_identity) & set(identity):
+            raise ModelError('Backend identity cannot override paid-call identity')
+        identity.update(backend_identity)
         with file_guard(self.budget.root, self.prefix + '/' + token + '.guard'):
             target = confined_path(self.budget.root, path)
             prior = json.loads(target.read_bytes()) if target.exists() else None
@@ -53,7 +57,7 @@ class ModelCalls:
                 raise ModelError('Paid call identity changed; no automatic replay')
             # UTF-8 byte count plus framing allowance is conservative for input
             # tokenization. Actual provider-reported usage remains authoritative.
-            self.budget.reserve(call_id, unit_id, len(prompt.encode()) + 1024, max_output_tokens)
+            self.budget.reserve(call_id, unit_id, self.client.reserve_input(prompt), max_output_tokens)
             if prior:
                 if 'reply' not in prior:
                     failure = prior.get('failure',{})
@@ -64,7 +68,7 @@ class ModelCalls:
             else:
                 atomic_write(self.budget.root, path, json.dumps({'identity':identity}).encode())
                 try:
-                    reply = self.client.generate(prompt, max_output_tokens=max_output_tokens)
+                    reply = self.client.generate_operation(call_id, prompt, max_output_tokens=max_output_tokens)
                 except ModelError as error:
                     atomic_write(self.budget.root,path,json.dumps({'identity':identity,'failure':error.diagnostics}).encode())
                     failure = error.diagnostics

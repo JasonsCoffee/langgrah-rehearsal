@@ -139,6 +139,18 @@ class ModelClient:
             raise ValueError('Model timeout must be bounded to 180 seconds')
         self.config, self.transport, self.timeout = config, transport, timeout
 
+    def request_identity(self) -> dict[str, object]:
+        """Backend-specific identity; legacy HTTP receipts remain unchanged."""
+        return {}
+
+    def reserve_input(self, prompt: str) -> int:
+        """Conservative native framing allowance, overridable by agent harnesses."""
+        return len(prompt.encode('utf-8')) + 1024
+
+    def generate_operation(self, operation_id: str, prompt: str, *, max_output_tokens: int) -> ModelReply:
+        """Keep durable operation identity available to non-HTTP worker backends."""
+        return self.generate(prompt, max_output_tokens=max_output_tokens)
+
     def validate_output_limit(self, max_output_tokens: int) -> None:
         """Validate before durable reservation as well as direct transport calls."""
         if type(max_output_tokens) is not int or max_output_tokens < 1:

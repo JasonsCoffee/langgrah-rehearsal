@@ -1,0 +1,37 @@
+{
+  "format_version": 1,
+  "run_id": "monopoly-game-lobby",
+  "contract_version": 60,
+  "contract_sha256": "5597cb71b2157b83cb4ee618133ba0cf9d708de54542479474f712173d1e7012",
+  "candidate_revision": "0519b568003ae4f820122ec8ef94016a068597f2",
+  "backend": "codex_app_server",
+  "budget_enforcement": "dispatch_accounting",
+  "authorization_ref": "model-authorizations/codex-backend-v60.json",
+  "max_calls_per_role": 200,
+  "framing_tokens": 65536,
+  "timeout_seconds": 60,
+  "pilot_output_allocation": 8192,
+  "roles": {
+    "coder": {
+      "model": "gpt-6.2-sol",
+      "effort": "low"
+    },
+    "judge": {
+      "model": "gpt-6.1-sol",
+      "effort": "medium"
+    }
+  },
+  "preserve_aggregate_limits": [
+    100000000,
+    12000000,
+    80,
+    2
+  ],
+  "activation_requires_verified_pilot": true,
+  "status": "proposal_not_authorized",
+  "request_controls": {
+    "temperature": "Codex-native; no temperature override exposed",
+    "output_tokens": "dispatch allocation, not a hard generation cap",
+    "context": "fresh per worker; canonical plan supplied explicitly"
+  }
+}

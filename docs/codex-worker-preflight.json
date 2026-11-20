@@ -1,0 +1,13 @@
+{
+  "preflight": "ephemeral_thread_metadata_no_turn",
+  "model": "gpt-6.1-sol",
+  "modelProvider": "openai",
+  "sandbox": {
+    "type": "readOnly",
+    "networkAccess": false
+  },
+  "approvalPolicy": "never",
+  "cwd_matches_isolated_root": true,
+  "thread_created": true,
+  "model_turns_started": 0
+}

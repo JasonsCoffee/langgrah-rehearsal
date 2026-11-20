@@ -373,3 +373,22 @@ leased, archive-first, ledger-last transition into the consecutive contract.
 output after the same run hit its input-reservation limit under twelve cycles.
 **Rejected:** modifying an active worker's ledger in place, refunding prior calls,
 silently increasing ceilings, or treating a token amendment as human acceptance.
+
+## D-32 — Explicit Codex worker policy and durable backend identity
+
+Extends D-12/D-25/D-30. Codex may supply separate Coder and Judge worker sessions
+behind the existing worker boundary. Both receive the approved exported plan;
+Judge history excludes Coder deliberation and model identities remain distinct.
+Changing backend never rewrites paid-call identity, accounting or frozen inputs.
+
+A backend must expose actual usage evidence and enforce the selected budget mode.
+Absent hard inference caps, default dispatch is refused. Dispatch-accounting mode
+requires separate explicit authorization of its weaker per-request guarantee and
+bounded persistent call claims. It retains aggregate dispatch ceilings, charges
+actual overruns and preserves unknown reservations. See codex-worker-backend.md.
+
+**Why:** the user authorized investigating replacement of OpenRouter workers while
+preserving the existing lobby run. The installed Codex protocol reports usage but
+has no equivalent of the existing max_completion_tokens request field.
+**Rejected:** treating an agent goal as a hard inference cap, zeroing old charges,
+sharing Coder reasoning with Judge, or silently switching after provider failure.
