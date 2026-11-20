@@ -1,5 +1,18 @@
 # Monopoly game lobby rehearsal report
 
+Current continuation: cycle 64, same run, active **125m input / 12m output / 80
+cycles** through authenticated native recovery. All 185 test/config files remain
+globally protected; cycle 63 established real behavioral Red for all 125 selected
+tests. Cycle 64 completed independent preparation review (14 exact prior reviews
+reused, two fresh Judge reviews) and is executing the full Red selection before
+Green. Accounted usage is 99,141,064 / 6,018,141, including all 23 uncertain
+reservations. Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), the original
+81,134-file host baseline and trusted overlay remain. **Not awaiting human review
+yet.** The isolated backend branch contains the saved wiring; mainline is untouched.
+See [codex-migration-report.md](codex-migration-report.md) for exact native
+identities, diagnostics, frozen checks and skill/wiring gaps. Earlier entries
+below are historical evidence.
+
 Cycle 60 is stopped operationally on OpenRouter HTTP 403 openrouter_key_limit for Judge (GPT-6.1 Sol, medium). Exact retained candidate 0519b568003ae4f820122ec8ef94016a068597f2; contract 5597cb71b2157b83cb4ee618133ba0cf9d708de54542479474f712173d1e7012. Accounting 81,099,581 input / 5,465,984 output under 100m/12m/80 includes sixteen uncertain reservations. The new failed review retains its full 703,310 input / 32,768 output reservation; receipt SHA256 081babbbeaee02ff9aa21f1d56db3ab5a4075f155cb41be598b668682f53adf8. The configured Coder/models/approved effort scopes and overlay remain unchanged. Fourteen of sixteen current author scopes / 96 mapped IDs have source approval. Queue ranking-income oracle, Party invitation-operation uniqueness and Chat rendered-scale usability were repaired through delegated Coder and actual Judge review. Chat State repair is admitted and paid but its review is blocked; Records remains next. No global freeze, implementation dispatch or selected lobby Unity execution occurred. Not awaiting_human_review.
 
 All 138 frozen offline wiring tests pass (8.90s); the five exact-reservation cases and two unchanged-metadata admission cases were exercised before corresponding wiring implementation. Original 81,134-file baseline/import audit and Bridge identity/protocol1 compile/tests readiness passed. The host still materializes old compile-only candidate 28604eb781dbee5c2cb137623f4e8b7e46132348, not the current preparation candidate. Evidence: evidence/provider-stop-v60.json, evidence/judge-key-limit-v60.receipt.json and evidence/admitted-chat-state-v60.json. Native full-file admission omitted an unchanged metadata entry from its changes map; the recovery proof now accepts that omission only after reading the exact original Git bytes and confirming current/expected hashes. It never admits changed or unproven content.
