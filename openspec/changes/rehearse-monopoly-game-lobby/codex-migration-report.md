@@ -248,3 +248,30 @@ RPC failures now retain sanitized method/code information, never raw provider
 messages. These are isolated backend/host changes; the existing coordinator and
 trusted overlay are unchanged. Six compaction and three staging checks were
 frozen Red before implementation; all 45 selected backend/isolation checks pass.
+
+The complete offline suite passes **651 tests** (242.32 seconds; one existing
+collection warning). The pinned development graph compiled and was listed as
+unity_coder; no graph request was submitted. The corrected backend returned real
+Match and Social implementations, settling respectively 265,954/6,210 and
+276,054/4,933 input/output tokens. Their completed worker proposals remain saved;
+neither was admitted before another unit's aggregate reservation failed.
+
+Native cycle 63 then abandoned for budget, retaining candidate
+`786b8b7d452302c3bde629d0fe02058ae418c69e`, usage **98,809,814 / 6,017,526**
+and all 23 uncertain reservations. The working integration was restored by the
+native governor; this is not a lost candidate or a completion. The explicit
+125m/12m/80 amendment can now use the supported recovery boundary.
+
+Earlier target recovery scripts explicitly refused a globally frozen predecessor.
+The new host wiring supplies the missing safe continuation: the consecutive
+contract may change only its cycle/parent identity; every one of the 185 frozen
+paths is verified and carried into WorkspaceManager's protected set before any
+worker runs. Reauthoring is blocked even while the new native cycle repeats
+independent preparation review and actual Red verification. No TDD state is
+fabricated or thawed, and a later cycle missing carry evidence fails closed.
+The original backend model/policy grant remains immutable; activation of the new
+aggregate ceiling requires the completed native recovery and unchanged charges.
+Three new continuation checks were frozen Red, and one fail-closed guard was
+frozen Red with its legacy-compatibility case already passing. All 32 selected
+continuation, activation, recovery, staging and compaction checks pass. Framework
+coordinator runtime and trusted overlay remain unchanged.

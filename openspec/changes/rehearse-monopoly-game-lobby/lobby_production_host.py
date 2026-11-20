@@ -378,6 +378,8 @@ class ContextWorkers:
         return explanation
 
     def code(self,unit,stage,files,feedback,operation_id):
+        if stage=='test_authoring' and getattr(self,'carried_tests',()):
+            raise ModelError('Budget continuation cannot reauthor globally frozen tests; reconcile the independent review finding with the Architect')
         recovered=getattr(self,'reconciled_worker_patch',None)
         if recovered and stage=='test_authoring' and recovered['unit']==unit.id and recovered['operation']==operation_id:
             if unit.role!='test' or self.services.tdd.frozen:
@@ -525,6 +527,9 @@ def main():
         test_roots=('Tests/Runtime/Script/LobbyRehearsal',))
     profile.validate_contract(contract)
     frozen=tuple(profile.protected_paths)+tuple(SPEC+'contract.v'+str(number)+'.json' for number in range(1,version+1))
+    from frozen_budget_continuation import protected_tests
+    carried_tests=protected_tests(state,contract_source,version)
+    frozen+=carried_tests
     manager=WorkspaceManager(module,root/'worktrees',contract,rules,run_id=RUN_ID,
         imported_roots=(Path(os.environ['UNITY_HOST'])/'Assets',),frozen_paths=frozen)
     integration_path=root/'worktrees'/RUN_ID/('integration-v'+str(version))
@@ -550,6 +555,7 @@ def main():
     workers=ContextWorkers(contract,Utf8Calls(ModelCalls(selected[0],budget,RUN_ID)),
         Utf8Calls(ModelCalls(selected[1],budget,RUN_ID)),integration.path,
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
+    workers.carried_tests=carried_tests
     host=OverlayHost()
     ladder=VerificationLadder(rules,host.transport)
     # Session grants may only be imported by the trusted operator after a real

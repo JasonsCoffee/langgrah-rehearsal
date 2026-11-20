@@ -49,7 +49,9 @@ def clients(root: Path, state: Path, budget: BudgetLedger) -> tuple[AIConfig,lis
     profile=json.loads(raw)
     grant=json.loads(confined_path(state,profile['authorization_ref']).read_bytes())
     pilot=json.loads((state/'codex-backend/pilot-verified-v60.json').read_bytes())
-    validate_activation(raw,profile,grant,pilot,budget.limits)
+    from frozen_budget_continuation import activation_limits
+    checked_limits=activation_limits(state,budget.limits,budget._read(),profile['preserve_aggregate_limits'])
+    validate_activation(raw,profile,grant,pilot,checked_limits)
     ledger=budget._read();run=state/'.agent/runs/monopoly-game-lobby/model-calls'
     working=root/'codex-workers/production'
     if working.is_symlink() or (working.exists() and any(working.iterdir())):
