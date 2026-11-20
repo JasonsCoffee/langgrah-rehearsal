@@ -551,3 +551,21 @@ intact in retained Git, coherent Red baseline and host. Pending 150m approval ha
 not been applied. Not awaiting human review. See the concise rehearsal report,
 exact budget-stop evidence and recovery-plan-v67.md. Older snapshots are history.
 
+
+Current operation: **cycle 67 preparation**, same run recovered through the
+native authenticated API after the user's instruction **“Double those ceilings.”**
+Active aggregate ceilings are **250,000,000 input / 24,000,000 output / 160 cycles**.
+The added-unit bound remains two. At recovery all charges and 24 uncertain
+reservations were preserved exactly: **121,784,141 / 6,187,439**. The earlier 150m
+request is superseded. Models, efforts, API-cap waiver and trusted overlay remain.
+All **189** frozen files were carried unchanged from retained candidate
+`b53644293a4b41c3d1253e32acb5334781fcaeab`. Coherent prepared baseline:
+`1864d5b240a6ccfe36e8ba06fabdbb6f076c206b`; contract:
+`013c774cf990ebacc14e4cb4fcbddf954bb3aadb5ce2abfdd9885d7dc29e3783`.
+Latest full offline suite: **707 passed**, one existing warning, 272.79 seconds.
+Source reuse cannot mark tests reviewed: actual independent reviews or exact
+verified review receipts are required. New-cycle Red still precedes implementation.
+The complete latest paid implementation and prior failures are read-only repair
+input. No feature implementation was handwritten. **Not awaiting human review yet.**
+See `evidence/recovery-applied-double-v66.json`. Older snapshots below are history.
+
