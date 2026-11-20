@@ -175,3 +175,41 @@ Ten routing cases were frozen Red before implementation, SHA256
 All 233 selected host/backend/rehearsal checks passed; the focused route/reuse
 checks also passed after pending-operation reconnect wiring. This is rehearsal
 host recovery, not a generic runtime fix or human acceptance.
+
+The repaired fixture compiled as candidate
+`97169e65a6cebfffe54cb6d262437f0ddf11702f`. All 125 selected cases then executed:
+121 assertion failures and four Test-site NullReferenceException errors, with no
+passes, skips or inconclusives. This is not valid behavioral Red because the
+aggregate result is setup-classified. No global freeze or implementation occurred.
+
+Separate runtime/adapter follow-up: a mixed batch's global failure_kind causes
+LocalExecutionServices to charge preparation failures to authors of all failed
+tests, including the 121 valid assertion failures. Records consequently exhausted
+its allowance although its cases failed by assertion. The original real rework
+dossier and both normalized and raw results are preserved. Raw failure_details
+also omit stack traces, reducing repair precision.
+
+Architect revision for cycle 63 declines that advisory Records repair and targets
+only the four real error cases using declared test_links: Journey_ECON to
+TEST-APPEAR; Story_L9_05 to TEST-MATCH; Story_L4_17/18 to TEST-FRIEND-REQUESTS.
+The override is bound to dossier, candidate, normalized evidence and raw ticket
+hashes, and revalidated before transition. No result is reclassified, no test is
+removed, and business expectations must remain effective. All 88,638,952 /
+5,660,287 accounted tokens and eighteen uncertain reservations are retained under
+100m/12m/80. Cycle-63 contract:
+`7934b54ab23da051e48ee32f91e7884ed95a56a4647cf71b1ac44a920509f0ae`.
+
+Seven case-scope cases were frozen Red (SHA256
+`90742f130342167be62982ffaf346c360bd25cdc8ca9980425f64756df12250c`).
+The live NUnit wire uses Failed for assertion failures and Failed:Error for body
+errors; an additional wire case was Red and its unknown-label guard already
+passed before correction (SHA256
+`06c85b372277b7b5204dc9866750b7d6c6a5ad9914449528658868912210e42e`).
+The original frozen fixtures were preserved. The scope tests pass without altering
+the actual Unity evidence or framework runtime classifier.
+
+Full offline regression after the routing/diagnosis additions: **642 passed** in
+245.05 seconds, with the existing TestResult collection warning. Cycle 63 is
+performing the three actual author repairs; Appearance and Match have passed
+fresh source review. All runtime compiler/test evidence is still required before
+global freeze and implementation. The feature is not awaiting human review yet.

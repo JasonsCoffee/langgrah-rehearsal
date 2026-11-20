@@ -11,6 +11,7 @@ from unity_coder.core.budget import BudgetLedger
 from unity_coder.core.contracts import load_contract
 from unity_coder.core.cycles import transition_cycle
 from unity_coder.core.lifecycle import RunLease
+from unity_coder.core.ownership import confined_path
 from unity_coder.core.storage import atomic_write
 from unity_coder.core.target_profiles import load_profile
 from unity_coder.core.workspaces import git
@@ -41,7 +42,26 @@ if version==10:
     text=text.replace(marker,marker+'\n        public jj.WidgetSDK.Runtime.INavigator Navigator { get; set; }\n        public jj.Core.Runtime.IUserDefault UserDefault { get; set; }')
     path.write_text(text,encoding='utf-8',newline='')
     next(u for u in current['units'] if u['id']=='SHELL')['instructions']+=' Cycle 10 prepares nonfunctional Navigator and UserDefault injection properties. Production must bind the real framework dependencies to these instance-owned slots. Exercise all real screen routes through the supplied Navigator (including target VM identity) and persist/restore account-scoped settings through the supplied UserDefault; ILobbyUiPort remains the presentation observation boundary. Never manufacture observations or bypass these dependencies with static memory.'
-for finding in dossier['failed_units']:
+findings=dossier['failed_units']
+override_path=state/'architect-rework'/('scope-v'+str(version)+'.json')
+if override_path.exists():
+    override=json.loads(override_path.read_bytes())
+    if (override['previous_version']!=previous_version or override['version']!=version
+        or override['candidate']!=result['candidate_revision']
+        or override['dossier_sha256']!=sha256((run/('dossier-v'+str(previous_version)+'.json')).read_bytes()).hexdigest()
+        or not override.get('rationale') or not override.get('evidence_sha256')):
+        raise ValueError('Architect rework scope differs from actual native evidence')
+    from baseline_body_scope import body_error_scope
+    raw_result=confined_path(Path(os.environ['UNITY_HOST']).resolve(strict=True),override['raw_result_ref']).read_bytes()
+    actual_scope=body_error_scope(json.loads(raw_result),old)
+    if (sha256(confined_path(state,override['evidence_ref']).read_bytes()).hexdigest()!=override['evidence_sha256']
+        or sha256(raw_result).hexdigest()!=override['raw_result_sha256']
+        or actual_scope!=override['case_scope']
+        or {f['id'] for f in override['revised_findings']}!=set(actual_scope)):
+        raise ValueError('Architect scope must match the real case-level baseline failures')
+    findings=override['revised_findings']
+    (spec/('architect-rework-scope.v'+str(version)+'.json')).write_text(json.dumps(override,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='')
+for finding in findings:
     unit=next(u for u in current['units'] if u['id']==finding['id'])
     if unit['role']!='test':raise ValueError('Implementation rework needs explicit Architect diagnosis')
     note=next(p for p in unit['owns'] if p.endswith('.cs')).removesuffix('.cs')+'.repair-v'+str(version)+'.md'
