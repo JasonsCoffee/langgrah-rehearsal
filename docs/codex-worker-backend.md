@@ -1,5 +1,15 @@
 # Opt-in Codex worker backend
 
+## Authorized lobby activation update
+
+The user has now explicitly approved Codex without forced per-request token caps.
+The profile-bound trusted grant is recorded, and the real two-model pilot passed:
+10,152 input / 123 output tokens settled in the existing ledger. The production
+host passed the original 81,134-file baseline/import audit and native recovery
+resumed cycle 60, preparation step five. See the active change's
+codex-migration-report.md. The earlier inactive observations below are history;
+this update does not claim completed lobby implementation or human acceptance.
+
 The pre-change framework/rehearsal checkpoint is 6ff8d8b. The separate resilience
 amendments remain preserved at 826b425; they are not silently activated in a pending
 lobby operation. This change supplies a programmatic Codex worker boundary, with

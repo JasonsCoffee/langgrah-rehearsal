@@ -529,9 +529,18 @@ def main():
     limits=policy.get('limits',policy)
     budget=BudgetLedger(state,RUN_ID,input_limit=limits['input_limit'],output_limit=limits['output_limit'],
         max_cycles=limits['max_cycles'],max_added_units=limits['max_added_units'])
-    settings=load_ai_config(framework/'ai.local.toml')
-    workers=ContextWorkers(contract,Utf8Calls(ModelCalls(ModelClient(settings.coder,transport=RehearsalTransport(state,'coder'),timeout=180),budget,RUN_ID)),
-        Utf8Calls(ModelCalls(ModelClient(settings.judge,transport=RehearsalTransport(state,'judge'),timeout=180),budget,RUN_ID)),integration.path,
+    backend=os.environ.get('LOBBY_MODEL_BACKEND','openrouter')
+    if backend=='codex':
+        from codex_lobby import clients
+        settings,selected=clients(root,state,budget)
+    elif backend=='openrouter':
+        settings=load_ai_config(framework/'ai.local.toml')
+        selected=[ModelClient(settings.coder,transport=RehearsalTransport(state,'coder'),timeout=180),
+            ModelClient(settings.judge,transport=RehearsalTransport(state,'judge'),timeout=180)]
+    else:
+        raise ValueError('Unknown explicit model backend; no fallback')
+    workers=ContextWorkers(contract,Utf8Calls(ModelCalls(selected[0],budget,RUN_ID)),
+        Utf8Calls(ModelCalls(selected[1],budget,RUN_ID)),integration.path,
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
     host=OverlayHost()
     ladder=VerificationLadder(rules,host.transport)
@@ -594,6 +603,11 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_CODEX_V60')=='1':
+            if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
+            from codex_lobby import reconcile
+            executor.resume_operational(reconcile=lambda: reconcile(state,contract,budget,services,integration.path,settings,workers))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_JUDGE_KEY_LIMIT_V60')=='1':
             from resume_judge_key_limit_v60 import reconcile
             executor.resume_operational(reconcile=lambda: reconcile(state,contract,budget,services,integration.path,settings,workers))
