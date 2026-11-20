@@ -19,6 +19,14 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Latest isolated backend rehearsal: cycle 66, step-ten verification of
+`ee15fa739ab864f8b8df4bd1a16745ebb92dabdc`; not awaiting human review.
+699 offline checks passed and the pinned graph compiled/listed. Limits remain
+125m/12m/80, accounting 117,303,001/6,162,329 with 24 uncertain reservations.
+All 189 frozen files, configured models and trusted overlay remain unchanged.
+The context-recovery flag has been consumed; never replay it after its real Judge
+effect completed. See the active change reports and native durable progress.
+
 Latest operational reconciliation (2026-11-21): cycle 66 remains active with the
 same 125m/12m/80 limits and 23 uncertain reservations. Its mixed baseline compiled
 and executed 126 tests (8 passed, 118 failed), but runtime body errors made the

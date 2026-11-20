@@ -1,5 +1,15 @@
 # Lobby rehearsal verification
 
+Latest candidate: `ee15fa739ab864f8b8df4bd1a16745ebb92dabdc`, cycle 66,
+`v66-step10-verify` active for all 126 selections after the first native repair.
+All 189 frozen hashes still match. Accounting is **117,303,001 input / 6,162,329
+output**, including all **24** historical uncertain reservations, under unchanged
+**125m / 12m / 80** ceilings. Previous step-eight compile failed with three SHELL
+errors; its real Judge verdict was implementation. Step-nine's admitted response
+was partial and still needs actual compile/test verification. Latest complete
+offline regression: **699 passed**; pinned graph compiled and was listed.
+**Not awaiting human review yet.** Earlier entries are historical snapshots.
+
 Current execution: cycle 66, native shared implementation repair after an actual
 independent Judge **implementation** verdict for three SHELL compiler errors.
 Completed verification `v66-step8-verify` remains bound to candidate
