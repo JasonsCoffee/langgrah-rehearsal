@@ -451,6 +451,10 @@ class ContextWorkers:
         with self.admission:
             print('Preparing',unit.id,stage,'reservation output',limit,flush=True)
             context=self.context(unit,files)
+            prior=getattr(getattr(self,'services',None),'state',{}).get('verification') or {}
+            if stage=='green' and unit.role=='impl' and unit.id in prior.get('related_units',()):
+                from compile_failure_context import curate
+                context=curate(prior.get('gate',''),prior.get('status',''),context,unit.owns)
             if stage=='test_authoring' and unit.id in getattr(self,'blocked_author_notes',set()):
                 if self.services.tdd.frozen:raise ModelError('Frozen author cannot record a preparation blocker')
                 notes=tuple(p for p in unit.owns if p.endswith('.md'))
@@ -518,7 +522,11 @@ class ContextWorkers:
     def judge(self,unit,evidence,files,operation_id):
         with self.admission:
             print('Reviewing',unit.id,evidence.gate,flush=True)
-            return self.worker().judge(unit,evidence,self.context(unit,files),operation_id)
+            context=self.context(unit,files)
+            if unit.role=='impl':
+                from compile_failure_context import curate
+                context=curate(evidence.gate,evidence.status,context,unit.owns)
+            return self.worker().judge(unit,evidence,context,operation_id)
 
 def main():
     framework=Path.cwd().resolve()

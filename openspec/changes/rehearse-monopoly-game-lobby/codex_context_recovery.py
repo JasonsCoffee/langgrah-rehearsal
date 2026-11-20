@@ -36,6 +36,26 @@ def recover_judge_effect(effects: DurableEffects, name: str, identity: dict,
     effects.write(name,{'identity':identity,'result':{'classification':classification,'reason':reason}})
 
 
+def register_retained_call(state: Path, call: str, charge: dict, expected_sha256: str) -> None:
+    key=sha256(call.encode()).hexdigest()
+    raw=(state/'.agent/runs/monopoly-game-lobby/model-calls'/(key+'.json')).read_bytes()
+    record=json.loads(raw);identity=record['identity']
+    claim=json.loads((state/'codex-claims'/identity['backend_policy_sha256']/(key+'.json')).read_bytes())
+    if (sha256(raw).hexdigest()!=expected_sha256 or 'actual' in charge or 'reply' in record
+        or 'failure' not in record or identity.get('worker_backend')!='codex_app_server'
+        or identity.get('provider')!='codex' or identity.get('call_id')!=call
+        or charge.get('unit')!=identity.get('unit_id') or not call.startswith('v'+str(charge.get('version'))+'-')
+        or claim!={'operation_id':call,'policy_sha256':identity['backend_policy_sha256'],'prompt_sha256':identity['prompt_sha256']}
+        or len(charge.get('reserved',[]))!=2 or any(type(n) is not int or n<=0 for n in charge['reserved'])
+        or (state/'codex-receipts'/(key+'.json')).exists()):
+        raise ValueError('Exact uncertain failed-call receipt, claim and reservation required')
+    path='model-authorizations/codex-retained-calls.json';prior=json.loads((state/path).read_bytes())
+    proof={'receipt_sha256':expected_sha256,'charge':charge}
+    if call in prior['calls'] and prior['calls'][call]!=proof:raise ValueError('Historical retention proof changed')
+    prior['calls'][call]=proof
+    atomic_write(state,path,json.dumps(prior,indent=2).encode())
+
+
 def reconcile(state: Path, contract: Contract, budget: BudgetLedger,
               services: LocalExecutionServices, workers: ContextWorkers, integration: Path) -> None:
     from full_baseline_restoration import assert_tests
@@ -60,15 +80,26 @@ def reconcile(state: Path, contract: Contract, budget: BudgetLedger,
         or evidence.request.contract_sha256!=contract.sha256 or evidence.request.request_id!=operation):
         raise ValueError('Actual post-audited compiler evidence is required')
     assert_tests(state,66,integration)
-    ledger=budget._read()
-    if len(retained_run_reservations(state,ledger))!=23:raise ValueError('Historical uncertain usage changed')
+    ledger=budget._read();retained_failed=None
+    if call in ledger['calls']:
+        old_call=call;old_key=key
+        historical=ledger|{'calls':{k:v for k,v in ledger['calls'].items() if k!=old_call}}
+        if len(retained_run_reservations(state,historical))!=23:raise ValueError('Historical uncertain usage changed')
+        old_charge=ledger['calls'][old_call]
+        if old_charge!={'reserved':[5848476,32768],'unit':'SHELL','version':66}:
+            raise ValueError('Rejected Judge reservation changed')
+        register_retained_call(state,old_call,old_charge,'b7b303778bb39f5fd878cd6a3a0360af0a2beac6a5e3a85c47659e39952445e8')
+        if len(retained_run_reservations(state,ledger))!=24:raise ValueError('All uncertain calls must remain charged')
+        retained_failed={'call':old_call,'charge':old_charge,'receipt_sha256':'b7b303778bb39f5fd878cd6a3a0360af0a2beac6a5e3a85c47659e39952445e8'}
+        call=old_call+'-context-recovery-1';key=sha256(call.encode()).hexdigest()
+    elif len(retained_run_reservations(state,ledger))!=23:raise ValueError('Historical uncertain usage changed')
     paid=(call in ledger['calls'] or (run/'model-calls'/(key+'.json')).exists()
           or (state/'codex-receipts'/(key+'.json')).exists()
           or any((state/'codex-claims').glob('*/'+key+'.json')))
     identity={'request':asdict(evidence.request),'unit':'SHELL'}
     proof={'operation':call,'candidate':candidate,'contract_sha256':contract.sha256,
            'evidence_sha256':sha256(raw).hexdigest(),'zero_submission':not paid,
-           'before_usage':budget.totals(),'human_accepted':False}
+           'before_usage':budget.totals(),'retained_failed_call':retained_failed,'human_accepted':False}
     if paid:raise ValueError('A paid intent exists; zero-submission recovery is forbidden')
     atomic_write(state,'context-recovery/v66-intent.json',json.dumps(proof,indent=2).encode())
     unit=services.tdd.units['SHELL']

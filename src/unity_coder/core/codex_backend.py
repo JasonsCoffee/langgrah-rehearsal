@@ -79,7 +79,14 @@ def parse_turn_events(events: Iterable[dict]) -> CodexTurnResult:
         if method in ('item/started','item/completed'):
             item = params.get('item',{})
             if item.get('type') not in ('agentMessage','reasoning','userMessage'):
-                raise ModelError('Unexpected Codex tool activity; no result admitted')
+                kind=item.get('type')
+                known={'contextCompaction','plan','commandExecution','fileChange','mcpToolCall',
+                       'webSearch','collabAgentToolCall','dynamicToolCall','imageView',
+                       'enteredReviewMode','exitedReviewMode'}
+                raise ModelError('Unexpected Codex tool activity or protocol item; no result admitted',
+                    diagnostics={'protocol_phase':'item_validation',
+                                 'item_type':kind if isinstance(kind,str) and kind in known else 'unknown',
+                                 'event_method':method})
             if (method == 'item/completed' and item.get('type') == 'agentMessage'
                 and item.get('phase') in (None,'final_answer')):
                 if answer is not None or not isinstance(item.get('text'),str):

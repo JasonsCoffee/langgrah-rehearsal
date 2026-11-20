@@ -471,3 +471,34 @@ DurableEffects before comparing and writing. The additional regression failed Re
 first and is frozen at SHA256
 `7679ce9a6674b0cf56ac126f494c03a46dae9dc5ef1ccc087f18b6c08ca1d3f1`.
 All eleven selected context recovery, identity and staging checks pass.
+
+The recovered Judge request was submitted, then rejected by parse_turn_events as
+an unexpected item. Its item type was not retained; actual tool execution versus
+internal context compaction cannot be established from that original receipt.
+No verdict was admitted. The entire 5,848,476 input / 32,768 output reservation
+remains charged, with its original receipt SHA256
+`b7b303778bb39f5fd878cd6a3a0360af0a2beac6a5e3a85c47659e39952445e8`.
+The pending native Judge effect is still unresolved. No source/test file changed.
+
+The new backend now retains only a sanitized rejected item type and event method;
+all unsupported items remain rejected, including compaction. Compiler-only
+failure contexts preserve all current owned code, complete spec and coding rules,
+while replacing read-only test bodies and the historical proposal with an explicit
+provided-text hash manifest. No tests executed at this failed compile gate.
+Behavioral/source-review contexts and actual frozen files are unchanged. Both
+configured models advertise a 500,000-token context window in the local catalog.
+The previous full Judge context carried more than a megabyte of test bodies.
+
+Replacement recovery retains the exact failed call and all seven earlier Codex
+retention proofs, validates all 24 uncertain reservations, and uses a new call ID
+only if no paid evidence exists for that replacement. Native effect identity,
+completed verification and candidate remain unchanged. No verdict is invented.
+Five protocol/context checks failed before implementation and are frozen at
+`8484b7700c4c3e3fbaca88472909c23ab570347295a5bfc8c6ed6079cf7fe510`;
+two retention checks likewise froze Red at
+`d82eccdd5d17b52654d06799e92648fa46fac061c296bd08be17ed4f7077ef3d`.
+All 44 selected offline checks now pass. The earlier complete suite passed 691
+checks (241.82s); a complete run including the latest additions remains pending.
+Core coordinator/verification runtime, models, efforts, overlay and 189 frozen
+files remain unchanged. This is not awaiting human review yet.
+
