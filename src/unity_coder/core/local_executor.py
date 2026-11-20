@@ -84,7 +84,8 @@ class LocalExecutionServices:
         self.tdd = TDDCoordinator(self.contract, integration.path, manager.rules,
                                   test_config_paths=test_config_paths, protected_paths=manager.frozen_paths)
         self.retry = RetryPolicy(max_attempts=max_attempts)
-        self.state: dict = {"group":[], "patches":{}, "snapshots":{}, "verification":None, "feedback":""}
+        self.state: dict = {"group":[], "patches":{}, "snapshots":{}, "verification":None, "feedback":"",
+                            "preparation_feedback":{}}
         self.active_verification: str | None = None
         self.activity: dict[str,str] = {}
         self.effects = DurableEffects(self.root,self.prefix+'/effects',manager,integration)
@@ -306,6 +307,7 @@ class LocalExecutionServices:
         if plan is None:
             plan={'base':git(self.integration.path,"rev-parse","HEAD").decode().strip(),
                   'group':list(group),'stage':stage,'context':self._context(),'feedback':self.state['feedback'],
+                  'preparation_feedback':dict(self.state.get('preparation_feedback',{})),
                   'snapshots':{u:{p:confined_path(self.integration.path,p).read_bytes().hex()
                                  if confined_path(self.integration.path,p).is_file() else None
                                  for p in self.tdd.units[u].owns} for u in group}}
@@ -329,7 +331,9 @@ class LocalExecutionServices:
             self._check_cancel()
             self.activity[unit_id]=stage+'_coding'
             def invoke() -> dict:
-                patch=self.workers.code(unit,stage,context,plan['feedback'],operation+'-'+unit_id)
+                feedback = (plan.get('preparation_feedback',{}).get(unit_id,'')
+                            if stage=='test_authoring' else plan['feedback'])
+                patch=self.workers.code(unit,stage,context,feedback,operation+'-'+unit_id)
                 return {'files':{p:v.hex() for p,v in patch.files.items()},'reason':patch.reason}
             saved=self.effects.call('worker-'+operation+'-'+unit_id,{'stage':stage,'unit':unit_id,'base':base},invoke)
             patch=WorkerPatch({p:bytes.fromhex(v) for p,v in saved['files'].items()},saved['reason'])
@@ -507,7 +511,7 @@ class LocalExecutionServices:
                     ref = self.prefix + "/evidence/" + operation + "-review-" + unit.id + ".json"
                     atomic_write(self.root,ref,json.dumps({"unit_id":unit.id,"contract_sha256":self.contract.sha256,
                                                            "reason":str(exc),"stage":"test_preparation"}).encode())
-                    self.state["feedback"] = str(exc)
+                    self.state.setdefault('preparation_feedback',{})[unit.id] = str(exc)
                     try:
                         self.tdd.record_preparation_failure(unit.id)
                     except ValueError:
@@ -519,6 +523,7 @@ class LocalExecutionServices:
                             "Independent test preparation allowance exhausted")
                     return StepResult("prepare",self._statuses())
                 self.tdd.approve_tests(unit.id,explanation)
+                self.state.setdefault('preparation_feedback',{}).pop(unit.id,None)
             self.state["patches"] = {}
             return StepResult("red",self._statuses())
         if stage == "red":
@@ -530,6 +535,7 @@ class LocalExecutionServices:
                 self.state["feedback"] = "Baseline test setup requires repair: " + "; ".join(evidence.test_result.messages)
                 defects = []
                 for author in sorted(authors):
+                    self.state.setdefault('preparation_feedback',{})[author] = self.state['feedback']
                     try:
                         self.tdd.record_preparation_failure(author)
                     except ValueError:
@@ -544,6 +550,9 @@ class LocalExecutionServices:
                 return StepResult("prepare",self._statuses())
             if not evidence.behavioral or evidence.test_result is None:
                 return self._end("operational","No behavioral baseline available",(self.state["evidence_ref"],))
+            # Preparation/setup messages are not implementation repair findings.
+            # A valid baseline ends that scope, including legacy unscoped text.
+            self.state['feedback'] = ''
             for unit in self.tdd.units.values():
                 if unit.role == "impl":
                     self.tdd.record_baseline(unit.id,BehaviorEvidence(evidence.request.candidate_revision,

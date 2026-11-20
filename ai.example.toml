@@ -7,6 +7,11 @@
 # Optional: effort = "medium" (or another supported reasoning effort) per role.
 # Optional: upstream_provider = "<provider-slug>" pins one OpenRouter endpoint.
 # This preserves the model and disables automatic provider fallback.
+# Optional: max_output_tokens = 131072 per role, using the selected endpoint's
+# documented completion cap. Requests above it fail before reserving run budget.
+# Omit to leave capability enforcement to the provider; no universal 32768 cap.
+# Per-stage allocations are supplied separately through StageTokenBudgets.
+# Changing an allocation never increases or resets the persistent run budget.
 # Check connections with: uv run python -m unity_coder.ai_check
 
 [coder]

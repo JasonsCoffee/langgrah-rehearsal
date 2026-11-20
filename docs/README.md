@@ -25,6 +25,7 @@ that adapter, not assumptions in the design.
 | [adapters.md](adapters.md) | What varies per stack; core versus adapter |
 | [decisions.md](decisions.md) | Decision log with rationale and rejected alternatives |
 | [dev-environment.md](dev-environment.md) | Workstation setup: interpreter pinning, toolchain, dev server, Windows tuning |
+| [runtime-resilience.md](runtime-resilience.md) | Model output, context, feedback and owner-reconciliation amendments |
 
 ## Reading order
 

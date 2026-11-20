@@ -28,6 +28,11 @@ class ModelConfig:
     effort: str = ''
     temperature_mode: str = 'zero'
     upstream_provider: str = ''
+    max_output_tokens: int | None = None
+
+    def __post_init__(self) -> None:
+        if self.max_output_tokens is not None and (type(self.max_output_tokens) is not int or self.max_output_tokens < 1):
+            raise ModelError('Configured model output cap must be a positive integer')
 
 
 @dataclass(frozen=True)
@@ -55,7 +60,7 @@ def load_ai_config(path: Path) -> AIConfig:
     configs = []
     for role in ('coder', 'judge'):
         values = data[role]
-        if not isinstance(values, dict) or set(values) - {'effort', 'temperature_mode', 'upstream_provider'} != {'provider','model','api_key','base_url'}:
+        if not isinstance(values, dict) or set(values) - {'effort', 'temperature_mode', 'upstream_provider', 'max_output_tokens'} != {'provider','model','api_key','base_url'}:
             raise ModelError('Model configuration fields are missing or unsupported')
         if any(not isinstance(values[k], str) or not values[k].strip() for k in ('provider','model','api_key')):
             raise ModelError('Provider, model and API key must be populated')
@@ -82,7 +87,7 @@ def load_ai_config(path: Path) -> AIConfig:
         upstream = values.get('upstream_provider', '')
         if not isinstance(upstream,str) or (upstream and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_./-]{0,99}',upstream)):
             raise ModelError('Invalid explicit upstream provider slug')
-        configs.append(ModelConfig(role, provider, values['model'].strip(), values['api_key'].strip(), endpoint, effort, temperature_mode, upstream))
+        configs.append(ModelConfig(role, provider, values['model'].strip(), values['api_key'].strip(), endpoint, effort, temperature_mode, upstream, values.get('max_output_tokens')))
     if configs[0].model.casefold() == configs[1].model.casefold():
         raise ModelError('Coder and judge require different model identities')
     return AIConfig(*configs)
@@ -134,9 +139,18 @@ class ModelClient:
             raise ValueError('Model timeout must be bounded to 180 seconds')
         self.config, self.transport, self.timeout = config, transport, timeout
 
+    def validate_output_limit(self, max_output_tokens: int) -> None:
+        """Validate before durable reservation as well as direct transport calls."""
+        if type(max_output_tokens) is not int or max_output_tokens < 1:
+            raise ModelError('Positive integer output allowance required')
+        cap = self.config.max_output_tokens
+        if cap is not None and max_output_tokens > cap:
+            raise ModelError('Requested allowance exceeds configured model output cap')
+
     def generate(self, prompt: str, *, max_output_tokens: int) -> ModelReply:
-        if not prompt.strip() or type(max_output_tokens) is not int or not 1 <= max_output_tokens <= 32768:
-            raise ModelError('Nonempty prompt and bounded output allowance required')
+        if not prompt.strip():
+            raise ModelError('Nonempty prompt required')
+        self.validate_output_limit(max_output_tokens)
         payload: dict[str, object] = dict(model=self.config.model, stream=False,
             messages=[{'role':'user','content':prompt}], max_completion_tokens=max_output_tokens,
             temperature=0, provider={'require_parameters':True, 'allow_fallbacks':False})

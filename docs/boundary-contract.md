@@ -418,3 +418,37 @@ already underway. Empty completion remains valid when no learned entries exist.
 Completion and crash recovery consume the same persisted collection under a guard;
 confirmation cannot race past the selection of entries. The metadata-only parent,
 managed-block preservation, deduplication and archival checks remain mandatory.
+
+### Runtime resilience boundaries (D-31)
+
+ModelCodingWorkers accepts optional context_requirements keyed by active unit ID,
+then portable file path and exact SHA256. Validation uses the actual UTF-8 text
+supplied after host curation, including its line endings; it never infers omitted
+files from prose. Every paid stage includes a contract-bound context manifest and
+checks required hashes before dispatch. A custom worker/curator must bind this
+policy explicitly; the framework does not claim that a manifest alone establishes
+requirement completeness.
+
+Malformed structured output becomes ModelError after ModelCalls has preserved the
+paid reply and reconciled known usage. The normal operational result retains all
+completed work and frozen tests. Explicit owner reconciliation and operational
+resume remain required; changing a pending worker intent into success by hand or
+retrying its paid request is forbidden. A well-formed negative test review retains
+the actual explanation and continues bounded preparation.
+
+DurableEffects.reconcile_call resolves only an exact pending identity through the
+trusted host callback. Its resolution has result and evidence fields, with evidence
+a nonempty map of confined state-relative paths to existing SHA256 values. The
+callback must verify the paid-call accounting/reservations, exact delegated result,
+source/candidate identities and permissible recovery. The framework verifies proof
+bytes, rejects changed or completed intents and records the original pending digest
+and proof in an atomic completed receipt. Normal effect invocation and resolution
+share one lock, so resolution cannot inspect an in-flight call. No callback is
+exposed to coding units. Results still pass normal patch ownership, freeze and
+independent-review gates. This is not a generic acceptance or budget amendment API.
+
+Preparation feedback is persisted per author, cleared on successful review, and
+kept separate from implementation findings. Older checkpoints remain readable;
+unscoped historical author feedback is not assigned to a guessed owner. Existing
+paid plan identities are retained during reconciliation. See runtime-resilience.md
+for regression evidence and the deferred pause/review-reuse proposals.

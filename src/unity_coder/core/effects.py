@@ -6,7 +6,7 @@ from collections.abc import Callable
 
 from .ai_models import ModelError
 from .ownership import confined_path
-from .storage import atomic_write
+from .storage import atomic_write, file_guard
 from .workspaces import WorkspaceManager, Workspace, WorkspaceCandidate, git
 
 
@@ -22,16 +22,49 @@ class DurableEffects:
         atomic_write(self.root,self.prefix+'/'+name+'.json',json.dumps(record,sort_keys=True).encode())
 
     def call(self, name: str, identity: dict, invoke: Callable[[], dict]) -> dict:
-        identity=json.loads(json.dumps(identity))
-        record=self.read(name)
-        if record is not None:
-            if record['identity']!=identity:raise ValueError('Effect call identity changed')
-            if 'result' not in record:raise ModelError('Interrupted call requires owner/usage reconciliation; no replay')
-            return record['result']
-        self.write(name,{'identity':identity})
-        result=invoke()
-        self.write(name,{'identity':identity,'result':result})
-        return result
+        with file_guard(self.root,self.prefix+'/'+name+'.call.guard'):
+            identity=json.loads(json.dumps(identity))
+            record=self.read(name)
+            if record is not None:
+                if record['identity']!=identity:raise ValueError('Effect call identity changed')
+                if 'result' not in record:raise ModelError('Interrupted call requires owner/usage reconciliation; no replay')
+                return record['result']
+            self.write(name,{'identity':identity})
+            result=invoke()
+            self.write(name,{'identity':identity,'result':result})
+            return result
+
+    def reconcile_call(self, name: str, identity: dict, *,
+                       reconcile: Callable[[dict], dict | None]) -> None:
+        """Resolve an exact pending intent through the trusted owner's validator.
+
+        The callback must reconcile usage/reservations, delegated result bytes and
+        candidate identity. Hashes bind its evidence, not its semantic correctness.
+        Models cannot select this callback; normal admission and review follow.
+        """
+        path = self.prefix+'/'+name+'.json'
+        identity = json.loads(json.dumps(identity))
+        with file_guard(self.root,self.prefix+'/'+name+'.call.guard'):
+            target = confined_path(self.root,path)
+            original = target.read_bytes()
+            record = json.loads(original)
+            if record.get('identity') != identity or 'result' in record:
+                raise ValueError('Only the exact pending effect can be reconciled')
+            resolution = reconcile(json.loads(original))
+            if (not isinstance(resolution,dict) or set(resolution) != {'result','evidence'}
+                or not isinstance(resolution['result'],dict)
+                or not isinstance(resolution['evidence'],dict) or not resolution['evidence']):
+                raise ValueError('Owner reconciliation requires result and hashed evidence')
+            # Canonicalize before publication; callbacks cannot smuggle mutable
+            # non-JSON values into the durable operation receipt.
+            resolution = json.loads(json.dumps(resolution,allow_nan=False))
+            for evidence, digest in resolution['evidence'].items():
+                if sha256(confined_path(self.root,evidence).read_bytes()).hexdigest() != digest:
+                    raise ValueError('Owner reconciliation evidence changed')
+            if target.read_bytes() != original:
+                raise ValueError('Pending effect changed during reconciliation')
+            self.write(name,dict(record,result=resolution['result'],reconciliation={
+                'pending_sha256':sha256(original).hexdigest(),'evidence':resolution['evidence']}))
 
     def tree(self, revision: str) -> dict[str,str]:
         paths=git(self.integration.path,'ls-tree','-r','--name-only','-z',revision).decode().split('\0')

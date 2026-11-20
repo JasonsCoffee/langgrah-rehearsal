@@ -19,6 +19,9 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Framework resilience amendments (2026-11-20): code-only fixes are isolated on codex/framework-resilience-fixes. Configurable stage allocations and authenticated abandoned-run recovery are retained. New frozen regressions cover operational malformed-output handling, preserved Judge explanations, per-author feedback, required context manifests and owner-validated effect reconciliation with live-call exclusion. The lobby run remains paused and its artifacts/state are excluded. Pause/resume and cross-cycle review reuse remain deferred proposals. Final offline suite: 570 passed (one existing warning); final graph compiled and listed as unity_coder. See docs/runtime-resilience.md for scope and validation; no merge or push is authorized.
+
+
 **Model-driven demo accepted — 2026-11-18.** Explicit human approval of
 `fb0ae7307066d1bec4152c45e0b13b3153aca8ab` was recorded for production-graph-live1.
 The exported graph finalized with pass at completion commit
