@@ -300,3 +300,15 @@ all 22 selected discovery/transport/freeze checks pass. Public operational resum
 continues the same cycle/candidate with accounting unchanged. The generic Bridge
 discovery diagnostic/reload behavior is a separate adapter follow-up; its runtime
 implementation remains untouched.
+
+The latest full offline regression passes **659 tests** (267.38 seconds; the
+existing collection warning remains). Resumed cycle-64 Red compiled and executed
+all 125 selected cases: 125 assertion failures, zero passes/skips, behavioral=true.
+Evidence SHA256 `65344c254b66f864b081ce16d26e0c8daf7d9e3d9cf95a6991c77bcf3560c8d2`.
+Native TDD froze the same 185 files. Delegated Green is active. Match returned a
+30,001-character JSON proposal with actual 265,954/6,991 input/output tokens.
+Shell's real two-turn staged-context request succeeded, retaining its context
+acknowledgement and final receipt with cumulative **696,334/8,762** tokens and a
+38,526-character JSON proposal. Economy is next/in flight. This proves the actual
+oversized-context transport path; it does not establish feature Green or human
+acceptance. All 23 historical uncertain reservations remain charged.
