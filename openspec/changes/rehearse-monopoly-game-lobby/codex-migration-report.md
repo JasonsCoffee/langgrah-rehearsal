@@ -213,3 +213,38 @@ Full offline regression after the routing/diagnosis additions: **642 passed** in
 performing the three actual author repairs; Appearance and Match have passed
 fresh source review. All runtime compiler/test evidence is still required before
 global freeze and implementation. The feature is not awaiting human review yet.
+
+Cycle-63 full baseline at candidate
+`786b8b7d452302c3bde629d0fe02058ae418c69e` compiled and executed all 125 selected
+cases with 125 assertion failures, zero passes and zero skips. The actual result
+is behavioral=true / failure_kind=assertion, establishing valid Red. Evidence
+SHA256: `794d45b287c6b9b5111690268d3c742e2ff42ec016489970bab21e89406f0094`.
+
+The native coordinator then globally froze 185 test/configuration files. Frozen
+map SHA256 (sorted JSON):
+`fee2c04feb0664042adadde501746f91f58901d3688f3e8777d72a014ebf39af`.
+All five implementation units are red_evidenced. Subsequent delegated code must
+preserve those exact bytes; no authoring or source-review cache can waive the
+frozen set. Green, Refactor, full verification and human review remain pending.
+
+The five first Green calls failed before any patch was admitted. Their original
+transport diagnostics were discarded. Exact reconstructed prompts match their
+paid receipt hashes: Shell has 1,840,818 characters and Match 1,131,292. Local
+no-inference probes confirm the installed Codex input validator rejects more
+than 1,048,576 characters; RPC framing itself accepted these payloads. All five
+reservations remain unknown, bringing the retained count to 23 and accounting
+to 98,267,806 input / 6,006,383 output. The explicit 125m input grant is pending
+native recovery; current limits remain 100m/12m/80.
+
+Target prompt wiring now removes only C# formatting/comments and compacts JSON
+metadata, proving token/literal identity and recording provided-text provenance.
+All normative Markdown and task/feedback text remain. Shell still exceeds the
+validator, so the new backend stages at most three context parts in one fresh
+read-only, tool-free worker session. Earlier turns must acknowledge context;
+only the final turn may propose a patch. Actual cumulative Codex usage and the
+earlier completed turn receipts are retained. Conservative aggregate reservation
+covers repeated context consumption; the approved per-request cap waiver remains.
+RPC failures now retain sanitized method/code information, never raw provider
+messages. These are isolated backend/host changes; the existing coordinator and
+trusted overlay are unchanged. Six compaction and three staging checks were
+frozen Red before implementation; all 45 selected backend/isolation checks pass.

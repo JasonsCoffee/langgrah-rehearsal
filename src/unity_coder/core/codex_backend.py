@@ -47,6 +47,7 @@ class CodexTurnResult:
     reasoning_output_tokens: int
     thread_id: str
     turn_id: str
+    context_turns: tuple[dict, ...] = ()
 
 
 def parse_turn_events(events: Iterable[dict]) -> CodexTurnResult:
@@ -55,9 +56,16 @@ def parse_turn_events(events: Iterable[dict]) -> CodexTurnResult:
     answer: str | None = None
     usage: dict | None = None
     completed = False
+    context_turns = []
     for event in events:
         method = event.get('method','')
         params = event.get('params',{})
+        if method == 'codex/contextTurnCompleted':
+            prior=parse_turn_events(params['events'])
+            if prior.text!='CONTEXT RECEIVED' or prior.context_turns:
+                raise ModelError('Context staging acknowledgement required')
+            context_turns.append(asdict(prior))
+            continue
         if method == 'model/rerouted':
             raise ModelError('Codex model rerouting is forbidden')
         event_thread = params.get('threadId')
@@ -97,8 +105,11 @@ def parse_turn_events(events: Iterable[dict]) -> CodexTurnResult:
             completed = True
     if not completed or usage is None or not thread or not turn or not answer:
         raise ModelError('Completed Codex answer and usage receipt required')
+    if any(p['thread_id']!=thread or p['input_tokens']>usage['inputTokens']
+           or p['output_tokens']>usage['outputTokens'] for p in context_turns):
+        raise ModelError('Context staging cumulative usage or identity changed')
     return CodexTurnResult(answer,usage['inputTokens'],usage['outputTokens'],
-        usage['cachedInputTokens'],usage['reasoningOutputTokens'],thread,turn)
+        usage['cachedInputTokens'],usage['reasoningOutputTokens'],thread,turn,tuple(context_turns))
 
 
 class CodexModelClient(ModelClient):
@@ -130,7 +141,9 @@ class CodexModelClient(ModelClient):
                 'budget_enforcement':self.policy.budget_mode}
 
     def reserve_input(self, prompt: str) -> int:
-        return len(prompt.encode('utf-8'))+self.policy.framing_tokens
+        from .codex_stdio import context_parts
+        count=len(context_parts(prompt))
+        return count*(len(prompt.encode('utf-8'))+self.policy.framing_tokens)
 
     def generate(self, prompt: str, *, max_output_tokens: int) -> ModelReply:
         raise ModelError('Codex requires a durable generate_operation call identity')
@@ -159,8 +172,9 @@ class CodexModelClient(ModelClient):
             result = parse_turn_events(events)
         except ModelError:
             raise
-        except Exception:
-            raise ModelError('Codex exchange requires owner reconciliation; no automatic replay') from None
+        except Exception as error:
+            raise ModelError('Codex exchange requires owner reconciliation; no automatic replay',
+                diagnostics={'transport':'codex_stdio','exception_type':type(error).__name__}) from None
         finally:
             close = getattr(events,'close',None)
             if callable(close):close()

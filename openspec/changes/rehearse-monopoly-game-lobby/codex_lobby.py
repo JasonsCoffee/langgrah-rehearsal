@@ -188,3 +188,35 @@ def reconcile_records_timeout(state: Path, contract: Contract, budget: BudgetLed
         'production_timeout_seconds':EXTENDED_PRODUCTION_TIMEOUT_SECONDS,
         'pilot_timeout_seconds':60,'prior_call_replayed':False,'human_accepted':False},indent=2).encode())
     return True
+
+
+def reconcile_green_dispatch(state: Path, contract: Contract, budget: BudgetLedger,
+                             services: LocalExecutionServices, integration: Path,
+                             settings: AIConfig) -> bool:
+    """Resume only the exact five failed, unapplied calls with all tests frozen."""
+    from operational_transport import retained_run_reservations
+    run=state/'.agent/runs/monopoly-game-lobby'
+    result=json.loads((run/'result.json').read_bytes());transaction=services.effects.read('transaction')
+    if (contract.contract_version!=63 or contract.sha256!='7934b54ab23da051e48ee32f91e7884ed95a56a4647cf71b1ac44a920509f0ae'
+        or result['outcome']!='operational' or result['candidate_revision']!='786b8b7d452302c3bde629d0fe02058ae418c69e'
+        or git(integration,'rev-parse','HEAD').decode().strip()!=result['candidate_revision']
+        or git(integration,'status','--porcelain') or not services.tdd.frozen
+        or not transaction['complete'] or transaction['operation']!='v63-step4-code'
+        or settings.coder.model!='gpt-6.2-sol' or settings.coder.effort!='low'
+        or settings.judge.model!='gpt-6.1-sol' or settings.judge.effort!='medium'):
+        raise ValueError('Exact frozen Green-dispatch recovery identity changed')
+    services.tdd.assert_frozen()
+    frozen=services.tdd._frozen_hashes
+    if len(frozen)!=185 or sha256(json.dumps(frozen,sort_keys=True).encode()).hexdigest()!='fee2c04feb0664042adadde501746f91f58901d3688f3e8777d72a014ebf39af':
+        raise ValueError('Global frozen test identity changed')
+    for unit in ('SHELL','ECON','MATCH','SOCIAL','RECORDS'):
+        worker=services.effects.read('worker-v63-step4-code-'+unit)
+        if not worker or 'result' in worker:raise ValueError('Failed coder result was admitted or disappeared')
+    retained=retained_run_reservations(state,budget._read())
+    if len(retained)!=23:raise ValueError('All twenty-three uncertain reservations must remain')
+    atomic_write(state,'recovery-authorizations/v63-codex-context-resume.json',json.dumps({
+        'candidate':result['candidate_revision'],'contract_sha256':contract.sha256,
+        'retained_uncertain':retained,'usage':budget.totals(),'frozen':frozen,
+        'reason':'Exact prompts exceed the local 1048576-character validator; prompt-only lexical compaction and bounded context staging preserve all source tokens and criteria.',
+        'prior_calls_replayed':False,'human_accepted':False},indent=2).encode())
+    return True

@@ -76,6 +76,9 @@ class Utf8Calls:
                     normalized+='\nREQUIRED REPAIR FINDINGS (address every item in the returned files):\n'+payload['feedback']
         except (ValueError,KeyError,TypeError):
             pass
+        if self.client.config.provider=='codex' and len(normalized)>1048576:
+            from prompt_lexical_compaction import compact_prompt
+            normalized=compact_prompt(normalized)
         if self.client.config.provider=='codex' and self.client.config.role=='judge':
             from codex_review_reuse import reuse_review
             reviewed=reuse_review(self.calls,call_id,unit_id,normalized,max_output_tokens)
@@ -608,6 +611,11 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
+            if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
+            from codex_lobby import reconcile_green_dispatch
+            executor.resume_operational(reconcile=lambda: reconcile_green_dispatch(state,contract,budget,services,integration.path,settings))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RECONCILE_BASELINE_COMPILE')=='1':
             from baseline_compile_route import arm
             routed=arm(state,contract,budget,services,integration.path,workers,settings)
