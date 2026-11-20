@@ -526,3 +526,16 @@ That is a delegated response, not a verified repair. Native batch admission and
 sequential Unity verification will judge the result. **Not awaiting human review
 yet.** Older snapshots below are historical evidence.
 
+
+Latest candidate: `b53644293a4b41c3d1253e32acb5334781fcaeab`, cycle 66,
+`v66-step12-verify` active for all 126 selections. Step-eight compilation failed
+with three SHELL diagnostics; step ten reduced that to one. Both completed
+post-audited checks received actual independent Judge implementation verdicts.
+SHELL has two failed attempts; its latest delegated partial-class logging adapter
+still requires compile/test proof. All 189 frozen files remain unchanged.
+Accounting is **120,042,941 input / 6,186,793 output**, including **24** historical
+uncertain reservations, under **125m / 12m / 80**. A 150m input request is pending,
+not approved or applied. Latest full offline suite: **699 passed**, graph compiled
+and listed. See `evidence/compile-repairs-v66.json`. **Not awaiting human review
+yet.** Earlier snapshots below are history.
+
