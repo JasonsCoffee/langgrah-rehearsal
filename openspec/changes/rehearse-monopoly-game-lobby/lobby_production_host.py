@@ -629,6 +629,12 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_ROUTE_FROZEN_TEST_V65')=='1':
+            from frozen_review_rework import arm
+            routed=arm(state,contract,budget,services,integration.path)
+            executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,routed)
+            executor.resume_operational(reconcile=lambda:routed.guard() is None)
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_BRIDGE_DISCOVERY_V64')=='1':
             from bridge_discovery_retry import reconcile_red_discovery
             executor.resume_operational(reconcile=lambda: reconcile_red_discovery(state,contract,budget,services,integration.path,host))
