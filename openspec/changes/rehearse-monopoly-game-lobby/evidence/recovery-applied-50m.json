@@ -1,0 +1,21 @@
+{
+  "version": 40,
+  "candidate": "24edea5fe472e7f4e7623cc937b5acec80d42ab2",
+  "contract_source": "architect-v40",
+  "contract_sha256": "a0289951700127c2c1ac42cd1235f3dbf3359f7e7407c533025dba7c913ea15c",
+  "preserved_usage": [
+    39689074,
+    3843328
+  ],
+  "limits": [
+    50000000,
+    12000000,
+    60,
+    2
+  ],
+  "retained_candidate": "5922b2a3d82913708c037f37ca543a950df405bc",
+  "original_host_files": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "original_baseline_checked": true,
+  "human_accepted": false
+}

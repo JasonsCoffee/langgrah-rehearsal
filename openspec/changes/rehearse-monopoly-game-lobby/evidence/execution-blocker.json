@@ -1,0 +1,66 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "native_result": {
+    "candidate_revision": "1970b38aaadfec7bfa950c9cdfccca81f6e1006c",
+    "contract_sha256": "b9cb4515fae2a20ae9c761b0501daf514729ab1d5da428af71f4ce8948720ebf",
+    "contract_version": 1,
+    "evidence_refs": [],
+    "format_version": 1,
+    "outcome": "operational",
+    "reason": "Model transport requires reconciliation",
+    "run_id": "monopoly-game-lobby"
+  },
+  "module_baseline": "1970b38aaadfec7bfa950c9cdfccca81f6e1006c",
+  "contract_sha256": "b9cb4515fae2a20ae9c761b0501daf514729ab1d5da428af71f4ce8948720ebf",
+  "model_calls": [
+    {
+      "call_id": "v1-step1-prepare-TEST-SHELL-TEST-SHELL-length-recovery-2",
+      "unit_id": "TEST-SHELL",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "role": "coder",
+      "output_limit": 16000,
+      "input_tokens": 16391,
+      "output_tokens": 16000,
+      "finish_reason": "length"
+    },
+    {
+      "call_id": "v1-step1-prepare-TEST-SHELL-TEST-SHELL-length-recovery-1",
+      "unit_id": "TEST-SHELL",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "role": "coder",
+      "output_limit": 24000,
+      "input_tokens": 21854,
+      "output_tokens": 24000,
+      "finish_reason": "length"
+    },
+    {
+      "call_id": "v1-step1-prepare-TEST-SHELL-TEST-SHELL",
+      "unit_id": "TEST-SHELL",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "role": "coder",
+      "output_limit": 12000,
+      "input_tokens": 21322,
+      "output_tokens": 12000,
+      "finish_reason": "length"
+    }
+  ],
+  "input_tokens_used": 59567,
+  "output_tokens_used": 52000,
+  "input_tokens_remaining": 240433,
+  "output_tokens_remaining": 38000,
+  "budget_reset": false,
+  "model_substitution": false,
+  "judge_calls": 0,
+  "tests_executed": 0,
+  "global_tests_frozen": false,
+  "implementation_dispatched": false,
+  "human_accepted": false,
+  "preservation": {
+    "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+    "original_files": 81134,
+    "materialized_candidate": "03c7a15c6e08b203eb33e10cd467cd71a43d8c25",
+    "full_byte_check_passed": true,
+    "pending_metadata": 0
+  },
+  "blocker": "Configured coder returned finish_reason length at all three bounded allowances without a complete content patch. Native worker intent has no usable result; test review/Red/freeze and implementation cannot proceed from these replies."
+}

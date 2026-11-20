@@ -1,0 +1,29 @@
+{
+  "budget_remaining": {
+    "input_tokens": 492662,
+    "output_tokens": 226408
+  },
+  "contract_sha": "eb8ea839e6df24832cb0cd75ce6532feaa0fb1dfbecaff66c054b1b7d58c88ac",
+  "contract_sha256": "eb8ea839e6df24832cb0cd75ce6532feaa0fb1dfbecaff66c054b1b7d58c88ac",
+  "contract_version": 6,
+  "dossier_version": 1,
+  "failed_units": [
+    {
+      "attempts": 3,
+      "criterion": "LOBBY",
+      "defect_class": "contract",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v6/evidence/v6-step3-prepare-review-TEST-PRES-CORE.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "preparation_exhausted"
+      ],
+      "hypothesis": "Independent judge findings for TEST-PRES-CORE: All eight named tests are active and contain meaningful behavioral assertions, with an acceptance map; however, important coverage remains ineffective or incomplete. (1) Story_L1_01 swallows every exception from Monopoly Enter/Resume/OnLaunchRequest/Leave/Exit. Resume and launch are tested only while already entered, and Exit/OnDestroy only after Leave released ownership, so no-op implementations of those paths can satisfy their assertions. Exercise each entry after release and each cleanup with live ownership, assert successful completion and Lobby/street outcomes, and do not suppress arbitrary exceptions. The existing-entry section does not assert its claimed initial street acquisition or Lobby navigation. (2) Story_L2_01's scan for exactly one method containing the literal '\u4e07' does not establish that both UI bindings call the shared formatter. Duplicate implementations using a shared constant or different string construction can pass, while a valid formatter using separate format strings can fail. Retain the independent boundary assertions but establish actual formatter use through resolved calls or observable invocation. (3) Story_L1_02 checks enabled named renderers and the first Animator, not that the equipped character is rendered in the central display by the relevant camera or that this character owns the tested Animator. State-retention checks do not assert that Back actually returns to Lobby. Add camera/display observations, bind animation assertions to the equipped character, and assert the transition before reopening. (4) The acceptance map omits observable coverage for mapped presentation clauses such as the upper-right menu layout and marquee placement below the character region; the latter checks only the badge's horizontal position. Pointer helpers also calculate screen coordinates before forcing layout, contrary to the preparation plan. Correct these gaps and update the map to match effective assertions. Expected failures against intentional runtime stubs are not themselves grounds for rejection. This is a source-based test-preparation review, not execution evidence or human acceptance.",
+      "id": "TEST-PRES-CORE"
+    }
+  ],
+  "reason": "budget",
+  "run_id": "monopoly-game-lobby",
+  "verdict": "fail"
+}

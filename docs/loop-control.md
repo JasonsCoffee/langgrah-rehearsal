@@ -97,6 +97,39 @@ seconds on another, and the token ceiling that governs a 40k-char C# context is
 wrong for a stack with smaller units. Derive `k` from gate duration, and the token
 ceiling from measured context size — not from this table.
 
+### Per-call output allocations
+
+The host supplies `StageTokenBudgets` for test authoring, Green implementation,
+refactoring, independent test review and defect judgment. The default allocations
+are 65,536 output tokens for each coder stage and 32,768 for each judge stage.
+These are replaceable starting allocations, not universal model capability caps.
+An explicit uniform `max_output_tokens` worker argument remains supported; it
+cannot be combined with a per-stage policy. Hosts with smaller run budgets must
+choose smaller allocations explicitly. A connection probe has its own small
+allocation and does not configure worker stages.
+
+Each role may declare `max_output_tokens` in local AI configuration using the
+selected endpoint's documented completion cap. An omitted cap leaves provider
+capability enforcement to the provider; the framework has no fixed 32,768-token
+ceiling. Both direct calls and durable calls validate positive integer allocations
+and the configured cap before transport. Durable calls do so before reservation.
+Requests exceeding a configured cap fail; they are never silently clamped.
+Reasoning tokens may share the provider's completion allowance, so a larger
+allocation alone does not guarantee a complete code response.
+
+Every stage still reserves its full output allowance and conservative UTF-8 input
+estimate against the same persistent run ledger before dispatch. A reservation
+that cannot fit fails before contacting the provider; it is never shrunk to the
+remaining balance. Reported usage is reconciled, including rejected responses;
+uncertain usage stays reserved. A context byte guard in a host is an additional
+assembly bound, not a model token estimate or a replacement for input accounting.
+
+The requested allocation remains part of paid-call identity. Changing it under
+an existing operation ID fails closed instead of replaying or charging again.
+Policy edits affect new operations only: they do not reset usage, refund uncertain
+calls, increase the cycle allowance or reopen a stopped run. No model identity,
+provider routing or temperature policy changes implicitly with token allocation.
+
 ## Termination
 
 | Outcome | Condition | Repo state | Dossier |

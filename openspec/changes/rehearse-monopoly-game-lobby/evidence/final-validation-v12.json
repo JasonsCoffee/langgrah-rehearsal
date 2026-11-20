@@ -1,0 +1,25 @@
+{
+  "contract_version": 12,
+  "full_framework_suite": {
+    "passed": 538,
+    "warning_count": 1,
+    "scope": "Latest full run after the separately authorized token recovery extension; not repeated at this final checkpoint"
+  },
+  "graph": "Compiled and listed unity_coder after the recovery extension; owned development server stopped",
+  "final_target_wiring_suite": {
+    "passed": 21,
+    "duration_seconds": 0.62,
+    "network": false,
+    "unity": false,
+    "note": "Sandbox fixture-directory permission failures were resolved by an escalated offline run in a new repository-local temporary directory; no test sources changed"
+  },
+  "openspec_strict_validation": "passed",
+  "git_diff_check": "passed",
+  "selected_lobby_editmode_tests_executed": 0,
+  "global_tests_frozen": false,
+  "implementation_dispatched": false,
+  "human_accepted": false,
+  "native_outcome": "abandon",
+  "reason": "budget",
+  "awaiting_human_review": false
+}

@@ -1,0 +1,10 @@
+{
+  "stage_output_tokens": {
+    "test_authoring": 65536,
+    "green": 65536,
+    "refactor": 65536,
+    "test_review": 32768,
+    "defect_judgment": 32768
+  },
+  "max_context_bytes": 2000000
+}

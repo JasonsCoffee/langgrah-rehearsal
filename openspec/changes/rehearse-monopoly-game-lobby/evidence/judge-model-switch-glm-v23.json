@@ -1,0 +1,73 @@
+{
+  "authority": "explicit user request in active session",
+  "request": "Please switch the judge to use glm-5.3-flash",
+  "run_id": "monopoly-game-lobby",
+  "contract_version": 23,
+  "contract_sha256": "ce1cadc7ec374d77b0693db3f19b756a31029205bab00a038abc2e7c879a069f",
+  "candidate_revision": "1f549a005cae6ed1e7501b379f4d42121b2add0c",
+  "coder": {
+    "role": "coder",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "openrouter",
+    "effort": "",
+    "temperature_mode": "zero",
+    "upstream_provider": "alibaba",
+    "max_output_tokens": null
+  },
+  "old_judge": {
+    "role": "judge",
+    "model": "openai/gpt-6-astra",
+    "provider": "openrouter",
+    "effort": "medium",
+    "temperature_mode": "provider",
+    "upstream_provider": "",
+    "max_output_tokens": null
+  },
+  "new_judge": {
+    "role": "judge",
+    "model": "z-ai/glm-5.3-flash",
+    "provider": "openrouter",
+    "effort": "medium",
+    "temperature_mode": "provider",
+    "upstream_provider": "",
+    "max_output_tokens": null
+  },
+  "config_before_sha256": "81c8c44629b56ace7fc09563f3bfc826bd07adf1843f9cb87c858d059f417ff7",
+  "config_after_sha256": "c87010214ff68e2581d2558320e7d657cf1b5e2bb40092996eb8e70abd1e0c00",
+  "usage_before": [
+    16017261,
+    2425426
+  ],
+  "limits": [
+    18000000,
+    5400000,
+    30,
+    2
+  ],
+  "human_acceptance_granted": false,
+  "provider_fallbacks": false,
+  "configured": true,
+  "probe_verified": false,
+  "probe_call": "judge-model-switch-v23-glm-5-3-flash-calibration",
+  "probe_error": "Expecting value: line 1 column 1 (char 0)",
+  "usage_after": [
+    16019923,
+    2491086
+  ],
+  "validation_status": "live_json_validation_blocked_by_tls",
+  "json_mode": {
+    "type": "json_object"
+  },
+  "unknown_probe_reservations_preserved": [
+    "judge-switch-v23-glm-json-review",
+    "judge-switch-v23-glm-json-review-retry1"
+  ],
+  "offline_tests": {
+    "passed": 50,
+    "frozen_json_mode_tests_sha256": "5703d75284909f8ef231a26726793e6254ab95e198c61a29bcf255d9b2f43f18",
+    "frozen_reservation_tests_sha256": "55add9ee28d8437e418a5f2cf6c031062e4693e0ed30bd3d9aea80f0494974ba"
+  },
+  "framework_runtime_changed": false,
+  "coder_changed": false,
+  "candidate_unchanged": true
+}

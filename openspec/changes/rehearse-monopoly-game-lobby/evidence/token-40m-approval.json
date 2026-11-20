@@ -1,0 +1,11 @@
+{
+  "authority": "explicit user reply in active session",
+  "question_item_id": "[\"request_user_input_async\",\"call_6ba30416c6d1444ea0d7d68d92c30fc8\",0]",
+  "reply": "Approve 40,000,000 / 12,000,000",
+  "input_limit": 40000000,
+  "output_limit": 12000000,
+  "max_cycles": 40,
+  "apply_only_at_supported_native_budget_recovery": true,
+  "preserve_all_usage_and_reservations": true,
+  "human_accepted": false
+}

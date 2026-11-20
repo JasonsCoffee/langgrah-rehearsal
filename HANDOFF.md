@@ -19,6 +19,138 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Latest lobby continuation (2026-11-20): Cycle 51 is stopped operationally on OpenRouter HTTP 403 openrouter_key_limit for the configured Sol judge. Exact candidate a21e01720dacd61d3604adca068f0b7a50e8ce6c; contract 3ed35231482ffa193e9502979fe1d71d397673fc33f5e7d3fa449ca13e10417f. Accounting 57,277,785 input / 4,419,334 output under active 75m/12m/60, with fifteen uncertain reservations retained. All 114 frozen wiring checks passed (8.76s); exact-candidate/81,134-file host baseline/import and Bridge audit passed. Configured models and overlay hashes unchanged. The latest Social coder repair is admitted but awaiting actual Sol review. Explicit provider-allowance restoration confirmation is required before invoking the prepared public resume. No global freeze, implementation dispatch or selected lobby Unity execution has occurred; not awaiting human review. The host still materializes old compile-only candidate 28604eb781dbee5c2cb137623f4e8b7e46132348. See the active change provider-blocker-v51.md and evidence/provider-stop-v51.json. Earlier entries below are history.
+
+
+Latest lobby continuation (2026-11-20): Native recovery into cycle 47 applied the explicit 75m input grant with 12m output / sixty cycles unchanged. Preserved accounting 49,535,105 / 4,190,564 and fourteen uncertain reservations. Baseline candidate 06ec723893855c12305a4a007a5e8b68f2484b81; contract a55661b8b6817baaae2e20931b83f19b3269ddcff4dc6e6c1bcde7ee557bd550. Original 81,134-file host baseline/import audit passed. Configured coder and Sol, trusted overlay and frozen-test rules unchanged; only the two expressly approved author-only low-effort scopes apply. Source preparation is running. No global freeze, feature implementation or selected lobby Unity execution yet; not awaiting human review. See the active change evidence/recovery-applied-75m.json. Earlier entries below are history.
+
+
+Latest lobby continuation, cycle 44 (2026-11-20): approved 50m input / 12m output and sixty cycles are active, applied through native recovery in cycle 40 with all usage and fourteen uncertain reservations preserved. Configured coder and Sol judge, trusted overlay and frozen-test rules remain. Message tests and Party repair passed actual source review in cycle 44; Social review is running. No global freeze, feature implementation or selected lobby Unity execution yet. This is not awaiting human review. See the active change continuation-status.md and evidence/recovery-applied-50m.json. Earlier entries are history.
+
+
+Latest lobby stop, cycle 39 (2026-11-20): actual native abandon/budget. Accounting 39,689,074 / 3,843,328 under 40m/12m and forty cycles; all fourteen unknown reservations retained. Input 50m and sixty-cycle requests are pending, not approved. Candidate 5922b2a3d82913708c037f37ca543a950df405bc; contract 44773395c5b883505f1f0e89bd8ac569c7af0ff164a6ba9b78c8fab2f3986cdd. All 104 wiring checks and final 81,134-file host/import audit passed. No global freeze, implementation or selected lobby Unity execution. Not awaiting human review. No runtime edits in this continuation. Read the active change's continuation-status.md and evidence/budget-stop-v39.json before any recovery; never replay an older grant. Earlier entries are history.
+
+
+Latest lobby recovery, cycle 33 (2026-11-20): approved 40m/12m totals applied through authenticated native recovery at actual cycle-32 budget abandonment. Forty cycles; accounting 29,690,437 / 3,606,525 with all fourteen uncertain reservations. Original 81,134-file host baseline checked; configured models, authoring-only none opt-in and overlay remain. All 104 wiring checks pass. No global freeze, implementation dispatch or selected Unity execution yet. See the active change's evidence/recovery-applied-40m.json. Earlier status is history.
+
+
+Current continuation, cycle 30 (2026-11-20): the explicitly approved author serialization opt-in is active only for non-harness test authoring when coder effort is unset. Explicit effort settings win; harness stays low; coder DeepSeek V4.1 Flash/Alibaba, temperature, 65,536 output cap, 180-second deadline and independent Sol judge remain unchanged. Native transition preserved 26,550,757 input / 3,557,055 output accounting, including fourteen uncertain reservations, under 30,000,000 / 9,000,000 totals and forty cycles. Baseline candidate `2b1ea8525e98899e92dab8b6c4ff726f64335c97`; contract `8dbd374b973ad3cb264213107a46980bf5750e89d809cfae7fd284fec43933ac`. All 104 offline wiring checks pass. No global freeze, implementation dispatch or selected lobby Unity execution is claimed. Earlier status below is history.
+
+
+**Latest lobby recovery, cycle 29 - 2026-11-19.** The user-approved 30m/9m totals
+and forty cycles are now applied through authenticated native recovery at the
+actual cycle-28 budget abandonment. Accounting is preserved at
+23,989,795 / 3,239,024, including twelve unknown paid-call reservations. Original
+81,134-file host baseline checked successfully; overlay source unchanged. Cycle
+29 baseline is 0e3559fcd0a4b561e20788f7d8d473784d1ef787; contract
+bd3a914c6d189ae3ba2d3c12ea9827d9918bf876fe9e01b780bc8d19406a3e4e.
+Guarded direct TLS is active for the unchanged coder and Sol judge, with bounded
+public operational recovery only for proven zero-HTTP effects. Unknown paid
+failures stop and retain reservations. Strict anchor retry now supplies the actual
+rejected response and diagnostic occurrence counts; no delegated source is
+handwritten. All 94 wiring plus 35 existing native recovery tests passed. No
+runtime edits in this continuation. Native cycle 29 is running; no global freeze,
+implementation dispatch or selected lobby Unity execution yet. See the active
+change's sol-connection-recovery-report.md. Earlier entries are history.
+
+**Direct TLS recovery and cycle 26 - 2026-11-19.** Target-only connection setup
+recovery establishes verified direct TLS before sending one authenticated request;
+no post-send retry or proxy is used. Sol reviews and coder calls returned through
+this path. Seventy-seven frozen offline checks pass. Native cycle 25 ended rework
+on two remaining matchmaking-test affordability oracles after six fixtures passed
+source review. Cycle 26 starts at 33dccf57b4d1c14f109929bc2f02b8f570e8daa2,
+contract df46bdb6c912f7b2ba8e78901fa5619f928e6514cc3c323d0969e7d43e2a7bde.
+The approved 24m/7.2m totals were applied at a real native budget boundary;
+accounting is 20,249,231 / 2,904,083 with all eleven unknown reservations retained.
+Thirty cycles, coder/model policies, independent Sol, trusted overlay, original
+81,134-file baseline and frozen-test rules remain. No runtime edits in this
+continuation. No global freeze, implementation or selected lobby Unity execution
+is claimed. See the active change's sol-connection-recovery-report.md. Older
+status entries below are history.
+
+**Latest Sol retry blocked - 2026-11-19.** Sol calibrations passed and the coder's
+anchor repair was admitted. Candidate: cd868e9603a5aaf74509dabcdaff15394a893cf4.
+Both native Sol source-review requests (cycle 24 steps four and five) failed in
+the connection/response transport without content, HTTP status or usage. One
+bounded operational retry reused the exact admitted coder patch. Both unknown
+reservations remain; accounting is 17,682,478 / 2,667,662 including eight unknown
+calls. Active limits remain 18m/5.4m and thirty cycles; approved 24m/7.2m awaits
+native budget-abandon recovery. No process remains in flight. Current outcome
+is operational, not awaiting_human_review. Coder, trusted overlay, strict parsing,
+independent judge and frozen-test rules remain; no runtime modification.
+See judge-sol-retry-report.md in the active change for the exact evidence.
+
+**Cycle-24 author-format recovery - 2026-11-19.** Sol is configured and its real
+calibrations passed. The native retry stopped after two complete coder replies
+anchored an absent helper declaration; no patch was admitted. Exact stop candidate:
+0230cd671319877bfa8f50b01a446beb547cc8db. Accounting including retained reservations:
+16,729,990 / 2,588,172. The target host reconciled the exact completed effects and
+six uncertain reservations, then used public operational resume for another
+delegated attempt with the diagnosed anchor mismatch. All 63 offline wiring
+checks passed. Strict parsing, independent Sol review, coder, overlay, active
+18m/5.4m limits and thirty cycles remain; approved 24m/7.2m awaits native budget
+recovery. No global freeze, implementation or selected Unity test pass is claimed.
+See the active change's judge-sol-retry-report.md for subsequent results.
+
+**Sol judge and active retry - 2026-11-19.** The user now selected
+openai/gpt-6.1-sol; DeepSeek V4 Pro was never activated. Two real Sol JSON
+calibrations passed through the target-only verified TLS-1.2/application-identity
+wire. Medium effort and provider temperature remain; the DeepSeek V4.1 Flash
+coder is unchanged. Sixty-three offline wiring checks pass. No framework runtime
+changed. Native cycle 24 is running from baseline
+093c60800d1e1c8ab737b0f346d31f6ee3ec5a15. All six uncertain reservations remain;
+usage at transition is 16,022,575 / 2,556,726. Limits remain 18m / 5.4m and thirty
+cycles; the approved 24m / 7.2m amendment awaits a supported recovery boundary.
+Harness, presentation core/NFR passed Sol source review; appearance/shop repair
+is delegated. No global freeze, implementation dispatch, selected lobby Unity
+execution or human-review offer yet. See judge-sol-retry-report.md in the active
+lobby change. The unused task-started proxy was stopped, with system proxy off.
+Earlier status entries remain history.
+
+**Active lobby continuation — 2026-11-19.** Same run is in cycle 23 with
+18,000,000 input / 5,400,000 output token totals and thirty authorized cycles.
+Every charge and both uncertain reservations remain: 14,905,890 / 2,291,302 at
+the latest transition. Five fixtures passed source review in cycle 22; the six
+Tier/UI tests still need repair. Existing methods are byte-preserved across
+payment/VIP and tier/queue/party partials; Friends/Chat authoring is separated.
+All 125 selected IDs, inherited repair lineage, configured models, independent
+judge, trusted overlay and frozen-test rules remain. Current baseline:
+b10bdc6a738e53f85eeaccbff127e1e5b91d18e5. All forty offline wiring checks passed.
+No global freeze, implementation dispatch, selected lobby EditMode execution or
+human-review offer yet. Architect observations route catalog/test inconsistencies
+to delegated repair; no behavior or assertion body is handwritten. Framework
+runtime is unchanged in this continuation. See thirty-cycle-report.md in the
+active lobby change for exact identities, proofs and limitations.
+
+**Latest lobby continuation — 2026-11-19.** Explicit cycle and token grants raised
+the same run to twelve cycles and 6,000,000 input / 1,800,000 output tokens.
+Typed TokenRecoveryGrant retains the cycle-only grant format and all charges;
+D-30 documents that separately authorized extension. Latest full suite: 538
+passed; graph compiled/listed/stopped; target wiring suite: 21 passed. Native
+cycle 12 ended abandon/budget after independent NFR test-preparation rejection.
+Total accounting is 5,547,196 input / 1,292,359 output, including the retained
+274,267 / 32,768 HTTP-502 reservation. No global freeze, selected lobby EditMode
+execution, implementation dispatch or human-review offer occurred. All 81,134
+original host files and unchanged overlay were verified; pending metadata is zero.
+See openspec/changes/rehearse-monopoly-game-lobby/cycle12-report.md and its final
+evidence. Malformed-output exception handling needs a separate runtime fix.
+
+**Uncommitted same-run recovery extension — 2026-11-19.** The user authorized
+audited recovery after the lobby run's cycle-budget abandonment. New
+`src/unity_coder/core/recovery.py` authenticates a result-bound RecoveryGrant, archives terminal
+evidence, preserves all accounting/lineage, and publishes the amended ledger last.
+D-29 records the narrow superseding decision. Twenty-three new tests were frozen
+before implementation; full offline suite: 526 passed, one existing warning.
+Graph compiled/listed and stopped. The separate host/context suite has 11 passes.
+The same lobby run recovered into version 4 with six total cycles, retaining
+3,000,000 input / 900,000 output token ceilings and all previous usage. It later
+exhausted cycle 6 in test preparation, not implementation: native abandon/budget,
+no global freeze, selected Unity tests or human-review offer. All 57 calls settled
+at 2,507,338 input / 673,592 output. Full original host preservation passed.
+No model substitution, approval, mainline commit, push or merge. Exact feature
+limits and continuation evidence are in
+openspec/changes/rehearse-monopoly-game-lobby/safe-recovery-report.md.
+
 **Model-driven demo accepted — 2026-11-18.** Explicit human approval of
 `fb0ae7307066d1bec4152c45e0b13b3153aca8ab` was recorded for production-graph-live1.
 The exported graph finalized with pass at completion commit

@@ -1,0 +1,18 @@
+{
+  "contract_sha256": "e73fd2293eee0ef5dee4f53f10cb3beec1d304f2edd7377cddc3d24f4b1f2fc4",
+  "candidate": "1466e3b7344e69329f3e56da02b3ac173edd86ed",
+  "paid_calls": 0,
+  "context_bytes": 610428,
+  "late_guides": {
+    "chat-presentation.v46.md": "c0fb96d884a39626885f373f206653ed7549b4a2cab6d534b1f5eb5b87c9a402",
+    "chat-observation.v48.md": "33a48a832fdfa20001a47a25292fb3a559ca934a03478dcf0cbeaaeb7b877f17",
+    "chat-transitions.v52.md": "2d6248877f3e5fbc6baa7a17412f9f8377f05ff4e13e32a2e49dc122ab448e56",
+    "chat-row-observation.v54.md": "a331cbf63759d05b930a570de74f1288b1f1befb1612758e8a48f8c28046f217",
+    "records-oracles.v55.md": "f85bfe8fd1c2ae71b0ff258ee431dfe0ea3347a3d712d977965651ead22c9799",
+    "records-observation.v57.md": "b7f019677b0726f19066ea5c1ccda677c1c8dbc3f5b1da2a588e9898f472c712",
+    "framework-quality-context.v58.md": "264ac11b07b2ee82218c9da237fdc7ba966f720825c5df8a6076660305bb3526",
+    "records-sdk-guidance.v58.md": "bedaee772c8a8e13c67a4e636661b46b0923a9c228639df0d57bdb699c65c810"
+  },
+  "quality_api_present": true,
+  "declared_quality_slots_present": true
+}

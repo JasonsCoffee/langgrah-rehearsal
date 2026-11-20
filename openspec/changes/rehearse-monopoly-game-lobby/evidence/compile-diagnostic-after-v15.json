@@ -1,0 +1,150 @@
+{
+  "scope": "Architect compile-only diagnostic, not native Red/Green or test execution",
+  "retained_candidate": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+  "diagnostic_candidate": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+  "error": "Preparation compile failed; inspect prepared-shell-compile.json",
+  "compile_receipt": {
+    "stage": "architect-preparation",
+    "execution_contract_frozen": false,
+    "candidate": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+    "evidence": {
+      "request": {
+        "request_id": "lobby-preparation-compile-28604eb781db",
+        "run_id": "monopoly-game-lobby",
+        "contract_version": 1,
+        "contract_sha256": "13d7cf84d8cf69cf49a41ec67e45b808a52a9955fc5e84e0576b2c5bbbe0d607",
+        "candidate_revision": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+        "presentation_sha256": "13d7cf84d8cf69cf49a41ec67e45b808a52a9955fc5e84e0576b2c5bbbe0d607",
+        "coding_profile_sha256": "13d7cf84d8cf69cf49a41ec67e45b808a52a9955fc5e84e0576b2c5bbbe0d607",
+        "environment_sha256": "13d7cf84d8cf69cf49a41ec67e45b808a52a9955fc5e84e0576b2c5bbbe0d607",
+        "test_selection": [],
+        "full_suite": false
+      },
+      "compilation": {
+        "passed": false,
+        "violations": [
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(20,15): error CS1061: 'LobbyEconomyTests.Ctx' does not contain a definition for 'Activate' and no accessible extension method 'Activate' accepting a first argument of type 'LobbyEconomyTests.Ctx' could be found (are you missing a using directive or an assembly reference?)"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(21,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(22,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(30,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(32,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(34,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationNfrTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyPresentationNfrTests.cs(120,29): error CS0104: 'ChatVM' is an ambiguous reference between 'jj.Reserve04.Runtime.LobbyRehearsal.ChatVM' and 'jj.Reserve04.Runtime.ChatVM'"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationNfrTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyPresentationNfrTests.cs(120,45): error CS0104: 'ChatPresenter' is an ambiguous reference between 'jj.Reserve04.Runtime.LobbyRehearsal.ChatPresenter' and 'jj.Reserve04.Runtime.ChatPresenter'"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationNfrTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyPresentationNfrTests.cs(120,68): error CS0104: 'ChatView' is an ambiguous reference between 'jj.Reserve04.Runtime.LobbyRehearsal.ChatView' and 'jj.Reserve04.Runtime.ChatView'"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(93,19): error CS1061: 'LobbyEconomyTests.Ctx' does not contain a definition for 'Activate' and no accessible extension method 'Activate' accepting a first argument of type 'LobbyEconomyTests.Ctx' could be found (are you missing a using directive or an assembly reference?)"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(178,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(192,15): error CS1061: 'LobbyEconomyTests.Ctx' does not contain a definition for 'Activate' and no accessible extension method 'Activate' accepting a first argument of type 'LobbyEconomyTests.Ctx' could be found (are you missing a using directive or an assembly reference?)"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(205,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(215,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(226,15): error CS1061: 'LobbyEconomyTests.Ctx' does not contain a definition for 'Activate' and no accessible extension method 'Activate' accepting a first argument of type 'LobbyEconomyTests.Ctx' could be found (are you missing a using directive or an assembly reference?)"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(230,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(245,15): error CS1061: 'LobbyEconomyTests.Ctx' does not contain a definition for 'Activate' and no accessible extension method 'Activate' accepting a first argument of type 'LobbyEconomyTests.Ctx' could be found (are you missing a using directive or an assembly reference?)"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyEconomyRechargeTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyEconomyRechargeTests.cs(261,13): error CS0103: The name 'Run' does not exist in the current context"
+          },
+          {
+            "code": "compile",
+            "file": "Assets/JJGame/monopoly/Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationNfrTests.cs",
+            "symbol": "",
+            "message": "Assets\\JJGame\\monopoly\\Tests\\Runtime\\Script\\LobbyRehearsal\\LobbyPresentationNfrTests.cs(406,31): error CS0118: 'Monopoly' is a namespace but is used like a type"
+          }
+        ],
+        "operational_error": null
+      },
+      "tests": null
+    }
+  },
+  "budget_unchanged": true,
+  "selected_tests_executed": 0,
+  "human_accepted": false,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0"
+}

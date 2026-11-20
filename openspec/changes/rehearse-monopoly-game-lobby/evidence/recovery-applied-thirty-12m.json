@@ -1,0 +1,23 @@
+{
+  "version": 13,
+  "candidate": "738d3aff7fabaef2432ebf3c8273cebb267b0e62",
+  "contract_source": "architect-v13",
+  "contract_sha256": "552f1937773464b208a7a0d557d9361c9c65c1670b65bbae8da80f19ff035d45",
+  "run_id": "monopoly-game-lobby",
+  "recovery": "lobby-extend-thirty-12m",
+  "preserved_usage": [
+    5547196,
+    1292359
+  ],
+  "limits": [
+    12000000,
+    3600000,
+    30,
+    2
+  ],
+  "retained_candidate": "0b76a62a5fbf800cffaaab2fb3ef39dc7d994419",
+  "original_host_files": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "original_baseline_checked": true,
+  "human_accepted": false
+}

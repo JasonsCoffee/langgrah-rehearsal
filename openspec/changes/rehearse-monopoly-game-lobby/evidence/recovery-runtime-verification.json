@@ -1,0 +1,29 @@
+{
+  "scope": "Authenticated same-run recovery after cycle-budget abandonment",
+  "frozen_test": "tests/test_abandoned_recovery.py",
+  "frozen_test_sha256": "50dbd5a320a5f9b92739be193e2f46b5f29b4b778219bb88bdc2aaf601aa9fa1",
+  "pre_implementation": "23 errors because unity_coder.core.recovery did not exist",
+  "focused_recovery_and_cycle_transition": { "passed": 33 },
+  "host_policy_governor_and_budget": { "passed": 21 },
+  "full_framework_suite": {
+    "command": "uv run pytest -q",
+    "passed": 526,
+    "warnings": 1,
+    "warning": "Existing TestResult dataclass collection warning in test_human_review.py",
+    "duration_seconds": 243.72
+  },
+  "graph": {
+    "command": "uv run langgraph dev --allow-blocking --host 127.0.0.1 --port 2027 --no-browser",
+    "process_environment": { "PYTHONUTF8": "1" },
+    "compiled": true,
+    "listed_graph_id": "unity_coder",
+    "listing_endpoint": "/assistants/search",
+    "executed": false,
+    "owned_server_stopped": true
+  },
+  "openspec_validation": "passed",
+  "trusted_overlay_sha256": "851246aa66bc5cb68a18ed97d6df0e29f0c63ef5071e94bf3329e45c89b5479f",
+  "overlay_host_sha256": "53301fcbc46abc2c7d316b9fd82af64e8fdc19bfbe71a23d8a0f19390ac2c190",
+  "paid_model_calls_for_runtime_tests": 0,
+  "human_accepted": false
+}

@@ -1,0 +1,16 @@
+{
+  "candidate": "91ee94eed8f85e6f9a4a19ba267a34b8e6dcd8d6",
+  "previous_candidate": "7ceb5df2b1c1ccd993c9b360b6e7619cbe1e2618",
+  "changed": {
+    "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/LobbyView_placeHolder.prefab": "b941741c6d1a2d1f71f6dc0eab603c02cf453efb8b6ea3b78a84856e3477f106",
+    "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/RechargeView_placeHolder.prefab": "2152a7a16146eaeffacb6fdb46b60bedf59feac0e5ebb37a5d90062c90b3f1c4"
+  },
+  "added": {
+    "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/SharedWallet_placeHolder.prefab": "950cfeef315b14f20835600c2acaa050147e7023d857924937f6864c114844ff",
+    "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/SharedWallet_placeHolder.prefab.meta": "ff4a85e5da6eae03f5b3c899ceff5dad7aff7f329765e85ceeb90a439c5c4eae"
+  },
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "original_files_checked": 81134,
+  "trusted_overlay_changed": false,
+  "business_logic_written": false
+}

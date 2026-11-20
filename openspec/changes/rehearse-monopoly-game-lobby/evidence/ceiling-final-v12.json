@@ -1,0 +1,127 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "native_result": {
+    "candidate_revision": "0b76a62a5fbf800cffaaab2fb3ef39dc7d994419",
+    "contract_sha256": "eef8d5bfc4273a350b990dd734cdd324f3fab5e9713e7eea773c194813ca5a38",
+    "contract_version": 12,
+    "evidence_refs": [
+      ".agent/runs/monopoly-game-lobby/dossier-v12.json"
+    ],
+    "format_version": 1,
+    "outcome": "abandon",
+    "reason": "budget",
+    "run_id": "monopoly-game-lobby"
+  },
+  "governor_stop": {
+    "reason": "budget",
+    "used": [
+      5547196,
+      1292359
+    ]
+  },
+  "retained_branch": "agent/monopoly-game-lobby/cycle-12",
+  "restored_baseline": "3b70b8b6f8d1f5293816e31b53a330c8562b785a",
+  "limits": [
+    6000000,
+    1800000,
+    12,
+    2
+  ],
+  "usage_including_reservations": [
+    5547196,
+    1292359
+  ],
+  "settled_usage": [
+    5272929,
+    1259591
+  ],
+  "uncertain_reservations": {
+    "v8-step3-prepare-review-TEST-PRES-CORE": [
+      274267,
+      32768
+    ]
+  },
+  "remaining_tokens": [
+    452804,
+    507641
+  ],
+  "consumed_cycles": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "paid_calls": 105,
+  "calls_by_role": {
+    "coder": 51,
+    "judge": 54
+  },
+  "models": [
+    "deepseek/deepseek-v4.1-flash",
+    "openai/gpt-6-astra"
+  ],
+  "global_tests_frozen": false,
+  "implementation_dispatched": false,
+  "selected_unity_tests_executed": 0,
+  "framework_tests_passed": 538,
+  "target_wiring_tests_passed": 21,
+  "human_accepted": false,
+  "awaiting_human_review": false,
+  "dossier": {
+    "budget_remaining": {
+      "input_tokens": 452804,
+      "output_tokens": 507641
+    },
+    "contract_sha": "eef8d5bfc4273a350b990dd734cdd324f3fab5e9713e7eea773c194813ca5a38",
+    "contract_sha256": "eef8d5bfc4273a350b990dd734cdd324f3fab5e9713e7eea773c194813ca5a38",
+    "contract_version": 12,
+    "dossier_version": 1,
+    "failed_units": [
+      {
+        "attempts": 3,
+        "criterion": "LOBBY",
+        "defect_class": "contract",
+        "evidence_refs": [
+          ".agent/runs/monopoly-game-lobby/services-v12/evidence/v12-step3-prepare-review-TEST-PRES-NFR.json"
+        ],
+        "gate": "tests",
+        "history": [
+          "preparation_exhausted"
+        ],
+        "hypothesis": "Independent judge findings for TEST-PRES-NFR: All four named methods are enabled [Test] methods with substantive behavioral assertions and an acceptance map. NFR_02–04 provide meaningful routing, unread-count and account-isolation coverage. However, NFR_01 still has preparation defects. (1) RootComposition.Create creates an EventSystem when none exists, calls UpdateModules(), then immediately requires currentInputModule to equal the attached module. UpdateModules refreshes the available modules; it does not select the current module. Without an EventSystem update/activation cycle, this fresh-fixture path fails before shell behavior is exercised. Establish module activation through the appropriate lifecycle before asserting it. (2) The popup occlusion oracle projects both rectangles in TryRectScreenIntersection using the popup's eventCamera, although other graphics can belong to overlay canvases or different cameras. Visibility checks subsequently use each graphic's own camera. These inconsistent coordinate systems can miss actual overlaps. Project each graphic using its effective rendering camera. (3) AssertPopupTopOverVisibleGraphics requires generated samples but never requires any sample to reach an actual occlusion comparison: every sample may be skipped when popupAtPoint is empty. Its fixed grid and unclipped intersection centers can also miss a partially clipped occluder's visible region. Require a nonempty set of verified visible popup samples and sample intersections after accounting for clipping. The acceptance map currently overstates this coverage. These are source-based test-preparation findings, not an execution result or human acceptance decision; unimplemented runtime stubs are not the reason for rejection.",
+        "id": "TEST-PRES-NFR"
+      }
+    ],
+    "reason": "budget",
+    "run_id": "monopoly-game-lobby",
+    "verdict": "fail"
+  },
+  "trusted_overlay_unchanged": true,
+  "preservation": {
+    "full_original_file_check_passed": true,
+    "original_files": 81134,
+    "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+    "materialized_preparation_candidate": "91ee94eed8f85e6f9a4a19ba267a34b8e6dcd8d6",
+    "pending_metadata": 0
+  },
+  "wiring_sha256": {
+    "lobby_production_host.py": "8496aa041c4ecd9e2c2a74947aa343d38bd0cfcd1286de65641e667856f7b05f",
+    "rehearsal_model_transport.py": "05390605a280ad04dce614165a00d8675f4dd1b8db839ecc58be8ef562e96966",
+    "scoped_context.py": "5df6365d1d3bc71b0329120b71b73c535ac59baa6f33d4dc681f2b3e60dced50",
+    "compact_context.py": "1ef52c50d239e4f2b5356c5e5ffaf6e17be561e77fe438037f811226d419048a",
+    "guarded_author.py": "6ebd588e2ef212df515727fa62d0fd3ac96705ede0be7fc791bf41e8e9b37182",
+    "operational_transport.py": "23e15b6e79af9304d924a46c12dd219acfb846e1432cc8912e447d15dcec0d07",
+    "continue_lobby_rework.py": "af799221e79f78591c4461addc0fbb49ceef288595dd45a93dfa0472d53a9cca",
+    "token-policy.json": "53ef5a18610cdaf47ecea77c65834b060aca954eb74225d88bd5c79c8734187f",
+    "trusted_overlay.py": "851246aa66bc5cb68a18ed97d6df0e29f0c63ef5071e94bf3329e45c89b5479f",
+    "overlay_host.py": "53301fcbc46abc2c7d316b9fd82af64e8fdc19bfbe71a23d8a0f19390ac2c190"
+  }
+}

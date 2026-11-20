@@ -1,0 +1,25 @@
+{
+  "transport": "native_full_file",
+  "unit": "TEST-CHAT-STATE",
+  "contract_sha256": "5597cb71b2157b83cb4ee618133ba0cf9d708de54542479474f712173d1e7012",
+  "file_sha256": {
+    "Tests/Runtime/Script/LobbyRehearsal/LobbyChatStateTests.cs": "125d96cbc7e7d01e64f0bdb4c278e77d6b8f8c9dfa314ebaa46ee13886345d74",
+    "Tests/Runtime/Script/LobbyRehearsal/LobbyChatStateTests.focused-v39.md": "e54b68b28ccf92bc5511d6a647a0d9d79f13139f4c9edaeaafd45d25194077ed",
+    "Tests/Runtime/Script/LobbyRehearsal/LobbyChatStateTests.repair-v54.md": "05f5a21aa399b2a86aa0dad571d5aaa6979ea991ac2afb77b58fc7e66cd48104",
+    "Tests/Runtime/Script/LobbyRehearsal/LobbyChatStateTests.repair-v54.md.meta": "bf1e79d6dde7757e0bc04a663e51b13a0e873c54984fe86b2fea18b55699745a",
+    "Tests/Runtime/Script/LobbyRehearsal/LobbySocialChatTests.focused-v23.md": "78352ba408745c54d52ee9cb5efcac412fd0c7ac0e8201b29f2c218eb444f8bf"
+  },
+  "actual_calls": [
+    "v60-step4-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE"
+  ],
+  "paid_receipts": [
+    {
+      "call_id": "v60-step4-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE",
+      "receipt_sha256": "a53cc08c35361e12aa8fe569247d0ce5a2e419a9ad7cc54634d51ca2210e94c2"
+    }
+  ],
+  "worker_sha256": "ed31c9e6685ab95b65f688df1abd5dc0628c505b1e9acc3fb2404bfc05b0478f",
+  "apply_sha256": "ee53491a1bd6a515e45dd0eeb1d9f5123cf380c6cf08742d87e122b1c16dcf77",
+  "candidate": "0519b568003ae4f820122ec8ef94016a068597f2",
+  "human_accepted": false
+}

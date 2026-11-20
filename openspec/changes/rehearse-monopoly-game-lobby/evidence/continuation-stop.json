@@ -1,0 +1,56 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "native_result": {
+    "candidate_revision": "c5143932bf382787c5504793a44871b8a2a48c3a",
+    "contract_sha256": "b5327aca88ae74fe133ec62c2164645278ba17684b6ba1173efdeeda495ec8cf",
+    "contract_version": 3,
+    "evidence_refs": [
+      ".agent/runs/monopoly-game-lobby/dossier-v3.json"
+    ],
+    "format_version": 1,
+    "outcome": "abandon",
+    "reason": "budget",
+    "run_id": "monopoly-game-lobby"
+  },
+  "limits": [
+    3000000,
+    900000,
+    3,
+    2
+  ],
+  "used": [
+    918325,
+    300946
+  ],
+  "token_allowance_remaining": [
+    2081675,
+    599054
+  ],
+  "cycle_versions": [
+    "1",
+    "2",
+    "3"
+  ],
+  "model_calls_by_role": {
+    "coder": 18,
+    "judge": 12
+  },
+  "configured_model_identities": [
+    "deepseek/deepseek-v4.1-flash",
+    "openai/gpt-6-astra"
+  ],
+  "trusted_overlay_unchanged": true,
+  "framework_runtime_changed": false,
+  "global_tests_frozen": false,
+  "tests_executed": 0,
+  "implementation_dispatched": false,
+  "human_accepted": false,
+  "preservation": {
+    "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+    "original_files": 81134,
+    "materialized_candidate": "faf61e3c958f9b5dfd7e589d23a8c2cb457e597f",
+    "full_byte_check_passed": true,
+    "pending_metadata": 0
+  },
+  "blocker": "Native run abandoned after three contract preparation cycles; token ceilings were increased tenfold but the original three-cycle ceiling remained. BudgetLedger rejects stopped dispatch, resume_operational excludes abandon, and transition_cycle requires a completed rework outcome. No supported same-run budget-abandon resume exists in the unchanged runtime."
+}

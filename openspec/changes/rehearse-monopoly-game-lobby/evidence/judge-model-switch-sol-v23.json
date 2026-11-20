@@ -1,0 +1,67 @@
+{
+  "authority": "explicit user request",
+  "request": "switch the Judge to GPT-6.1 Sol, and try again",
+  "run_id": "monopoly-game-lobby",
+  "candidate_revision": "1f549a005cae6ed1e7501b379f4d42121b2add0c",
+  "old_judge": {
+    "role": "judge",
+    "model": "z-ai/glm-5.3-flash",
+    "provider": "openrouter",
+    "effort": "medium",
+    "temperature_mode": "provider",
+    "upstream_provider": "",
+    "max_output_tokens": null
+  },
+  "new_judge": {
+    "role": "judge",
+    "model": "openai/gpt-6.1-sol",
+    "provider": "openrouter",
+    "effort": "medium",
+    "temperature_mode": "provider",
+    "upstream_provider": "",
+    "max_output_tokens": null
+  },
+  "coder": {
+    "role": "coder",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "openrouter",
+    "effort": "",
+    "temperature_mode": "zero",
+    "upstream_provider": "alibaba",
+    "max_output_tokens": null
+  },
+  "usage_before": [
+    16022461,
+    2556622
+  ],
+  "limits": [
+    18000000,
+    5400000,
+    30,
+    2
+  ],
+  "configured": true,
+  "probe_verified": true,
+  "human_accepted": false,
+  "candidate_unchanged": true,
+  "config_before_sha256": "c87010214ff68e2581d2558320e7d657cf1b5e2bb40092996eb8e70abd1e0c00",
+  "config_after_sha256": "476182925b729aaf0bcbff2628cc15fc87c5d07ad4624d1c49945b7354f0722f",
+  "completed_probes": [
+    {
+      "call_id": "judge-switch-v23-sol-json-review",
+      "model": "openai/gpt-6.1-sol",
+      "input_tokens": 51,
+      "output_tokens": 57
+    },
+    {
+      "call_id": "judge-switch-v23-sol-json-defect",
+      "model": "openai/gpt-6.1-sol",
+      "input_tokens": 63,
+      "output_tokens": 47
+    }
+  ],
+  "usage_after": [
+    16022575,
+    2556726
+  ]
+}

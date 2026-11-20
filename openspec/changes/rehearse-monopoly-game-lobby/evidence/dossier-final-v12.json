@@ -1,0 +1,29 @@
+{
+  "budget_remaining": {
+    "input_tokens": 452804,
+    "output_tokens": 507641
+  },
+  "contract_sha": "eef8d5bfc4273a350b990dd734cdd324f3fab5e9713e7eea773c194813ca5a38",
+  "contract_sha256": "eef8d5bfc4273a350b990dd734cdd324f3fab5e9713e7eea773c194813ca5a38",
+  "contract_version": 12,
+  "dossier_version": 1,
+  "failed_units": [
+    {
+      "attempts": 3,
+      "criterion": "LOBBY",
+      "defect_class": "contract",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v12/evidence/v12-step3-prepare-review-TEST-PRES-NFR.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "preparation_exhausted"
+      ],
+      "hypothesis": "Independent judge findings for TEST-PRES-NFR: All four named methods are enabled [Test] methods with substantive behavioral assertions and an acceptance map. NFR_02\u201304 provide meaningful routing, unread-count and account-isolation coverage. However, NFR_01 still has preparation defects. (1) RootComposition.Create creates an EventSystem when none exists, calls UpdateModules(), then immediately requires currentInputModule to equal the attached module. UpdateModules refreshes the available modules; it does not select the current module. Without an EventSystem update/activation cycle, this fresh-fixture path fails before shell behavior is exercised. Establish module activation through the appropriate lifecycle before asserting it. (2) The popup occlusion oracle projects both rectangles in TryRectScreenIntersection using the popup's eventCamera, although other graphics can belong to overlay canvases or different cameras. Visibility checks subsequently use each graphic's own camera. These inconsistent coordinate systems can miss actual overlaps. Project each graphic using its effective rendering camera. (3) AssertPopupTopOverVisibleGraphics requires generated samples but never requires any sample to reach an actual occlusion comparison: every sample may be skipped when popupAtPoint is empty. Its fixed grid and unclipped intersection centers can also miss a partially clipped occluder's visible region. Require a nonempty set of verified visible popup samples and sample intersections after accounting for clipping. The acceptance map currently overstates this coverage. These are source-based test-preparation findings, not an execution result or human acceptance decision; unimplemented runtime stubs are not the reason for rejection.",
+      "id": "TEST-PRES-NFR"
+    }
+  ],
+  "reason": "budget",
+  "run_id": "monopoly-game-lobby",
+  "verdict": "fail"
+}

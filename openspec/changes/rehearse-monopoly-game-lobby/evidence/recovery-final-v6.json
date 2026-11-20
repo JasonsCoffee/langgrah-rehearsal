@@ -1,0 +1,65 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "native_result": {
+    "candidate_revision": "d6a1ab346e65e5b320621b784607b647834809dc",
+    "contract_sha256": "eb8ea839e6df24832cb0cd75ce6532feaa0fb1dfbecaff66c054b1b7d58c88ac",
+    "contract_version": 6,
+    "evidence_refs": [
+      ".agent/runs/monopoly-game-lobby/dossier-v6.json"
+    ],
+    "format_version": 1,
+    "outcome": "abandon",
+    "reason": "budget",
+    "run_id": "monopoly-game-lobby"
+  },
+  "retained_branch": "agent/monopoly-game-lobby/cycle-6",
+  "restored_baseline": "8539d3c0791be2eb9836a6c262292e29e50e6788",
+  "limits": [
+    3000000,
+    900000,
+    6,
+    2
+  ],
+  "used": [
+    2507338,
+    673592
+  ],
+  "remaining_tokens": [
+    492662,
+    226408
+  ],
+  "consumed_cycles": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "paid_calls": 57,
+  "unsettled_calls": 0,
+  "calls_by_role": {
+    "coder": 31,
+    "judge": 26
+  },
+  "models": [
+    "deepseek/deepseek-v4.1-flash",
+    "openai/gpt-6-astra"
+  ],
+  "global_tests_frozen": false,
+  "implementation_dispatched": false,
+  "selected_unity_tests_executed": 0,
+  "framework_recovery_tests_passed": 23,
+  "full_framework_tests_passed": 526,
+  "human_accepted": false,
+  "awaiting_human_review": false,
+  "trusted_overlay_unchanged": true,
+  "preservation": {
+    "full_original_file_check_passed": true,
+    "original_files": 81134,
+    "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+    "materialized_preparation_candidate": "91ee94eed8f85e6f9a4a19ba267a34b8e6dcd8d6",
+    "pending_metadata": 0
+  },
+  "blocker": "The independent judge rejected the core UI acceptance suite after its three preparation attempts. The sixth contract cycle exhausted the explicitly amended cycle ceiling; tokens remain. Lifecycle exception suppression/no-op paths, shared formatter use, equipped rendering/animation and layout/pointer assertions remain incomplete. No global freeze, implementation dispatch or human-review offer occurred."
+}

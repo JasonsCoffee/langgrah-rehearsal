@@ -35,8 +35,9 @@ class ModelCalls:
             raise ValueError('Model accounting must belong to the same run')
 
     def generate(self, call_id: str, unit_id: str, prompt: str, *, max_output_tokens: int) -> ModelReply:
-        if not call_id or not prompt.strip() or type(max_output_tokens) is not int or not 1 <= max_output_tokens <= 32768:
+        if not call_id or not prompt.strip():
             raise ValueError('Valid call identity, prompt and output reservation required')
+        self.client.validate_output_limit(max_output_tokens)
         token = sha256(call_id.encode()).hexdigest()
         path = self.prefix + '/' + token + '.json'
         config = self.client.config

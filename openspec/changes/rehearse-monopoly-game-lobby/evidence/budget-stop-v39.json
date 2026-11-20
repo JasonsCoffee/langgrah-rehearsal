@@ -1,0 +1,44 @@
+{
+  "contract_version": 39,
+  "contract_sha256": "44773395c5b883505f1f0e89bd8ac569c7af0ff164a6ba9b78c8fab2f3986cdd",
+  "candidate": "5922b2a3d82913708c037f37ca543a950df405bc",
+  "outcome": "abandon",
+  "reason": "budget",
+  "accounted_tokens": [
+    39689074,
+    3843328
+  ],
+  "active_limits": [
+    40000000,
+    12000000,
+    40,
+    2
+  ],
+  "retained_uncertain_reservations": 14,
+  "ai_config_sha256": "476182925b729aaf0bcbff2628cc15fc87c5d07ad4624d1c49945b7354f0722f",
+  "trusted_overlay_source_sha256": {
+    "trusted_overlay.py": "851246aa66bc5cb68a18ed97d6df0e29f0c63ef5071e94bf3329e45c89b5479f",
+    "overlay_host.py": "53301fcbc46abc2c7d316b9fd82af64e8fdc19bfbe71a23d8a0f19390ac2c190"
+  },
+  "bridge_project_identity_verified": true,
+  "bridge_protocol": 1,
+  "bridge_modes": [
+    "compile",
+    "tests"
+  ],
+  "original_host_files_checked": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "baseline_and_import_drift_check_passed": true,
+  "materialized_candidate": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+  "current_candidate_materialized": false,
+  "global_tests_frozen": false,
+  "implementation_model_calls": 0,
+  "selected_lobby_unity_executions": 0,
+  "human_accepted": false,
+  "pending_requests": {
+    "input_limit": 50000000,
+    "output_limit_unchanged": 12000000,
+    "max_cycles": 60,
+    "approved": false
+  }
+}

@@ -330,3 +330,46 @@ Provider-controlled temperature is not a claim of deterministic output.
 **Why:** the selected judge can be used without requesting an unsupported control.
 **Rejected:** silent parameter dropping, automatic model substitution, and treating
 temperature zero as a guarantee of reproducibility.
+
+## D-29 — Authenticated recovery after cycle-budget abandonment
+
+Supersedes only the terminal treatment of cycle-budget abandonment in D-25.
+An explicit trusted human authorization may extend a stopped run's cycle ceiling
+and advance to the consecutive validated contract. It does not raise input or
+output token ceilings, reset accounting, reopen accepted/cancelled runs, or
+authorize human acceptance. The host authenticates an authorization bound to the
+run, previous contract and exact abandonment result digest, with actor, provenance
+and a bounded new cycle ceiling. Workers and the retained Git candidate must be
+reconciled under the held run lease before recovery.
+
+Archive original invocation, result, budget, executor, dossier and progress bytes.
+Persist recovery intent before changes, retain all calls and uncertain reservations,
+and publish the amended ledger last. Reconnect accepts only original or intended
+bytes; conflicting evidence stops. Preserve global progress order and all prior
+cycle/unit lineage. Token exhaustion requires a separate policy and cannot use
+this cycle-only recovery. Ordinary rework and operational resume retain their
+existing conditions; recovery never converts abandonment into rework or pass.
+
+**Why:** the user authorized safe same-run continuation after the lobby rehearsal
+exhausted cycles while token allowance remained. The previous runtime had no
+supported transition for that condition.
+**Rejected:** clearing the stop flag manually, rewriting the abandoned outcome,
+resetting budgets, replaying old operation IDs or silently adding unbounded cycles.
+
+## D-30 — Explicit token-bound recovery grants
+
+Extends D-29's separate-policy requirement for token exhaustion. A
+TokenRecoveryGrant binds explicitly authorized total input/output ceilings to the
+same actor, provenance, run, previous contract and exact abandonment-result hash.
+It may recover a token-reservation stop before the cycle ceiling is exhausted.
+Every ceiling must be nondecreasing, at least one authorized bound must grow,
+and the new token allowances must exceed actual plus uncertain usage. Unit growth
+limits, all call records, lineages, history and terminal evidence remain unchanged.
+The original RecoveryGrant remains cycle-only and its audit representation stays
+compatible with earlier records. Publication and interruption checks remain D-29's
+leased, archive-first, ledger-last transition into the consecutive contract.
+
+**Why:** the user approved total token ceilings of 6,000,000 input / 1,800,000
+output after the same run hit its input-reservation limit under twelve cycles.
+**Rejected:** modifying an active worker's ledger in place, refunding prior calls,
+silently increasing ceilings, or treating a token amendment as human acceptance.

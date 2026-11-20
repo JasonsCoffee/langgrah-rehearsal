@@ -1,0 +1,22 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "recovery": "lobby-token-amendment-6m",
+  "contract_version": 8,
+  "contract_sha256": "07f0eb05aaa0559b08c3963621eed04b3ecfe0f589fc1592ebf1b484243f8ed0",
+  "baseline": "7b30c6913d9451acaaf4e466dd4b384ce16db6d1",
+  "preserved_usage": [
+    2791947,
+    730064
+  ],
+  "limits": [
+    6000000,
+    1800000,
+    12,
+    2
+  ],
+  "retained_candidate": "49313eb4d6aadaa7898509dfe5c8c3d62c98d01e",
+  "original_host_files": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "original_baseline_checked": true,
+  "human_accepted": false
+}

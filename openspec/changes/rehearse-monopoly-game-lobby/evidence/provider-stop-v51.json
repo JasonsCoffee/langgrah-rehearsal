@@ -1,0 +1,42 @@
+{
+  "contract_version": 51,
+  "contract_sha256": "3ed35231482ffa193e9502979fe1d71d397673fc33f5e7d3fa449ca13e10417f",
+  "candidate": "a21e01720dacd61d3604adca068f0b7a50e8ce6c",
+  "outcome": "operational",
+  "reason": "OpenRouter HTTP 403 openrouter_key_limit",
+  "accounted_tokens": [
+    57277785,
+    4419334
+  ],
+  "active_limits": [
+    75000000,
+    12000000,
+    60,
+    2
+  ],
+  "retained_uncertain_reservations": 15,
+  "ai_config_sha256": "476182925b729aaf0bcbff2628cc15fc87c5d07ad4624d1c49945b7354f0722f",
+  "trusted_overlay_source_sha256": {
+    "trusted_overlay.py": "851246aa66bc5cb68a18ed97d6df0e29f0c63ef5071e94bf3329e45c89b5479f",
+    "overlay_host.py": "53301fcbc46abc2c7d316b9fd82af64e8fdc19bfbe71a23d8a0f19390ac2c190"
+  },
+  "bridge_project_identity_verified": true,
+  "bridge_protocol": 1,
+  "bridge_modes": [
+    "compile",
+    "tests"
+  ],
+  "original_host_files_checked": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "baseline_and_import_drift_check_passed": true,
+  "materialized_candidate": "28604eb781dbee5c2cb137623f4e8b7e46132348",
+  "current_candidate_materialized": false,
+  "global_tests_frozen": false,
+  "implementation_model_calls": 0,
+  "selected_lobby_unity_executions": 0,
+  "human_accepted": false,
+  "pending_requests": {
+    "provider_allowance_restoration": true,
+    "TEST-CARDS_low_effort": "unanswered; none remains active"
+  }
+}

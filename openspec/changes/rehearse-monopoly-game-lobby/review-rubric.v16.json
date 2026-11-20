@@ -1,0 +1,11 @@
+{
+  "authority": "Framework D-26; no human acceptance recorded",
+  "portrait_ratios": ["9:16", "1:2", "9:19.5"],
+  "pending_visual_checks": [
+    {"id":"V1","sources":["US-L3-02","US-L7-03"],"steps":"Repeatedly change skins, vehicles and actions; inspect the final displayed preview during each transition.","expected":"Smooth visible changes; no black/white flashes, stale models, duplicate characters or unintended occlusion."},
+    {"id":"V2","sources":["US-L3-03"],"steps":"Scroll populated appearance lists in both directions at all three portrait ratios.","expected":"Correct thumbnails remain continuous without blank or flashing frames."},
+    {"id":"V3","sources":["US-L7-10"],"steps":"Inspect both Shop tabs, confirmation and insufficient-funds return paths.","expected":"No unnamed noninteractive promotional placeholders, empty advertising cells or source-navigation clutter."},
+    {"id":"V4","sources":["US-L1-02","US-NFR-01"],"steps":"Inspect Western street geometry, character/vehicle equipment, Idle/Wave/Celebrate, popups and text at every ratio.","expected":"Readable, coherent placeholder presentation with correct layering and safe-area adaptation."}
+  ],
+  "limitations": ["Production Luban generation/registration and AssetGraph packaging explicitly deferred by the user.","Actual full-match locomotion is outside the approved fake-handoff rehearsal.","These visual checks remain pending until the user reviews the exact candidate."]
+}

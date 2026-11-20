@@ -1,0 +1,26 @@
+{
+  "candidate": "5756344297204455338b66c6bfe50c4c57eb88bc",
+  "previous_candidate": "494053d5e057286ccf3b6fc5cf2c6b4f9623861e",
+  "changed": {
+    "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/LobbyView_placeHolder.prefab": "21bc83acfea97685eab787834cd60457d14a89e4b414aee8e3738121f3a3b844"
+  },
+  "original_files_checked": 81134,
+  "baseline_sha256": "12f3b9e07d8085e8ad0558e02223988c7313ac4392f77d9c80a91d8c6e6d74a0",
+  "trusted_overlay_changed": false,
+  "business_logic_written": false,
+  "editor_report": {
+    "path": "Assets/JJGame/monopoly/Runtime/Resource/monopoly/UI/Prefabs/LobbyRehearsal/LobbyView_placeHolder.prefab",
+    "action": "Shop",
+    "caption": "商城",
+    "position": [
+      930,
+      -30
+    ],
+    "size": [
+      140,
+      85
+    ],
+    "controlCount": 69,
+    "businessLogicWritten": false
+  }
+}
