@@ -286,3 +286,17 @@ The original 81,134-file baseline/import check passed with baseline SHA256
 The completed recovery, historical terminal evidence and frozen continuation
 manifest are retained in trusted state. Cycle 64 is continuing through native
 review, Red and delegated implementation; this remains pending human review.
+
+Cycle-64 Red first stopped operationally after actual compilation passed. Test
+discovery returned `No exact-project Bridge with FrameworkVerify tooling`; the
+test ticket had neither request nor result, proving no test submission. Eight
+read-only probes then verified the exact project and protocol tooling. The
+original transient HTTP response was not retained, so its deeper cause is not
+claimed. Target-only wiring now permits one retry of this exact error only when
+both test intent/result remain absent and fresh host identity/capabilities pass.
+Submitted, uncertain and timed-out requests are never replayed. Three cases were
+frozen Red (SHA256 `e61d83d0d9bd7a9bd720a63110eff19ab68b27a8bec76e9c006f30a5d6a29137`);
+all 22 selected discovery/transport/freeze checks pass. Public operational resume
+continues the same cycle/candidate with accounting unchanged. The generic Bridge
+discovery diagnostic/reload behavior is a separate adapter follow-up; its runtime
+implementation remains untouched.
