@@ -463,3 +463,11 @@ Skill instructions correctly require effect/usage reconciliation, actual Judge
 routing and no replay. They leave the mechanics of a pending host-local exception
 to target wiring; this helper supplies that proof without changing the coordinator.
 
+
+The first recovery invocation stopped before invoking Judge because asdict used a
+tuple for test_selection while native DurableEffects stores JSON lists. No paid
+intent was created. Recovery now applies the same JSON identity normalization as
+DurableEffects before comparing and writing. The additional regression failed Red
+first and is frozen at SHA256
+`7679ce9a6674b0cf56ac126f494c03a46dae9dc5ef1ccc087f18b6c08ca1d3f1`.
+All eleven selected context recovery, identity and staging checks pass.

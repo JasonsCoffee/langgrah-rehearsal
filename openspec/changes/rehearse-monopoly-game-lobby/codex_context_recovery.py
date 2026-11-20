@@ -26,6 +26,7 @@ def enforce_context_limit(size: int, limit: int, coder_provider: str, judge_prov
 
 def recover_judge_effect(effects: DurableEffects, name: str, identity: dict,
                          paid_evidence: bool, invoke: Callable[[],tuple[str,str]]) -> None:
+    identity=json.loads(json.dumps(identity))
     pending=effects.read(name)
     if (not pending or pending.get('identity')!=identity or 'result' in pending or paid_evidence):
         raise ValueError('Only an exact proven unsubmitted Judge intent can be completed')
