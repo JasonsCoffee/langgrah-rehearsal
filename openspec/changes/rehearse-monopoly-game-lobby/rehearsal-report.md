@@ -1,5 +1,15 @@
 # Monopoly game lobby rehearsal report
 
+Current operation: **cycle 66**, fresh 126-test Red at coherent baseline
+`e1afab81deee0958d7b96373cd46369e337df45c`. All 189 test/config files remain
+unchanged, including the new independently approved priority case. All five paid
+runtime proposals are retained and supplied for delegated reapplication/repair.
+The actual source reviews were reconciled with their real attempt counts kept.
+Full offline suite: **684 passed**. Pipeline accounting remains
+**105,684,886/6,054,724**, with 23 uncertain reservations under **125m/12m/80**.
+The configured models, native runtime and trusted overlay are unchanged.
+**Not awaiting human review yet.** Older snapshots below are history.
+
 Current continuation: **cycle 66**, same 125m/12m/80 budget and configured models.
 Judge found a real origin-priority coverage gap in an unchanged frozen test.
 Contract rework added a supplementary case in four new files; the original 185

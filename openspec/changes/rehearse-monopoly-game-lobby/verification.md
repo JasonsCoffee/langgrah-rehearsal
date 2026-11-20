@@ -1,5 +1,16 @@
 # Lobby rehearsal verification
 
+Current operation: cycle-66 **fresh 126-test Red** at coherent restored candidate
+`e1afab81deee0958d7b96373cd46369e337df45c`. The earlier mixed baseline's runtime
+errors were not counted as Red. Exact prior runtime blobs were restored through
+native journals, every full paid proposal is retained as repair context, all 189
+test/configuration files are unchanged, and the sixteen genuine source approvals
+were reconciled without resetting their actual attempt counters. Latest complete
+offline suite: **684 passed**, one existing warning, exit 0, 259.02 seconds.
+Accounting is **105,684,886 / 6,054,724** under **125m/12m/80**, including all 23
+historical uncertain reservations. Green, Refactor, final verification and human
+review remain pending. Earlier snapshots below are historical evidence.
+
 Current cycle **66**: preparation complete; actual fresh **126-test Red** running
 at `aef0c6b67524943ccb96c212b9be0e7eff69fc4a`, contract
 `65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b`.
