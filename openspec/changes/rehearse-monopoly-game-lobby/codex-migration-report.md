@@ -312,3 +312,45 @@ acknowledgement and final receipt with cumulative **696,334/8,762** tokens and a
 38,526-character JSON proposal. Economy is next/in flight. This proves the actual
 oversized-context transport path; it does not establish feature Green or human
 acceptance. All 23 historical uncertain reservations remain charged.
+
+Cycle 64's compile gate rejected three SHELL-only analyzer diagnostics (JJCK0011
+and two JJCK0005); no Green behavioral tests ran. Actual Judge (GPT-6.1 Sol,
+medium) classified SHELL as implementation and the four peers as contract because
+they cannot edit SHELL. Native rework retained candidate
+`651c60ac70136310b7bc3fda7d17efd9464b1784` and accounting 104,360,731/6,051,267.
+The original dossier and all five actual judgments remain intact.
+
+Cycle 65 changes implementation guidance and dependencies only: SHELL codes first,
+then declared shared-test partners may join through native pending-shared
+verification. The native scheduling mechanism passed offline unchanged. SHELL's
+four owned files were restored byte-for-byte from the recorded pre-Green snapshot
+to obtain compilable fresh Red; only two files differed. The complete paid SHELL
+proposal remains in its retained Git candidate and is supplied read-only to its
+Coder. The four peer implementations were verified unchanged. No game code was
+handwritten, and all 185 frozen files retain their exact hashes. Native consecutive
+transition activated baseline `36cdcd196d5024844066814f81c429fabc4ac898`, contract
+`edddecafb90f10bfab23e7aadeac2640bf57582a3e04c1e5e376975305b54e5b`, with the
+same limits, usage, reservations and models.
+
+Two framework follow-ups were observed, left out of runtime scope: compile
+failures are attributed to all participating units despite exact owner paths,
+and repair feedback drops the actual compiler diagnostics. Target-only wiring
+supplies ownership attribution when every compiler path is known (otherwise it
+preserves ambiguity), still requiring the actual owner's independent judgment.
+It also forwards actual snapshot-bound verification evidence to Coder. Expected
+baseline Red is kept distinct from actual repair verdicts. The immutable-rework
+and attribution checks were frozen Red (four failures; the native dependency-wave
+case already passed), SHA256 424e6b97fda96ec93ed28a6b2a63d9302932cce23256312b2d02e4f38577daec
+and 0c8802566e03ad4739fdd9c649f1376cd6e2a0f70171b8af97eae388922aeade.
+Thirty-one selected checks passed. The expected-Red guard was separately frozen
+with one failure/one existing pass (SHA256
+b85440c5d239f584a9818f9f2250fef0b74be5f6a065a72eba06f26fe57c4cfa), and all
+seven attribution/rework/Red-feedback checks then passed. Generic runtime and
+trusted overlay implementations remain unchanged.
+
+Skill instructions remained sufficient on ownership, genuine evidence, frozen
+tests, budget preservation and human acceptance. They do not prescribe a target
+recipe for an already-frozen implementation rework whose retained source cannot
+compile. The supplied wiring uses exact prior snapshots, retained delegated
+proposals, ordinary consecutive contracts and native dependency waves; it does
+not substitute fabricated Red, edited tests or handwritten implementation.

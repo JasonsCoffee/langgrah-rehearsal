@@ -1,5 +1,17 @@
 # Monopoly game lobby rehearsal report
 
+Current run: **cycle 65**, native continuation of genuine cycle-64 rework. Limits
+remain **125m/12m/80**, with 104,360,731/6,051,267 accounted at transition and all
+23 uncertain reservations retained. Three actual compiler diagnostics are owned
+by SHELL. The independent Judge requested prerequisite owner repair; SHELL is now
+the first coding wave. Its exact prior compilable snapshot supplies fresh Red,
+and its full paid proposal remains in Git and read-only repair context. The four
+peer implementations and all 185 frozen test/configuration files are preserved.
+Baseline `36cdcd196d5024844066814f81c429fabc4ac898`; contract
+`edddecafb90f10bfab23e7aadeac2640bf57582a3e04c1e5e376975305b54e5b`.
+Preparation is active. **Not awaiting human review yet.** The native trusted
+progress is authoritative; older paragraphs below are snapshots.
+
 Current continuation: cycle 64, same run, active **125m input / 12m output / 80
 cycles** through authenticated native recovery. All 185 test/config files remain
 globally protected; cycles 63 and 64 established real behavioral Red for all 125

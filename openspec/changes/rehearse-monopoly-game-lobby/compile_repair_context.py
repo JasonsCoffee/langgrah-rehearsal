@@ -33,4 +33,6 @@ def mechanical_feedback(state: dict, contract_sha256: str) -> str:
     evidence=state.get('verification')
     if (not evidence or evidence.get('status')!='failed'
         or evidence.get('request',{}).get('contract_sha256')!=contract_sha256):return ''
+    if (evidence.get('gate')=='tests' and evidence.get('behavioral') is True
+        and evidence['request'].get('request_id','').endswith('-red')):return ''
     return '\nACTUAL VERIFICATION EVIDENCE (preserve snapshot provenance; repair within ownership):\n'+json.dumps(evidence,ensure_ascii=False)

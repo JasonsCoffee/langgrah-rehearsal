@@ -19,6 +19,30 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Latest lobby Codex trial (2026-11-21): same run is active in **cycle 65**, with
+**125m input / 12m output / 80 cycles** and all 23 historical uncertain reservations
+retained. Cycle 64 produced all five delegated implementations at candidate
+`651c60ac70136310b7bc3fda7d17efd9464b1784`, then genuine rework on three SHELL-only
+JJCK analyzer errors. The independent Judge classified SHELL as implementation;
+the four peers escalated their inability to edit SHELL. The new contract schedules
+SHELL first through the native pending-shared dependency mechanism. Only SHELL's
+exact pre-Green snapshot was restored for a compilable fresh Red; its full paid
+proposal is retained and supplied as read-only repair context. Four peer
+implementations and all 185 frozen test/config files remain. No handwritten game
+implementation, test edits or runtime-coordinator changes were made.
+
+Active baseline `36cdcd196d5024844066814f81c429fabc4ac898`; contract
+`edddecafb90f10bfab23e7aadeac2640bf57582a3e04c1e5e376975305b54e5b`.
+Accounting at transition was 104,360,731 / 6,051,267. Coder (GPT-6.2 Sol, low),
+Judge (GPT-6.1 Sol, medium), dispatch accounting and trusted overlay are unchanged.
+The isolated backend worktree is the active implementation branch; the original
+checkpoint remains saved separately. Read the active change's
+`codex-migration-report.md`, `rehearsal-report.md` and trusted current execution
+before reconnecting. Never replay consumed recovery flags or invent approval.
+The last full offline suite passed 659 tests; owner-first/diagnostic additions
+passed 31 selected checks, with the next full suite in progress. Not awaiting
+human review yet. Older status entries below are history.
+
 Codex lobby activation update (2026-11-20): the user approved reported-usage
 accounting without hard per-request caps. The two-model live pilot passed and
 native cycle 60 resumed through the trusted host. Coder (GPT-6.2 Sol, low) repaired
