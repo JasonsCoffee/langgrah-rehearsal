@@ -92,13 +92,13 @@ def restore(state: Path,contract: Contract,budget: BudgetLedger,services: LocalE
     if plan is None:
         if git(integration,'rev-parse','HEAD').decode().strip()!=result['candidate_revision'] or git(integration,'status','--porcelain'):
             raise ValueError('Mixed baseline candidate changed')
-        owned={u.id:list(u.owns) for u in contract.units if u.role=='impl'}
-        tests={p:sha256((integration/p).read_bytes()).hexdigest() for u in contract.units if u.role=='test' for p in u.owns}
+        owned={u.id:list(u.owns) for u in contract.units if u.role=='impl' and u.status=='active'}
+        tests={p:sha256((integration/p).read_bytes()).hexdigest() for u in contract.units if u.role=='test' and u.status=='active' for p in u.owns}
         for p in ('Tests/Runtime/Script/jj.Monopoly.Tests.Runtime.asmdef','Tests/Runtime/Script/jj.Monopoly.Tests.Runtime.asmdef.meta'):
             tests[p]=sha256((integration/p).read_bytes()).hexdigest()
         if len(tests)!=189:raise ValueError('All 189 approved test/configuration files must remain')
         approvals={};ledger=budget._read()
-        for unit in (u for u in contract.units if u.role=='test'):
+        for unit in (u for u in contract.units if u.role=='test' and u.status=='active'):
             op='v66-step1-prepare-review-'+unit.id
             effect=services.effects.read('review-v66-step1-prepare-'+unit.id)
             explanation=effect['result']['explanation'];key=sha256(op.encode()).hexdigest();paid=run/'model-calls'/(key+'.json')
