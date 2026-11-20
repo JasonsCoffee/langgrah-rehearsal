@@ -1,5 +1,17 @@
 # Lobby rehearsal verification
 
+Current cycle **66**: preparation complete; actual fresh **126-test Red** running
+at `aef0c6b67524943ccb96c212b9be0e7eff69fc4a`, contract
+`65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b`.
+The new priority-counterexample test was delegated and independently approved.
+All original 185 frozen files remain byte-identical; only four new supplementary
+files were authored. The full offline command `uv run --no-sync pytest -q
+--tb=short` exited 0 with **680 passed**, one existing collection warning, in
+246.03 seconds. The graph compile/listing check remains valid; its source is
+unchanged. Green, Refactor, final behavioral verification and human visual/device
+review remain pending. **No human acceptance or awaiting-review outcome claimed.**
+Earlier observed checks below remain historical evidence.
+
 Current cycle: **64**, same run. Active limits **125m input / 12m output / 80
 cycles**, applied through authenticated native recovery. Current implementation
 candidate: `651c60ac70136310b7bc3fda7d17efd9464b1784`. **Not awaiting human review

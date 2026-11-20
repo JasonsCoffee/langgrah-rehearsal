@@ -354,3 +354,32 @@ recipe for an already-frozen implementation rework whose retained source cannot
 compile. The supplied wiring uses exact prior snapshots, retained delegated
 proposals, ordinary consecutive contracts and native dependency waves; it does
 not substitute fabricated Red, edited tests or handwritten implementation.
+
+Cycle 65's changed implementation context triggered fresh independent source
+review. Judge found an actual L4-13 coverage gap: origin priority was aligned with
+recency, allowing a newest-origin-only implementation. The frozen author guard
+stopped before any original test edit or new model-author reservation. Accounting
+was 105,025,900/6,052,269 with all 23 unknown reservations intact. The target host
+converted the actual negative review into genuine native contract rework, with
+the true single preparation attempt. It did not manufacture extra failures or
+replace the negative verdict with an older positive one.
+
+Cycle 66 appends one case and four new test/map/metadata paths to the same author.
+All old ownership, assertions, test links and 185 frozen bytes are retained. The
+new case also maps to RECORDS, the existing recommendation-service owner, while
+preserving SOCIAL and SHELL co-implementers. Model authoring is restricted to the
+four added paths; old helpers and maps remain read-only. Coder authored the new
+files, and actual Judge review approved the crossed-timestamp counterexamples
+before any implementation resumed. The native **126-test Red** is running at
+`aef0c6b67524943ccb96c212b9be0e7eff69fc4a`; contract
+`65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b`.
+
+Four rejection-route checks were frozen Red (SHA256
+2deae3d272deddc7cd31be656c1098ae01df50ff2a2dcecff80ee02d8adf4683).
+Eight append-only coverage checks were frozen Red (SHA256
+22f27c14ab40e8a6c3a45da88833fb98778bb9f300c1ca1b5e9bea8a3a4cfe86),
+followed by two existing-co-implementer mapping checks (SHA256
+979e3afaf01b5a4f5199df05859a0bb3909e56a627eb5719e0e948a1c9334a42).
+All passed after wiring. The latest complete offline suite passes **680 tests**
+in 246.03 seconds with the existing collection warning. Models, usage/reservation
+history, trusted overlay, runtime coordinator and adapter code remain unchanged.

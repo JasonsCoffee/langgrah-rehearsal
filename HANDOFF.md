@@ -19,6 +19,24 @@ Not a pipeline for one game. Unity/C# is the first verification adapter.
 
 ## Status
 
+Latest continuation (2026-11-21): **cycle 66**, same run; Coder (GPT-6.2 Sol,
+low), Judge (GPT-6.1 Sol, medium), **125m/12m/80**, 23 historical uncertain
+reservations. A genuine negative frozen-test review in cycle 65 found that the
+partner-origin priority oracle aligned with recency. Target wiring routed this
+real finding to contract rework with its actual single attempt, no edited test
+and no invented reviews. Cycle 66 adds one supplementary case in four NEW files;
+the original 185 frozen files remain unchanged. The real Coder authored all four,
+and the independent Judge approved the crossed-timestamp oracle. All preparation
+reviews are complete. Fresh **126-test Red** is active at candidate
+`aef0c6b67524943ccb96c212b9be0e7eff69fc4a`; contract
+`65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b`.
+The full offline suite now passes **680 tests** (246.03 seconds, one existing
+collection warning). Framework coordinator/adapter runtime and trusted overlay
+remain unchanged. Do not replay the consumed cycle-65 routing flag. SHELL's
+retained full proposal is still read-only repair input, and its first coding wave
+follows fresh Red; Green/Refactor/final verification and human review remain.
+Not awaiting human review yet. Older status paragraphs are historical.
+
 Latest lobby Codex trial (2026-11-21): same run is active in **cycle 65**, with
 **125m input / 12m output / 80 cycles** and all 23 historical uncertain reservations
 retained. Cycle 64 produced all five delegated implementations at candidate

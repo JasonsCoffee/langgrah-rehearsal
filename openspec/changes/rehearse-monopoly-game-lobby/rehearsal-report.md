@@ -1,5 +1,17 @@
 # Monopoly game lobby rehearsal report
 
+Current continuation: **cycle 66**, same 125m/12m/80 budget and configured models.
+Judge found a real origin-priority coverage gap in an unchanged frozen test.
+Contract rework added a supplementary case in four new files; the original 185
+files were preserved. Coder authored the new files and Judge approved their
+crossed-timestamp oracle. All preparation reviews are complete; **126-test Red**
+is active at `aef0c6b67524943ccb96c212b9be0e7eff69fc4a`. Contract:
+`65061cc3537f2d22830aaf77f698799427efd846c4724824be5039040699251b`.
+Latest full offline verification: **680 passed**, one existing warning. All 23
+historical uncertain reservations remain. SHELL's full paid proposal remains
+available for the owner-first delegated repair following Red. **Not awaiting
+human review yet.** Earlier snapshots below are history.
+
 Current run: **cycle 65**, native continuation of genuine cycle-64 rework. Limits
 remain **125m/12m/80**, with 104,360,731/6,051,267 accounted at transition and all
 23 uncertain reservations retained. Three actual compiler diagnostics are owned
