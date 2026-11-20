@@ -380,6 +380,9 @@ class ContextWorkers:
     def code(self,unit,stage,files,feedback,operation_id):
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
             raise ModelError('Budget continuation cannot reauthor globally frozen tests; reconcile the independent review finding with the Architect')
+        if stage=='green' and getattr(self,'services',None) is not None:
+            from compile_repair_context import mechanical_feedback
+            feedback+=mechanical_feedback(self.services.state,self.contract.sha256)
         recovered=getattr(self,'reconciled_worker_patch',None)
         if recovered and stage=='test_authoring' and recovered['unit']==unit.id and recovered['operation']==operation_id:
             if unit.role!='test' or self.services.tdd.frozen:
@@ -556,6 +559,9 @@ def main():
         Utf8Calls(ModelCalls(selected[1],budget,RUN_ID)),integration.path,
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
     workers.carried_tests=carried_tests
+    if carried_tests and (state/'frozen-continuations'/('v'+str(version)+'.json')).exists():
+        from frozen_implementation_rework import prior_context
+        workers.supplemental_context=prior_context(state,module,version)
     host=OverlayHost()
     from bridge_discovery_retry import DiscoveryRetryTransport
     def record_discovery_retry(proof):
@@ -594,6 +600,8 @@ def main():
         paths=git(source,'ls-tree','-r','--name-only','-z','HEAD').decode().split('\0')
         contents={p:(source/p).read_bytes() for p in paths if p}
         result=host.verify(request,ladder,contract,source,patches,contents,frozen)
+        from compile_repair_context import attribute_compile
+        result=attribute_compile(contract,result,lambda key,proof:atomic_write(state,'diagnostics/compile-attribution-'+key+'.json',json.dumps(proof,indent=2).encode()))
         print('RESULT',result.gate,result.status,len(result.failed_tests),flush=True)
         return result
     def package(request):

@@ -25,6 +25,9 @@ def protected_tests(state: Path, source: Path, version: int) -> tuple[str,...]:
             raise ValueError('Existing frozen tests require an explicit continuation for this cycle')
         return ()
     manifest=json.loads(path.read_bytes())
+    if manifest.get('kind')=='implementation_rework':
+        from frozen_implementation_rework import validate_manifest
+        return check_frozen_sources(source,validate_manifest(state,source,version,manifest))
     run=state/'.agent/runs/monopoly-game-lobby'
     intent=json.loads((run/'recoveries'/(manifest['recovery_id']+'.json')).read_bytes())
     old_version=version-1
