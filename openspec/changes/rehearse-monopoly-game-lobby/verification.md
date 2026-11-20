@@ -1,5 +1,17 @@
 # Lobby rehearsal verification
 
+Current execution: **cycle 66**, `v66-step5-red` compiled successfully and
+executed **126/126 assertion failures, zero passes or skips**, at coherent
+baseline `e1afab81deee0958d7b96373cd46369e337df45c`. Evidence SHA256:
+`3292a75e8a157b9e028af131649e3b5d1bff869ee5807ce8562217e670ede29b`.
+The coordinator froze **189 test/configuration files**; every original 185 hash
+is unchanged. The complete inventory is `evidence/frozen-tests-v66.json`, map
+SHA256 `03aeaba0e7597069ab59c1a98f9b0a664f3f7e7ff64e73c36d5939779fce32c5`.
+Delegated Green is active in the SHELL-first wave, using the retained full paid
+proposal and actual compiler feedback. Limits remain **125m input / 12m output /
+80 cycles**; all 23 uncertain reservations remain charged. **Not awaiting human
+review yet.** Later source admission and Unity verification remain pending.
+
 Current operation: cycle-66 **fresh 126-test Red** at coherent restored candidate
 `e1afab81deee0958d7b96373cd46369e337df45c`. The earlier mixed baseline's runtime
 errors were not counted as Red. Exact prior runtime blobs were restored through
