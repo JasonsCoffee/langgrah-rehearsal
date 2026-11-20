@@ -502,3 +502,27 @@ checks (241.82s); a complete run including the latest additions remains pending.
 Core coordinator/verification runtime, models, efforts, overlay and 189 frozen
 files remain unchanged. This is not awaiting human review yet.
 
+
+Current execution: cycle 66, native shared implementation repair after an actual
+independent Judge **implementation** verdict for three SHELL compiler errors.
+Completed verification `v66-step8-verify` remains bound to candidate
+`48bcbb766137998ce0264b726169b014adabc56e`; no Green tests ran because compilation
+failed. The replacement Judge used 228,559 input / 87 output tokens and its real
+decision completed the pending effect. The rejected original request retains its
+entire 5,848,476 / 32,768 reservation, bringing historical uncertain calls to 24.
+No old request was replayed and no prior charge or reservation was reset.
+
+The compiler-only context recovery succeeded. Latest complete offline suite:
+**699 passed**, one existing collection warning, 242.25 seconds. Pinned
+`uv run --no-sync langgraph dev --allow-blocking` compiled and listed unity_coder
+via assistants/search; no graph run was submitted, then the dev server was stopped.
+All 189 game test/configuration files remain frozen. Limits are **125m input /
+12m output / 80 cycles**; Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium),
+original trusted overlay and coordinator runtime remain unchanged.
+
+Cycle-66 step-nine SHELL returned a partial repair: panel dependency/static menu
+and entry-adapter logging, leaving its coordinator logging diagnostic unresolved.
+That is a delegated response, not a verified repair. Native batch admission and
+sequential Unity verification will judge the result. **Not awaiting human review
+yet.** Older snapshots below are historical evidence.
+
