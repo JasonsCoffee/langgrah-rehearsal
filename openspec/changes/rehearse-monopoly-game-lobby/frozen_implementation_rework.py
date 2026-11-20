@@ -37,7 +37,7 @@ def validate_manifest(state: Path, source: Path, version: int, manifest: dict) -
 
 def prior_context(state: Path, module: Path, version: int) -> dict[str,dict[str,str]]:
     manifest=json.loads((state/'frozen-continuations'/('v'+str(version)+'.json')).read_bytes())
-    if manifest.get('kind')!='implementation_rework':return {}
+    if manifest.get('kind') not in ('implementation_rework','supplemental_frozen_coverage'):return {}
     files={}
     for path,digest in manifest['retained_proposal_files'].items():
         raw=git(module,'show',manifest['retained_candidate']+':'+path)

@@ -379,6 +379,14 @@ class ContextWorkers:
 
     def code(self,unit,stage,files,feedback,operation_id):
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
+            allowed=getattr(self,'supplemental_authoring',{}).get(unit.id)
+            if allowed:
+                from supplemental_frozen_coverage import new_author_paths
+                writable=new_author_paths(unit.owns,{p:'' for p in self.carried_tests},list(allowed))
+                actual=replace(unit,owns=writable,instructions=unit.instructions+' Write only the explicitly new owned files. Every original file is frozen and read-only; do not rewrite existing helpers, assertions or maps.')
+                with self.admission:
+                    print('Authoring supplementary coverage',unit.id,'new files',len(writable),flush=True)
+                    return self.worker().code(actual,stage,self.context(unit,files),feedback,operation_id)
             raise ModelError('Budget continuation cannot reauthor globally frozen tests; reconcile the independent review finding with the Architect')
         if stage=='green' and getattr(self,'services',None) is not None:
             from compile_repair_context import mechanical_feedback
@@ -562,6 +570,8 @@ def main():
     if carried_tests and (state/'frozen-continuations'/('v'+str(version)+'.json')).exists():
         from frozen_implementation_rework import prior_context
         workers.supplemental_context=prior_context(state,module,version)
+        from supplemental_frozen_coverage import author_scope
+        workers.supplemental_authoring=author_scope(state,version)
     host=OverlayHost()
     from bridge_discovery_retry import DiscoveryRetryTransport
     def record_discovery_retry(proof):
