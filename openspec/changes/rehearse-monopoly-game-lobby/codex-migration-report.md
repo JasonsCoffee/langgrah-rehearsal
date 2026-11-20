@@ -116,3 +116,34 @@ All 211 selected backend/recovery/rehearsal checks passed. Public operational
 recovery continues cycle 61 with a new call identity and eighteen uncertain
 reservations retained. No test was globally frozen or feature implementation
 dispatched by this evidence update.
+
+Final backend regression after session separation: 611 offline framework tests
+passed in 244.38 seconds, with the existing TestResult collection warning. The
+pinned development server compiled and listed unity_coder through
+/assistants/search, then was stopped without submitting a graph run. Windows
+required PYTHONUTF8=1 and PYTHONIOENCODING=utf-8 for the CLI's bundled text; no
+dependency or runtime source change was needed for that console/read issue.
+
+Cycle 62 continued the same run at contract
+`1a3485b591ae4df0eb249f0d7735646937d03dd25c18695e87f10ea94630ae35`.
+The trusted host now reuses an actual positive Judge reply only when the complete
+normalized prompt, unit, model, effort, provider, backend-policy identity and output
+allocation match exactly. Original SDK and native receipts must agree with settled
+ledger charges. A pending paid operation cannot use this path. Immutable reuse
+proofs reference the original actual Judge call; no new paid receipt or token
+charge is fabricated. Changed inputs and defect routing still use fresh inference.
+Fourteen source approvals met this exact-input rule in cycle 62; changed Chat
+Message inputs received a fresh actual review.
+
+Twelve reuse/provenance cases were frozen before implementation: eight initial
+cases Red, then three identity cases Red plus one compatibility pass. SHA256:
+`b14b683588e4b7925e7f4955f52b61bea6e40695167389a6e6edb956e516e294`
+and `ec5f7432693b9d1fc9d35c2135acc9e5dd17fe76717e7b3e364ddf2e25d4c95e`.
+All 223 selected host/backend/rehearsal checks passed. This is target-host wiring;
+the LangGraph coordinator runtime and trusted overlay remain unchanged.
+
+Records passed a fresh actual Judge review after the Rules presentation repair.
+All sixteen author scopes / 125 mapped test IDs are source-approved. Native full
+baseline verification v62-step3-red started against candidate
+`61837dbbc5e7cf4271ca3960c1e81466e8d1ec49`. This milestone is not global test freeze,
+implementation dispatch, executed-test success, visual approval or human acceptance.

@@ -76,6 +76,10 @@ class Utf8Calls:
                     normalized+='\nREQUIRED REPAIR FINDINGS (address every item in the returned files):\n'+payload['feedback']
         except (ValueError,KeyError,TypeError):
             pass
+        if self.client.config.provider=='codex' and self.client.config.role=='judge':
+            from codex_review_reuse import reuse_review
+            reviewed=reuse_review(self.calls,call_id,unit_id,normalized,max_output_tokens)
+            if reviewed is not None:return reviewed
         return self.calls.generate(call_id,unit_id,normalized,max_output_tokens=max_output_tokens)
 
 class ContextWorkers:
