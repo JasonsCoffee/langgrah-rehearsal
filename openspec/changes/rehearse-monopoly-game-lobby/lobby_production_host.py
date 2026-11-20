@@ -557,7 +557,11 @@ def main():
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
     workers.carried_tests=carried_tests
     host=OverlayHost()
-    ladder=VerificationLadder(rules,host.transport)
+    from bridge_discovery_retry import DiscoveryRetryTransport
+    def record_discovery_retry(proof):
+        atomic_write(state,'diagnostics/discovery-retry-'+sha256(json.dumps(proof,sort_keys=True).encode()).hexdigest()+'.json',json.dumps(proof,indent=2).encode())
+    transport=DiscoveryRetryTransport(host.transport,ready=host.preflight,record=record_discovery_retry)
+    ladder=VerificationLadder(rules,transport)
     # Session grants may only be imported by the trusted operator after a real
     # user's explicit candidate-bound decision. No grant is created by this run.
     def authenticate_human(credential):
@@ -617,6 +621,10 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_BRIDGE_DISCOVERY_V64')=='1':
+            from bridge_discovery_retry import reconcile_red_discovery
+            executor.resume_operational(reconcile=lambda: reconcile_red_discovery(state,contract,budget,services,integration.path,host))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
             from codex_lobby import reconcile_green_dispatch
