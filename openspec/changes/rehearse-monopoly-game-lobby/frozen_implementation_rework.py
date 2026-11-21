@@ -5,6 +5,15 @@ from pathlib import Path
 from unity_coder.core.workspaces import git
 
 
+def complete_inventory(contract: dict, prior: dict[str,str], current: dict[str,str]) -> None:
+    expected={p for unit in contract['units'] if unit['role']=='test' and unit['status']=='active'
+              for p in unit['owns']}
+    expected.update(('Tests/Runtime/Script/jj.Monopoly.Tests.Runtime.asmdef',
+                     'Tests/Runtime/Script/jj.Monopoly.Tests.Runtime.asmdef.meta'))
+    if not prior or set(prior)!=expected or current!=prior:
+        raise ValueError('Complete declared frozen test/configuration inventory must be unchanged')
+
+
 def validate_revision(previous: dict, current: dict, digest: str) -> None:
     old_units=previous['units'];new_units=current['units']
     if len(old_units)!=len(new_units):raise ValueError('Frozen rework cannot add or remove units')
@@ -29,8 +38,9 @@ def validate_manifest(state: Path, source: Path, version: int, manifest: dict) -
         or manifest['dossier_sha256']!=sha256(dossier).hexdigest() or json.loads(result)['outcome']!='rework'
         or transition['state']!='complete' or transition['previous_sha256']!=sha256(previous_raw).hexdigest()
         or transition['next']['contract_sha256']!=sha256(current_raw).hexdigest()
-        or manifest['frozen']!=json.loads(prior)['tdd']['frozen'] or len(manifest['frozen'])!=185):
+        or manifest['frozen']!=json.loads(prior)['tdd']['frozen']):
         raise ValueError('Frozen implementation continuation lacks native rework provenance')
+    complete_inventory(json.loads(previous_raw),json.loads(prior)['tdd']['frozen'],manifest['frozen'])
     validate_revision(json.loads(previous_raw),json.loads(current_raw),sha256(previous_raw).hexdigest())
     return manifest['frozen']
 

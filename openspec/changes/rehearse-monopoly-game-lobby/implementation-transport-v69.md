@@ -24,6 +24,38 @@ a supported reconnect or consecutive native transition; no live stage is killed
 to force activation. Framework coordinator runtime, configured models, total
 budgets, all game tests and both pinned overlay files remain unchanged.
 
+The native compile receipt subsequently reported CS1061: the retained stub
+lacks `ConfigureAccount`, which the admitted entry adapter calls. The actual
+Judge classified this as SHELL implementation work. The next paid Coder reply
+supplied only that missing method and explicitly reported remaining coordinator
+stubs. Inspection explains why complete restoration was not available in that
+repair prompt: the older rehearsal `compile_failure_context.curate` deliberately
+omits historical proposal bodies for compiler-only repair. This is appropriate
+for a complete current implementation but insufficient for an omitted baseline
+component. The prepared hash-bound path supplies exact paid bases as current
+owned source and bypasses that older prompt curation. It does not replace the
+current native verification or independent routing.
+
+Consecutive repair preparation is also staged, **not executed**. It refuses to
+run until cycle 69 has an actual completed rework result, matching dossier,
+failed-candidate evidence and settled independent Judge receipts. It preserves
+every charge and all 25 uncertain reservations. It creates new external
+worktrees only when their paths are unused. A read-only reference assembles exact
+paid source blobs; the executable baseline uses exact prior Red runtime blobs
+while keeping all 199 frozen files. The next transition uses the native API.
+
+The older carry-forward helper assumed a historical count of 185 files. Its
+guard now derives the complete test/configuration inventory from the previous
+contract and requires exact equality with the previous global freeze. Six new
+unchanged guards failed before that implementation and pass afterward, including
+missing test/configuration, extra runtime, changed digest and incomplete prior
+inventory cases. Guard file SHA256:
+`a61365cfb5ef09d7bc10c053fa8001287806eae28329fc9bedd61f6c47d940d1`.
+This changes target rehearsal wiring only, with no game-test edits or core
+runtime changes. Full offline regression after this strengthening: **763 passed,
+one existing collection warning**. The staged transition script passes Python
+compilation; its external effects have not been executed or claimed tested.
+
 The Architect/apply skills are sufficient about the boundary: delegated source,
 immutable tests, retained usage and actual independent review are mandatory.
 They intentionally do not supply this target-specific response transport. The
