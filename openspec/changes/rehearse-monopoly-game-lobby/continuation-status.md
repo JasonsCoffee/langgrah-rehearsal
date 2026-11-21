@@ -1,16 +1,22 @@
 # Lobby continuation status
 
-Current operation: **cycle 68 preparation**, after explicit user approval of the
-scoped frozen-test reconciliation. Contract
-`a3c9baa004dabeb77eec0b233ee03d18deb3dc45a31e90134356c4a4748b736e`; baseline
-`5ce6abb5f2959683a3850ad813d1dd92044fce49`. All old 189 frozen files remain in
-cycle-67 history; 186 remain byte-protected during this new authoring phase. Only
-the three named method bodies and six new explanation/metadata files may change.
-AST admission rejects changes to other source bytes. Original models, 25 uncertain
-reservations, 250m/24m/160 limits and trusted overlay remain unchanged. Transition
-accounting: 132,351,377 input / 6,276,956 output. Coder (GPT-6.2 Sol, low) must
-author the repairs; Judge (GPT-6.1 Sol, medium), fresh valid Red and a new freeze
-remain mandatory. See acceptance-reconciliation-v68.md. Not human review.
+Current operation: **cycle 68 delegated implementation**. The user-approved
+three method corrections passed actual independent review. Fresh Unity Red
+compiled and executed all **126 selected tests**, with **126 assertion failures,
+zero skips**, and native behavioral evidence. The complete **195-file**
+test/configuration inventory is now globally frozen at SHA256
+`28fec4be892147775c869eb39ebf8e9a899ed869e3602f0606f950c44db06800`.
+Native Red evidence SHA256:
+`bc120be47355d7a72aaa9ea4d9902aa93b4a810bb9ae7f82858e6053143d043b`.
+Contract `a3c9baa004dabeb77eec0b233ee03d18deb3dc45a31e90134356c4a4748b736e`;
+Red candidate `4333140e62c550bd3fc0050d83b6abf24c89770e`. Coder (GPT-6.2 Sol, low)
+is implementing SHELL; Judge (GPT-6.1 Sol, medium), Green, Refactor and final
+verification remain required. Active limits remain 250m input / 24m output /
+160 cycles; all 25 historical uncertain reservations remain. The trusted overlay
+and framework coordinator runtime are unchanged. Offline regression: 730 passed.
+See evidence/frozen-tests-v68.json and the separate progress-journal performance
+finding. Records source-review variability and visibility limits remain recorded.
+**Not awaiting_human_review; no human acceptance recorded.**
 
 The following cycle-67 entries are historical.
 
