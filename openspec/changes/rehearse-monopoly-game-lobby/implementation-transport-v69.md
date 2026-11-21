@@ -20,9 +20,11 @@ warning**. Frozen guard file SHA256:
 `bf6555d2511bf9f8d9cd59be42156e48ccc5914e9c8fda586894408da453c289`.
 
 The current process predates this wiring and does not load it. Activation awaits
-a supported reconnect or consecutive native transition; no live stage is killed
+the consecutive cycle-70 native transition; no live stage is killed
 to force activation. Framework coordinator runtime, configured models, total
 budgets, all game tests and both pinned overlay files remain unchanged.
+Cycle 69 stays on its existing path even if an operational reconnect is needed;
+its partially edited stub is not mistaken for a complete paid source base.
 
 The native compile receipt subsequently reported CS1061: the retained stub
 lacks `ConfigureAccount`, which the admitted entry adapter calls. The actual

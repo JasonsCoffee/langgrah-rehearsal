@@ -25,7 +25,9 @@ def admit(text: str,owned: tuple[str,...],bases: dict[str,bytes],current: dict[s
         return result
     data=json.loads(text,object_pairs_hook=unique)
     if (not isinstance(data,dict) or set(data)!={'files','edits','reason','accept_bases'}
-        or not isinstance(data['accept_bases'],list) or sorted(data['accept_bases'])!=sorted(restored)
+        or not isinstance(data['accept_bases'],list)
+        or any(not isinstance(path,str) for path in data['accept_bases'])
+        or sorted(data['accept_bases'])!=sorted(restored)
         or not data['edits'] or set(bases)!=set(owned) or set(current)!=set(owned)
         or any(not p.startswith('Runtime/Script/') or not p.endswith('.cs') for p in owned)):
         raise ValueError('Complete owned bases, explicit restoration acceptance and concrete edits required')
@@ -42,7 +44,8 @@ def admit(text: str,owned: tuple[str,...],bases: dict[str,bytes],current: dict[s
 
 def code(workers: ContextWorkers,unit: Unit,files: dict[str,str],feedback: str,operation: str) -> WorkerPatch:
     from full_baseline_restoration import descriptor
-    if unit.role!='impl' or unit.id!='SHELL' or not workers.services.tdd.frozen:
+    if (unit.role!='impl' or unit.id!='SHELL' or workers.contract.contract_version<70
+        or not workers.services.tdd.frozen):
         raise ValueError('Implementation anchors require the existing frozen SHELL unit')
     workers.services.tdd.assert_frozen()
     state=workers.coder.calls.budget.root;plan=descriptor(state,workers.contract.contract_version)

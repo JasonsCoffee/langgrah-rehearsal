@@ -439,7 +439,7 @@ class ContextWorkers:
                 feedback+=judge_finding(self.coder.calls.budget.root,self.services,unit.id)
             feedback+=restored_note
         if (stage=='green' and unit.role=='impl' and unit.id=='SHELL'
-            and self.contract.contract_version>=69):
+            and self.contract.contract_version>=70):
             from impl_anchored_transport import code as anchored_implementation
             with self.admission:
                 print('Preparing hash-bound SHELL implementation edits',flush=True)
