@@ -645,7 +645,11 @@ def main():
     from bridge_discovery_retry import DiscoveryRetryTransport
     def record_discovery_retry(proof):
         atomic_write(state,'diagnostics/discovery-retry-'+sha256(json.dumps(proof,sort_keys=True).encode()).hexdigest()+'.json',json.dumps(proof,indent=2).encode())
-    transport=DiscoveryRetryTransport(host.transport,ready=host.preflight,record=record_discovery_retry)
+    if version>=69:
+        from lobby_readiness_wait import ReadinessWaitTransport
+        transport=ReadinessWaitTransport(host.transport,ready=host.preflight,record=record_discovery_retry)
+    else:
+        transport=DiscoveryRetryTransport(host.transport,ready=host.preflight,record=record_discovery_retry)
     ladder=VerificationLadder(rules,transport)
     # Session grants may only be imported by the trusted operator after a real
     # user's explicit candidate-bound decision. No grant is created by this run.
@@ -736,6 +740,10 @@ def main():
         if os.environ.get('LOBBY_RESUME_BRIDGE_DISCOVERY_V64')=='1':
             from bridge_discovery_retry import reconcile_red_discovery
             executor.resume_operational(reconcile=lambda: reconcile_red_discovery(state,contract,budget,services,integration.path,host))
+            executor.advance(executor.stage())
+        if os.environ.get('LOBBY_RESUME_BRIDGE_DISCOVERY_V69')=='1':
+            from lobby_readiness_wait import reconcile as reconcile_discovery
+            executor.resume_operational(reconcile=lambda: reconcile_discovery(state,contract,budget,services,integration.path,host))
             executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')

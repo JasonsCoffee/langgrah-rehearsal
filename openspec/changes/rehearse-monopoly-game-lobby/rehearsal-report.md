@@ -1,5 +1,22 @@
 # Monopoly lobby rehearsal report
 
+Current operation: **cycle 69 operational verification recovery preparation**.
+`v69-step9-verify` ended operational at the tests gate: “No exact-project Bridge
+with FrameworkVerify tooling”. Exact candidate
+`73816996becb75eb390b0625f69c67ca630774f7` compiled successfully; no test intent
+or test-result ticket exists for that request. No tests ran in this operation,
+and no Green is claimed. Read-only checks subsequently verified the dedicated
+project and ready protocol-1 compile/tests capabilities.
+
+A bounded target readiness wait and an exact zero-submission recovery hook are
+being verified before native same-run resume. They preserve all **199** frozen
+files, **25** uncertain reservations, configured models, **250m / 24m / 160 cycles**,
+pinned overlay and framework runtime. Accounted usage remains **150,514,861 input /
+6,408,573 output**. See `bridge-recovery-v69.md` and `evidence/bridge-stop-v69.json`.
+**Not awaiting_human_review; no human acceptance recorded.**
+
+Earlier cycle-69 snapshots follow.
+
 Current operation: **cycle 69 full-coordinator candidate verification**.
 Candidate `73816996becb75eb390b0625f69c67ca630774f7` is executing the
 native `v69-step9-verify` ladder with **129 selected tests**. Coder (GPT-6.2
