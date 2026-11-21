@@ -7,20 +7,24 @@ All **199** test/configuration files are globally frozen at inventory SHA256
 `2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520`.
 The native Red evidence identity is
 `cd04666caab373ab2469c5ffd348d65986ef6f8a15d5cd5fda2554ce68de5ac6`.
-The current delegated candidate is
-`1208f18f19420df2dfac7a75ba41e33062ec81b5`; its verification is in flight.
-The SHELL proposal omitted its full coordinator source, leaving that component
-at the baseline stub. No functional completion or Green is claimed.
+Candidate `1208f18f19420df2dfac7a75ba41e33062ec81b5` failed native
+compilation: its omitted coordinator lacks `ConfigureAccount`. The actual Judge
+classified this as SHELL implementation work. Coder supplied the missing method;
+that compile-only repair is candidate
+`715fe9b9ea7aaf60034acb6cc833c2cd5ec10aa8`, now in native verification
+`v69-step7-verify`. The coordinator still contains workflow stubs. No functional
+completion or Green is claimed. Actual first-failure evidence SHA256:
+`171b1479faf768a917a6d4f17d14553a2d0028db2e66c32cb5fea1c0837560d4`.
 
 A rehearsal-only hash-bound implementation transport is prepared for the next
 supported process boundary. It requires explicit model acceptance of exact
 previously paid source bases and concrete model-authored edits; the host does
 not author game behavior. Six unchanged guard tests failed before the helper
-and pass afterward. Full offline regression: **757 passed**, one existing
+and pass afterward. Full offline regression: **763 passed**, one existing
 collection warning. This transport is **not loaded by the current process**.
 Framework runtime and pinned overlay files remain unchanged.
 
-Latest settled snapshot: **144,898,881 input / 6,373,317 output**, including
+Latest accounted snapshot: **146,239,583 input / 6,374,851 output**, including
 all **25** uncertain reservations, under **250m / 24m / 160 cycles**.
 Coder (GPT-6.2 Sol, low) and Judge (GPT-6.1 Sol, medium) remain configured.
 **Not awaiting_human_review; no human acceptance recorded.**
