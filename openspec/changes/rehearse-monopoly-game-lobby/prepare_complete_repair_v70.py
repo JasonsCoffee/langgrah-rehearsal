@@ -32,12 +32,10 @@ def main() -> None:
     if result['outcome']!='rework' or result['contract_version']!=69 or result['contract_sha256']!=expected:
         raise ValueError('Only actual native cycle-69 rework may advance; never interrupt a live operation')
     candidate=result['candidate_revision'];current=root/'worktrees/monopoly-game-lobby/integration-v69'
+    if candidate!='73816996becb75eb390b0625f69c67ca630774f7':
+        raise ValueError('Preserve the actual newly paid full-coordinator candidate')
     if git(current,'rev-parse','HEAD').decode().strip()!=candidate or git(current,'status','--porcelain'):
         raise ValueError('Actual previous candidate must remain clean and exact')
-    coordinator='Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs'
-    known_stub=git(module,'show','715fe9b9ea7aaf60034acb6cc833c2cd5ec10aa8:'+coordinator)
-    if (current/coordinator).read_bytes()!=known_stub:
-        raise ValueError('A newer paid coordinator exists; revise preparation to preserve that exact source before transitioning')
     prior_raw=(run/'services-v69/state.json').read_bytes();prior=json.loads(prior_raw)
     frozen=prior['tdd']['frozen'];old_raw=(current/'specs/monopoly-game-lobby/contract.v69.json').read_bytes()
     old=json.loads(old_raw);complete_inventory(old,frozen,frozen);check_frozen_sources(current,frozen)
@@ -66,36 +64,40 @@ def main() -> None:
         findings[unit]={'classification':'implementation','reason':finding};evidences[operation]=evidence
     transaction=json.loads((run/'services-v69/effects/transaction.json').read_bytes())
     if transaction['complete'] is not True:raise ValueError('No native transition during an incomplete operation')
-    source=root/'worktrees/architect-v70';reference=root/'worktrees/paid-reference-v70'
-    if source.exists() or reference.exists():raise ValueError('Preserve existing preparation; reconcile it explicitly')
+    source=root/'worktrees/architect-v70'
+    if source.exists():raise ValueError('Preserve existing preparation; reconcile it explicitly')
     owned={u['id']:list(u['owns']) for u in old['units'] if u['role']=='impl' and u['status']=='active'}
-    # The old descriptor preserves full model-source hashes and actual compiler/Judge provenance.
-    paid=json.loads((state/'baseline-restorations/v69.json').read_bytes())
-    if paid['retained_candidate']!='830e171a6838ab07961d385bdc4be47b6a162ce5' or set(paid['owned']['SHELL'])!=set(owned['SHELL']):
-        raise ValueError('Known complete paid SHELL proposal provenance required')
-    git(module,'worktree','add','-b','codex/lobby-paid-reference-v70',str(reference),candidate)
-    for path in owned['SHELL']:
-        raw=git(module,'show',paid['retained_candidate']+':'+path)
-        if sha256(raw).hexdigest()!=paid['retained_proposals']['SHELL'][path]:raise ValueError('Paid source changed')
-        (reference/path).write_bytes(raw)
-    retained=commit(reference,'Retain exact paid complete SHELL source for delegated repair',owned['SHELL'])
-    check_frozen_sources(reference,frozen)
+    # Keep the actual latest paid candidate, including the full coordinator and
+    # economy repair. Never substitute the older cycle-68 proposal.
+    retained=candidate
     git(module,'worktree','add','-b','codex/lobby-architect-v70',str(source),candidate)
     new=json.loads(old_raw);new.update(contract_version=70,previous_contract_sha256=sha256(old_raw).hexdigest())
     instruction=('\nCYCLE 70 COMPLETE SOURCE REPAIR: current runtime was restored to exact proven Red bytes. '
         'Reapply the complete paid owned base supplied by the trusted transport, retaining all workflows. '
         'SHELL must use the final hash-bound edit protocol and explicitly accept all restored bases. '
-        'Do not return a compile-only method while leaving coordinator stubs. Repair actual compilation '
-        'and every mapped functional behavior. JJCK0011 requires the supported is-not cancellation '
-        'filter syntax; the older negated-is sample is rejected by the active analyzer. Preserve '
-        'cancellation propagation, async completion and the generated lifecycle block within OnDestroy. '
-        'All 199 frozen files, tests, ownership and presentation assets remain unchanged.')
+        'The retained source is the NEW full coordinator and latest economy serializer, not cycle 68. '
+        'Preserve the 31 passing cases while repairing the actual 98 failures, including four runtime '
+        'errors. Do not leave workflow stubs, drop full bases or substitute a compile-only repair. '
+        'For non-SHELL owners, return the complete retained owned source plus necessary actual repairs; '
+        'empty files while current source is still the restored stub does not restore your work. '
+        'Retain the already-correct is-not cancellation filters, cancellation propagation, async '
+        'completion and generated lifecycle block within OnDestroy. All 199 frozen files, tests, '
+        'ownership and presentation assets remain unchanged. Address the actual independent findings '
+        'within declared ownership; do not change tests to accept invisible geometry or broken state.')
     for unit in new['units']:
-        if unit['role']=='impl':unit['instructions']+=instruction
+        if unit['role']=='impl':
+            actual=findings if unit['id']=='SHELL' else {unit['id']:findings[unit['id']]}
+            unit['instructions']+=instruction+'\nACTUAL INDEPENDENT FINDINGS:\n'+json.dumps(actual,ensure_ascii=False)
     validate_revision(old,new,sha256(old_raw).hexdigest())
     spec=source/'specs/monopoly-game-lobby'
     (spec/'contract.v70.json').write_text(json.dumps(new,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='')
-    baseline='4333140e62c550bd3fc0050d83b6abf24c89770e'
+    # This exact baseline executed 129 assertion failures with these same 199
+    # frozen files. Retain the complete failed implementation in paid context;
+    # do not misclassify its four runtime errors as a valid new Red baseline.
+    baseline='885e315bc2e52be95d2fadd69d8d4425094dadd6'
+    for path,digest in frozen.items():
+        if sha256(git(module,'show',baseline+':'+path)).hexdigest()!=digest:
+            raise ValueError('Proven assertion-Red baseline must have the exact current frozen tests')
     for paths in owned.values():
         for path in paths:(source/path).write_bytes(git(module,'show',baseline+':'+path))
     check_frozen_sources(source,frozen)

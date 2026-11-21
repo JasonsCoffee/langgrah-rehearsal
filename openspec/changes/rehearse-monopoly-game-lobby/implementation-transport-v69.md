@@ -68,6 +68,27 @@ older cycle-68 proposal over these new changes. Shared verification evidence is
 deduplicated by request identity in preparation context; actual owner-specific
 Judge findings remain separate.
 
+Cycle 69 has now actually ended in bounded rework after selected execution
+returned 31 passed / 98 failed, including four runtime errors. All five actual
+Judge classifications remain implementation; native trend/attempt rules issued
+the rework dossier. Consecutive preparation has therefore been revised to retain
+the exact latest full candidate `73816996becb75eb390b0625f69c67ca630774f7`,
+including its new coordinator and serializer. No older proposal is substituted.
+All actual owner findings are verified against SDK receipts and settled charges.
+
+Every implementation unit remains failed; none has verified Green. Because the
+mixed runtime-error result cannot establish a valid new Red baseline, preparation
+uses exact runtime blobs from `885e315bc2e52be95d2fadd69d8d4425094dadd6`, which
+executed 129 assertion failures with these same 199 frozen files. It checks every
+test hash against that actual baseline before copying any runtime blob. This is
+not a passing baseline being deliberately broken or a rewritten test oracle.
+The complete new paid implementation remains the delegated restoration/edit
+base, with all previously passing cases required to remain functional afterward.
+Fresh source review, native Red and global freeze still precede implementation.
+Twenty-six relevant unchanged admission/recovery guards pass; the staged script
+also passes Python compilation. Native transition and execution are the next
+operations, not outcomes claimed by these preparation checks.
+
 The Architect/apply skills are sufficient about the boundary: delegated source,
 immutable tests, retained usage and actual independent review are mandatory.
 They intentionally do not supply this target-specific response transport. The
