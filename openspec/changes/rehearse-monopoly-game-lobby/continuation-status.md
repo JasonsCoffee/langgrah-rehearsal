@@ -1,7 +1,13 @@
 # Lobby continuation status
 
-Current operation: **cycle 69 operational verification recovery preparation**.
-`v69-step9-verify` ended operational at the tests gate: “No exact-project Bridge
+Current operation: **cycle 69 resumed verification, same candidate**.
+Public native recovery completed with all 199 frozen files, 25 uncertain
+reservations and usage preserved. `v69-step10-verify` is now running on
+`73816996becb75eb390b0625f69c67ca630774f7`, with all 129 tests selected.
+The bounded zero-submission readiness wait is active. No coding was replayed.
+Full offline regression: **774 passed**, one existing collection warning.
+
+Previous `v69-step9-verify` ended operational at the tests gate: “No exact-project Bridge
 with FrameworkVerify tooling”. Exact candidate
 `73816996becb75eb390b0625f69c67ca630774f7` compiled successfully; no test intent
 or test-result ticket exists for that request. No tests ran in this operation,
@@ -9,7 +15,7 @@ and no Green is claimed. Read-only checks subsequently verified the dedicated
 project and ready protocol-1 compile/tests capabilities.
 
 A bounded target readiness wait and an exact zero-submission recovery hook are
-being verified before native same-run resume. They preserve all **199** frozen
+verified and active after native same-run resume. They preserve all **199** frozen
 files, **25** uncertain reservations, configured models, **250m / 24m / 160 cycles**,
 pinned overlay and framework runtime. Accounted usage remains **150,514,861 input /
 6,408,573 output**. See `bridge-recovery-v69.md` and `evidence/bridge-stop-v69.json`.

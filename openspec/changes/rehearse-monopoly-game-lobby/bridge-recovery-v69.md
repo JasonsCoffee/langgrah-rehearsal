@@ -38,3 +38,11 @@ The skills sufficiently require identity/capability checks, durable-effect
 reconciliation and public same-run resume. They do not provide the target-specific
 readiness wait. This hook and its zero-submission proof are the supplied wiring;
 they are not a framework runtime fix or evidence that the unsubmitted tests ran.
+
+Native recovery has now executed successfully. The trusted authorization records
+the exact old receipt, compile callback hash, zero submission, all 199 frozen
+files and all 25 uncertain reservations. The same candidate entered
+`v69-step10-verify` with 129 selected tests. Accounting remained **150,514,861 /
+6,408,573**. The readiness wrapper is active; the staged implementation-anchor
+transport remains inactive in cycle 69. No coding was replayed, and no human
+acceptance or current-candidate Green is recorded.
