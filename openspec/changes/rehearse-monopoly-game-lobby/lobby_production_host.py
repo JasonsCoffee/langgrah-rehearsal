@@ -83,7 +83,8 @@ class Utf8Calls:
             from codex_review_reuse import reuse_review
             reviewed=reuse_review(self.calls,call_id,unit_id,normalized,max_output_tokens)
             if reviewed is not None:return reviewed
-        return self.calls.generate(call_id,unit_id,normalized,max_output_tokens=max_output_tokens)
+        from codex_error_capture import generate as capture_error
+        return capture_error(self.calls,call_id,unit_id,normalized,max_output_tokens)
 
 class ContextWorkers:
     """Supply frozen context deliberately; all paid calls use native accounting."""
@@ -744,6 +745,10 @@ def main():
         if os.environ.get('LOBBY_RESUME_BRIDGE_DISCOVERY_V69')=='1':
             from lobby_readiness_wait import reconcile as reconcile_discovery
             executor.resume_operational(reconcile=lambda: reconcile_discovery(state,contract,budget,services,integration.path,host))
+            executor.advance(executor.stage())
+        if os.environ.get('LOBBY_RESUME_JUDGE_V70')=='1':
+            from judge_retry_v70 import reconcile as reconcile_judge
+            executor.resume_operational(reconcile=lambda: reconcile_judge(state,contract,budget,services,integration.path,host))
             executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')

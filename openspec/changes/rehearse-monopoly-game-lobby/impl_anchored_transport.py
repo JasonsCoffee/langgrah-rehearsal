@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 
 def admit(text: str,owned: tuple[str,...],bases: dict[str,bytes],current: dict[str,bytes],
-          restored: tuple[str,...]) -> dict[str,bytes]:
+          restored: tuple[str,...],*,allow_noop: bool=False) -> dict[str,bytes]:
     def unique(pairs):
         result={}
         for key,value in pairs:
@@ -28,9 +28,15 @@ def admit(text: str,owned: tuple[str,...],bases: dict[str,bytes],current: dict[s
         or not isinstance(data['accept_bases'],list)
         or any(not isinstance(path,str) for path in data['accept_bases'])
         or sorted(data['accept_bases'])!=sorted(restored)
-        or not data['edits'] or set(bases)!=set(owned) or set(current)!=set(owned)
+        or not isinstance(data['files'],dict) or not isinstance(data['edits'],list)
+        or set(bases)!=set(owned) or set(current)!=set(owned)
         or any(not p.startswith('Runtime/Script/') or not p.endswith('.cs') for p in owned)):
         raise ValueError('Complete owned bases, explicit restoration acceptance and concrete edits required')
+    if not data['edits']:
+        if (not allow_noop or restored or bases!=current or data['files']
+            or not isinstance(data['reason'],str) or not data['reason'].strip()):
+            raise ValueError('Only a proven unchanged complete peer may return no owned repair')
+        return {}
     accepted=data.pop('accept_bases')
     spec=importlib.util.spec_from_file_location('impl_anchor_parser',Path(__file__).with_name('anchored_author.py'))
     parser=importlib.util.module_from_spec(spec);spec.loader.exec_module(parser)
@@ -57,6 +63,10 @@ def code(workers: ContextWorkers,unit: Unit,files: dict[str,str],feedback: str,o
         raw=git(workers.root,'show',plan['retained_candidate']+':'+path)
         if sha256(raw).hexdigest()!=plan['retained_proposals'][unit.id][path]:raise ValueError('Paid base identity changed')
         if raw!=current[path]:bases[path]=raw;restored.append(path)
+    evidence=workers.services.state.get('verification') or {}
+    allow_noop=(not restored and evidence.get('gate')=='compile' and evidence.get('status')=='failed'
+        and bool(evidence.get('related_units')) and unit.id not in evidence['related_units']
+        and evidence.get('request',{}).get('contract_sha256')==workers.contract.sha256)
     context=workers.context(unit,files)
     for path,raw in bases.items():
         context[path]=raw.decode('utf-8')
@@ -73,6 +83,8 @@ def code(workers: ContextWorkers,unit: Unit,files: dict[str,str],feedback: str,o
         'owned-source edit is required; an incomplete proposal or a reason-only repair is invalid. '
         'In particular, the active analyzer rejects logically equivalent negated-is catch filters; satisfy '
         'its supported syntax without changing cancellation/completion behavior. Tests are frozen and read-only.')
+    if allow_noop:
+        protocol+=' FINAL PEER-COMPILER OVERRIDE: the actual current compile failure belongs only to other owners, and all your supplied owned bases are already complete current source. You may return files={}, edits=[], accept_bases=[] and a substantive reason if no owned repair is supported. This does not claim Green; normal shared verification still follows.'
     provenance={'contract_sha256':workers.contract.sha256,'operation':operation,'unit':unit.id,
         'current_sha256':{p:sha256(v).hexdigest() for p,v in current.items()},'base_sha256':hashes,
         'restore_paths':restored,'retained_candidate':plan['retained_candidate'],'human_accepted':False}
@@ -87,9 +99,10 @@ def code(workers: ContextWorkers,unit: Unit,files: dict[str,str],feedback: str,o
         prompt+='\nFINAL REQUIRED TASK:\n'+unit.instructions+'\n'+protocol+'\n'+feedback
         if len(prompt.encode())>workers.max_context_bytes:raise ModelError('Implementation anchor context exceeds the approved host bound')
         # Direct native accounting avoids prompt-only lexical changes to anchor bytes.
-        reply=workers.coder.calls.generate(call,unit.id,prompt,max_output_tokens=workers.token_budgets.green)
+        from codex_error_capture import generate as capture_error
+        reply=capture_error(workers.coder.calls,call,unit.id,prompt,workers.token_budgets.green)
         try:
-            patch=admit(reply.text,unit.owns,bases,current,tuple(restored))
+            patch=admit(reply.text,unit.owns,bases,current,tuple(restored),allow_noop=allow_noop)
             violations=UnityAdapter().parse_check(patch)
             if violations:raise ValueError('Implementation edit has C# syntax errors: '+str(violations))
         except ValueError as error:
@@ -99,5 +112,6 @@ def code(workers: ContextWorkers,unit: Unit,files: dict[str,str],feedback: str,o
         atomic_write(state,'impl-anchors/'+operation+'.complete.json',json.dumps(provenance|{
             'actual_calls':calls,'model_reply_sha256':sha256(reply.text.encode()).hexdigest(),
             'file_sha256':{p:sha256(v).hexdigest() for p,v in patch.items()}},indent=2).encode())
-        return WorkerPatch(patch,'Exact paid-source restoration plus actual model-authored hash-bound implementation edits')
+        reason=json.loads(reply.text)['reason']
+        return WorkerPatch(patch,reason)
     raise ModelError('Bounded implementation anchor transport failed; all paid calls remain recorded')
