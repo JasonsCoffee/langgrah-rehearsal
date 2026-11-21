@@ -1,5 +1,22 @@
 # Monopoly lobby rehearsal report
 
+Current operation: **cycle 70 repaired candidate verification**.
+Candidate `625db77bf4e75060435947d955328a729f6f87dc` is running
+`v70-step8-verify`, with all 129 tests selected. The fresh configured Judge
+returned a genuine implementation verdict for the ECON serializer compiler error.
+Delegates supplied an ECON repair and RECORDS update; SHELL, MATCH and SOCIAL
+returned unchanged source. No Architect-written game implementation was used.
+See `evidence/judge-returned-v70.json`.
+
+Accounted usage: **158,005,737 input / 6,484,270 output**, including all **26**
+uncertain reservations. Limits remain **250m / 24m / 160 cycles**. All **199**
+frozen files retain the same hashes. Coder (GPT-6.2 Sol, low), Judge (GPT-6.1 Sol,
+medium), trusted overlay and framework runtime remain unchanged. Full offline
+regression: **787 passed**, one existing collection warning. Current-candidate
+results are pending. **Not awaiting_human_review; no human acceptance recorded.**
+
+Earlier cycle-70 snapshots follow.
+
 Current operation: **cycle 70 resumed native verification**.
 Public recovery succeeded; `v70-step6-verify` is running on the unchanged
 candidate. All **26** uncertain reservations are retained, with no usage reset.
