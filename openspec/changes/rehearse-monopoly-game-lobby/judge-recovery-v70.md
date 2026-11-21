@@ -44,3 +44,10 @@ sufficient about retaining unknown usage, exact identity, frozen tests and
 public resume. They do not supply this target-specific claim registration or
 sanitized failure capture. Configured Coder, Judge, trusted overlay and framework
 runtime remain unchanged. Not awaiting human review; no acceptance recorded.
+
+Public native resume has now executed successfully. Its authorization preserves
+all 26 unknown reservations, the original pending effect and failed receipt,
+the same candidate and unchanged **155,562,033 / 6,471,507** accounting.
+`v70-step6-verify` is running with the configured Judge and caller diagnostics.
+The undefined ECON identifier remains for delegated repair after independent
+classification. No new verdict or passing test result is claimed by recovery.

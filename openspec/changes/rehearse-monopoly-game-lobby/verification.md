@@ -1,6 +1,10 @@
 # Lobby rehearsal verification
 
-Current operation: **cycle 70 operational Judge recovery preparation**.
+Current operation: **cycle 70 resumed native verification**.
+Public recovery succeeded; `v70-step6-verify` is running on the unchanged
+candidate. All **26** uncertain reservations are retained, with no usage reset.
+Full offline regression: **787 passed**, one existing collection warning.
+The following paragraph records the previous operational stop.
 Candidate `be19106e61f8c5ce78cdde53803573616b9334fb` failed actual compilation
 at `LobbyEconomy.cs(40,39)`, CS0103 (`IgnoreSerializableAttribute` is an undefined
 name). No selected tests ran. The subsequent configured Judge call failed with
@@ -9,10 +13,10 @@ is absent. The original underlying cause is unknown, not a proven TLS failure.
 
 The full **934,582 / 32,768** reservation remains charged, bringing accounted
 usage to **155,562,033 input / 6,471,507 output**. The prior 25 uncertain calls
-remain and this new charge will be registered as the 26th before public native
+remain and this new charge is registered as the 26th after public native
 resume. All 199 frozen files, models, overlay and **250m / 24m / 160 cycles**
 limits remain unchanged. Caller-side sanitized error capture and exact recovery
-are in offline verification. See `judge-recovery-v70.md` and
+passed offline verification and are active. See `judge-recovery-v70.md` and
 `evidence/compile-judge-stop-v70.json`. **Not awaiting_human_review; no acceptance.**
 
 Earlier cycle-70 snapshots follow.
