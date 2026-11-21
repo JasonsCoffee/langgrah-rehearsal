@@ -434,6 +434,9 @@ class ContextWorkers:
         if stage=='green' and getattr(self,'services',None) is not None:
             from compile_repair_context import mechanical_feedback
             feedback+=mechanical_feedback(self.services.state,self.contract.sha256)
+            if self.coder.client.config.provider==self.judge_calls.client.config.provider=='codex':
+                from actual_judge_feedback import feedback as judge_finding
+                feedback+=judge_finding(self.coder.calls.budget.root,self.services,unit.id)
             feedback+=restored_note
         recovered=getattr(self,'reconciled_worker_patch',None)
         if recovered and stage=='test_authoring' and recovered['unit']==unit.id and recovered['operation']==operation_id:

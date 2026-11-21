@@ -70,6 +70,8 @@ def context(state: Path,module: Path,version: int) -> tuple[dict[str,dict[str,st
     for body in result.values():
         if value.get('previous_evidence'):
             body['readonly-previous-verification/evidence.json']=json.dumps(value['previous_evidence'],ensure_ascii=False)
+        if value.get('independent_findings'):
+            body['readonly-previous-verification/independent-findings.json']=json.dumps(value['independent_findings'],ensure_ascii=False)
     return result,value.get('note',note)
 
 

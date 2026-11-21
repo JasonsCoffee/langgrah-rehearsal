@@ -5,6 +5,13 @@ The five-unit candidate `d6304a1b906bb340eeedccb01c57dc1393d02fe3` reached
 test request was submitted. A later exact-project Bridge probe reported protocol
 1, compile/tests capability, ready=true and no active ticket.
 
+The timeout was a misleading wrapper outcome: OverlayHost.materialize catches
+ValueError around both readiness probing and capture_import. The genuine drift
+exception from capture_import was therefore treated like transient readiness;
+after the scan, the readiness deadline had expired. A separate host-wiring fix
+should keep import-integrity errors outside that transient readiness catch. The
+pinned OverlayHost and TrustedOverlay sources are deliberately unchanged here.
+
 Full import checks then correctly rejected a source change: the host's
 `Runtime/Script/Monopoly.cs` had one additional **64-byte** GeneratedBreak /
 Context.Break block at the start of OnDestroy. The committed implementation had
@@ -25,6 +32,11 @@ checks. Native repair is now delegated through the same run. Auto-import logs
 also contain three owned JJCK0011 cancellation-catching errors; those messages
 are supplied as explicitly labelled import diagnostics, not a dedicated compile
 receipt.
+
+The delegated lifecycle repair was admitted as
+`830e171a6838ab07961d385bdc4be47b6a162ce5`; verification operation
+`v68-step9-verify` is in progress. The generated block is again inside OnDestroy.
+This records the admitted repair, not a passing compilation or test result.
 
 The one-time candidate-advance wiring requires a clean admitted descendant, a
 generated lifecycle block inside OnDestroy, the complete retained test inventory,

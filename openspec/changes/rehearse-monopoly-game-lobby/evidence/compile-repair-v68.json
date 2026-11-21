@@ -1,0 +1,38 @@
+{
+  "contract_version": 68,
+  "candidate": "830e171a6838ab07961d385bdc4be47b6a162ce5",
+  "request_id": "v68-step9-verify",
+  "native_evidence_sha256": "9deeb01df6f045eb020b6e070c1b2ab0c08c9c402d7de7386cdede4019e96d53",
+  "gate": "compile",
+  "status": "failed",
+  "related_units": [
+    "SHELL"
+  ],
+  "violations": [
+    {
+      "code": "compile",
+      "file": "Assets/JJGame/monopoly/Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs",
+      "message": "Assets\\JJGame\\monopoly\\Runtime\\Script\\UI\\LobbyRehearsal\\LobbyShellBindings.cs(129,9): error JJCK0011: Avoid catching OperationCanceledException in async methods. Use a catch filter: `when (ex is not OperationCanceledException)` to exclude it.",
+      "symbol": ""
+    },
+    {
+      "code": "compile",
+      "file": "Assets/JJGame/monopoly/Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs",
+      "message": "Assets\\JJGame\\monopoly\\Runtime\\Script\\UI\\LobbyRehearsal\\LobbyShellBindings.cs(137,13): error JJCK0011: Avoid catching OperationCanceledException in async methods. Use a catch filter: `when (ex is not OperationCanceledException)` to exclude it.",
+      "symbol": ""
+    },
+    {
+      "code": "compile",
+      "file": "Assets/JJGame/monopoly/Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs",
+      "message": "Assets\\JJGame\\monopoly\\Runtime\\Script\\UI\\LobbyRehearsal\\LobbyShellBindings.cs(219,9): error JJCK0011: Avoid catching OperationCanceledException in async methods. Use a catch filter: `when (ex is not OperationCanceledException)` to exclude it.",
+      "symbol": ""
+    }
+  ],
+  "tests_executed": 0,
+  "accounted_usage_including_reservations": [
+    142955042,
+    6340108
+  ],
+  "uncertain_reservations": 25,
+  "human_accepted": false
+}
