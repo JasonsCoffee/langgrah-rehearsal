@@ -438,6 +438,12 @@ class ContextWorkers:
                 from actual_judge_feedback import feedback as judge_finding
                 feedback+=judge_finding(self.coder.calls.budget.root,self.services,unit.id)
             feedback+=restored_note
+        if (stage=='green' and unit.role=='impl' and unit.id=='SHELL'
+            and self.contract.contract_version>=69):
+            from impl_anchored_transport import code as anchored_implementation
+            with self.admission:
+                print('Preparing hash-bound SHELL implementation edits',flush=True)
+                return anchored_implementation(self,unit,files,feedback,operation_id)
         recovered=getattr(self,'reconciled_worker_patch',None)
         if recovered and stage=='test_authoring' and recovered['unit']==unit.id and recovered['operation']==operation_id:
             if unit.role!='test' or self.services.tdd.frozen:

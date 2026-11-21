@@ -1,5 +1,53 @@
 # Lobby rehearsal verification
 
+Current operation: **cycle 69 implementation verification**. The three new
+Records visibility cases passed independent source review. Fresh Unity Red
+compiled and executed **129 selected tests: 129 assertion failures, zero skips**.
+All **199** test/configuration files are globally frozen at inventory SHA256
+`2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520`.
+The native Red evidence identity is
+`cd04666caab373ab2469c5ffd348d65986ef6f8a15d5cd5fda2554ce68de5ac6`.
+The current delegated candidate is
+`1208f18f19420df2dfac7a75ba41e33062ec81b5`; its verification is in flight.
+The SHELL proposal omitted its full coordinator source, leaving that component
+at the baseline stub. No functional completion or Green is claimed.
+
+A rehearsal-only hash-bound implementation transport is prepared for the next
+supported process boundary. It requires explicit model acceptance of exact
+previously paid source bases and concrete model-authored edits; the host does
+not author game behavior. Six unchanged guard tests failed before the helper
+and pass afterward. Full offline regression: **757 passed**, one existing
+collection warning. This transport is **not loaded by the current process**.
+Framework runtime and pinned overlay files remain unchanged.
+
+Latest settled snapshot: **144,898,881 input / 6,373,317 output**, including
+all **25** uncertain reservations, under **250m / 24m / 160 cycles**.
+Coder (GPT-6.2 Sol, low) and Judge (GPT-6.1 Sol, medium) remain configured.
+**Not awaiting_human_review; no human acceptance recorded.**
+
+Earlier cycle-69 preparation snapshot follows.
+
+Current operation: **cycle 69 append-only coverage preparation**. Native
+transition completed after actual cycle-68 rework. Contract
+`e4db83d9eed559a43be0a4b3c1626494b90e8d4322097510d144ef2ae53d9b9e`;
+prepared baseline `9ffa69f47e204441ad081027df7210605fed1fe6`. All **195** frozen
+files are byte-preserved. Three Records visibility cases will be authored only
+in four new owned files; no existing assertion may change. Exact prior runtime
+Red blobs were restored solely for fresh Red; full paid candidate
+`830e171a6838ab07961d385bdc4be47b6a162ce5` remains read-only repair context.
+The actual compiler/Judge findings clarify that logically equivalent negated-is
+filters are rejected by the active analyzer; a no-op did not repair them.
+
+At transition: **143,236,591 input / 6,340,222 output**, including all **25**
+uncertain reservations. Limits remain **250m / 24m / 160 cycles**. Coder
+(GPT-6.2 Sol, low), Judge (GPT-6.1 Sol, medium), trusted overlay and framework
+coordinator runtime are unchanged. Latest full offline regression: **751 passed**.
+Fresh source review, behavioral Red, new global freeze, delegated implementation,
+Green/Refactor/final verification and exact-candidate human review remain required.
+**Not awaiting_human_review; no human acceptance recorded.**
+
+Earlier cycle-68 snapshots follow.
+
 Current operation: **cycle 68 integrated verification**. The user-approved
 three method corrections passed actual independent review. Fresh Unity Red
 compiled and executed all **126 selected tests**, with **126 assertion failures,
