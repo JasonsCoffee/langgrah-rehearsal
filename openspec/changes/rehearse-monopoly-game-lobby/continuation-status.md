@@ -1,5 +1,33 @@
 # Lobby continuation status
 
+Current operation: **cycle 69 full-coordinator candidate verification**.
+Candidate `73816996becb75eb390b0625f69c67ca630774f7` is executing the
+native `v69-step9-verify` ladder with **129 selected tests**. Coder (GPT-6.2
+Sol, low) returned a new complete 1,504-line coordinator and updated panel via
+the existing whole-file path. That paid call settled at 653,858 input / 24,214
+output tokens. It has not established Green. The staged anchor transport has
+not executed; future preparation refuses to overwrite this newly paid source
+with an older proposal.
+
+Previous candidate `715fe9b9ea7aaf60034acb6cc833c2cd5ec10aa8` compiled and
+executed exactly the 129 contracted tests: **10 passed, 119 failed, zero skips**.
+Of those failures, 115 were assertions and four were runtime errors. Native
+evidence is nonbehavioral for this mixed result; no valid Red or Green is claimed
+from it. Actual Judge (GPT-6.1 Sol, medium) reviews identified SHELL prerequisites
+and respective ownership; see `evidence/tests-v69-step7.json`. Native evidence
+SHA256: `0be80cb44a56dd75396a289463557d4a063f3f88dcbb3716b7095df4b8af7b4e`.
+
+All **199** frozen test/configuration hashes remain unchanged. The previously
+verified 129-assertion Red and the global freeze remain recorded separately.
+Accounted usage at current verification entry: **150,514,861 input / 6,408,573
+output**, with all **25** uncertain reservations preserved, under **250m / 24m /
+160 cycles**. Latest full offline regression: **763 passed** (one existing
+collection warning); fifteen focused guards passed after the activation limit.
+Framework coordinator runtime and pinned overlay source remain unchanged.
+**Not awaiting_human_review; no human acceptance recorded.**
+
+Earlier cycle-69 snapshots follow.
+
 Current operation: **cycle 69 implementation verification**. The three new
 Records visibility cases passed independent source review. Fresh Unity Red
 compiled and executed **129 selected tests: 129 assertion failures, zero skips**.
