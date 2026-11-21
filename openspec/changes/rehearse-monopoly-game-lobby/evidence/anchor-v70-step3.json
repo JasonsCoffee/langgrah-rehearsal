@@ -1,0 +1,46 @@
+{
+  "proof": {
+    "contract_sha256": "bbbfcf9dc2b51f1ffb9d8a935a1fbb72ca148ada5c2a89f6b37752065f9315e7",
+    "operation": "v70-step3-code-SHELL",
+    "unit": "SHELL",
+    "current_sha256": {
+      "Runtime/Script/Monopoly.cs": "7680c60a215c9f92a4baa2a57d9ab019e2e7c4bcbe1b191dddec207986c3a05a",
+      "Runtime/Script/UI/LobbyRehearsal/Monopoly.LobbyRehearsal.cs": "0b258993408a46bb9edef69a520621c356cf2d1cf6aa44363a20c89c3309ecb6",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs": "04bb6732cc0c57908b67ff7e3d8b6a17c93e93d5f352047839759610900763d9",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyRehearsalPanel.cs": "1d74940f9bedfc9a87747b68490c429cd9be46acc535f07d1de51a23c96c2b86"
+    },
+    "base_sha256": {
+      "Runtime/Script/Monopoly.cs": "33993fc8cee02f518815eb6ac6ac85e861b75694f2f1be3ca8e303afa2a6e128",
+      "Runtime/Script/UI/LobbyRehearsal/Monopoly.LobbyRehearsal.cs": "f4a1da94f613c793a3115b1efd7a237d72606f0061264ebabc2632266fd9d86a",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs": "ad72989acf4ef3e1b0ea312272474fce9847e757a1fb76dbc8229b58a100ad53",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyRehearsalPanel.cs": "50de0ad4921eac00c8db92b14975ee0ec3204ddd7708822b6e0deab61075d22e"
+    },
+    "restore_paths": [
+      "Runtime/Script/Monopoly.cs",
+      "Runtime/Script/UI/LobbyRehearsal/Monopoly.LobbyRehearsal.cs",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyRehearsalPanel.cs"
+    ],
+    "retained_candidate": "73816996becb75eb390b0625f69c67ca630774f7",
+    "human_accepted": false,
+    "actual_calls": [
+      "v70-step3-code-SHELL"
+    ],
+    "model_reply_sha256": "800bea4b2f79d3fa753c0c1e9dc66e84c51ba1faead0f3076e4d1ae9771e8cef",
+    "file_sha256": {
+      "Runtime/Script/Monopoly.cs": "82f3b31cf65c3a77286f120c76bee195c443373d836f4c618c0eb638ec7193ab",
+      "Runtime/Script/UI/LobbyRehearsal/Monopoly.LobbyRehearsal.cs": "f4a1da94f613c793a3115b1efd7a237d72606f0061264ebabc2632266fd9d86a",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs": "d156c25de77ca310ebae7c09dd54663a411c754137915e313f92b35a50d84e3d",
+      "Runtime/Script/UI/LobbyRehearsal/LobbyRehearsalPanel.cs": "50de0ad4921eac00c8db92b14975ee0ec3204ddd7708822b6e0deab61075d22e"
+    }
+  },
+  "proof_sha256": "5422c07eb30682544613f9326b24875f4aeed7d3a5c72ab3378f442ccd5502be",
+  "model_receipt_sha256": "59034f36151a1846249be984af46a5e8b37740d90f9a4232db092a40e7ea6c34",
+  "sdk_receipt_sha256": "a607349bdb7928e1ad125b1b9da6098faa8168efd2245303326e2486731273cc",
+  "actual_usage": [
+    580348,
+    6038
+  ],
+  "actual_model": "gpt-6.2-sol",
+  "human_accepted": false
+}

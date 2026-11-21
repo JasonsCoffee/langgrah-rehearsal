@@ -1,5 +1,27 @@
 # Lobby continuation status
 
+Current operation: **cycle 70 delegated implementation after valid Red**.
+Fresh native Red compiled and executed all **129 selected tests**, with **129
+assertion failures, zero runtime errors and zero skips**. Native behavioral
+evidence SHA256: `44d4d0873f8e85bab572d6477c593200eb2b3bf5f399d2a1fc4115e9a39a591d`.
+The same **199** files are globally frozen at inventory SHA256
+`2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520`.
+
+The complete-source anchor transport has now actually executed. One Coder
+(GPT-6.2 Sol, low) call supplied 35 coordinator replacements and one entry
+replacement over the exact latest paid source bases. All four owned complete
+files were admitted; no model patch was handwritten by the Architect and no
+frozen file changed. Actual usage for that call: **580,348 input / 6,038 output**.
+Other implementation owners are still running. See `evidence/frozen-tests-v70.json`
+and `evidence/anchor-v70-step3.json`. This is source admission, not Green.
+
+Limits remain **250m input / 24m output / 160 cycles**; all historical charges
+and 25 uncertain reservations remain. Judge (GPT-6.1 Sol, medium), trusted
+overlay and framework runtime are unchanged. **Not awaiting_human_review; no
+human acceptance recorded.**
+
+Earlier cycle-70 preparation and cycle-69 snapshots follow.
+
 Current operation: **cycle 70 consecutive native rework preparation**.
 Native transition completed after actual cycle-69 bounded rework. Contract
 `bbbfcf9dc2b51f1ffb9d8a935a1fbb72ca148ada5c2a89f6b37752065f9315e7`;
