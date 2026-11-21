@@ -1,6 +1,6 @@
 # Lobby continuation status
 
-Current operation: **cycle 68 delegated implementation**. The user-approved
+Current operation: **cycle 68 integrated verification**. The user-approved
 three method corrections passed actual independent review. Fresh Unity Red
 compiled and executed all **126 selected tests**, with **126 assertion failures,
 zero skips**, and native behavioral evidence. The complete **195-file**
@@ -9,9 +9,13 @@ test/configuration inventory is now globally frozen at SHA256
 Native Red evidence SHA256:
 `bc120be47355d7a72aaa9ea4d9902aa93b4a810bb9ae7f82858e6053143d043b`.
 Contract `a3c9baa004dabeb77eec0b233ee03d18deb3dc45a31e90134356c4a4748b736e`;
-Red candidate `4333140e62c550bd3fc0050d83b6abf24c89770e`. Coder (GPT-6.2 Sol, low)
-is implementing SHELL; Judge (GPT-6.1 Sol, medium), Green, Refactor and final
-verification remain required. Active limits remain 250m input / 24m output /
+Red candidate `4333140e62c550bd3fc0050d83b6abf24c89770e`. All five configured Coder
+(GPT-6.2 Sol, low) implementations are admitted in candidate
+`d6304a1b906bb340eeedccb01c57dc1393d02fe3`; all 195 frozen files are unchanged.
+Native operation `v68-step7-verify` is running the full 126-test shared selection.
+Accounting is 137,219,289 input / 6,336,202 output, including all 25 uncertain
+historical reservations. Judge (GPT-6.1 Sol, medium), Green, Refactor and final
+verification remain required; no passing result is claimed yet. Active limits remain 250m input / 24m output /
 160 cycles; all 25 historical uncertain reservations remain. The trusted overlay
 and framework coordinator runtime are unchanged. Offline regression: 730 passed.
 See evidence/frozen-tests-v68.json and the separate progress-journal performance

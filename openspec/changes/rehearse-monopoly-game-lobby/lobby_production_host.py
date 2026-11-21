@@ -207,6 +207,9 @@ class ContextWorkers:
             if path.exists():content[SPEC+name]=path.read_text(encoding='utf-8')
         content.update(late_guidance(self.root,SPEC))
         content.update(getattr(self,'supplemental_context',{}).get(unit.id,{}))
+        if unit.id=='SHELL' and self.contract.contract_version==68:
+            from generated_entry_reconciliation import context as import_context
+            content.update(import_context(self.coder.calls.budget.root))
         if unit.id in ('TEST-CARDS','TEST-VIP'):
             for name in ('architect-findings.v22.md','catalog-consistency.v23.json'):
                 path=self.root/SPEC/name
@@ -661,6 +664,9 @@ def main():
         assert_tests(state,version,integration.path)
     def verify(request,source,patches):
         print('VERIFY',request.request_id,request.candidate_revision,len(request.test_selection),flush=True)
+        if version==68:
+            from generated_entry_reconciliation import advance_materialization
+            advance_materialization(host,source,request.candidate_revision)
         metadata=host.materialize(source,request.candidate_revision)
         if metadata:
             atomic_write(state,'unexpected-import-metadata.json',json.dumps({p:sha256(v).hexdigest() for p,v in metadata.items()}).encode())
@@ -697,6 +703,9 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RECONCILE_IMPORT_V68')=='1':
+            from pending_import_recovery import reconcile
+            reconcile(state,contract,budget,services,executor,host,ladder,frozen)
         if os.environ.get('LOBBY_RESUME_IMPL_COMPACTION_V67')=='1':
             from implementation_context_scope import reconcile
             executor.resume_operational(reconcile=lambda:reconcile(state,contract,budget,services,integration.path))
