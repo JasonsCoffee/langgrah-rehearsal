@@ -1,5 +1,31 @@
 # Lobby continuation status
 
+Current operation: **cycle 70 consecutive native rework preparation**.
+Native transition completed after actual cycle-69 bounded rework. Contract
+`bbbfcf9dc2b51f1ffb9d8a935a1fbb72ca148ada5c2a89f6b37752065f9315e7`;
+prepared baseline `7dbcc44152f058fa60d348064a6bb389b3a3c514`. All **199** frozen
+files are byte-preserved. Complete latest paid candidate
+`73816996becb75eb390b0625f69c67ca630774f7` is retained for delegated repair,
+including its new coordinator and economy serializer. Only exact runtime blobs
+from the actual 129-assertion Red baseline were copied for coherent fresh Red;
+no tests, ownership or presentation assets changed.
+
+Actual cycle-69 selected execution: **31 passed / 98 failed / zero skipped**,
+including four runtime errors. All five independent Judge classifications were
+implementation; native trend/attempt rules issued the rework dossier. Guidance
+now includes the actual viewport, navigation, visibility, alignment and durability
+findings. The next implementation pass uses complete paid source bases and
+hash-bound model edits for SHELL, after native Red and global freeze.
+
+Transition accounting: **152,113,213 input / 6,409,586 output**, retaining all
+**25** uncertain reservations, under **250m / 24m / 160 cycles**. Coder (GPT-6.2
+Sol, low), Judge (GPT-6.1 Sol, medium), trusted overlay and framework runtime are
+unchanged. Full offline regression: **774 passed**, one existing collection
+warning; 26 relevant guards passed before transition. No human acceptance is
+recorded. **Not awaiting_human_review.**
+
+Earlier cycle-69 snapshots follow.
+
 Current operation: **cycle 69 resumed verification, same candidate**.
 Public native recovery completed with all 199 frozen files, 25 uncertain
 reservations and usage preserved. `v69-step10-verify` is now running on
