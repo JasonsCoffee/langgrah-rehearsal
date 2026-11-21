@@ -34,6 +34,10 @@ def main() -> None:
     candidate=result['candidate_revision'];current=root/'worktrees/monopoly-game-lobby/integration-v69'
     if git(current,'rev-parse','HEAD').decode().strip()!=candidate or git(current,'status','--porcelain'):
         raise ValueError('Actual previous candidate must remain clean and exact')
+    coordinator='Runtime/Script/UI/LobbyRehearsal/LobbyShellBindings.cs'
+    known_stub=git(module,'show','715fe9b9ea7aaf60034acb6cc833c2cd5ec10aa8:'+coordinator)
+    if (current/coordinator).read_bytes()!=known_stub:
+        raise ValueError('A newer paid coordinator exists; revise preparation to preserve that exact source before transitioning')
     prior_raw=(run/'services-v69/state.json').read_bytes();prior=json.loads(prior_raw)
     frozen=prior['tdd']['frozen'];old_raw=(current/'specs/monopoly-game-lobby/contract.v69.json').read_bytes()
     old=json.loads(old_raw);complete_inventory(old,frozen,frozen);check_frozen_sources(current,frozen)
@@ -59,7 +63,7 @@ def main() -> None:
         finding=validate_finding(evidence['request'],effect,receipt,sdk,ledger['calls'][call],unit)
         if effect['result']['classification']!='implementation':
             raise ValueError('A genuine Judge contract finding needs separate Architect analysis')
-        findings[unit]={'classification':'implementation','reason':finding};evidences[unit]=evidence
+        findings[unit]={'classification':'implementation','reason':finding};evidences[operation]=evidence
     transaction=json.loads((run/'services-v69/effects/transaction.json').read_bytes())
     if transaction['complete'] is not True:raise ValueError('No native transition during an incomplete operation')
     source=root/'worktrees/architect-v70';reference=root/'worktrees/paid-reference-v70'

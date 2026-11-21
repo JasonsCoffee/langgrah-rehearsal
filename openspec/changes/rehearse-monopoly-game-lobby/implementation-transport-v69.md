@@ -58,6 +58,16 @@ runtime changes. Full offline regression after this strengthening: **763 passed,
 one existing collection warning**. The staged transition script passes Python
 compilation; its external effects have not been executed or claimed tested.
 
+The subsequent cycle-69 test-failure repair did return a complete new paid
+coordinator (1,504 lines) and an updated panel. This came through the existing
+whole-file path; the staged anchor transport has not executed. The staged
+cycle-70 preparation now refuses to replace any coordinator newer than the
+known partial stub. Any needed continuation must preserve this newly paid source
+and revise its exact reference before transitioning. It must not restore the
+older cycle-68 proposal over these new changes. Shared verification evidence is
+deduplicated by request identity in preparation context; actual owner-specific
+Judge findings remain separate.
+
 The Architect/apply skills are sufficient about the boundary: delegated source,
 immutable tests, retained usage and actual independent review are mandatory.
 They intentionally do not supply this target-specific response transport. The
