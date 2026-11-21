@@ -304,6 +304,10 @@ class ContextWorkers:
             'Use the supplied source hashes. Preserve every unmodified source byte and all effective assertions. '
             'Only the actual model-authored replacement text is applied. Do not write business implementation. '
             'This transport supersedes historical full-file output hints; acceptance requirements are unchanged. ')
+        if self.contract.contract_version==68:
+            from approved_test_reconciliation import SCOPE
+            if unit.id in SCOPE:
+                protocol+=' The user explicitly approved correcting the identified contradictory assertions inside the named method only. Preserve all other coverage and every byte outside that body; the current unit instructions define the exact exception. '
         state=self.coder.calls.budget.root
         proof={'contract_sha256':self.contract.sha256,'unit':unit.id,'operation':operation_id,
             'source_sha256':hashes,'transport_sha256':sha256(Path(__file__).with_name('anchored_author.py').read_bytes()).hexdigest(),
@@ -329,6 +333,9 @@ class ContextWorkers:
                 if not any(p.endswith('.cs') for p in patch):raise ValueError('Required C# repair omitted')
                 if any(not (self.root/p).is_file() and p not in patch for p in unit.owns):
                     raise ValueError('Required new owned note or metadata omitted')
+                if self.contract.contract_version==68:
+                    from approved_test_reconciliation import SCOPE,validate_patch
+                    if unit.id in SCOPE:validate_patch(unit.id,patch,self.root)
                 violations=UnityAdapter().parse_check({p:v for p,v in patch.items() if p.endswith('.cs')})
                 if violations:raise ValueError('C# syntax errors: '+str(violations))
             except ValueError as error:
@@ -382,6 +389,16 @@ class ContextWorkers:
         return explanation
 
     def code(self,unit,stage,files,feedback,operation_id):
+        if stage=='test_authoring' and self.contract.contract_version==68:
+            from approved_test_reconciliation import SCOPE,author_paths,validate_patch
+            if unit.id in SCOPE:
+                if self.services.tdd.frozen:raise ModelError('Reconciled tests are already frozen')
+                actual=replace(unit,owns=author_paths(unit.id),instructions=unit.instructions+' Only the three explicitly writable paths may change. In the existing C# file, change only the approved method body. Keep every other byte, method, attribute and signature unchanged. Write the two new reconciliation note/metadata files; omit all older notes.')
+                with self.admission:
+                    print('Authoring approved test reconciliation',unit.id,flush=True)
+                    patch=self.anchored_code(actual,self.context(unit,files),feedback,operation_id)
+                    validate_patch(unit.id,patch.files,self.root)
+                    return patch
         restored_note=getattr(self,'restored_baseline_note','')
         if stage=='green' and restored_note:
             from full_baseline_restoration import coding_note
@@ -389,6 +406,11 @@ class ContextWorkers:
         if stage=='test_authoring' and restored_note and self.approved_review(unit):
             return WorkerPatch({},'Retain exact unchanged test files with their actual positive independent source review after baseline-only runtime restoration')
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
+            if self.contract.contract_version==68:
+                from doubled_budget_continuation import reusable_source
+                frozen={p:sha256((self.root/p).read_bytes()).hexdigest() for p in self.carried_tests}
+                if reusable_source(unit.owns,frozen,frozen):
+                    return WorkerPatch({},'Retain unaffected frozen test source; independent review remains required')
             if self.contract.contract_version==67:
                 from doubled_budget_continuation import reusable_source
                 from full_baseline_restoration import descriptor

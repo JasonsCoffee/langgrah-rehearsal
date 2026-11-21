@@ -29,11 +29,16 @@ Completed:
    Corrected baseline guidance to distinguish current source from historical
    baseline stubs. Trusted overlay identities remain unchanged.
 
-Current native stage: fresh **126-test Red**. It must establish valid assertion
-failure evidence before global freeze and delegated implementation. Previous
-31-pass/95-fail mixed evidence has three runtime errors and is not used as Red.
+Current native result: **rework**, after valid 126-test assertion Red, global
+freeze, delegated implementation and actual integrated verification. Candidate
+`9291bdd5fd5c2ed1a0875073dea334529f12b4ae` compiled; 11 of 126 selected Unity tests
+passed, 115 failed, zero skipped. Judge (GPT-6.1 Sol, medium) identified genuine
+acceptance contradictions. All 189 frozen files remain unchanged. A rejected
+context-compaction call is retained as the 25th uncertain reservation; scoped
+implementation prompts subsequently returned valid proposals. Full offline
+suite: 716 passed.
 
-Remaining: delegate repairs using the actual prior failures; complete Green,
-Refactor and final full verification through sequential Unity checks and the same
-independent Judge; offer the exact candidate at awaiting_human_review. Never
-approve for the user. Do not replay consumed historical recovery flags.
+Accounted usage is 132,351,377 input / 6,276,956 output. Active ceilings remain
+250m / 24m / 160; no additional budget request is pending. Proposed next operation
+and the frozen-byte scope decision are in acceptance-reconciliation-v68.md.
+Do not replay consumed recovery flags or start another run. Not human review.

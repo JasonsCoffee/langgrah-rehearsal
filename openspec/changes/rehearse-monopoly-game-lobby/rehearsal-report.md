@@ -1,21 +1,50 @@
 # Monopoly lobby rehearsal report
 
-Current operation: **cycle 67 preparation**, same run recovered through the
-native authenticated API after the user's instruction **“Double those ceilings.”**
-Active aggregate ceilings are **250,000,000 input / 24,000,000 output / 160 cycles**.
-The added-unit bound remains two. At recovery all charges and 24 uncertain
-reservations were preserved exactly: **121,784,141 / 6,187,439**. The earlier 150m
-request is superseded. Models, efforts, API-cap waiver and trusted overlay remain.
-All **189** frozen files were carried unchanged from retained candidate
-`b53644293a4b41c3d1253e32acb5334781fcaeab`. Coherent prepared baseline:
-`1864d5b240a6ccfe36e8ba06fabdbb6f076c206b`; contract:
+Current operation: **cycle 68 preparation**, after explicit user approval of the
+scoped frozen-test reconciliation. Contract
+`a3c9baa004dabeb77eec0b233ee03d18deb3dc45a31e90134356c4a4748b736e`; baseline
+`5ce6abb5f2959683a3850ad813d1dd92044fce49`. All old 189 frozen files remain in
+cycle-67 history; 186 remain byte-protected during this new authoring phase. Only
+the three named method bodies and six new explanation/metadata files may change.
+AST admission rejects changes to other source bytes. Original models, 25 uncertain
+reservations, 250m/24m/160 limits and trusted overlay remain unchanged. Transition
+accounting: 132,351,377 input / 6,276,956 output. Coder (GPT-6.2 Sol, low) must
+author the repairs; Judge (GPT-6.1 Sol, medium), fresh valid Red and a new freeze
+remain mandatory. See acceptance-reconciliation-v68.md. Not human review.
+
+The following cycle-67 entries are historical.
+
+Current state: **cycle 67 rework**. Native recovery applied the user's
+**“Double those ceilings”** authorization: **250,000,000 input / 24,000,000
+output / 160 cycles**. All historical charges remain: **132,351,377 input /
+6,276,956 output**, including **25** uncertain reservations. Remaining tokens:
+**117,648,623 / 17,723,044**. Added-unit bound two remains unchanged.
+
+Candidate `9291bdd5fd5c2ed1a0875073dea334529f12b4ae`; contract
 `013c774cf990ebacc14e4cb4fcbddf954bb3aadb5ce2abfdd9885d7dc29e3783`.
-Latest full offline suite: **707 passed**, one existing warning, 272.79 seconds.
-Source reuse cannot mark tests reviewed: actual independent reviews or exact
-verified review receipts are required. New-cycle Red still precedes implementation.
-The complete latest paid implementation and prior failures are read-only repair
-input. No feature implementation was handwritten. **Not awaiting human review yet.**
-See `evidence/recovery-applied-double-v66.json`. Older snapshots below are history.
+Fresh Red ran 126 assertions, all failed, before global freeze. All 189 frozen
+files remain unchanged (inventory SHA256
+`03aeaba0e7597069ab59c1a98f9b0a664f3f7e7ff64e73c36d5939779fce32c5`).
+Coder (GPT-6.2 Sol, low) produced four peer implementations; SHELL returned an
+empty proposal. Integrated compilation passed; actual selected Unity execution
+ran **126 tests: 11 passed, 115 failed, zero skipped**. Runtime errors made that
+receipt nonbehavioral. Judge (GPT-6.1 Sol, medium) returned a real contract defect
+for conflicting SHELL acceptance and implementation findings for the four peers.
+No assertion was bypassed and no feature implementation was handwritten.
+
+The exact context-compaction failure retained its full charge. Owner-scoped
+read-only model input then allowed fresh delegated calls, with all physical
+frozen tests and full verification unchanged. Latest complete offline suite:
+**716 passed**, one existing warning, 251.10 seconds. Trusted overlay source,
+baseline/import checks, configured models and framework coordinator runtime remain
+unchanged. The new ceilings were applied without resetting any usage.
+
+The next contract requires a scoped decision about contradictory frozen
+assertions; the existing target carry guard otherwise pins all previous bytes.
+See [the concrete reconciliation plan](acceptance-reconciliation-v68.md).
+**Not awaiting_human_review; no human acceptance has been recorded.**
+
+The following entries are historical snapshots.
 
 ## Previous cycle evidence
 

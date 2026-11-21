@@ -1,0 +1,122 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "contract_version": 67,
+  "result": {
+    "candidate_revision": "9291bdd5fd5c2ed1a0875073dea334529f12b4ae",
+    "contract_sha256": "013c774cf990ebacc14e4cb4fcbddf954bb3aadb5ce2abfdd9885d7dc29e3783",
+    "contract_version": 67,
+    "evidence_refs": [
+      ".agent/runs/monopoly-game-lobby/dossier-v67.json"
+    ],
+    "format_version": 1,
+    "outcome": "rework",
+    "reason": "Bounded unit repair requires contract revision",
+    "run_id": "monopoly-game-lobby"
+  },
+  "limits": [
+    250000000,
+    24000000,
+    160,
+    2
+  ],
+  "accounted_usage": [
+    132351377,
+    6276956
+  ],
+  "remaining": [
+    117648623,
+    17723044
+  ],
+  "uncertain_reservations": 25,
+  "frozen_count": 189,
+  "frozen_inventory_sha256": "03aeaba0e7597069ab59c1a98f9b0a664f3f7e7ff64e73c36d5939779fce32c5",
+  "all_frozen_files_checked_unchanged": true,
+  "selected_tests": {
+    "discovered": 1736,
+    "executed": 126,
+    "failed": 115,
+    "failure_kind": "setup",
+    "inconclusive": 0,
+    "operational_error": null,
+    "passed": 11,
+    "skipped": 0
+  },
+  "evidence_sha256": {
+    "result.json": "a1de2360fd2df94130df7794dbef501ab2c44778f49ff15b76b6a549293c00e4",
+    "dossier-v67.json": "b85c753865131922635c1ca2ea13d732585404fcc357d26c5adfa66dc05fc496",
+    "services-v67/evidence/v67-step6-verify.json": "e410c3b8833224b3d5a14844ae21d4687dd519fc227b3489df37f775a59c26de"
+  },
+  "independent_findings": [
+    {
+      "attempts": 1,
+      "criterion": "LOBBY",
+      "defect_class": "contract",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v67/evidence/v67-step6-verify.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "RED"
+      ],
+      "hypothesis": "The frozen acceptance requirements conflict: PreparedAssetsAreInspectable requires a non-null private static TMP_FontAsset, while Story_NFR_02 forbids static declarations in lobby runtime sources. Story_NFR_03 requires marquee text exactly 'own-42', whereas US-L1-04 and Story_L1_04 require player-name-prefixed marquee content. Story_L1_05 requires Start to change the selected tier, but US-L9-05 requires it to begin matching at the selected tier. These acceptance contradictions require contract/test-owner reconciliation; implementing the existing runtime stubs alone cannot resolve them faithfully.",
+      "id": "SHELL"
+    },
+    {
+      "attempts": 1,
+      "criterion": "LOBBY",
+      "defect_class": "implementation",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v67/evidence/v67-step6-verify.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "RED"
+      ],
+      "hypothesis": "The declared behavior and ownership are sufficient. SHELL-owned LobbyShellBindings and ConfigureLobbyRehearsal remain no-ops, explaining missing navigation, bindings and Root acquisition; these prerequisite defects belong to SHELL, not an expansion of ECON ownership. Persisted account/card and reconciliation restoration failures belong to ECON. Route repairs to the existing owners and rerun integrated verification; the nonbehavioral receipt does not establish valid TDD evidence.",
+      "id": "ECON"
+    },
+    {
+      "attempts": 1,
+      "criterion": "LOBBY",
+      "defect_class": "implementation",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v67/evidence/v67-step6-verify.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "RED"
+      ],
+      "hypothesis": "The supplied SHELL coordinator and ConfigureLobbyRehearsal are no-op stubs, explaining empty routes, missing bound views and ordinary-entry null references. These are missing prerequisite implementations owned by declared peer SHELL, not a contract gap or permission to expand MATCH ownership. Route repairs to the existing owners and verify the integrated candidate; the nonbehavioral evidence flag does not establish TDD or require weakening acceptance.",
+      "id": "MATCH"
+    },
+    {
+      "attempts": 1,
+      "criterion": "LOBBY",
+      "defect_class": "implementation",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v67/evidence/v67-step6-verify.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "RED"
+      ],
+      "hypothesis": "The supplied SHELL implementation is nonfunctional: EnterAsync/OpenAsync/BindView are no-ops, BoundViewCount is always zero, and ConfigureLobbyRehearsal does nothing. This explains missing navigation, controls and world-read transitions, while configured Monopoly entry falls into ordinary match preparation. These responsibilities and ownership are already explicit in the contract. Route prerequisite repairs to SHELL, not SOCIAL; preserve frozen tests and ownership. The nonbehavioral verification receipt does not establish behavioral TDD or successful integration.",
+      "id": "SOCIAL"
+    },
+    {
+      "attempts": 1,
+      "criterion": "LOBBY",
+      "defect_class": "implementation",
+      "evidence_refs": [
+        ".agent/runs/monopoly-game-lobby/services-v67/evidence/v67-step6-verify.json"
+      ],
+      "gate": "tests",
+      "history": [
+        "RED"
+      ],
+      "hypothesis": "The required entry and binding behavior is explicitly specified, but LobbyShellBindings.EnterAsync/OpenAsync/CommandAsync and Monopoly.ConfigureLobbyRehearsal are no-ops. This explains empty routes, missing bound controls and failure to reach the injected Root port. These prerequisite defects belong to SHELL, not RECORDS; existing ownership and dependency mappings already provide the repair route without changing the contract. Nonbehavioral verification evidence does not establish TDD success.",
+      "id": "RECORDS"
+    }
+  ],
+  "human_accepted": false
+}
