@@ -569,3 +569,31 @@ The complete latest paid implementation and prior failures are read-only repair
 input. No feature implementation was handwritten. **Not awaiting human review yet.**
 See `evidence/recovery-applied-double-v66.json`. Older snapshots below are history.
 
+
+Cycle 67 established actual valid Red: 126 executed/assertion failures, zero
+passes/skips, global frozen count 189; evidence SHA256
+`45b998c57c66bf8a1d40c85fd30e019e14469a84613ad024de9f7e08e8321ad1`.
+The first SHELL Green request then stopped operationally on a **confirmed
+contextCompaction item**, with no admitted patch. Exact failed receipt SHA256:
+`41eaf6c280d0145afdff0061dd2576dd5f38c3f36670eca2eded3c2f6229ee34`.
+Its full 6,251,091/65,536 reservation remains charged, bringing uncertain calls
+to 25 and accounting to 128,196,406/6,253,152 under active 250m/24m/160.
+
+Target-only owner context now retains the full specification, criteria, owned
+current/prior implementation, real failure evidence, shared harness/presentation
+suites and the owner's full test suites. Other suites' provided-text hashes remain
+as provenance; physical files and full 126-test verification are unchanged.
+Source-review context is unchanged. SHELL context measured 1,246,041 UTF-8 bytes /
+1,169,638 characters, down from 2,234,187 bytes. Compaction remains rejected; no
+model, effort, deadline, output allocation, overlay or runtime coordinator changed.
+Six scope checks froze Red at
+`dcf9ad03719ab3c9217281fcbc8ff87cc97004d243845d81744266d7af15cfcd`;
+three exact recovery checks froze at
+`4f85e14b8125e651eb3dc0308cad290b8b7587f0ba2cd78df9f06030273b52db`.
+All 19 selected scope/protocol/native-resume checks pass. Public operational
+recovery will keep the failed claim, source/candidate/frozen identities and all
+25 reservations, then use a new operation ID. It never replays the old call or
+admits a compacted response. This operational prerequisite is explicit host
+wiring; the skill's recovery rules are sufficient but do not supply this context
+selection implementation. The run is not awaiting human review yet.
+

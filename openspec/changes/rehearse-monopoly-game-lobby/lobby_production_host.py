@@ -260,6 +260,9 @@ class ContextWorkers:
             'scope_note':'Review this test author against its mapped source clauses, not stories assigned to other authors. LOBBY is the mechanical shared criterion required by the frozen schema; source-clause mappings remain substantive. Full acceptance uses all suites. Observation-only harness behavior is not game business behavior.'},ensure_ascii=False)
         if unit.role=='test' and (self.root/SPEC/'focused-repair.v7.md').exists():
             content=compact_author_context(unit.id,unit.owns,content)
+        if unit.role=='impl' and self.coder.client.config.provider==self.judge_calls.client.config.provider=='codex':
+            from implementation_context_scope import scoped
+            content=scoped(unit.id,content)
         size=len(json.dumps(content,ensure_ascii=False).encode())
         print('CONTEXT',unit.id,size,'UTF-8 bytes',flush=True)
         from codex_context_recovery import enforce_context_limit
@@ -672,6 +675,10 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_IMPL_COMPACTION_V67')=='1':
+            from implementation_context_scope import reconcile
+            executor.resume_operational(reconcile=lambda:reconcile(state,contract,budget,services,integration.path))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RECONCILE_CONTEXT_V66')=='1':
             from codex_context_recovery import reconcile
             reconcile(state,contract,budget,services,workers,integration.path)
