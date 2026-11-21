@@ -1,6 +1,10 @@
 # Monopoly lobby rehearsal report
 
-Current operation: **cycle 70 delegated implementation after valid Red**.
+Current operation: **cycle 70 integrated Unity verification**.
+Candidate `be19106e61f8c5ce78cdde53803573616b9334fb` is running
+`v70-step5-verify` with all 129 tests selected. All five delegates have admitted
+their complete owned source. Accounted usage: **154,627,451 input / 6,438,739
+output**. Current-candidate results remain pending.
 Fresh native Red compiled and executed all **129 selected tests**, with **129
 assertion failures, zero runtime errors and zero skips**. Native behavioral
 evidence SHA256: `44d4d0873f8e85bab572d6477c593200eb2b3bf5f399d2a1fc4115e9a39a591d`.
@@ -12,7 +16,7 @@ The complete-source anchor transport has now actually executed. One Coder
 replacement over the exact latest paid source bases. All four owned complete
 files were admitted; no model patch was handwritten by the Architect and no
 frozen file changed. Actual usage for that call: **580,348 input / 6,038 output**.
-Other implementation owners are still running. See `evidence/frozen-tests-v70.json`
+The other four owners supplied their full retained/updated source. See `evidence/frozen-tests-v70.json`
 and `evidence/anchor-v70-step3.json`. This is source admission, not Green.
 
 Limits remain **250m input / 24m output / 160 cycles**; all historical charges
