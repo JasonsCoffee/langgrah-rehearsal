@@ -406,7 +406,7 @@ class ContextWorkers:
         if stage=='test_authoring' and restored_note and self.approved_review(unit):
             return WorkerPatch({},'Retain exact unchanged test files with their actual positive independent source review after baseline-only runtime restoration')
         if stage=='test_authoring' and getattr(self,'carried_tests',()):
-            if self.contract.contract_version==68:
+            if self.contract.contract_version>=68:
                 from doubled_budget_continuation import reusable_source
                 frozen={p:sha256((self.root/p).read_bytes()).hexdigest() for p in self.carried_tests}
                 if reusable_source(unit.owns,frozen,frozen):

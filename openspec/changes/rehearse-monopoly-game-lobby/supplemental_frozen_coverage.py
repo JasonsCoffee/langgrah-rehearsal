@@ -64,4 +64,4 @@ def validate_manifest(state: Path,source: Path,version: int,manifest: dict) -> d
 
 def author_scope(state: Path,version: int) -> dict[str,tuple[str,...]]:
     manifest=json.loads((state/'frozen-continuations'/('v'+str(version)+'.json')).read_bytes())
-    return {manifest['author_unit']:tuple(manifest['new_paths'])} if manifest.get('kind')=='supplemental_frozen_coverage' else {}
+    return {manifest['author_unit']:tuple(manifest['new_paths'])} if manifest.get('kind') in ('supplemental_frozen_coverage','reviewed_source_supplement') else {}

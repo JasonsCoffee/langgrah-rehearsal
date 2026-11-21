@@ -25,6 +25,9 @@ def protected_tests(state: Path, source: Path, version: int) -> tuple[str,...]:
             raise ValueError('Existing frozen tests require an explicit continuation for this cycle')
         return ()
     manifest=json.loads(path.read_bytes())
+    if manifest.get('kind')=='reviewed_source_supplement':
+        from reviewed_source_supplement import protect
+        return protect(state,source,version,manifest)
     if manifest.get('kind')=='approved_test_reconciliation':
         from approved_test_reconciliation import protect
         return protect(state,source,version,manifest)

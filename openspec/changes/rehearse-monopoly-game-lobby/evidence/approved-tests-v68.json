@@ -1,0 +1,59 @@
+{
+  "version": 68,
+  "candidate": "4333140e62c550bd3fc0050d83b6abf24c89770e",
+  "old_frozen_count": 189,
+  "unchanged_carried_files": 186,
+  "only_approved_method_bodies_changed": true,
+  "independent_reviews": {
+    "TEST-HARNESS": {
+      "path": "Tests/Runtime/Script/LobbyRehearsal/LobbyHarness.cs",
+      "approved_methods": [
+        "PreparedAssetsAreInspectable"
+      ],
+      "before_sha256": "10e48e54c032c739d050979eba8096589890bf369bd4e4dafef43bc65e6c5a66",
+      "after_sha256": "afce3839581c0c5d9b8890abfc9ca1d827b3cb3ae382f2308893ba3900dc46cd",
+      "independent_review_call": "v68-step1-prepare-review-TEST-HARNESS",
+      "review_receipt_sha256": "93d640a4f3c76c1f0df69ca2357f128008189d0be36c4e27557dd083026ad977",
+      "review_model": "gpt-6.1-sol",
+      "review_effort": "medium",
+      "decision": {
+        "valid": true,
+        "explanation": "The mapped NUnit test is enabled and contains substantive assertions covering real configuration cloning and isolation, asset identities, additive scene lifecycle, geometry/animation references, all ten prefab/control sets, usable instance fonts, persistence observations, adapter behavior and owned-resource cleanup. Cycle-68 null handling preserves non-null identity checks and permits absent assets only for vehicle-none. No game outcomes are fabricated. Binding assertions appropriately remain expected Red against the supplied shell stubs. This validates test preparation only; compilation, execution and human acceptance are not established."
+      }
+    },
+    "TEST-PRES-CORE": {
+      "path": "Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationCoreTests.cs",
+      "approved_methods": [
+        "Story_L1_05"
+      ],
+      "before_sha256": "66b09daa23df3e7d5a2d3918f75bf04184e454b84f0a5c33e1a5a7029f548bb2",
+      "after_sha256": "d144fd8cc0e42a26e325432c75a2da1bce3d73edce2ae4100fd94272f72c903e",
+      "independent_review_call": "v68-step1-prepare-review-TEST-PRES-CORE",
+      "review_receipt_sha256": "cf73988df19a92202de56ac5af61875264696b0d2b3d38bf71aa9202dd00353a",
+      "review_model": "gpt-6.1-sol",
+      "review_effort": "medium",
+      "decision": {
+        "valid": true,
+        "explanation": "All eight named tests are active, acceptance-mapped and contain substantive behavioral assertions; none are disabled or vacuous. Story_L1_05 now pointer-clicks Start and verifies actual matching queue membership, the preselected nondefault tier and unchanged account selection, while retaining geometry, hit-shape and navigation checks. The v68 reconciliation supersedes the frozen historical map's contradictory Start description. This is source-based test-preparation validity only, not proof of execution or human acceptance."
+      }
+    },
+    "TEST-PRES-NFR": {
+      "path": "Tests/Runtime/Script/LobbyRehearsal/LobbyPresentationNfrTests.cs",
+      "approved_methods": [
+        "Story_NFR_03"
+      ],
+      "before_sha256": "6ba356275b1c3472cfdcfac9b31a29a7d2b7a77d1973f0faa92a543716c8c3c6",
+      "after_sha256": "468f346545c0b3c5ac66c21b8327be16f78e8749bc2ed4a9cdd50751ef1af986",
+      "independent_review_call": "v68-step1-prepare-review-TEST-PRES-NFR",
+      "review_receipt_sha256": "41b24bc63e74056d0ecf8edac4bb8df62980c08a971cbb871e4eee39ac12b51b",
+      "review_model": "gpt-6.1-sol",
+      "review_effort": "medium",
+      "decision": {
+        "valid": true,
+        "explanation": "All four named tests are enabled and contain substantive, mapped assertions covering viewport/safe-area geometry and popup ordering, VVMP routing and storage constraints, shared unread acquisition/application and live badge updates, and account-isolated preference restoration. Recording adapters observe actual calls without manufacturing business outcomes. Story_NFR_03 correctly checks parsed marquee content for both the delivered own-42 message and its actual author's display name. No disabled or vacuous tests were found. This is source-based test-preparation validity only; fresh compilation/Red execution remains required, and no human acceptance is granted."
+      }
+    }
+  },
+  "new_global_freeze_pending": true,
+  "human_accepted": false
+}
