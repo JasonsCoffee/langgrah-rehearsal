@@ -170,6 +170,8 @@ class ContextWorkers:
             if name=='presentation-observation.json' and key!='SHELL':
                 continue
             selected_name=name
+            if name=='binding-protocol.v2.md' and self.contract.contract_version>=71 and (self.root/SPEC/'binding-protocol.v71.md').exists():
+                selected_name='binding-protocol.v71.md'
             if (self.root/SPEC/'approved-rehearsal-scope.v15.md').exists():
                 selected_name={'acceptance-conditions.v2.json':'acceptance-conditions.v15.json','presentation-observation.v5.json':'presentation-observation.v15.json'}.get(name,name)
             if (self.root/SPEC/'verification-strategy.v16.md').exists() and name=='acceptance-conditions.v2.json':
@@ -191,7 +193,7 @@ class ContextWorkers:
                     'created_assets':observed['createdAssets'],
                     'views':[{k:v for k,v in view.items() if k!='controls'} for view in observed['views']],
                     'action_names':sorted({c for view in observed['views'] for c in view['controls']})},ensure_ascii=False)
-            content[SPEC+name]=text
+            content[SPEC+(selected_name if name=='binding-protocol.v2.md' else name)]=text
         scope=self.root/SPEC/'approved-rehearsal-scope.v15.md'
         if scope.exists():
             content[SPEC+'approved-rehearsal-scope.v15.md']=scope.read_text(encoding='utf-8')
@@ -308,8 +310,13 @@ class ContextWorkers:
             'Use the supplied source hashes. Preserve every unmodified source byte and all effective assertions. '
             'Only the actual model-authored replacement text is applied. Do not write business implementation. '
             'This transport supersedes historical full-file output hints; acceptance requirements are unchanged. ')
-        if self.contract.contract_version==68:
-            from approved_test_reconciliation import SCOPE
+        if self.contract.contract_version in (68,71,72,73):
+            if self.contract.contract_version==73:
+                from approved_test_reconciliation_v73 import SCOPE
+            elif self.contract.contract_version in (71,72):
+                from approved_test_reconciliation_v71 import SCOPE
+            else:
+                from approved_test_reconciliation import SCOPE
             if unit.id in SCOPE:
                 protocol+=' The user explicitly approved correcting the identified contradictory assertions inside the named method only. Preserve all other coverage and every byte outside that body; the current unit instructions define the exact exception. '
         state=self.coder.calls.budget.root
@@ -337,8 +344,13 @@ class ContextWorkers:
                 if not any(p.endswith('.cs') for p in patch):raise ValueError('Required C# repair omitted')
                 if any(not (self.root/p).is_file() and p not in patch for p in unit.owns):
                     raise ValueError('Required new owned note or metadata omitted')
-                if self.contract.contract_version==68:
-                    from approved_test_reconciliation import SCOPE,validate_patch
+                if self.contract.contract_version in (68,71,72,73):
+                    if self.contract.contract_version==73:
+                        from approved_test_reconciliation_v73 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (71,72):
+                        from approved_test_reconciliation_v71 import SCOPE,validate_patch
+                    else:
+                        from approved_test_reconciliation import SCOPE,validate_patch
                     if unit.id in SCOPE:validate_patch(unit.id,patch,self.root)
                 violations=UnityAdapter().parse_check({p:v for p,v in patch.items() if p.endswith('.cs')})
                 if violations:raise ValueError('C# syntax errors: '+str(violations))
@@ -393,8 +405,13 @@ class ContextWorkers:
         return explanation
 
     def code(self,unit,stage,files,feedback,operation_id):
-        if stage=='test_authoring' and self.contract.contract_version==68:
-            from approved_test_reconciliation import SCOPE,author_paths,validate_patch
+        if stage=='test_authoring' and self.contract.contract_version in (68,71,72,73):
+            if self.contract.contract_version==73:
+                from approved_test_reconciliation_v73 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (71,72):
+                from approved_test_reconciliation_v71 import SCOPE,author_paths,validate_patch
+            else:
+                from approved_test_reconciliation import SCOPE,author_paths,validate_patch
             if unit.id in SCOPE:
                 if self.services.tdd.frozen:raise ModelError('Reconciled tests are already frozen')
                 actual=replace(unit,owns=author_paths(unit.id),instructions=unit.instructions+' Only the three explicitly writable paths may change. In the existing C# file, change only the approved method body. Keep every other byte, method, attribute and signature unchanged. Write the two new reconciliation note/metadata files; omit all older notes.')
@@ -731,7 +748,11 @@ def main():
     lease=RunLease(state,RUN_ID,'lobby-production-'+str(os.getpid()))
     lease.acquire(owner_alive=lambda _:True)
     host.lease.acquire(owner_alive=lambda _:True)
-    executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,services)
+    execution_services=services
+    if version>=73:
+        from frozen_scope_review import FrozenScopeServices
+        execution_services=FrozenScopeServices(services,state,{p:sha256((integration.path/p).read_bytes()).hexdigest() for p in carried_tests})
+    executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,execution_services)
     try:
         preflight()
         if os.environ.get('LOBBY_RECONCILE_IMPORT_V68')=='1':

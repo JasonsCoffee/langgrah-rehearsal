@@ -31,6 +31,12 @@ def protected_tests(state: Path, source: Path, version: int) -> tuple[str,...]:
     if manifest.get('kind')=='approved_test_reconciliation':
         from approved_test_reconciliation import protect
         return protect(state,source,version,manifest)
+    if manifest.get('kind') in ('approved_test_reconciliation_v71','carry_scoped_reconciliation_v71'):
+        from approved_test_reconciliation_v71 import protect
+        return protect(state,source,version,manifest)
+    if manifest.get('kind')=='approved_test_reconciliation_v73':
+        from approved_test_reconciliation_v73 import protect
+        return protect(state,source,version,manifest)
     if manifest.get('kind')=='doubled_budget':
         from doubled_budget_continuation import protect
         return protect(state,source,version,manifest)

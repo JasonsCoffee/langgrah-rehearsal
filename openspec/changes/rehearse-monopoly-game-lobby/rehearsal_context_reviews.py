@@ -67,6 +67,10 @@ def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],
     spec=files.get(contract.spec.path)
     if spec is None:raise ModelError('Exact current specification missing')
     spec=source_text(contract.spec.path,spec)
+    # Unit instructions are Architect contract authority, distinct from excluded
+    # worker narratives. Packing must retain these exact clauses in every mode.
+    if hasattr(unit,'instructions'):
+        mechanical=mechanical|{'unit_instructions':unit.instructions}
     return make_packet({'run':'monopoly-game-lobby','contract':contract.sha256,'candidate':candidate,
         'unit':unit.id,'stage':mode,'policy':policy,'packing_format_version':2,'source_filter_version':2},tuple(sources),tuple(required),mechanical,
         ownership,tuple(unit.acceptance),spec)
@@ -119,8 +123,16 @@ class RehearsalReviews:
             {'id':s.id,'path':s.path,'sha256':s.sha256} for s in packet.sources])
         actual_calls=[]
         def send(prompt: str,call: str) -> dict:
-            actual_calls.append(call)
-            reply=self.calls.generate(call,unit.id,prompt,max_output_tokens=32768)
+            reply=None
+            if mode=='test_review':
+                from codex_review_reuse import reuse_review
+                reply=reuse_review(self.calls,call,unit.id,prompt,32768)
+            if reply is None:
+                actual_calls.append(call)
+                reply=self.calls.generate(call,unit.id,prompt,max_output_tokens=32768)
+            else:
+                proof=json.loads((self.state/'review-reuse'/(sha256(call.encode()).hexdigest()+'.json')).read_bytes())
+                actual_calls.append(proof['actual_judge_call'])
             try:return json.loads(reply.text)
             except ValueError:raise ModelError('Independent Judge did not return valid JSON') from None
         decision=review(packet,send,operation,mode,initial_input=initial,max_calls=max_calls)
