@@ -8,7 +8,8 @@ from typing import TYPE_CHECKING
 from evidence_packet import Source,Packet,make_packet,canonical
 from evidence_context_guard import validate_delivery
 from deepseek_context_selector import ContextOptimizer
-from context_call_accounting import CachedSelectionCalls
+from context_call_accounting import CachedSelectionCalls,PilotEnvelope
+from live_context_audit import LiveReviewAudit,packet_class
 from judge_context_adapter import review
 from unity_coder.core.ai_models import ModelError
 from unity_coder.core.local_executor import TestReviewRejected
@@ -63,9 +64,9 @@ class RehearsalReviews:
     def invoke(self,workers: ContextWorkers,unit: Unit,files: dict[str,str],mechanical: dict,
                operation: str,mode: str) -> dict:
         packet=build_review_packet(workers,unit,files,mechanical,self.policy,mode)
-        packet_class=mode+':'+str(mechanical.get('gate','source'))
+        category=packet_class(mode,mechanical)
         selector=CachedSelectionCalls(self.optimizer_calls,self.state,self.policy)
-        qualified=packet_class in self.qualified_classes
+        qualified=category in self.qualified_classes
         ledger=self.calls.budget
         full_input=self.calls.client.reserve_input(packet.canonical_input)
         # The shared host admission semaphore serializes these budget checks with
@@ -75,6 +76,19 @@ class RehearsalReviews:
         worst_input=3*(full_input*2+65536)+self.optimizer_calls.client.reserve_input(packet.canonical_input)
         worst_output=3*32768+8192
         max_calls=3
+        audit=LiveReviewAudit(self.state)
+        pending_audit=not any(r.get('audit',{}).get('routing_agrees') is True for r in audit.read()['reviews'])
+        audit_fits=False
+        envelope=PilotEnvelope(ledger,self.state)
+        if pending_audit:
+            try:
+                envelope.check(2*full_input+65536+self.optimizer_calls.client.reserve_input(packet.canonical_input),
+                    2*32768+8192)
+                audit_fits=(used[0]+worst_input+full_input<=ledger.limits[0]
+                    and used[1]+worst_output+32768<=ledger.limits[1])
+            except ModelError:pass
+        qualified=qualified and audit.selection_allowed(category,audit_fits=audit_fits)
+        if pending_audit and audit_fits:max_calls=1
         if used[0]+worst_input>ledger.limits[0] or used[1]+worst_output>ledger.limits[1]:
             qualified=False
             max_calls=1
@@ -94,6 +108,15 @@ class RehearsalReviews:
             try:return json.loads(reply.text)
             except ValueError:raise ModelError('Independent Judge did not return valid JSON') from None
         decision=review(packet,send,operation,mode,initial_input=initial,max_calls=max_calls)
+        def shadow() -> dict:
+            def shadow_send(prompt: str,call: str) -> dict:
+                envelope.check(self.calls.client.reserve_input(prompt),32768)
+                reply=self.calls.generate(call,unit.id,prompt,max_output_tokens=32768)
+                try:return json.loads(reply.text)
+                except ValueError:raise ModelError('Canonical shadow did not return valid JSON') from None
+            return review(packet,shadow_send,operation+'-shadow-audit',mode,max_calls=1)
+        decision=audit.observe(operation,category,packet,result,decision,
+            shadow if pending_audit and audit_fits else None)
         verdict_ref='context-verdicts/'+sha256(operation.encode()).hexdigest()+'.json'
         verdict=canonical({
             'operation':operation,'canonical_sha256':packet.canonical_sha256,
