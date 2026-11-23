@@ -4,7 +4,7 @@ from dataclasses import asdict
 from hashlib import sha256
 import json
 from pathlib import Path
-from unity_coder.core.ai_models import AIConfig,ModelError
+from unity_coder.core.ai_models import AIConfig,ModelError,ModelClient
 from unity_coder.core.budget import BudgetLedger
 from unity_coder.core.codex_backend import CodexModelClient,CodexPolicy
 from unity_coder.core.codex_stdio import CodexStdioExchange
@@ -137,7 +137,7 @@ class RetainedJudgeClient(CodexModelClient):
 
 
 
-def clients(framework: Path,root: Path,state: Path,budget: BudgetLedger,*,pilot: bool=False) -> tuple[AIConfig,list,DirectDeepSeekClient]:
+def clients(framework: Path,root: Path,state: Path,budget: BudgetLedger,*,pilot: bool=False) -> tuple[AIConfig,list[ModelClient],DirectDeepSeekClient]:
     profile=role_profile();grant=json.loads((state/profile['authorization_ref']).read_bytes())
     if (grant.get('authority')!='explicit_user_session' or grant.get('profile_sha256')!=profile_sha256()
         or grant.get('limits')!=budget.limits or budget.limits!=profile['limits']

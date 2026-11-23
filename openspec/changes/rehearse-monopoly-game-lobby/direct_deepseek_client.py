@@ -2,8 +2,10 @@
 from __future__ import annotations
 from collections.abc import Callable
 from hashlib import sha256
+from http.client import HTTPMessage,HTTPResponse
 import json
 from pathlib import Path
+from typing import NoReturn
 import ssl
 import tomllib
 from urllib.error import HTTPError
@@ -17,7 +19,8 @@ ACCEPTED_MODELS=frozenset(('deepseek-flash','deepseek-v4.1-flash','deepseek-v4.1
 
 
 class NoRedirect(HTTPRedirectHandler):
-    def redirect_request(self,req,fp,code,msg,headers,newurl):
+    def redirect_request(self,req: Request,fp: HTTPResponse | None,code: int,msg: str,
+                         headers: HTTPMessage | None,newurl: str) -> NoReturn:
         raise ModelError('Direct DeepSeek redirect refused')
 
 

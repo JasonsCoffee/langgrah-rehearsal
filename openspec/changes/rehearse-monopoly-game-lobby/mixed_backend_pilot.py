@@ -13,7 +13,7 @@ from context_call_accounting import CachedSelectionCalls,PilotEnvelope,qualifica
 from judge_context_adapter import review
 from mixed_backend_policy import role_profile,profile_sha256,judge_policy,clients,validate_pilot_receipts,QUALIFICATION_REF
 from mixed_backend_recovery import CANDIDATE,CONTRACT,verify_preservation
-from unity_coder.core.ai_models import ModelError
+from unity_coder.core.ai_models import ModelError,ModelReply
 from unity_coder.core.budget import BudgetLedger
 from unity_coder.core.lifecycle import RunLease
 from unity_coder.core.model_calls import ModelCalls
@@ -40,7 +40,7 @@ class EnvelopeCalls:
     def __init__(self,calls: ModelCalls,envelope: PilotEnvelope) -> None:
         self.calls,self.envelope,self.client,self.budget=calls,envelope,calls.client,calls.budget
 
-    def generate(self,call: str,unit: str,prompt: str,*,max_output_tokens: int):
+    def generate(self,call: str,unit: str,prompt: str,*,max_output_tokens: int) -> ModelReply:
         # Already completed matching calls are read idempotently by native calls.
         if call not in self.budget._read()['calls']:
             self.envelope.check(self.client.reserve_input(prompt),max_output_tokens)

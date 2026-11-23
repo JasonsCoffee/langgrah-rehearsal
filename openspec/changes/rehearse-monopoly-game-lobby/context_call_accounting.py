@@ -59,7 +59,7 @@ class CachedSelectionCalls:
 
 class PilotEnvelope:
     """An additional bound inside the existing ledger, never extra budget."""
-    def __init__(self,ledger,state: Path,input_limit: int=10000000,output_limit: int=512000) -> None:
+    def __init__(self,ledger: BudgetLedger,state: Path,input_limit: int=10000000,output_limit: int=512000) -> None:
         self.ledger,self.state=ledger,state
         path=state/'context-optimization/pilot-envelope.json'
         if not path.exists():atomic_write(state,'context-optimization/pilot-envelope.json',canonical({

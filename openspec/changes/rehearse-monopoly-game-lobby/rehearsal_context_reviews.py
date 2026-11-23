@@ -19,6 +19,7 @@ from unity_coder.core.budget import BudgetExhausted
 if TYPE_CHECKING:
     from lobby_production_host import ContextWorkers
     from unity_coder.core.contracts import Unit
+    from unity_coder.core.model_calls import ModelCalls
 
 
 def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],mechanical: dict,
@@ -72,7 +73,7 @@ def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],
 
 
 class RehearsalReviews:
-    def __init__(self,state: Path,calls,optimizer_calls,policy: str,*,qualified_classes: tuple[str,...]=()) -> None:
+    def __init__(self,state: Path,calls: ModelCalls,optimizer_calls: ModelCalls,policy: str,*,qualified_classes: tuple[str,...]=()) -> None:
         self.state,self.calls,self.policy=state,calls,policy
         self.optimizer_calls=optimizer_calls;self.qualified_classes=qualified_classes
 
