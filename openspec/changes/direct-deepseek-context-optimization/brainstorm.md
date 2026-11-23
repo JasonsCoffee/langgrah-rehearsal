@@ -2,10 +2,15 @@
 
 ## Outcome and acceptance criteria
 
+Sequencing update: the user explicitly requested backend implementation first,
+with frozen lobby conflicts deferred. Complete provider/context implementation,
+verification and the canonical audit separately from the lobby's eventual human
+review. No lobby test-change permission was granted by this sequencing decision.
+
 Reduce the retained lobby run's model cost and repeated input while preserving
 evidence quality, independent judgment, frozen tests and recovery guarantees.
-This is a planning-only proposal for host/backend composition, not execution or
-game implementation. The governing boundaries are `docs/boundary-contract.md`
+This change implements host/backend composition; game implementation remains
+separate. The governing boundaries are `docs/boundary-contract.md`
 (Judge inputs and bias control), `docs/loop-control.md` (paid identity and retained
 usage), `docs/verification.md` (truth and provenance), `docs/adapters.md`, and
 settled decisions D-12 and D-28. Existing framework runtime remains outside scope.
@@ -47,9 +52,10 @@ fixed reduction that might require omitting necessary context.
   `2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520`.
   The last verified uncertain set contained 26 reservations; a subsequent stop
   may add another. Reconcile the complete live set, never assume a fixed count.
-- No direct DeepSeek endpoint or configured direct key was found. The user selected ignored `ai.local.toml` for local key configuration. This
-  proposal does not solicit secrets in chat, copy Codex credentials or invoke a
-  paid API call. Actual key/model availability remains an activation prerequisite.
+- At proposal time no configured direct key was found. The user selected ignored
+  `ai.local.toml`, populated it locally and authorized apply. Authenticated
+  preflight and paid qualification now pass; keys were not solicited in chat or
+  copied into exported artifacts. See the final verification and pilot reports.
 
 ## Alternatives and trade-offs
 

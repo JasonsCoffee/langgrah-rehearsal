@@ -7,6 +7,13 @@ expensive recovery around its Codex-backed Coder/Judge route. Use direct DeepSee
 for coding and guarded context selection to reduce paid input while retaining
 the evidence needed for correct independent decisions.
 
+The user's latest sequencing decision is to finish this backend implementation
+before returning to the lobby's frozen-test conflicts. Backend delivery comprises
+the provider/context wiring, immutable accounting, frozen offline verification,
+fresh packing-format qualification and one exact live canonical audit. It does
+not require or authorize correcting lobby tests or reaching game human review
+in this change. The lobby keeps its existing run and separate acceptance gates.
+
 ## What Changes
 
 - Switch every Coder stage, including test authoring, Green repair, Refactor and
@@ -44,8 +51,9 @@ the evidence needed for correct independent decisions.
   Do not replay completed coding, alter the lobby contract or mutate frozen tests.
 - Gate activation with frozen offline adversarial tests, candidate-bound paid
   pilots and a same-Judge/low baseline comparison. Prefer deterministic reduction
-  if the paid selector adds no net value. Continue to `awaiting_human_review`
-  only in a later explicitly requested apply workflow.
+  if the paid selector adds no net value. Preserve the first-ten-review guard
+  across the deferred lobby continuation; do not claim ten observations before
+  they occur or restart game implementation to manufacture them.
 
 ## Capabilities
 

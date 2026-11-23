@@ -410,6 +410,33 @@ Validation matrix:
 
 ## Migration Plan
 
+Latest user sequencing: finish backend implementation and qualification before
+returning to frozen lobby conflicts. Preserve the current invocation to a native
+boundary, then perform backend-only protocol and exact-source audit calls. Do
+not begin a new product contract or mutate lobby tests for this closeout. The
+first-ten-review observer remains persistent and continues counting when the
+lobby resumes; report its actual count rather than fabricate additional game
+reviews. Reaching `awaiting_human_review` remains an existing lobby obligation.
+
+Implementation refinements preserve the approved evidence policy: packing format
+2 uses short body-reference IDs with explicit full hashes and exact byte lengths.
+Free exact packing keeps positive reductions below the paid selector's 20% gate;
+expansions are rejected. The pilot/audit sub-envelope counts declared qualification,
+selector and extra-review purposes; ordinary coding and initial product review
+remain fully charged to the aggregate ledger. An immutable scope record binds
+this attribution to the original envelope without resetting its call baseline or
+limits. A new packing format requires fresh paid IDs and qualification rather
+than reuse of the old format's approval.
+
+Final source filtering excludes all Coder-owned narrative reports before packet
+construction. Misclassified private reports are blocked by the optimizer and
+consumer, with explicit failed checks. Live source strings are checked against
+committed raw bytes, preserving CRLF. The final clean shadow audit uses a genuine
+archived compiler failure and 74 complete runtime/profile sources; its paired
+results agree. Historical mixed packets are retained but do not authorize the
+new source-filter policy. Current routing requires source-filter version 2 and
+preserves the previous activation bytes in immutable history.
+
 1. On explicit apply, inspect current live status, effect journal, full reservation
    set and exact stopped candidate. Save current isolated branch and source hashes.
 2. Author/freeze new offline tests; implement host-local clients and context adapter
@@ -424,10 +451,11 @@ Validation matrix:
    every old uncertain effect through existing trusted recovery. Validate no frozen
    or overlay-source drift; stage changes through public native recovery only.
 6. Activate direct Coder and low Judge. Enable deterministic packing globally,
-   model-assisted selection only for qualified packet classes. Resume the same run
-   through delegated work and sequential Unity verification to human review.
-7. Publish per-stage usage, net cost/estimate and all required evidence with the
-   exact final candidate; never approve it for the user.
+   model-assisted selection only for qualified packet classes. Complete backend
+   proof and preserve the game's native boundary; the user deferred product rework.
+7. Publish backend usage, estimates, check results and exact implementation
+   revision. Retain the lobby's separate obligation to reach human review after
+   its contract conflicts are resolved; never approve it for the user.
 
 Rollback disables selection for future calls and restores full canonical packets
 without reverting source or history. If the new provider itself fails, stop

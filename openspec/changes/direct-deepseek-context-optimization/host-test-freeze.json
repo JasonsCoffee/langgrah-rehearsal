@@ -15,5 +15,14 @@
   "tests/test_optimizer_metrics.py": "a88cf92ffb5b79de5b5d7371285902b15c1cac8a0502d888c4f88f0b05cb37dd",
   "tests/test_mixed_pilot_corpus.py": "a5585d29aef36de6bdc5ccff08960bab957049db086a49e2cfe67692f986a5c0",
   "tests/fixtures/context_optimization/paired_pilot.json": "302813b31bca446b71d777099c6c413f44b04d386fa5973f0919493b4c8ca649",
-  "tests/test_live_context_audit.py": "5ec1351e0fccf33a3abf41cd16fa214519a413be4dc94ed46f4f7d1b77d0b5c8"
+  "tests/test_live_context_audit.py": "5ec1351e0fccf33a3abf41cd16fa214519a413be4dc94ed46f4f7d1b77d0b5c8",
+  "tests/test_bridge_retry_v70.py": "bfb10a2db16ac6d79f8a8c456a9a585cce5f57e90e4118360b56e02a43cf09c6",
+  "tests/test_deterministic_packing_threshold.py": "f45651f089a8aa63e60515b542a05168136a57ae7b1f577deabb30ebd359179a",
+  "tests/test_qualification_envelope_scope.py": "28f3031d3054fd48ac13694330464fa39b7175028d2830133e391f31c93d2452",
+  "tests/test_packing_qualification_epoch.py": "4cbb42849f124dbbe0a8c41c4df13c2c84217351294ec37d7c55db629456cc79",
+  "tests/test_packet_archive.py": "df8d8cf5bde098f4e21b0276acf82f9d6b920d9e70b3e1a2db02eca1a83ebd70",
+  "tests/test_direct_usage_breakdown.py": "86f8b689f83f1857a3cc5a4c545a1ed0506b7b6ffbe382fb5cafd7fb3ef10688",
+  "tests/test_persistent_mixed_activation.py": "5864e16701aad9a33069c233ded808dc77e3ca802204d5e1e17a0f9934a4b605",
+  "tests/test_review_note_filtering.py": "fb137fb48a112d20f7b488dda5876f2aaf683bf17dfb6a7554e212f1984d1c8a",
+  "tests/test_live_source_bytes.py": "7ac90d89eee1e447923d3a18b39d0a8ff7960e8e5aa4b164a1b0f850e9f1be63"
 }

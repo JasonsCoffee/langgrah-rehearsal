@@ -1,5 +1,34 @@
 # Optimizer result and evidence boundaries
 
+Final delivery is packing format 2 / source-filter version 2, checkpoint
+`ac9416e998ee6ad022993350dc29aa0cc8236342`. The real canonical shadow audit passed;
+seven observations are retained, with the remaining first-ten window continuing
+when the user resumes the lobby.
+
+Coder-owned narrative files are excluded before constructing the canonical
+packet. A wrongly classified owned report is blocked before any selector/Judge
+call and at the delivery boundary, with failed filtering checks and no payload.
+The live builder obtains committed Git bytes, preserving CRLF and multiline
+strings instead of inheriting native text-loader normalization. Dirty or stale
+candidate source blocks review. Complete actual C# tests, implementation, trusted
+rules, criteria and mechanical evidence remain mandatory. Frozen documents
+themselves are preserved as provenance; their status claims are not Judge input.
+
+The final current-candidate preview has 93 admissible sources, no owned author
+reports, all code-verified checks passing, and zero paid-selector tokens. Its
+canonical/packed sizes are 2,232,918 / 2,231,554 bytes. The small free saving is
+retained independently of the paid selector's 20% gate. A clean historical compile
+audit separately measured 206,554 / 208,008 Judge input tokens with agreeing
+classification. See `pilot-report.md`; the 52.04% protocol-fixture median is not
+a prediction for mandatory-heavy production context.
+
+Persistent routing requires the current format's genuine pilot and clean-source
+canonical audit. Stale route overrides fail closed; the preceding activation
+record is archived byte for byte before updating the current marker.
+
+The following design overview remains applicable; earlier pending-rollout notes
+at the end are historical and are superseded by the final results above.
+
 The optimizer is the trusted adapter, including exact packing, optional DeepSeek
 selection and deterministic validation. Host means the Python execution program.
 The cheap model selects references and cannot certify completeness or judge code.

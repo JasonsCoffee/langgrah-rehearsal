@@ -1,0 +1,117 @@
+{
+  "backend_revision": "ac9416e998ee6ad022993350dc29aa0cc8236342",
+  "run_id": "monopoly-game-lobby",
+  "backend": "mixed",
+  "roles": {
+    "version": 1,
+    "coder": {
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "effort": "low"
+    },
+    "optimizer": {
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "effort": "low"
+    },
+    "judge": {
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "coder_stages": [
+      "test_authoring",
+      "green",
+      "refactor",
+      "format_repair"
+    ],
+    "limits": [
+      250000000,
+      24000000,
+      160,
+      2
+    ],
+    "authorization_ref": "model-authorizations/direct-deepseek-low.json",
+    "selector_output": 8192,
+    "judge_output": 32768,
+    "coder_output": 65536,
+    "pilot_limits": [
+      10000000,
+      512000
+    ],
+    "framing_tokens": 65536,
+    "max_calls_per_role": 200
+  },
+  "usage": [
+    170044520,
+    6520897
+  ],
+  "remaining_tokens": [
+    79955480,
+    17479103
+  ],
+  "limits": [
+    250000000,
+    24000000,
+    160,
+    2
+  ],
+  "preserved_old_call_entries": 1107,
+  "retained_unknown_calls": [
+    "judge-switch-v23-glm-json-review",
+    "judge-switch-v23-glm-json-review-retry1",
+    "tls-recovery-v23-glm-json-review",
+    "tls-recovery-v23-glm-json-review-retry1",
+    "v16-step1-prepare-review-TEST-APPEAR",
+    "v24-step4-prepare-review-TEST-APPEAR",
+    "v24-step5-prepare-review-TEST-APPEAR",
+    "v25-step2-prepare-review-TEST-APPEAR",
+    "v25-step3-prepare-review-TEST-APPEAR",
+    "v25-step8-prepare-TEST-MATCH-TEST-MATCH",
+    "v28-step5-prepare-TEST-QUEUE-TEST-QUEUE",
+    "v29-step2-prepare-review-TEST-VIP",
+    "v29-step7-prepare-TEST-PARTY-TEST-PARTY",
+    "v51-step4-prepare-review-TEST-SOCIAL",
+    "v60-step4-prepare-review-TEST-CHAT-STATE",
+    "v60-step6-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE",
+    "v61-step2-prepare-TEST-RECORDS-TEST-RECORDS",
+    "v63-step4-code-ECON",
+    "v63-step4-code-MATCH",
+    "v63-step4-code-RECORDS",
+    "v63-step4-code-SHELL",
+    "v63-step4-code-SOCIAL",
+    "v66-step8-verify-judge-SHELL",
+    "v67-step3-code-SHELL",
+    "v70-step5-verify-judge-ECON",
+    "v70-step8-verify-judge-ECON",
+    "v8-step3-prepare-review-TEST-PRES-CORE"
+  ],
+  "frozen_game_files": 199,
+  "frozen_game_sha256": "2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520",
+  "source_filter_version": 2,
+  "packing_format_version": 2,
+  "offline_full_passed": 888,
+  "focused_after_annotations_passed": 22,
+  "native_game_result": {
+    "candidate_revision": "625db77bf4e75060435947d955328a729f6f87dc",
+    "contract_sha256": "bbbfcf9dc2b51f1ffb9d8a935a1fbb72ca148ada5c2a89f6b37752065f9315e7",
+    "contract_version": 70,
+    "evidence_refs": [
+      ".agent/runs/monopoly-game-lobby/dossier-v70.json"
+    ],
+    "format_version": 1,
+    "outcome": "rework",
+    "reason": "Bounded unit repair requires contract revision",
+    "run_id": "monopoly-game-lobby"
+  },
+  "game_continuation": "deferred_by_user",
+  "human_accepted": false,
+  "evidence_sha256": {
+    "context-optimization/pilot-packed-v2-qualified.json": "2b11c722c1d9e3fd8a6fa71145f3b7212886dcf92712425ba7d71168f559da5f",
+    "context-optimization/packed-v2-clean-compile-audit.json": "af3f40fe6487ebfed676f85264f28bb9c958f843b8d161fecd1cdb0bbcb02a48",
+    "context-optimization/final-production-preview.json": "81cab27d93659e12145d3e3e33b4c5bd0d434adcb63d208eb75a8b98d2b4d5f6",
+    "context-optimization/pilot-envelope.json": "22b636e7584c5e6c225fb7d6d6f167e1e2ff5e2ebc6c499315ed22b14e0c1c7e",
+    "context-optimization/qualification-envelope-scope.json": "136ee1bf848d229668cd5a7688e73f66b00d886fda14649abf3a2b8124c1cb18",
+    "model-authorizations/active-backend.json": "433d70490e638fcdb5f7ee3a968f1df8aca180944bda2d07681cd446eb625c69"
+  }
+}

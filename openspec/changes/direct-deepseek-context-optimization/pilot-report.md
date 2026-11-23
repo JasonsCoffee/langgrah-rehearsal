@@ -1,5 +1,60 @@
 # Paid qualification pilot
 
+## Final packing format and source-only audit
+
+Format-2 qualification used fresh paid IDs while retaining the original envelope,
+all previous charges and earlier format-1 artifacts.
+
+| Fixture | Both expected findings correct | Actual Judge-input reduction |
+| --- | --- | --- |
+| Source validity | Yes | 52.91% |
+| Compiler routing | Yes | 52.60% |
+| Shared assertion | Yes | 50.99% |
+| Mixed frozen oracle | Yes | 51.49% |
+
+Median: **52.04%**. Four selectors used 26,410 input / 515 output tokens. The
+complete second pilot added 95,382 input / 1,008 output. No failed or uncertain
+new call occurred. Current-format activation cannot use the old format's pilot.
+
+The first real mixed-packet comparison agreed on contract classification. Later
+source-boundary review found frozen author-report documents in that historical
+context. They are now excluded before model dispatch, and a second, clean-source
+audit is the final activation proof. Old records and charges remain unchanged.
+
+The clean audit uses actual archived compilation at candidate
+`be19106e61f8c5ce78cdde53803573616b9334fb`, request `v70-step5-verify`.
+All 74 required runtime/profile sources and complete compiler evidence are
+present; no test-author narrative is present. Both packed and canonical low-Judge
+calls independently identified the unsupported serializer member as an owned
+implementation defect. Actual inputs: **206,554 / 208,008**; outputs: **106 / 105**.
+The 0.70% input reduction is free exact packing, with zero selector expense.
+The current candidate remains `625db77bf4e75060435947d955328a729f6f87dc`;
+historical compilation is not represented as a current-candidate failure.
+
+The current-candidate preview contains 93 admissible sources, no owned author
+reports, and committed-byte fidelity including CRLF. Canonical/packed sizes are
+2,232,918 / 2,231,554 bytes. Mandatory content leaves only **0.061%** free packing
+reduction; paid selection is bypassed. Fixture percentages do not predict
+production savings and do not justify dropping required source.
+
+Seven real review observations and the final canonical audit are recorded. The
+remaining first-ten observations continue when the deferred lobby resumes.
+Source-filter version 2 and format 2 are persisted in the active backend marker;
+the previous marker's exact bytes are retained in activation history.
+
+Total qualification/audit use: **3,066,732 input / 2,748 output** of the original
+**10,000,000 / 512,000** sub-envelope. Normal initial game judgments remain fully
+charged globally and are excluded only from this purpose-specific sub-bound.
+Neither the original baseline nor its limits was reset. Global usage is
+170,044,520 / 6,520,897 under unchanged 250M / 24M / 160 cycles, with all 27 old
+uncertain reservations intact. Dollar savings remain unproven.
+
+Final proof: `S/context-optimization/packed-v2-clean-compile-audit.json`.
+Current input/check preview: `S/context-optimization/final-production-preview.json`.
+Format qualification: `S/context-optimization/pilot-packed-v2-qualified.json`.
+
+## Original format-1 pilot — retained history
+
 The user-populated ignored `ai.local.toml` was read without printing the key.
 Authenticated direct `/models` listed `deepseek-flash` and `deepseek-v4-pro`.
 Codex app-server model capabilities confirmed GPT-6.1 Sol supports low effort.
