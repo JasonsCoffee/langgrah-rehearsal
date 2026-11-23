@@ -24,10 +24,12 @@ class ContextOptimizer:
         optional=sum(len(s.content.encode()) for s in packet.sources if s.id not in required)
         empty={'canonical_sha256':packet.canonical_sha256,'selected':[]}
         selection=empty
+        model_selection=False
         reason='Deterministic packing; model selection is unqualified, unavailable, too small or mandatory-heavy'
         accounting={'actual_tokens':[0,0],'cache_hit':False,'original_tokens':None}
         if (self.qualified and self.calls is not None and len(packet.canonical_input.encode())>=self.min_tokens
             and optional/max(1,total)>=self.min_optional_fraction and budget_known):
+            model_selection=True
             catalog=[{'id':s.id,'sha256':s.sha256,'content':s.content,'kind':s.kind,
                 'dependencies':s.dependencies} for s in packet.sources if s.id not in required]
             prompt=('Select optional exact source spans relevant to these criteria and mechanical findings. '
@@ -49,7 +51,11 @@ class ContextOptimizer:
                     'elapsed_seconds':monotonic()-started},reasons=result.reasons+('Selector usage is uncertain; no fallback dispatch',))
                 self.persist(packet,result)
                 return result
-        result=optimize(packet,selection,budget_known=budget_known)
+        # The 20% break-even gate applies to paid selection, not free exact
+        # packing. Retain even a small deterministic saving, never an expansion.
+        result=optimize(packet,selection,budget_known=budget_known,min_reduction=.2 if model_selection else 0)
+        if not model_selection and result.metrics['byte_reduction']<=0:
+            result=optimize(packet,selection,budget_known=budget_known)
         result=replace(result,metrics=result.metrics|{'selector_accounting':accounting,
             'elapsed_seconds':monotonic()-started,'monetary_savings_verified':False,
             'monetary_limit':'Judge subscription cash rate is unknown'},reasons=result.reasons+(reason,))

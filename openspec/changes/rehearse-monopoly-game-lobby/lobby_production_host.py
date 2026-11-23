@@ -644,8 +644,8 @@ def main():
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
     if backend=='mixed':
         from rehearsal_context_reviews import RehearsalReviews
-        from mixed_backend_policy import profile_sha256
-        qualification=json.loads((state/'context-optimization/pilot-qualified.json').read_bytes())
+        from mixed_backend_policy import profile_sha256,active_qualification
+        qualification=active_qualification(state,budget._read()['calls'])
         workers.context_reviews=RehearsalReviews(state,ModelCalls(selected[1],budget,RUN_ID),
             ModelCalls(optimizer_client,budget,RUN_ID),profile_sha256(),
             qualified_classes=tuple(qualification.get('qualified_classes',())))

@@ -9,6 +9,7 @@ from unity_coder.core.ai_models import ModelError
 from unity_coder.core.storage import atomic_write,file_guard
 if TYPE_CHECKING:
     from unity_coder.core.model_calls import ModelCalls
+    from unity_coder.core.budget import BudgetLedger
 
 
 class CachedSelectionCalls:
@@ -68,7 +69,33 @@ class PilotEnvelope:
     def check(self,input_reservation: int,output_reservation: int) -> None:
         calls=self.ledger._read()['calls'];used=[0,0]
         for call,value in calls.items():
-            if call not in self.before['existing_calls']:
+            if call not in self.before['existing_calls'] and self._includes(call):
                 for i,n in enumerate(value.get('actual',value['reserved'])):used[i]+=n
         if any(used[i]+n>self.before['limits'][i] for i,n in enumerate((input_reservation,output_reservation))):
             raise ModelError('Persistent pilot envelope cannot fit the next complete request')
+
+    def _includes(self,call: str) -> bool:
+        return True
+
+
+class QualificationEnvelope(PilotEnvelope):
+    """Only qualification/selection/extra-review purposes consume this sub-bound."""
+    def _includes(self,call: str) -> bool:
+        return (call.startswith(('v70-migration-pilot-','v70-migration-packed-v2-','context-select-'))
+            or call.endswith(('-shadow-audit','-expanded','-canonical')))
+
+
+def qualification_envelope(ledger: BudgetLedger,state: Path) -> QualificationEnvelope:
+    envelope=QualificationEnvelope(ledger,state)
+    original=state/'context-optimization/pilot-envelope.json'
+    ref='context-optimization/qualification-envelope-scope.json'
+    scope={'version':1,'original_envelope_sha256':sha256(original.read_bytes()).hexdigest(),
+        'limits':envelope.before['limits'],'global_accounting_unchanged':True,
+        'prefixes':['v70-migration-pilot-','v70-migration-packed-v2-','context-select-'],
+        'suffixes':['-shadow-audit','-expanded','-canonical'],
+        'ordinary_coder_and_initial_game_judge_calls':'aggregate ledger only'}
+    path=state/ref
+    if path.exists():
+        if json.loads(path.read_bytes())!=scope:raise ValueError('Qualification envelope scope or original bound changed')
+    else:atomic_write(state,ref,canonical(scope).encode())
+    return envelope

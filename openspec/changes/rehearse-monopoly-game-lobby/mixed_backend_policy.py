@@ -10,6 +10,16 @@ from unity_coder.core.codex_backend import CodexModelClient,CodexPolicy
 from unity_coder.core.codex_stdio import CodexStdioExchange
 from direct_deepseek_client import load_direct_config,DirectDeepSeekClient
 
+QUALIFICATION_REF='context-optimization/pilot-packed-v2-qualified.json'
+
+
+def active_qualification(state: Path,calls: dict) -> dict:
+    qualification=json.loads((state/QUALIFICATION_REF).read_bytes())
+    if qualification.get('packing_format_version')!=2:
+        raise ValueError('Current exact packing format requires its own genuine pilot')
+    validate_pilot_receipts(state,calls,qualification)
+    return qualification
+
 
 def role_profile() -> dict:
     coder={'provider':'deepseek','model':'deepseek-flash','effort':'low'}
@@ -83,8 +93,7 @@ def clients(framework: Path,root: Path,state: Path,budget: BudgetLedger,*,pilot:
         or grant.get('judge_policy_sha256')!=judge_policy().sha256
         or grant.get('pilot_authorized') is not True):raise ModelError('Matching mixed-provider authorization required')
     if not pilot:
-        qualification=json.loads((state/'context-optimization/pilot-qualified.json').read_bytes())
-        validate_pilot_receipts(state,budget._read()['calls'],qualification)
+        active_qualification(state,budget._read()['calls'])
     config=load_direct_config(framework/'ai.local.toml')
     coder=DirectDeepSeekClient(config.api_key,state=state,cap=config.max_output_tokens or 65536)
     optimizer=DirectDeepSeekClient(config.api_key,state=state,purpose='context_optimizer',cap=8192)

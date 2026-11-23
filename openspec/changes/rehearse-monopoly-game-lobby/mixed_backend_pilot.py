@@ -9,9 +9,9 @@ from statistics import median
 from evidence_packet import Source,Packet,make_packet,canonical
 from evidence_context_guard import validate_delivery
 from deepseek_context_selector import ContextOptimizer
-from context_call_accounting import CachedSelectionCalls,PilotEnvelope
+from context_call_accounting import CachedSelectionCalls,PilotEnvelope,qualification_envelope
 from judge_context_adapter import review
-from mixed_backend_policy import role_profile,profile_sha256,judge_policy,clients,validate_pilot_receipts
+from mixed_backend_policy import role_profile,profile_sha256,judge_policy,clients,validate_pilot_receipts,QUALIFICATION_REF
 from mixed_backend_recovery import CANDIDATE,CONTRACT,verify_preservation
 from unity_coder.core.ai_models import ModelError
 from unity_coder.core.budget import BudgetLedger
@@ -21,6 +21,8 @@ from unity_coder.core.storage import atomic_write
 from unity_coder.core.workspaces import git
 
 CORPUS_SHA256='302813b31bca446b71d777099c6c413f44b04d386fa5973f0919493b4c8ca649'
+PACKING_VERSION=2
+PILOT_PREFIX='v70-migration-packed-v2'
 
 
 def build_case(case: dict,candidate: str,contract: str,policy: str) -> Packet:
@@ -28,7 +30,7 @@ def build_case(case: dict,candidate: str,contract: str,policy: str) -> Packet:
     history=''.join('Historical decorative draft '+str(n)+': border and background variants from an obsolete UI concept; not accepted requirements.\n' for n in range(300))
     sources.append(Source('obsolete-drafts','pilot-fixtures/obsolete-drafts.txt',history,'optional'))
     return make_packet({'run':'monopoly-game-lobby','contract':contract,'candidate':candidate,'unit':case['unit'],
-        'stage':case['mode'],'policy':policy,'fixture_scope':'protocol_only_not_game_verification',
+        'stage':case['mode'],'policy':policy,'packing_format_version':PACKING_VERSION,'fixture_scope':'protocol_only_not_game_verification',
         'fixture_id':case['id'],'fixture_sha256':sha256(canonical(case).encode()).hexdigest()},tuple(sources),
         tuple(s.id for s in sources if s.kind!='optional'),case['mechanical'],
         {s.path:case['unit'] for s in sources if s.kind=='patched'},tuple(case['criteria']),case['spec'])
@@ -58,7 +60,7 @@ def main() -> None:
     load_direct_config(framework/'ai.local.toml') # No state writes until local configuration is valid.
     run=state/'.agent/runs/monopoly-game-lobby';result=json.loads((run/'result.json').read_bytes())
     source=root/'worktrees/monopoly-game-lobby/integration-v70'
-    if (result['outcome']!='operational' or result['candidate_revision']!=CANDIDATE or result['contract_sha256']!=CONTRACT
+    if (result['outcome'] not in ('operational','rework') or result['candidate_revision']!=CANDIDATE or result['contract_sha256']!=CONTRACT
         or git(source,'rev-parse','HEAD').decode().strip()!=CANDIDATE or git(source,'status','--porcelain')):
         raise ValueError('Exact clean stopped candidate required for paid protocol qualification')
     corpus_path=Path(__file__).parents[3]/'tests/fixtures/context_optimization/paired_pilot.json'
@@ -82,11 +84,11 @@ def main() -> None:
             'permit_dispatch_accounting':True,'preservation_ref':preservation_ref,'human_accepted':False}
         put_new(state,profile['authorization_ref'],grant)
         settings,selected,optimizer_client=clients(framework,root,state,budget,pilot=True)
-        envelope=PilotEnvelope(budget,state)
+        envelope=qualification_envelope(budget,state)
         coder=EnvelopeCalls(ModelCalls(selected[0],budget,'monopoly-game-lobby'),envelope)
         judge=EnvelopeCalls(ModelCalls(selected[1],budget,'monopoly-game-lobby'),envelope)
         optimizer=EnvelopeCalls(ModelCalls(optimizer_client,budget,'monopoly-game-lobby'),envelope)
-        call='v70-migration-pilot-coder-low'
+        call=PILOT_PREFIX+'-coder-low'
         reply=coder.generate(call,'SHELL','Protocol fixture only; do not implement or approve the game. Return ONLY JSON {"value":"HELLO LOBBY"}.',max_output_tokens=65536)
         if json.loads(reply.text)!={'value':'HELLO LOBBY'}:raise ModelError('Direct Coder protocol fixture failed')
         rows=[];judge_role_call=None
@@ -96,7 +98,7 @@ def main() -> None:
             optimized=ContextOptimizer(state,selector,qualified=True).run(packet,case['unit'])
             validate_delivery(packet,optimized)
             initial=optimized.optimized_input
-            observed={};op='v70-migration-pilot-'+case['id']
+            observed={};op=PILOT_PREFIX+'-'+case['id']
             for variant,text in [('canonical',packet.canonical_input),('optimized',initial)]:
                 current=op+'-'+variant
                 def send(prompt: str,identity: str) -> dict:
@@ -115,11 +117,12 @@ def main() -> None:
                 'correct':all(x['correct'] for x in observed.values()),'judge_input_reduction':reduction,
                 'selector_accounting':optimized.metrics['selector_accounting'],'reviews':observed,
                 'eligible':all(x['correct'] for x in observed.values()) and optimized.decision=='use_optimized' and reduction>=.2})
-            atomic_write(state,'context-optimization/pilot-progress.json',canonical({'cases':rows,'usage':budget.totals(),
+            atomic_write(state,'context-optimization/pilot-packed-v2-progress.json',canonical({'cases':rows,'usage':budget.totals(),
                 'profile_sha256':profile_sha256(),'game_verified':False}).encode())
         correct=all(row['correct'] for row in rows);median_reduction=median(row['judge_input_reduction'] for row in rows)
         qualified=correct and median_reduction>=.4
         report={'profile_sha256':profile_sha256(),'candidate':CANDIDATE,'contract_sha256':CONTRACT,
+            'packing_format_version':PACKING_VERSION,
             'roles_qualified':qualified,'comparison_passed':correct,'roles':{'coder':call,'judge':judge_role_call},
             'qualified_classes':sorted(row['class'] for row in rows if row['eligible']) if qualified else [],
             'cases':rows,'median_judge_input_reduction':median_reduction,'usage':budget.totals(),
@@ -130,8 +133,8 @@ def main() -> None:
         verify_preservation(preserved['budget'],budget._read(),preserved['frozen'],frozen)
         if qualified:
             validate_pilot_receipts(state,budget._read()['calls'],report)
-            put_new(state,'context-optimization/pilot-qualified.json',report)
-        atomic_write(state,'context-optimization/pilot-report.json',canonical(report).encode())
+            put_new(state,QUALIFICATION_REF,report)
+        atomic_write(state,'context-optimization/pilot-packed-v2-report.json',canonical(report).encode())
         print(json.dumps({'qualified':qualified,'median_judge_input_reduction':median_reduction,
             'qualified_classes':report['qualified_classes'],'usage':budget.totals(),'game_verified':False}),flush=True)
     finally:lease.release()

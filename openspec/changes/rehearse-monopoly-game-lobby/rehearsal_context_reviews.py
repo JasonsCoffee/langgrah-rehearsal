@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 from evidence_packet import Source,Packet,make_packet,canonical
 from evidence_context_guard import validate_delivery
 from deepseek_context_selector import ContextOptimizer
-from context_call_accounting import CachedSelectionCalls,PilotEnvelope
+from context_call_accounting import CachedSelectionCalls,qualification_envelope
 from live_context_audit import LiveReviewAudit,packet_class
 from judge_context_adapter import review
 from unity_coder.core.ai_models import ModelError
@@ -52,7 +52,7 @@ def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],
     if spec is None:raise ModelError('Exact current specification missing')
     ownership={p:u.id for u in contract.units for p in u.owns}
     return make_packet({'run':'monopoly-game-lobby','contract':contract.sha256,'candidate':candidate,
-        'unit':unit.id,'stage':mode,'policy':policy},tuple(sources),tuple(required),mechanical,
+        'unit':unit.id,'stage':mode,'policy':policy,'packing_format_version':2},tuple(sources),tuple(required),mechanical,
         ownership,tuple(unit.acceptance),spec)
 
 
@@ -79,7 +79,7 @@ class RehearsalReviews:
         audit=LiveReviewAudit(self.state)
         pending_audit=not any(r.get('audit',{}).get('routing_agrees') is True for r in audit.read()['reviews'])
         audit_fits=False
-        envelope=PilotEnvelope(ledger,self.state)
+        envelope=qualification_envelope(ledger,self.state)
         if pending_audit:
             try:
                 envelope.check(2*full_input+65536+self.optimizer_calls.client.reserve_input(packet.canonical_input),
