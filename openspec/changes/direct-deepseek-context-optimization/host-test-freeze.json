@@ -1,0 +1,19 @@
+{
+  "tests/test_direct_deepseek_host.py": "c31c6096adbf51add8ebf272db46edfa043265412696f9bd3144ba59a30798e3",
+  "tests/test_mixed_role_policy.py": "9188e48be4de08a951966502c0b99a07569489f44c791e2542861bfe1fd952f7",
+  "tests/test_evidence_packet_manifest.py": "caf6c839382778803f4114e9552e3e95bc60e5ce29309e400fe93c9abb219b50",
+  "tests/test_evidence_selection_guard.py": "d6b258aa5af1e7df4a78d139ca178a9e71ba7c0c463d3d92cee4085728788553",
+  "tests/test_context_accounting_recovery.py": "1d78cee50571b4c012b542bc67786b74dbd678f427dd45262099f8afe7ef48db",
+  "tests/test_judge_context_expansion.py": "fa27b931672fc1eb35bc7af880faee740cf1d47a05dd96efcf5fb152f0b06492",
+  "tests/test_architect_finding_index.py": "0fa0ad381bbca796d580c5efbfde4f7af53b6212141fac69b563d7f2d153e7c3",
+  "tests/fixtures/context_optimization/required_cases.json": "910981b7fb0ca9230acfaee47221c5a84b596658ad344bd51532bcf21afeacb1",
+  "tests/test_optimizer_host_integration.py": "0ad77831bfb69f56fe6d3b0c020f96119db58b0342a3e7fdbf4692377c5616fa",
+  "tests/test_mixed_live_feedback.py": "9f777141c075442fc4c8a489cf22280ef869fac2eea902eed020a8a89d43013f",
+  "tests/test_mixed_recovery_boundary.py": "329cc65e527d4bdc5569df560371c2a49af036ff6a13cf503524568bdf0f0263",
+  "tests/test_retained_judge_bound.py": "d0bb13e9f28523f7d6ad09378048202983d7daf38cc8c4ef95766c7ba8cb780a",
+  "tests/test_mixed_pilot_receipts.py": "23b3d49e307b93793db3251b58d5e2d4100a9535c0549e8ea8fc48302b81ad3b",
+  "tests/test_optimizer_metrics.py": "a88cf92ffb5b79de5b5d7371285902b15c1cac8a0502d888c4f88f0b05cb37dd",
+  "tests/test_mixed_pilot_corpus.py": "a5585d29aef36de6bdc5ccff08960bab957049db086a49e2cfe67692f986a5c0",
+  "tests/fixtures/context_optimization/paired_pilot.json": "302813b31bca446b71d777099c6c413f44b04d386fa5973f0919493b4c8ca649",
+  "tests/test_live_context_audit.py": "5ec1351e0fccf33a3abf41cd16fa214519a413be4dc94ed46f4f7d1b77d0b5c8"
+}

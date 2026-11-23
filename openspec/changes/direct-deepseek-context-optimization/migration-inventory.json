@@ -1,0 +1,414 @@
+{
+  "run_id": "monopoly-game-lobby",
+  "candidate": "625db77bf4e75060435947d955328a729f6f87dc",
+  "contract": "bbbfcf9dc2b51f1ffb9d8a935a1fbb72ca148ada5c2a89f6b37752065f9315e7",
+  "limits": [
+    250000000,
+    24000000,
+    160,
+    2
+  ],
+  "usage": [
+    160700047,
+    6517038
+  ],
+  "calls_sha256": "1b523ee15f7f7ebb1c5618fd2d3817eb03a78fa64526a465cd665dd43a67da2d",
+  "unknown": [
+    {
+      "call": "judge-switch-v23-glm-json-review",
+      "charge": {
+        "reserved": [
+          1279,
+          32768
+        ],
+        "unit": "TEST-VIP",
+        "version": 23
+      },
+      "receipt_sha256": "1adda2e49cca43d438ce05ba65c39a902d797cec5c6b2e8593c6df69c4253cc8",
+      "failure": {}
+    },
+    {
+      "call": "judge-switch-v23-glm-json-review-retry1",
+      "charge": {
+        "reserved": [
+          1279,
+          32768
+        ],
+        "unit": "TEST-VIP",
+        "version": 23
+      },
+      "receipt_sha256": "7934f62376025b742653828cc504252dac4882aee03a96dabc7158fcd589cff2",
+      "failure": {}
+    },
+    {
+      "call": "tls-recovery-v23-glm-json-review",
+      "charge": {
+        "reserved": [
+          1269,
+          32768
+        ],
+        "unit": "TEST-VIP",
+        "version": 23
+      },
+      "receipt_sha256": "c773bcb50e5f8ec549ed02abfa0de28942406ea43700cf02383c8df058d39f29",
+      "failure": {
+        "http_status": 429,
+        "retry_after_seconds": 2,
+        "provider_name": "Wafer",
+        "limit_source": "upstream_provider_shared_pool"
+      }
+    },
+    {
+      "call": "tls-recovery-v23-glm-json-review-retry1",
+      "charge": {
+        "reserved": [
+          1269,
+          32768
+        ],
+        "unit": "TEST-VIP",
+        "version": 23
+      },
+      "receipt_sha256": "28332d829b04d0fb17547f1930c56d1e95f190b111f23a8ffd7ef682435f08c1",
+      "failure": {}
+    },
+    {
+      "call": "v16-step1-prepare-review-TEST-APPEAR",
+      "charge": {
+        "reserved": [
+          440027,
+          32768
+        ],
+        "unit": "TEST-APPEAR",
+        "version": 16
+      },
+      "receipt_sha256": "98f04b8375053e994c4ce4480c3e56518be10289b2f0ab59b8b34a0b80efc6bf",
+      "failure": {
+        "http_status": 402,
+        "limit_source": "openrouter_key_limit"
+      }
+    },
+    {
+      "call": "v24-step4-prepare-review-TEST-APPEAR",
+      "charge": {
+        "reserved": [
+          421858,
+          32768
+        ],
+        "unit": "TEST-APPEAR",
+        "version": 24
+      },
+      "receipt_sha256": "382d045a304cb5fe1a011c556ff418995ff909855b86ac5238417609f7bc1d8d",
+      "failure": {}
+    },
+    {
+      "call": "v24-step5-prepare-review-TEST-APPEAR",
+      "charge": {
+        "reserved": [
+          421858,
+          32768
+        ],
+        "unit": "TEST-APPEAR",
+        "version": 24
+      },
+      "receipt_sha256": "d8b8efa5e3f9eb39221c9e736528fcf55bef2a67c070db180a60543a72d6eba0",
+      "failure": {}
+    },
+    {
+      "call": "v25-step2-prepare-review-TEST-APPEAR",
+      "charge": {
+        "reserved": [
+          422802,
+          32768
+        ],
+        "unit": "TEST-APPEAR",
+        "version": 25
+      },
+      "receipt_sha256": "f2b1928e1fca90fd184f05ce43e4686c8ef5f30f6e728179dd95a11e462af07c",
+      "failure": {
+        "transport": "schannel",
+        "curl_exit_code": 35
+      }
+    },
+    {
+      "call": "v25-step3-prepare-review-TEST-APPEAR",
+      "charge": {
+        "reserved": [
+          422802,
+          32768
+        ],
+        "unit": "TEST-APPEAR",
+        "version": 25
+      },
+      "receipt_sha256": "f5bda024166d229c35d21e5655695a0b0af7355053cb38aa3fcb1a47be15b69b",
+      "failure": {
+        "transport": "schannel",
+        "curl_exit_code": 35
+      }
+    },
+    {
+      "call": "v25-step8-prepare-TEST-MATCH-TEST-MATCH",
+      "charge": {
+        "reserved": [
+          340587,
+          65536
+        ],
+        "unit": "TEST-MATCH",
+        "version": 25
+      },
+      "receipt_sha256": "a2d316759d8ce3bdb9b45a5fea9412d655df355a170e3029f19b248da57dfc65",
+      "failure": {}
+    },
+    {
+      "call": "v28-step5-prepare-TEST-QUEUE-TEST-QUEUE",
+      "charge": {
+        "reserved": [
+          371097,
+          65536
+        ],
+        "unit": "TEST-QUEUE",
+        "version": 28
+      },
+      "receipt_sha256": "130aa37c0952627bbdefe219d35ae7fcfd93ef71fb6ddf135400614c94d165eb",
+      "failure": {
+        "transport": "direct_preconnect",
+        "phase": "request"
+      }
+    },
+    {
+      "call": "v29-step2-prepare-review-TEST-VIP",
+      "charge": {
+        "reserved": [
+          325238,
+          32768
+        ],
+        "unit": "TEST-VIP",
+        "version": 29
+      },
+      "receipt_sha256": "e00a6b19c99a742278e6a2551ecf1863be056dee7c0a380c468ca05ae1227591",
+      "failure": {
+        "transport": "direct_preconnect",
+        "phase": "request",
+        "failure_kind": "timeout"
+      }
+    },
+    {
+      "call": "v29-step7-prepare-TEST-PARTY-TEST-PARTY",
+      "charge": {
+        "reserved": [
+          367803,
+          65536
+        ],
+        "unit": "TEST-PARTY",
+        "version": 29
+      },
+      "receipt_sha256": "3f739cc850d46297eddbf24ab3c559f6c0e3347d935ddc0457e07ac98e04a91e",
+      "failure": {
+        "transport": "direct_preconnect",
+        "phase": "request",
+        "failure_kind": "timeout",
+        "request_stage": "body"
+      }
+    },
+    {
+      "call": "v51-step4-prepare-review-TEST-SOCIAL",
+      "charge": {
+        "reserved": [
+          512698,
+          32768
+        ],
+        "unit": "TEST-SOCIAL",
+        "version": 51
+      },
+      "receipt_sha256": "f3bddc0076be670fd5c460efc59ac348c78cb7ad0919541bb6887c95eb95a3b4",
+      "failure": {
+        "transport": "direct_preconnect",
+        "http_status": 403,
+        "limit_source": "openrouter_key_limit"
+      }
+    },
+    {
+      "call": "v60-step4-prepare-review-TEST-CHAT-STATE",
+      "charge": {
+        "reserved": [
+          703310,
+          32768
+        ],
+        "unit": "TEST-CHAT-STATE",
+        "version": 60
+      },
+      "receipt_sha256": "081babbbeaee02ff9aa21f1d56db3ab5a4075f155cb41be598b668682f53adf8",
+      "failure": {
+        "transport": "direct_preconnect",
+        "http_status": 403,
+        "limit_source": "openrouter_key_limit"
+      }
+    },
+    {
+      "call": "v60-step6-prepare-TEST-CHAT-STATE-TEST-CHAT-STATE",
+      "charge": {
+        "reserved": [
+          773062,
+          65536
+        ],
+        "unit": "TEST-CHAT-STATE",
+        "version": 60
+      },
+      "receipt_sha256": "79f1a4ed7ce856fbc968cff5256c8ad406c8f42aa45254225d5c2700553ac09c",
+      "failure": {}
+    },
+    {
+      "call": "v61-step2-prepare-TEST-RECORDS-TEST-RECORDS",
+      "charge": {
+        "reserved": [
+          722293,
+          65536
+        ],
+        "unit": "TEST-RECORDS",
+        "version": 61
+      },
+      "receipt_sha256": "028a99d89edc8eb9f895b49928e0bb8f2abbce97eaa8a79a24155ef545569e6e",
+      "failure": {}
+    },
+    {
+      "call": "v63-step4-code-ECON",
+      "charge": {
+        "reserved": [
+          1355712,
+          65536
+        ],
+        "unit": "ECON",
+        "version": 63
+      },
+      "receipt_sha256": "422da0e67d704bc8c2d195daa70067224acce4ed5d9d0a9c9d878fa5f23c804b",
+      "failure": {}
+    },
+    {
+      "call": "v63-step4-code-MATCH",
+      "charge": {
+        "reserved": [
+          1237501,
+          65536
+        ],
+        "unit": "MATCH",
+        "version": 63
+      },
+      "receipt_sha256": "bb98689d84972c6abcb6853f77f8695be5918f5d4b41d548980f5eeccca902ff",
+      "failure": {}
+    },
+    {
+      "call": "v63-step4-code-RECORDS",
+      "charge": {
+        "reserved": [
+          1353973,
+          65536
+        ],
+        "unit": "RECORDS",
+        "version": 63
+      },
+      "receipt_sha256": "b3082a78b730ed9b538edae6ba64fb2e1f515bcf925e6ddc9357638964edabac",
+      "failure": {}
+    },
+    {
+      "call": "v63-step4-code-SHELL",
+      "charge": {
+        "reserved": [
+          1982979,
+          65536
+        ],
+        "unit": "SHELL",
+        "version": 63
+      },
+      "receipt_sha256": "e31b9be0829306aebf5785fd2d8b8af603bee301dc7131f503d7ff0f307c2295",
+      "failure": {}
+    },
+    {
+      "call": "v63-step4-code-SOCIAL",
+      "charge": {
+        "reserved": [
+          1276665,
+          65536
+        ],
+        "unit": "SOCIAL",
+        "version": 63
+      },
+      "receipt_sha256": "f2863f7c7c002f0d53bf44962cbe9083247f7917e120edeebadc37c049a6b9d6",
+      "failure": {}
+    },
+    {
+      "call": "v66-step8-verify-judge-SHELL",
+      "charge": {
+        "reserved": [
+          5848476,
+          32768
+        ],
+        "unit": "SHELL",
+        "version": 66
+      },
+      "receipt_sha256": "b7b303778bb39f5fd878cd6a3a0360af0a2beac6a5e3a85c47659e39952445e8",
+      "failure": {}
+    },
+    {
+      "call": "v67-step3-code-SHELL",
+      "charge": {
+        "reserved": [
+          6251091,
+          65536
+        ],
+        "unit": "SHELL",
+        "version": 67
+      },
+      "receipt_sha256": "41eaf6c280d0145afdff0061dd2576dd5f38c3f36670eca2eded3c2f6229ee34",
+      "failure": {
+        "protocol_phase": "item_validation",
+        "item_type": "contextCompaction",
+        "event_method": "item/started"
+      }
+    },
+    {
+      "call": "v70-step5-verify-judge-ECON",
+      "charge": {
+        "reserved": [
+          934582,
+          32768
+        ],
+        "unit": "ECON",
+        "version": 70
+      },
+      "receipt_sha256": "20a4ec27b675a49414b6ddacea6c773953fb718904c710aaa6af86e7910251f6",
+      "failure": {}
+    },
+    {
+      "call": "v70-step8-verify-judge-ECON",
+      "charge": {
+        "reserved": [
+          2694310,
+          32768
+        ],
+        "unit": "ECON",
+        "version": 70
+      },
+      "receipt_sha256": "60b94160bfa531463581eccb61fc3a7d70f53f6388d898346da72c3ba09f6391",
+      "failure": {}
+    },
+    {
+      "call": "v8-step3-prepare-review-TEST-PRES-CORE",
+      "charge": {
+        "reserved": [
+          274267,
+          32768
+        ],
+        "unit": "TEST-PRES-CORE",
+        "version": 8
+      },
+      "receipt_sha256": "90aa402a43dbb20c4848322fcf69b668497ad77c00439abc1cc26b96ff5f2cda",
+      "failure": {
+        "http_status": 502,
+        "provider_name": "OpenAI"
+      }
+    }
+  ],
+  "frozen_count": 199,
+  "frozen_sha256": "2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520",
+  "before_snapshot_sha256": "edb6d2558fe1b6be13f0e5f005ddfe12cad368d7b37a23982135e718ef2ea9d2",
+  "isolated_checkpoint": "b322e2cf06bd1e75ac316d6cd05fefdeba78c50b"
+}

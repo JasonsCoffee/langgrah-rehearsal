@@ -47,7 +47,7 @@ fixed reduction that might require omitting necessary context.
   `2da65db6815d61fb277a19f826b4d512e78c8bc4dc2f4f8c4d1b3387e8d1c520`.
   The last verified uncertain set contained 26 reservations; a subsequent stop
   may add another. Reconcile the complete live set, never assume a fixed count.
-- No direct DeepSeek endpoint or process `DEEPSEEK_API_KEY` was found. This
+- No direct DeepSeek endpoint or configured direct key was found. The user selected ignored `ai.local.toml` for local key configuration. This
   proposal does not solicit secrets in chat, copy Codex credentials or invoke a
   paid API call. Actual key/model availability remains an activation prerequisite.
 

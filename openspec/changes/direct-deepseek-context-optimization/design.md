@@ -64,7 +64,7 @@ temperature for DeepSeek thinking mode because it is ignored, and retain the
 Judge's already approved provider-controlled temperature. Record this explicitly;
 do not claim deterministic sampling. No tools are sent.
 
-The local secret reference is `DEEPSEEK_API_KEY`, read in the trusted host only.
+The local secret source is the existing Git-ignored `ai.local.toml`, as explicitly refined by the user; its `[coder].api_key` is read in the trusted host only.
 Optional OS-backed secret retrieval can be added later, but no new secret store
 or dependency is needed now. The endpoint is allowlisted to the official direct
 HTTPS origin; verify normal certificate checks, refuse redirects and proxy/routing
@@ -360,7 +360,8 @@ semantic equivalence.
 ### 9. Keep the existing native lifecycle and immutable identities
 
 Use a new hashed activation profile/grant, not an in-place rewrite of historical
-Codex pilot grants or `ai.local.toml`. The current user choices authorize the
+Codex pilot grants. The ignored `ai.local.toml` is updated as the user requested,
+with its previous bytes backed up locally. The current user choices authorize the
 proposed future role configuration; this planning workflow does not activate it.
 During apply, preserve a Git checkpoint on the isolated non-mainline branch and
 a read-only snapshot of run identities before any host changes.
