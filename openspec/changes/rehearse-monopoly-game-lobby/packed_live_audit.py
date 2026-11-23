@@ -11,7 +11,7 @@ from deepseek_context_selector import ContextOptimizer
 from context_call_accounting import qualification_envelope
 from live_context_audit import LiveReviewAudit
 from mixed_backend_pilot import EnvelopeCalls,PILOT_PREFIX
-from mixed_backend_policy import clients,active_qualification,profile_sha256,validate_pilot_receipts
+from mixed_backend_policy import clients,active_qualification,profile_sha256,validate_pilot_receipts,activate_backend
 from mixed_backend_recovery import CANDIDATE,CONTRACT,verify_preservation
 from actual_judge_feedback import validate_finding
 from judge_context_adapter import review
@@ -86,6 +86,7 @@ def main() -> None:
             'usage':budget.totals(),'candidate':CANDIDATE,'contract_sha256':CONTRACT,
             'packing_format_version':2,'human_accepted':False,'game_verified':False}
         atomic_write(state,'context-optimization/packed-v2-live-audit.json',canonical(record).encode())
+        activate_backend(state,budget)
         print(json.dumps(record),flush=True)
     finally:lease.release()
 

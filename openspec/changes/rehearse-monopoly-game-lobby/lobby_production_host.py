@@ -626,7 +626,8 @@ def main():
     limits=policy.get('limits',policy)
     budget=BudgetLedger(state,RUN_ID,input_limit=limits['input_limit'],output_limit=limits['output_limit'],
         max_cycles=limits['max_cycles'],max_added_units=limits['max_added_units'])
-    backend=os.environ.get('LOBBY_MODEL_BACKEND','openrouter')
+    from mixed_backend_policy import selected_backend
+    backend=selected_backend(state,os.environ.get('LOBBY_MODEL_BACKEND'))
     if backend=='codex':
         from codex_lobby import clients
         settings,selected=clients(root,state,budget)

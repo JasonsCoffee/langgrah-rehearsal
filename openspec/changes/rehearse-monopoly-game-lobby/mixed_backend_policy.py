@@ -8,9 +8,46 @@ from unity_coder.core.ai_models import AIConfig,ModelError
 from unity_coder.core.budget import BudgetLedger
 from unity_coder.core.codex_backend import CodexModelClient,CodexPolicy
 from unity_coder.core.codex_stdio import CodexStdioExchange
+from unity_coder.core.storage import atomic_write
 from direct_deepseek_client import load_direct_config,DirectDeepSeekClient
 
 QUALIFICATION_REF='context-optimization/pilot-packed-v2-qualified.json'
+
+
+def backend_record() -> dict:
+    return {'run_id':'monopoly-game-lobby','backend':'mixed','profile_sha256':profile_sha256(),
+        'packing_format_version':2,'qualification_ref':QUALIFICATION_REF,
+        'authorization_ref':role_profile()['authorization_ref']}
+
+
+def selected_backend(state: Path,requested: str | None) -> str:
+    path=state/'model-authorizations/active-backend.json'
+    if path.exists():
+        if json.loads(path.read_bytes())!=backend_record():raise ValueError('Active backend policy changed')
+        if requested not in (None,'mixed'):raise ValueError('Stale backend override conflicts with the activated policy')
+        return 'mixed'
+    return requested or 'openrouter'
+
+
+def activate_backend(state: Path,budget: BudgetLedger) -> None:
+    qualification=active_qualification(state,budget._read()['calls'])
+    path=state/'context-optimization/packed-v2-live-audit.json'
+    audit=json.loads(path.read_bytes())
+    operation='v70-migration-packed-v2-live-ECON'
+    if (audit.get('audit_passed') is not True or audit.get('packing_format_version')!=2
+        or budget.limits!=role_profile()['limits']):raise ValueError('Verified live audit and unchanged limits required')
+    live=json.loads((state/'context-optimization/live-audit.json').read_bytes())
+    row=next((r for r in live['reviews'] if r['operation']==operation),None)
+    if not row or row.get('audit',{}).get('routing_agrees') is not True:
+        raise ValueError('Genuine canonical comparison required before persistent activation')
+    for call in (operation,operation+'-shadow-audit'):
+        proof=qualification|{'roles':{'coder':qualification['roles']['coder'],'judge':call}}
+        validate_pilot_receipts(state,budget._read()['calls'],proof)
+    marker=state/'model-authorizations/active-backend.json'
+    record=backend_record()
+    if marker.exists():
+        if json.loads(marker.read_bytes())!=record:raise ValueError('Preserve different existing backend activation')
+    else:atomic_write(state,'model-authorizations/active-backend.json',json.dumps(record,sort_keys=True).encode())
 
 
 def active_qualification(state: Path,calls: dict) -> dict:
