@@ -139,8 +139,10 @@ class RetainedJudgeClient(CodexModelClient):
 
 def clients(framework: Path,root: Path,state: Path,budget: BudgetLedger,*,pilot: bool=False) -> tuple[AIConfig,list[ModelClient],DirectDeepSeekClient]:
     profile=role_profile();grant=json.loads((state/profile['authorization_ref']).read_bytes())
+    from lobby_budget_period import authorized_limits
+    checked_limits=authorized_limits(state,budget._read(),budget.limits,profile['limits'])
     if (grant.get('authority')!='explicit_user_session' or grant.get('profile_sha256')!=profile_sha256()
-        or grant.get('limits')!=budget.limits or budget.limits!=profile['limits']
+        or grant.get('limits')!=checked_limits or checked_limits!=profile['limits']
         or grant.get('judge_policy_sha256')!=judge_policy().sha256
         or grant.get('pilot_authorized') is not True):raise ModelError('Matching mixed-provider authorization required')
     if not pilot:
