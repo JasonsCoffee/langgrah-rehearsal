@@ -17,7 +17,7 @@ QUALIFICATION_REF='context-optimization/pilot-packed-v2-qualified.json'
 def backend_record() -> dict:
     return {'run_id':'monopoly-game-lobby','backend':'mixed','profile_sha256':profile_sha256(),
         'packing_format_version':2,'qualification_ref':QUALIFICATION_REF,
-        'authorization_ref':role_profile()['authorization_ref']}
+        'authorization_ref':role_profile()['authorization_ref'],'source_filter_version':2}
 
 
 def selected_backend(state: Path,requested: str | None) -> str:
@@ -31,10 +31,11 @@ def selected_backend(state: Path,requested: str | None) -> str:
 
 def activate_backend(state: Path,budget: BudgetLedger) -> None:
     qualification=active_qualification(state,budget._read()['calls'])
-    path=state/'context-optimization/packed-v2-live-audit.json'
+    path=state/'context-optimization/packed-v2-clean-compile-audit.json'
     audit=json.loads(path.read_bytes())
-    operation='v70-migration-packed-v2-live-ECON'
+    operation='v70-migration-packed-v2-clean-compile-ECON'
     if (audit.get('audit_passed') is not True or audit.get('packing_format_version')!=2
+        or audit.get('source_filter_version')!=2
         or budget.limits!=role_profile()['limits']):raise ValueError('Verified live audit and unchanged limits required')
     live=json.loads((state/'context-optimization/live-audit.json').read_bytes())
     row=next((r for r in live['reviews'] if r['operation']==operation),None)
@@ -46,7 +47,14 @@ def activate_backend(state: Path,budget: BudgetLedger) -> None:
     marker=state/'model-authorizations/active-backend.json'
     record=backend_record()
     if marker.exists():
-        if json.loads(marker.read_bytes())!=record:raise ValueError('Preserve different existing backend activation')
+        prior=marker.read_bytes();value=json.loads(prior)
+        if value==record:return
+        legacy={k:v for k,v in record.items() if k!='source_filter_version'}
+        if value!=legacy:raise ValueError('Preserve different existing backend activation')
+        history='model-authorizations/activation-history/'+sha256(prior).hexdigest()+'.json'
+        if (state/history).exists() and (state/history).read_bytes()!=prior:raise ValueError('Activation history changed')
+        if not (state/history).exists():atomic_write(state,history,prior)
+        atomic_write(state,'model-authorizations/active-backend.json',json.dumps(record,sort_keys=True).encode())
     else:atomic_write(state,'model-authorizations/active-backend.json',json.dumps(record,sort_keys=True).encode())
 
 
@@ -55,6 +63,12 @@ def active_qualification(state: Path,calls: dict) -> dict:
     if qualification.get('packing_format_version')!=2:
         raise ValueError('Current exact packing format requires its own genuine pilot')
     validate_pilot_receipts(state,calls,qualification)
+    from packet_archive import read_packet
+    from evidence_context_guard import private_note_ids
+    for case in qualification.get('cases',[]):
+        identity=case['canonical_sha256']
+        packet=read_packet(state/'context-packets'/identity/'canonical.json',identity)
+        if private_note_ids(packet):raise ValueError('Pilot contains inadmissible author reports')
     return qualification
 
 

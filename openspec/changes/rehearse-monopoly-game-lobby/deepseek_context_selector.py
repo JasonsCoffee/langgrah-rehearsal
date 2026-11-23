@@ -5,7 +5,7 @@ from hashlib import sha256
 from pathlib import Path
 from time import monotonic
 from evidence_packet import Packet,canonical
-from evidence_context_guard import OptimizationResult,mandatory_ids,optimize
+from evidence_context_guard import OptimizationResult,mandatory_ids,optimize,private_note_ids
 from context_call_accounting import CachedSelectionCalls
 from unity_coder.core.storage import atomic_write
 from unity_coder.core.ai_models import ModelError
@@ -27,7 +27,8 @@ class ContextOptimizer:
         model_selection=False
         reason='Deterministic packing; model selection is unqualified, unavailable, too small or mandatory-heavy'
         accounting={'actual_tokens':[0,0],'cache_hit':False,'original_tokens':None}
-        if (self.qualified and self.calls is not None and len(packet.canonical_input.encode())>=self.min_tokens
+        private=private_note_ids(packet)
+        if (not private and self.qualified and self.calls is not None and len(packet.canonical_input.encode())>=self.min_tokens
             and optional/max(1,total)>=self.min_optional_fraction and budget_known):
             model_selection=True
             catalog=[{'id':s.id,'sha256':s.sha256,'content':s.content,'kind':s.kind,
@@ -59,12 +60,12 @@ class ContextOptimizer:
         result=replace(result,metrics=result.metrics|{'selector_accounting':accounting,
             'elapsed_seconds':monotonic()-started,'monetary_savings_verified':False,
             'monetary_limit':'Judge subscription cash rate is unknown'},reasons=result.reasons+(reason,))
-        self.persist(packet,result)
+        self.persist(packet,result,store_canonical=not private)
         return result
 
-    def persist(self,packet: Packet,result: OptimizationResult) -> None:
+    def persist(self,packet: Packet,result: OptimizationResult,*,store_canonical: bool=True) -> None:
         key=packet.canonical_sha256
-        atomic_write(self.state,'context-packets/'+key+'/canonical.json',packet.canonical_input.encode())
+        if store_canonical:atomic_write(self.state,'context-packets/'+key+'/canonical.json',packet.canonical_input.encode())
         wire=canonical(asdict(result));identity=sha256(wire.encode()).hexdigest()
         atomic_write(self.state,'context-packets/'+key+'/'+identity+'.result.json',wire.encode())
         # A compact report never includes raw source or private configuration.

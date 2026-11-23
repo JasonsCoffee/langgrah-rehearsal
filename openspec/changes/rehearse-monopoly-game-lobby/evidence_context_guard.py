@@ -9,6 +9,14 @@ REQUIRED_KINDS=frozenset(('patched','test','helper','spec','diagnostic','interfa
 UNCERTAIN_KINDS=frozenset(('dynamic','reflection','partial_unknown'))
 
 
+def owned_review_note(path: str,ownership: dict[str,str]) -> bool:
+    return path in ownership and path.endswith(('.md','.txt','.MD','.TXT'))
+
+
+def private_note_ids(packet: Packet) -> set[str]:
+    return {s.id for s in packet.sources if owned_review_note(s.path,packet.ownership)}
+
+
 @dataclass(frozen=True)
 class OptimizationResult:
     optimized_input: str | None
@@ -39,6 +47,16 @@ def mandatory_ids(packet: Packet) -> set[str]:
 def optimize(packet: Packet,selection: dict,*,min_reduction: float=.2,budget_known: bool=True,
              capacity_chars: int | None=None) -> OptimizationResult:
     assert_packet(packet)
+    private=private_note_ids(packet)
+    if private:
+        checks=tuple({'id':name,'status':'fail' if name=='filtering' else 'unknown',
+            'verifier':'code_verified','evidence':[packet.canonical_sha256],
+            'reason':'Coder-owned review reports are inadmissible; no dispatch'} for name in
+            ('completeness','integrity','dependencies','filtering','identity','savings','budget'))
+        return OptimizationResult(None,checks,'blocked',packet.canonical_sha256,None,(),
+            tuple(s.id for s in packet.sources),{'canonical_bytes':len(packet.canonical_input.encode()),
+                'delivered_bytes':0,'byte_reduction':0,'token_estimate':'blocked before model dispatch'},
+            ('Remove private review-report sources: '+', '.join(sorted(private)),))
     required=mandatory_ids(packet);all_ids={s.id for s in packet.sources}
     checks=[];reasons=[]
     def check(name: str,status: str,detail: str) -> None:
@@ -92,6 +110,7 @@ def optimize(packet: Packet,selection: dict,*,min_reduction: float=.2,budget_kno
 
 def validate_delivery(packet: Packet,result: OptimizationResult) -> None:
     assert_packet(packet)
+    if private_note_ids(packet):raise ValueError('Private review notes cannot enter downstream evidence')
     if (result.canonical_sha256!=packet.canonical_sha256 or result.decision=='blocked'
         or result.optimized_input is None or sha256(result.optimized_input.encode()).hexdigest()!=result.optimized_sha256):
         raise ValueError('Blocked or inconsistent optimizer delivery identity')

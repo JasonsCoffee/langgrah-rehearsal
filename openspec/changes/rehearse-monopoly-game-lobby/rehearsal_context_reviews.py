@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 from evidence_packet import Source,Packet,make_packet,canonical
-from evidence_context_guard import validate_delivery
+from evidence_context_guard import validate_delivery,owned_review_note
 from deepseek_context_selector import ContextOptimizer
 from context_call_accounting import CachedSelectionCalls,qualification_envelope
 from live_context_audit import LiveReviewAudit,packet_class
@@ -24,17 +24,32 @@ if TYPE_CHECKING:
 def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],mechanical: dict,
                         policy: str,mode: str) -> Packet:
     contract=workers.contract
+    live=True
     try:candidate=git(workers.root,'rev-parse','HEAD').decode().strip()
     except (ValueError,RuntimeError):
         if (workers.root/'.git').exists():raise
         candidate='uncommitted-offline-fixture'
+        live=False
+    if live and git(workers.root,'status','--porcelain'):
+        raise ModelError('Review requires the exact clean committed candidate')
+    def source_text(path: str,provided: str) -> str:
+        if not live:return provided
+        raw=(workers.root/path).read_bytes()
+        if raw!=git(workers.root,'show',candidate+':'+path):raise ModelError('Review source differs from committed candidate')
+        text=raw.decode('utf-8')
+        if text.replace('\r\n','\n').replace('\r','\n')!=provided.replace('\r\n','\n').replace('\r','\n'):
+            raise ModelError('Provided review source is stale or curated unexpectedly')
+        return text
     sources=[];required=[]
+    ownership={p:u.id for u in contract.units for p in u.owns}
     patches=workers.services.state.get('patches',{})
     patched={path for paths in patches.values() for path in paths}
     # All current source received from the trusted contract context is retained,
     # including complete test partials and helpers. No symbol-guessing omission.
     for path,content in sorted(files.items()):
         if path.startswith(('readonly-','model-calls/')):continue
+        if owned_review_note(path,ownership):continue
+        content=source_text(path,content)
         if path.endswith('.cs'):
             kind='patched' if path in patched else 'test' if path.startswith('Tests/') else 'dependency'
         elif path==contract.spec.path:continue
@@ -50,9 +65,9 @@ def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],
         if path.endswith('.cs') and path not in files:raise ModelError('Patched current source absent from Judge canonical context')
     spec=files.get(contract.spec.path)
     if spec is None:raise ModelError('Exact current specification missing')
-    ownership={p:u.id for u in contract.units for p in u.owns}
+    spec=source_text(contract.spec.path,spec)
     return make_packet({'run':'monopoly-game-lobby','contract':contract.sha256,'candidate':candidate,
-        'unit':unit.id,'stage':mode,'policy':policy,'packing_format_version':2},tuple(sources),tuple(required),mechanical,
+        'unit':unit.id,'stage':mode,'policy':policy,'packing_format_version':2,'source_filter_version':2},tuple(sources),tuple(required),mechanical,
         ownership,tuple(unit.acceptance),spec)
 
 

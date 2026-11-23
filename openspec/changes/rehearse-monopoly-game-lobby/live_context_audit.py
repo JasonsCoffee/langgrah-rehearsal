@@ -32,7 +32,7 @@ class LiveReviewAudit:
             row.get('audit',{}).get('routing_agrees') is True for row in value['reviews']) or audit_fits)
 
     def observe(self,operation: str,category: str,packet: Packet,result: OptimizationResult,
-                decision: dict,shadow: Callable[[],dict] | None) -> dict:
+                decision: dict,shadow: Callable[[],dict] | None,*,force_audit: bool=False) -> dict:
         with file_guard(self.state,self.ref+'.guard'):
             value=self.read()
             if any(row.get('audit',{}).get('state')=='intent' for row in value['reviews']):
@@ -49,7 +49,7 @@ class LiveReviewAudit:
             pending=not any(r.get('audit',{}).get('routing_agrees') is True for r in value['reviews'])
             if len(value['reviews'])<10 or pending:
                 value['reviews'].append(row)
-            if pending and shadow is not None:
+            if (pending or force_audit) and shadow is not None:
                 row['audit']={'state':'intent'}
                 atomic_write(self.state,self.ref,canonical(value).encode())
                 compared=shadow() # All paid accounting stays in caller's native ModelCalls.
