@@ -435,7 +435,7 @@ class ContextWorkers:
         if stage=='green' and getattr(self,'services',None) is not None:
             from compile_repair_context import mechanical_feedback
             feedback+=mechanical_feedback(self.services.state,self.contract.sha256)
-            if self.coder.client.config.provider==self.judge_calls.client.config.provider=='codex':
+            if self.judge_calls.client.config.provider=='codex':
                 from actual_judge_feedback import feedback as judge_finding
                 feedback+=judge_finding(self.coder.calls.budget.root,self.services,unit.id)
             feedback+=restored_note
@@ -546,6 +546,10 @@ class ContextWorkers:
             return self.worker().code(unit,stage,context,feedback,operation_id)
 
     def review_tests(self,unit,files,operation_id):
+        optimized=getattr(self,'context_reviews',None)
+        if optimized is not None:
+            with self.admission:
+                return optimized.review_tests(self,unit,files,operation_id)
         prior=self.approved_review(unit)
         if prior:return prior
         with self.admission:
@@ -570,6 +574,8 @@ class ContextWorkers:
 
     def judge(self,unit,evidence,files,operation_id):
         with self.admission:
+            optimized=getattr(self,'context_reviews',None)
+            if optimized is not None:return optimized.judge(self,unit,evidence,files,operation_id)
             print('Reviewing',unit.id,evidence.gate,flush=True)
             context=self.context(unit,files)
             if unit.role=='impl':
@@ -624,6 +630,9 @@ def main():
     if backend=='codex':
         from codex_lobby import clients
         settings,selected=clients(root,state,budget)
+    elif backend=='mixed':
+        from mixed_backend_policy import clients as mixed_clients
+        settings,selected,optimizer_client=mixed_clients(framework,root,state,budget)
     elif backend=='openrouter':
         settings=load_ai_config(framework/'ai.local.toml')
         selected=[ModelClient(settings.coder,transport=RehearsalTransport(state,'coder'),timeout=180),
@@ -633,6 +642,13 @@ def main():
     workers=ContextWorkers(contract,Utf8Calls(ModelCalls(selected[0],budget,RUN_ID)),
         Utf8Calls(ModelCalls(selected[1],budget,RUN_ID)),integration.path,
         token_budgets=token_budgets,max_context_bytes=max_context_bytes)
+    if backend=='mixed':
+        from rehearsal_context_reviews import RehearsalReviews
+        from mixed_backend_policy import profile_sha256
+        qualification=json.loads((state/'context-optimization/pilot-qualified.json').read_bytes())
+        workers.context_reviews=RehearsalReviews(state,ModelCalls(selected[1],budget,RUN_ID),
+            ModelCalls(optimizer_client,budget,RUN_ID),profile_sha256(),
+            qualified_classes=tuple(qualification.get('qualified_classes',())))
     workers.carried_tests=carried_tests
     if carried_tests and (state/'frozen-continuations'/('v'+str(version)+'.json')).exists():
         from frozen_implementation_rework import prior_context
@@ -749,6 +765,11 @@ def main():
         if os.environ.get('LOBBY_RESUME_JUDGE_V70')=='1':
             from judge_retry_v70 import reconcile as reconcile_judge
             executor.resume_operational(reconcile=lambda: reconcile_judge(state,contract,budget,services,integration.path,host))
+            executor.advance(executor.stage())
+        if os.environ.get('LOBBY_RESUME_MIXED_BACKEND')=='1':
+            if backend!='mixed':raise ValueError('Explicit mixed backend required for migration')
+            from mixed_backend_recovery import reconcile as reconcile_mixed
+            executor.resume_operational(reconcile=lambda: reconcile_mixed(state,contract,budget,services,integration.path,host))
             executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')

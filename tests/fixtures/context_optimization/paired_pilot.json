@@ -1,0 +1,41 @@
+[
+  {
+    "id":"source-validity", "class":"test_review:source", "mode":"test_review", "unit":"TEST-HARNESS",
+    "spec":"A debit of three from a balance of ten must leave seven. Tests must assert that balance through the actual Debit operation; assertions of constant true are vacuous.",
+    "criteria":["Debit preserves the specified balance change"],
+    "mechanical":{"gate":"source","frozen_tests":false},
+    "sources":[{"id":"test","path":"pilot-fixtures/DebitTests.cs","kind":"test","content":"[Test] public void DebitChangesBalance() { Assert.That(true); }"}],
+    "expected":{"valid":false}
+  },
+  {
+    "id":"compile-router", "class":"defect:compile", "mode":"defect", "unit":"ECON",
+    "spec":"Wallet.GetBalance must return its stored balance. Wallet.cs is owned by ECON and may be repaired. No interface or requirement change is necessary.",
+    "criteria":["Wallet balance can be read"],
+    "mechanical":{"gate":"compile","status":"failed","fixture_only":true,"violations":[{"code":"CS0103","file":"pilot-fixtures/Wallet.cs","message":"The name absentBalance does not exist in the current context"}],"tests_executed":0},
+    "sources":[{"id":"wallet","path":"pilot-fixtures/Wallet.cs","kind":"patched","content":"public sealed class Wallet { private int balance; public int GetBalance() { return absentBalance; } }"}],
+    "expected":{"defect_class":"implementation"}
+  },
+  {
+    "id":"shared-assertion", "class":"defect:tests", "mode":"defect", "unit":"ECON",
+    "spec":"Debit subtracts a positive amount exactly once. Purchase calls Debit once. A balance of ten after paying three must be seven. Wallet.cs and Purchase.cs are declared implementation-owned, while tests are frozen.",
+    "criteria":["A purchase subtracts exactly one price"],
+    "mechanical":{"gate":"tests","status":"failed","behavioral":true,"fixture_only":true,"failed_tests":["PayDebitsOnce"],"assertions":["Expected 7 but was 13"],"related_units":["ECON","SHELL"]},
+    "sources":[
+      {"id":"wallet","path":"pilot-fixtures/Wallet.cs","kind":"patched","content":"public sealed class Wallet { public int Balance=10; public void Debit(int amount) { Balance += amount; } }"},
+      {"id":"purchase","path":"pilot-fixtures/Purchase.cs","kind":"patched","content":"public sealed class Purchase { public void Pay(Wallet wallet) { wallet.Debit(3); } }"},
+      {"id":"test","path":"pilot-fixtures/PayTests.cs","kind":"test","content":"[Test] public void PayDebitsOnce() { var w=new Wallet(); new Purchase().Pay(w); Assert.AreEqual(7,w.Balance); }"}
+    ],
+    "expected":{"defect_class":"implementation"}
+  },
+  {
+    "id":"mixed-frozen-oracle", "class":"defect:mixed", "mode":"defect", "unit":"SHELL",
+    "spec":"VIP is informational and MUST NOT discount the entry fee. SelectedFee is 100; FeeFor must return 100 for all players. Both supplied tests are already frozen and SHELL cannot edit them. BrokenFixture is test-only code. Contradictory frozen tests or broken frozen test setup must return to Architect as a contract/test-plan defect, never change correct production behavior to satisfy them.",
+    "criteria":["VIP leaves fees unchanged","Frozen tests must match their specification"],
+    "mechanical":{"gate":"tests","status":"failed","behavioral":false,"fixture_only":true,"failed_tests":["VipDiscount","BrokenFixture"],"failures":[{"test":"VipDiscount","kind":"assertion","message":"Expected 50 but was 100"},{"test":"BrokenFixture","kind":"setup","message":"FixtureException before application entry"}]},
+    "sources":[
+      {"id":"fee","path":"pilot-fixtures/Fee.cs","kind":"patched","content":"public sealed class Fee { public int FeeFor(bool vip) { return 100; } }"},
+      {"id":"tests","path":"pilot-fixtures/FeeTests.cs","kind":"test","content":"[Test] public void VipDiscount() { Assert.AreEqual(50,new Fee().FeeFor(true)); } [Test] public void BrokenFixture() { throw new FixtureException(); }"}
+    ],
+    "expected":{"defect_class":"contract"}
+  }
+]
