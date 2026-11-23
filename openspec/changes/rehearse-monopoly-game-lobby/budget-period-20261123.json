@@ -1,0 +1,67 @@
+{
+  "state": "complete",
+  "period_id": "post-backend-20261123",
+  "baseline_accounted": [
+    170044520,
+    6520897
+  ],
+  "historical_cycles": 70,
+  "period_usage": [
+    0,
+    0
+  ],
+  "allowance": [
+    20000000,
+    2000000,
+    50
+  ],
+  "cumulative_limits": [
+    190044520,
+    8520897,
+    120,
+    2
+  ],
+  "preserved_calls": true,
+  "preserved_cycles": true,
+  "human_accepted": false,
+  "history_refs": {
+    "ledger.before.json": {
+      "ref": "budget-periods/post-backend-20261123/ledger.before.json",
+      "sha256": "bb6d16f3d3006ae5a43958a3eb005a26b81a7bf46e484caab10d22a1351d5249"
+    },
+    "policy.before.json": {
+      "ref": "budget-periods/post-backend-20261123/policy.before.json",
+      "sha256": "5a6dd56b75e7c8a516e87122d9e4a2a87cd1c98e77799d56e78eead520c58ad2"
+    },
+    "result.before.json": {
+      "ref": "budget-periods/post-backend-20261123/result.before.json",
+      "sha256": "153eb7d7b4e18c2a742d1b55c1b85dc0a2fc0fad27abafb538077db512cf859b"
+    },
+    "backend.before.json": {
+      "ref": "budget-periods/post-backend-20261123/backend.before.json",
+      "sha256": "433d70490e638fcdb5f7ee3a968f1df8aca180944bda2d07681cd446eb625c69"
+    },
+    "period.json": {
+      "ref": "budget-periods/post-backend-20261123/period.json",
+      "sha256": "f4cc111ab248d7879c44a5883a77b560b0652c90db221dfd41cccee8064512da"
+    },
+    "applied.json": {
+      "ref": "budget-periods/post-backend-20261123/applied.json",
+      "sha256": "d2b27880925dca85ff2a386c76a530944775dcd27274281edf55b7006a1892d7"
+    }
+  },
+  "existing_frozen_host_files_verified": 26,
+  "game_frozen_files_verified": 199,
+  "new_test_sha256": "0866f1b3338c22860e84296a6dee83e08768c47eba180ebe8db52256d09da864",
+  "offline_checks_passed": 20,
+  "contract_cycle": 70,
+  "cycle_ceiling": 120,
+  "remaining_cycles": 50,
+  "token_limits": [
+    20000000,
+    2000000
+  ],
+  "cycle_numbering_reset": false,
+  "latest_user_clarification": "Reset token usage only; preserve contract cycle numbers and use a cumulative ceiling of 120.",
+  "backend_revision": "27163e993b3abab3d7751ed3616d92a5e1d8e2ea"
+}
