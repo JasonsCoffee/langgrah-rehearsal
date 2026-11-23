@@ -771,6 +771,11 @@ def main():
             from mixed_backend_recovery import reconcile as reconcile_mixed
             executor.resume_operational(reconcile=lambda: reconcile_mixed(state,contract,budget,services,integration.path,host))
             executor.advance(executor.stage())
+        if os.environ.get('LOBBY_RESUME_BRIDGE_V70')=='1':
+            if backend!='mixed':raise ValueError('Preserve the activated mixed backend')
+            from bridge_retry_v70 import reconcile as reconcile_bridge
+            executor.resume_operational(reconcile=lambda:reconcile_bridge(state,contract,budget,services,integration.path,host))
+            executor.advance(executor.stage())
         if os.environ.get('LOBBY_RESUME_CODEX_GREEN_V63')=='1':
             if backend!='codex':raise ValueError('Codex recovery requires explicit Codex backend')
             from codex_lobby import reconcile_green_dispatch
