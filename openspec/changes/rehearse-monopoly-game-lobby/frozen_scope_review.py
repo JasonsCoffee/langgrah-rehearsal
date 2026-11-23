@@ -1,12 +1,16 @@
 """Stop unchanged frozen-source retries at a real independent contract rejection."""
+from __future__ import annotations
 from dataclasses import asdict
 from hashlib import sha256
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 from unity_coder.core.dossiers import DossierUnit
 from unity_coder.core.executor import StepResult
 from unity_coder.core.storage import atomic_write
 from frozen_budget_continuation import check_frozen_sources
+if TYPE_CHECKING:
+    from unity_coder.core.local_executor import LocalExecutionServices
 
 
 def eligible(owns: tuple[str,...],frozen: dict[str,str],attempts: int,decision: dict) -> bool:
@@ -16,10 +20,10 @@ def eligible(owns: tuple[str,...],frozen: dict[str,str],attempts: int,decision: 
 
 
 class FrozenScopeServices:
-    def __init__(self,inner,state: Path,frozen: dict[str,str]) -> None:
+    def __init__(self,inner: LocalExecutionServices,state: Path,frozen: dict[str,str]) -> None:
         self.inner,self.root,self.frozen=inner,state,frozen
 
-    def __getattr__(self,name: str):return getattr(self.inner,name)
+    def __getattr__(self,name: str) -> object:return getattr(self.inner,name)
 
     def _route(self,stage: str,operation: str) -> StepResult | None:
         if stage!='prepare' or self.inner.tdd.frozen:return None
