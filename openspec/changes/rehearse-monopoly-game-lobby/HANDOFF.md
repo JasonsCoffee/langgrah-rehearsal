@@ -174,8 +174,25 @@ git -C (Join-Path $env:LOBBY_RUN_ROOT 'module') show -s 06b2397ae92818d1efb9057b
 Invoke-RestMethod ('http://127.0.0.1:' + $env:UNITY_BRIDGE_PORT + '/')
 ```
 
-Use the backend worktree's tests for local offline verification. The native
-driver is `.agent/codex-worker-backend/openspec/changes/rehearse-monopoly-game-lobby/lobby_production_host.py`.
+Run the backend worktree's offline tests in UTF-8 mode on Windows:
+
+```powershell
+Push-Location .agent/codex-worker-backend
+try {
+    $env:PYTHONUTF8 = '1'
+    $env:PYTHONPATH = (Resolve-Path src).Path
+    ../../.venv/Scripts/python.exe -m pytest -q
+} finally {
+    Pop-Location
+}
+```
+
+The handoff verification ran 925 cases. Windows default GBK decoding
+caused 12 failures in the UTF-8 evidence fixtures, and the other 913
+passed. The entire affected test file passed on a UTF-8 rerun (22 cases).
+
+The native driver is
+`.agent/codex-worker-backend/openspec/changes/rehearse-monopoly-game-lobby/lobby_production_host.py`.
 Run it from the planning checkout with the selected backend on
 `PYTHONPATH`, after an authorized native transition or operational recovery.
 It can dispatch paid calls and drive Unity. The current cycle is parked in
