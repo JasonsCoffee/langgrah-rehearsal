@@ -1,5 +1,106 @@
 # Lobby continuation status
 
+Contract 94 ended in native rework at
+`06b2397ae92818d1efb9057b3455aaba2c195082`, with nine suites approved on
+that candidate. Both Match repairs, VIP, and Queue are among them. Judge
+found that the busy Party invitation is attempted before the recipient
+session starts and that the validation diagnostics can match unrelated
+fresh failures. Approval is pending for only `Story_L11_04` and
+`Story_L11_07` in `LobbyMatchPartyTests.cs`.
+
+The current period accounted for 100,744,888 of 110M input and 393,223 of
+2M output tokens. Judge used 248 of 250 claims, with all 28 uncertain
+reservations preserved. Contract numbering is 94 of 120. Unity Red,
+the new freeze, runtime verification and human review remain pending.
+
+The approved 110M input ceiling is active. Native recovery into contract
+93 retained all 1,284 ledger entries, including 28 outstanding
+reservations, and all 92 prior contract cycles. Judge approved the VIP
+separator correction and Queue, then found that Match fee glyphs could
+pass under a zero-scale transform.
+
+Contract 94 protected 228 files and reopened only the already authorized
+Match fee helper. Judge approved the delegated patch `06b2397` with
+screen-space area and material-specific glyph opacity checks. Remaining
+source reviews are in progress. Fresh Unity Red, freeze, and human review
+are still pending.
+
+Contract 92 reached a native budget stop at candidate
+`0de2c012f1ca8f7625e79199d30de168f6a3649b`. Judge approved the scoped VIP
+sign-separator repair and Queue. Native recovery to 110M input is pending
+explicit approval. Period accounting is 84,986,590 of 90M input and 368,889
+of 2M output, at contract 92 of 120. There are 233 of 250 Judge claims and
+28 retained uncertain reservations.
+
+The recent Lobby logs did not record the desktop capacity banner. Coder
+used direct DeepSeek Flash (low), and Judge used GPT-6.1 Sol (low) through
+the Codex app server. A later Match review reached its session deadline,
+with the original 5,870,268 input and 32,768 output reservation kept in
+full. A new Match review passed. Fifty-three offline checks passed. Fresh
+Unity Red, freeze, and human review are pending.
+
+The approved 90M input ceiling took effect through native recovery from
+contract 89. The recovery retained the third delegated Match patch and the
+complete ledger. Judge approved both corrected Match methods at contract
+90. Source review then reached the Queue packet, which omitted the
+existing Architect seat-allocation rule.
+
+Contract 91 added that exact rule to the coding profile for review and
+verified the requested Queue-owned records by identity and metadata.
+There were no test edits in that transition. Queue passed independent
+source review on `4b76091f709c6ca94790f7d0e447272f6e6bb2df` with 227
+protected files. Fifty-three focused offline checks passed. Fresh Unity
+Red, freeze and human review remain pending.
+
+Contract 88 ended in native rework on candidate
+`d04cbbc6959db4f66e4b270071d5dca0fa52fe7e`. Judge approved Appearance,
+Cards, VIP, Harness, Chat messages, presentation core, and presentation NFR.
+Judge found that Match's funded timing control shares the underfunded
+account's tier queue and that the displayed-fee helper accepts hidden
+text. Approval is pending to open only `Story_L9_03` and
+`AssertDisplayedFee` in `LobbyMatchTests.cs`.
+
+The Judge ceiling is active at 214 of 250 cumulative claims, with all
+original 200 claims retained. The period accounts for 63,733,130 of 70M
+input and 294,279 of 2M output tokens, at contract 88 of 120. Forty focused
+offline checks passed. Fresh Unity Red, freeze, runtime verification and
+human review are pending.
+
+Contract 88 resumed with 222 protected files and only
+`AssertVisibleThumbnail` open for the previously approved Appearance
+repair. Contract 87 approved VIP, Cards and Harness on candidate
+`58b9676de7fa6d837a231ecbec75c31337517a9f`. Judge found that the thumbnail
+helper could accept negligible combined opacity or a missing renderer.
+At contract 88 entry the current period accounted for 57,701,930 input
+and 289,927 output. Forty focused offline checks passed. Source reviews,
+fresh Unity Red and the new test freeze are pending.
+
+Contract 86 resumed from the pre-dispatch VIP source review after the user
+raised the cumulative Codex Judge ceiling from 200 to 250. All 200 prior
+claims and 1,244 ledger entries were retained. The existing ceilings are 70M
+input and 2M output for this token period, and 120 contract cycles. At
+recovery the candidate was `7106fb20a73fd5d53eab8b2b1d735f12d7c5f990`,
+with the Cards source approved and 218 source files protected. The 35 focused
+offline checks passed. No new Unity verification had run at recovery.
+
+The approved 50M input ceiling was applied by native recovery into contract 81, retaining all 1,211 prior calls, 27 uncertain reservations and 80 prior cycles. Offline regression caught and corrected invalid-ceiling rejection in the extension chain. Contract 81 exhausted the VIP source-review attempts on an unrelated-number edge case. Contract 82 carried the same two-helper approval, prioritized VIP using the existing dependency source, and received independent positive review after the amount-field, currency suffix, sign and label-boundary repairs. The retained candidate is bb6a5bc93f6db030ed6ea0776e6cfb9c40783c43 under contract a6a9fcd7db0dad8145e14ac6c644c90c0a477af2e86821bc7189dfef1aed249a. The run then entered native rework on frozen Cards. In addition to the prior opacity and cancellation findings, RoleAssociatedAmount can read signed or decimal displays as unsigned integers. A combined four-method Cards scope is awaiting user authorization. Accounting is 42,663,573 input / 196,004 output under 50M / 2M, at cycle 82 of 120. Twenty-two focused offline checks passed, and all 210 protected files matched. Fresh Unity Red and runtime verification remain pending.
+
+Contract 80 reached native input-budget abandonment after the first scoped VIP patch was admitted, at retained candidate 32f795ecc92ea9ed56854e47d17040b386a1ba2b and contract c892587f865fc0d5d27dfd05067b41028363fbe47cdae520ee28aa7a52cfc5e2. The review order put VIP ahead of Cards while retaining both gates and all protected source. Judge found that the new parser counts the digit in the VIP token as an amount and can treat unrelated numbered fields as thresholds. These findings remain inside the approved helper scope. The next review reservation did not fit. Period accounting was 36,356,287 input / 151,307 output under 40M / 2M with 80 / 120 cycles. The proposed 50M input extension and three-method Cards scope remain pending. The approved Appearance code and all historical test versions and accounting remain recorded. Fresh Unity Red and runtime verification are pending.
+
+Contract 79 carried the user-approved VIP scope, limited to AssertRulesRowsForLevels and ContainsDistinctAmountField. Harness and Appearance passed. Frozen Cards was rejected because IsMeasurableGraphicForCards and IsRenderedLabelForCards omit effective renderer or glyph opacity and Story_L12_05 checks rendered cancellation only after an extra Refresh. The native result was rework before VIP authoring at candidate e509d4d0670b2bb53c5511d8fa0e690354398154, contract 673cee84ea338fe949e45c837f39497f13425b643bd891b33dc76301436ebb3e. The period accounted for 33,725,475 input / 142,234 output tokens under 40M / 2M. The three Cards method edits are proposed for explicit authorization. The next contract prioritizes permitted VIP authoring with the existing Cards source while retaining Cards review before Unity Red. Twenty-one focused offline checks passed.
+
+Contract 78 ended in native rework at candidate 7bdcae78e85ef1a2dcf96a14813016077855222c. Judge approved the delegated Appearance correction for renderer opacity and cumulative clipped overlap, plus the retained normal Monopoly construction. Harness, Chat message, presentation core, NFR, and Cards also passed source review, for six approved units out of sixteen. Frozen TEST-VIP was rejected because the rules helper can accept incorrectly associated threshold values and arbitrary nonempty remarks. The first frozen rejection stopped further dispatch under the existing guard. Only AssertRulesRowsForLevels and ContainsDistinctAmountField in LobbyEconomyVipTests.cs are proposed for revision. At the stop, the period accounted for 31,849,222 input / 141,453 output tokens under 40M / 2M, at 78 / 120 cycles. All 202 protected files and 26 original frozen host fixtures matched their hashes. Fresh Unity Red, freeze and runtime Green remain pending.
+
+The user approved the pending 40M input extension, applied through completed native recovery post-backend-40m. Contract 78 starts from the saved cycle-77 candidate and prioritizes Appearance after its existing harness dependency. Only the list order changed. Unit ownership, instructions, criteria, protected tests and model routes carry forward. At entry, candidate f6cdf40cb9c06ae00ab967fc219133921c688624 binds contract d89225b3ef7850527c8dbb0df9bc4c4c1def0010a7eb087f8025b792fd756606. Period accounting at recovery was 26,687,160 input / 124,771 output under 40M / 2M, at cycle 78 of 120. All 1,194 historical call entries and 27 uncertain reservations were retained. Twenty focused offline checks passed. Fresh Unity Red and global freeze remain pending.
+
+Contract 77 stopped at a completed native input-budget boundary. The retained candidate is fb5ae5ebe14d27cde693823127b982ea54d3c2c0, bound to contract 60fbe79e1cf596fd26f01a203617ef55e46211c238a1e438758d01dc1b859e59. Judge approved the exact Chat avatar binding and the second scoped NFR cleanup. For Appearance, Judge accepted normal Monopoly construction and preserved lifecycle checks. The thumbnail helper still needs effective renderer opacity and the common visible intersection through canvas, screen and ancestor clips without rejecting legitimate partial clipping. A redundant NFR reauthoring attempt failed operationally. Both calls settled with no admission. Native operational recovery preserved their charges. The host retained exact independently reviewed NFR bytes on the resumed step and proceeded to the next required Judge reservation. That reservation could not fit. Accounting at the stop was 26,687,160 input / 124,771 output under 30M / 2M, at 77 / 120 cycles. All 1,194 call entries and 27 uncertain reservations remain. The proposed 40M input extension is pending authorization, and the run is awaiting budget recovery. Fresh Unity Red, global freeze, delegated implementation and awaiting_human_review remain pending.
+
+Contracts 75–77 continue the same lobby run. Contract 75 carried the approved four-method NFR cleanup and two-method Appearance work. Its unchanged Chat source was rejected because an arbitrary Avatar action prefix could admit an attachment. Contract 76 carried the already approved exact avatar-binding correction, and Coder admitted candidate 5900397ab23defc87f507c8dc0fc3fd9ae83625b before the next Judge reservation triggered native budget abandonment. The approved 30M input ceiling was applied via completed recovery post-backend-30m, preserving all 1,174 prior calls, all 27 unknown reservations and all earlier cycles. At contract 77 entry, usage was 16,654,952 input / 66,415 output under 30M / 2M and 77 / 120 cycles. Candidate 9c7750170bcca4a3ec1a169d2bd36c05ab90a348 binds contract 60fbe79e1cf596fd26f01a203617ef55e46211c238a1e438758d01dc1b859e59. Independent review is required before fresh Unity Red and freeze. Twenty-five focused offline checks passed. All 26 original host fixtures and both pinned overlay helpers matched. The Architect/apply workflow supplied the native transition and verification gates. The lobby host needed exact method guards and native recovery verification to carry the period extension.
+
+Contract 74 ended in native rework at candidate 7d543a4a43cf2d45b3c05a1928401d18fc668c48. Judge accepted the harness, Chat and weekly ranking source, then rejected NFR fixture cleanup. Story_NFR_01 through Story_NFR_04 retain cloned LobbyConfiguration instances, and 01, 02 and 04 lack guaranteed coordinator shutdown. The exact source review is recorded in services-v74/effects/review-v74-step1-prepare-TEST-PRES-NFR.json and dossier-v74.json under the trusted run. The frozen scope guard stopped after the first rejection, before Appearance authoring and fresh Red. NFR cleanup requires a scoped consecutive contract. The Appearance approval remains recorded. Nineteen focused offline tests passed. Period accounting is 14,616,806 input / 46,934 output under 20M / 2M, with cycles 74 / 120 and 27 original unknown calls retained. The approved 30M input extension awaits native budget recovery.
+
+Contract 74 continues the same lobby run. The user approved edits only to AssertVisibleThumbnail and Journey_ECON in LobbyEconomyTests.cs. The three independently approved repairs from contract 73 and their metadata now join the protected test inputs. Preparation candidate 7d543a4a43cf2d45b3c05a1928401d18fc668c48 and contract 8a5f4e4af2dded3f58b14d9a761cc618f8760b668a189ce49c087edf0fab25d1 bind this scope. The user also approved 30M input at the next native budget recovery boundary. The active ceilings at transition were 20M input, 2M output and 120 cycles, with 12,126,017 input and 46,088 output tokens accounted for in this period.
+
 Latest completed boundary (2026-11-23): actual cycle-73 rework, candidate e328fa7ad4242ca6f3bfcd244e7acd8826397fc4. Judge approved all three authorized repairs; TEST-APPEAR then failed source review on effective thumbnail visibility and uninitialized Monopoly construction. Early frozen-source routing stopped unchanged retries after one real rejection. No fresh Red/global freeze/implementation dispatch yet. See appearance-source-conflicts-v73.md for the precise proposed two-body scope exception and evidence. Awaiting user scope approval; the proposed 30M token-period input extension also remains pending, with 20M / 2M still enforced. Token period settled 12,126,017 / 46,088; native cycles 73 / 120; all old charges/reservations and source versions preserved. Not awaiting_human_review. Earlier entries below are history.
 
 Latest continuation (2026-11-23): native contract 73 carries the user-approved Recharge/weekly-ranking corrections plus the two approved Chat message-identity/avatar-role helpers. Preparation candidate 3f1baaa616ddb2a533c1f6b32ebce7ef96a66c37; contract 80633a01b3edf2c72c6aefac09c960d08b024756ec51af748f7372ee60e0402a. Native cycles 73 / 120. Token period at transition: 5,593,023 / 1,764 under 20M / 2M; read the live ledger for newer calls. All 199 prior frozen files remain in history, with 196 unaffected files protected. First host guard failed before any model/effect; exact empty-operation reconciliation is in progress after the retired-unit fix. See acceptance-reconciliation-v73.md and review-context-repair-v72.md. All later test/implementation edits remain delegated; independent Judge, valid Red, fresh freeze and sequential Unity verification still gate human review. Earlier entries are history.
