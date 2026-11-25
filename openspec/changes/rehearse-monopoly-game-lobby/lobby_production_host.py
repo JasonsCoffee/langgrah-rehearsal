@@ -310,8 +310,34 @@ class ContextWorkers:
             'Use the supplied source hashes. Preserve every unmodified source byte and all effective assertions. '
             'Only the actual model-authored replacement text is applied. Do not write business implementation. '
             'This transport supersedes historical full-file output hints; acceptance requirements are unchanged. ')
-        if self.contract.contract_version in (68,71,72,73):
-            if self.contract.contract_version==73:
+        if self.contract.contract_version in (68,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,92,93,94):
+            if self.contract.contract_version==94:
+                from approved_match_followup_v94 import SCOPE
+            elif self.contract.contract_version in (92,93):
+                from approved_vip_followup_v92 import SCOPE
+            elif self.contract.contract_version in (89,90):
+                from approved_match_reconciliation_v89 import SCOPE
+            elif self.contract.contract_version==88:
+                from approved_appearance_followup_v88 import SCOPE
+            elif self.contract.contract_version==87:
+                from approved_vip_followup_v87 import SCOPE
+            elif self.contract.contract_version==86:
+                from approved_cards_followup_v86 import SCOPE
+            elif self.contract.contract_version==85:
+                from approved_vip_followup_v85 import SCOPE
+            elif self.contract.contract_version in (83,84):
+                from approved_test_reconciliation_v83 import SCOPE
+            elif self.contract.contract_version==82:
+                from approved_test_reconciliation_v82 import SCOPE
+            elif self.contract.contract_version in (79,80,81):
+                from approved_test_reconciliation_v79 import SCOPE
+            elif self.contract.contract_version in (76,77,78):
+                from approved_test_reconciliation_v76 import SCOPE
+            elif self.contract.contract_version==75:
+                from approved_test_reconciliation_v75 import SCOPE
+            elif self.contract.contract_version==74:
+                from approved_test_reconciliation_v74 import SCOPE
+            elif self.contract.contract_version==73:
                 from approved_test_reconciliation_v73 import SCOPE
             elif self.contract.contract_version in (71,72):
                 from approved_test_reconciliation_v71 import SCOPE
@@ -344,8 +370,34 @@ class ContextWorkers:
                 if not any(p.endswith('.cs') for p in patch):raise ValueError('Required C# repair omitted')
                 if any(not (self.root/p).is_file() and p not in patch for p in unit.owns):
                     raise ValueError('Required new owned note or metadata omitted')
-                if self.contract.contract_version in (68,71,72,73):
-                    if self.contract.contract_version==73:
+                if self.contract.contract_version in (68,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,92,93,94):
+                    if self.contract.contract_version==94:
+                        from approved_match_followup_v94 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (92,93):
+                        from approved_vip_followup_v92 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (89,90):
+                        from approved_match_reconciliation_v89 import SCOPE,validate_patch
+                    elif self.contract.contract_version==88:
+                        from approved_appearance_followup_v88 import SCOPE,validate_patch
+                    elif self.contract.contract_version==87:
+                        from approved_vip_followup_v87 import SCOPE,validate_patch
+                    elif self.contract.contract_version==86:
+                        from approved_cards_followup_v86 import SCOPE,validate_patch
+                    elif self.contract.contract_version==85:
+                        from approved_vip_followup_v85 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (83,84):
+                        from approved_test_reconciliation_v83 import SCOPE,validate_patch
+                    elif self.contract.contract_version==82:
+                        from approved_test_reconciliation_v82 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (79,80,81):
+                        from approved_test_reconciliation_v79 import SCOPE,validate_patch
+                    elif self.contract.contract_version in (76,77,78):
+                        from approved_test_reconciliation_v76 import SCOPE,validate_patch
+                    elif self.contract.contract_version==75:
+                        from approved_test_reconciliation_v75 import SCOPE,validate_patch
+                    elif self.contract.contract_version==74:
+                        from approved_test_reconciliation_v74 import SCOPE,validate_patch
+                    elif self.contract.contract_version==73:
                         from approved_test_reconciliation_v73 import SCOPE,validate_patch
                     elif self.contract.contract_version in (71,72):
                         from approved_test_reconciliation_v71 import SCOPE,validate_patch
@@ -369,15 +421,16 @@ class ContextWorkers:
             return WorkerPatch(patch,reason)
         raise ModelError('Bounded anchored transport requires owner reconciliation; all actual calls retained')
 
-    def approved_review(self,unit):
+    def approved_review(self,unit,*,per_decision=False):
         services=getattr(self,'services',None)
         if (unit.role!='test' or services is None or services.tdd.state(unit.id).stage!='test_reviewed'
             or unit.id not in services.tdd._reviews):
             return None
         state=self.coder.calls.budget.root
-        relative='reviewed-tests/v'+str(self.contract.contract_version)+'/'+unit.id+'.json'
-        path=state/relative
         explanation=services.tdd._reviews[unit.id]
+        key=unit.id+'-'+sha256(explanation.encode()).hexdigest() if per_decision else unit.id
+        relative='reviewed-tests/v'+str(self.contract.contract_version)+'/'+key+'.json'
+        path=state/relative
         if path.exists():
             record=json.loads(path.read_bytes())
         else:
@@ -405,8 +458,37 @@ class ContextWorkers:
         return explanation
 
     def code(self,unit,stage,files,feedback,operation_id):
-        if stage=='test_authoring' and self.contract.contract_version in (68,71,72,73):
-            if self.contract.contract_version==73:
+        if (stage=='test_authoring' and self.contract.contract_version>=77
+            and not self.services.tdd.frozen and self.approved_review(unit,per_decision=True)):
+            return WorkerPatch({},'Retain exact reviewed test bytes during another unit’s preparation retry')
+        if stage=='test_authoring' and self.contract.contract_version in (68,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,92,93,94):
+            if self.contract.contract_version==94:
+                from approved_match_followup_v94 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (92,93):
+                from approved_vip_followup_v92 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (89,90):
+                from approved_match_reconciliation_v89 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==88:
+                from approved_appearance_followup_v88 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==87:
+                from approved_vip_followup_v87 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==86:
+                from approved_cards_followup_v86 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==85:
+                from approved_vip_followup_v85 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (83,84):
+                from approved_test_reconciliation_v83 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==82:
+                from approved_test_reconciliation_v82 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (79,80,81):
+                from approved_test_reconciliation_v79 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version in (76,77,78):
+                from approved_test_reconciliation_v76 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==75:
+                from approved_test_reconciliation_v75 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==74:
+                from approved_test_reconciliation_v74 import SCOPE,author_paths,validate_patch
+            elif self.contract.contract_version==73:
                 from approved_test_reconciliation_v73 import SCOPE,author_paths,validate_patch
             elif self.contract.contract_version in (71,72):
                 from approved_test_reconciliation_v71 import SCOPE,author_paths,validate_patch
@@ -755,6 +837,25 @@ def main():
     executor=ProductionExecutor(state,RUN_ID,contract,budget,lease,execution_services)
     try:
         preflight()
+        if os.environ.get('LOBBY_RESUME_V91_JUDGE_DEADLINE')=='1':
+            from queue_review_context_v91 import reconcile_judge_deadline
+            executor.resume_operational(reconcile=lambda:reconcile_judge_deadline(state,budget,services))
+            executor.advance('prepare')
+        if os.environ.get('LOBBY_RESUME_JUDGE_CEILING_250')=='1':
+            from judge_claim_extension import reconcile
+            executor.resume_operational(reconcile=lambda:reconcile(state,integration.path,budget._read(),selected[1].policy))
+            executor.advance('prepare')
+        if os.environ.get('LOBBY_RESUME_V85_INCOMPLETE_AUTHOR')=='1':
+            from approved_vip_followup_v85 import reconcile_incomplete_author
+            executor.resume_operational(reconcile=lambda:reconcile_incomplete_author(state,contract,budget,services))
+            executor.advance('prepare')
+        if os.environ.get('LOBBY_RESUME_V77_REDUNDANT_NFR')=='1':
+            from resume_v77_redundant_nfr import reconcile
+            if executor.stage()=='ended':
+                executor.resume_operational(reconcile=lambda:reconcile(state,contract,budget,services))
+            elif not reconcile(state,contract,budget,services):
+                raise ValueError('Recorded redundant NFR recovery identity changed')
+            executor.advance('prepare')
         if os.environ.get('LOBBY_RECONCILE_IMPORT_V68')=='1':
             from pending_import_recovery import reconcile
             reconcile(state,contract,budget,services,executor,host,ladder,frozen)

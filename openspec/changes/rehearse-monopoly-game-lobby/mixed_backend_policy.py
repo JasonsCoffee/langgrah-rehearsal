@@ -123,7 +123,7 @@ def validate_pilot_receipts(state: Path,calls: dict,qualification: dict) -> None
 
 
 class RetainedJudgeClient(CodexModelClient):
-    """Changing effort must not refill the original Codex Judge claim bound."""
+    """Count Judge claims across all authorized policy versions."""
     def validate_output_limit(self,max_output_tokens: int) -> None:
         super().validate_output_limit(max_output_tokens)
         folder=self.state/'.agent/runs/monopoly-game-lobby/model-calls'
@@ -133,7 +133,7 @@ class RetainedJudgeClient(CodexModelClient):
             if identity.get('role')!='judge' or identity.get('worker_backend')!='codex_app_server':continue
             key=sha256(identity['call_id'].encode()).hexdigest()
             if (self.state/'codex-claims'/identity['backend_policy_sha256']/(key+'.json')).exists():count+=1
-        if count>=self.policy.max_calls:raise ModelError('Original cumulative Codex Judge claim bound reached; no policy reset')
+        if count>=self.policy.max_calls:raise ModelError('Cumulative Codex Judge claim bound reached')
 
 
 
@@ -155,6 +155,9 @@ def clients(framework: Path,root: Path,state: Path,budget: BudgetLedger,*,pilot:
     working.mkdir(parents=True,exist_ok=True)
     if any(working.iterdir()):raise ModelError('Preserve unexpected worker-root contents')
     policy=judge_policy()
+    if not pilot:
+        from judge_claim_extension import amended_policy
+        policy=amended_policy(state,policy,budget._read())
     judge=RetainedJudgeClient(policy,state,working,exchange=CodexStdioExchange(max_timeout_seconds=600),
-        authorize=lambda digest:digest==grant['judge_policy_sha256'],timeout=180,session_timeout=600)
+        authorize=lambda digest:digest==policy.sha256,timeout=180,session_timeout=600)
     return AIConfig(coder.config,judge.config),[coder,judge],optimizer

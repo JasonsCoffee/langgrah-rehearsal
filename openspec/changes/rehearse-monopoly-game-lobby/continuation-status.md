@@ -1,5 +1,124 @@
 # Lobby continuation status
 
+Contract 94 ended in native rework at
+`06b2397ae92818d1efb9057b3455aaba2c195082`, with nine suites approved on
+that candidate. Both Match repairs, VIP, and Queue are among them. Judge
+found that the busy Party invitation is attempted before the recipient
+session starts and that the validation diagnostics can match unrelated
+fresh failures. Approval is pending for only `Story_L11_04` and
+`Story_L11_07` in `LobbyMatchPartyTests.cs`.
+
+The current period accounted for 100,744,888 of 110M input and 393,223 of
+2M output tokens. Judge used 248 of 250 claims, with all 28 uncertain
+reservations preserved. Contract numbering is 94 of 120. Unity Red,
+the new freeze, runtime verification and human review remain pending.
+
+The approved 110M input ceiling is active. Native recovery into contract
+93 retained all 1,284 ledger entries, including 28 outstanding
+reservations, and all 92 prior contract cycles. Judge approved the VIP
+separator correction and Queue, then found that Match fee glyphs could
+pass under a zero-scale transform.
+
+Contract 94 protected 228 files and reopened only the already authorized
+Match fee helper. Judge approved the delegated patch `06b2397` with
+screen-space area and material-specific glyph opacity checks. Remaining
+source reviews are in progress. Fresh Unity Red, freeze, and human review
+are still pending.
+
+Contract 92 reached a native budget stop at candidate
+`0de2c012f1ca8f7625e79199d30de168f6a3649b`. Judge approved the scoped VIP
+sign-separator repair and Queue. Native recovery to 110M input is pending
+explicit approval. Period accounting is 84,986,590 of 90M input and 368,889
+of 2M output, at contract 92 of 120. There are 233 of 250 Judge claims and
+28 retained uncertain reservations.
+
+The recent Lobby logs did not record the desktop capacity banner. Coder
+used direct DeepSeek Flash (low), and Judge used GPT-6.1 Sol (low) through
+the Codex app server. A later Match review reached its session deadline,
+with the original 5,870,268 input and 32,768 output reservation kept in
+full. A new Match review passed. Fifty-three offline checks passed. Fresh
+Unity Red, freeze, and human review are pending.
+
+The approved 90M input ceiling took effect through native recovery from
+contract 89. The recovery retained the third delegated Match patch and the
+complete ledger. Judge approved both corrected Match methods at contract
+90. Source review then reached the Queue packet, which omitted the
+existing Architect seat-allocation rule.
+
+Contract 91 added that exact rule to the coding profile for review and
+verified the requested Queue-owned records by identity and metadata.
+There were no test edits in that transition. Queue passed independent
+source review on `4b76091f709c6ca94790f7d0e447272f6e6bb2df` with 227
+protected files. Fifty-three focused offline checks passed. Fresh Unity
+Red, freeze and human review remain pending.
+
+Contract 88 ended in native rework on candidate
+`d04cbbc6959db4f66e4b270071d5dca0fa52fe7e`. Judge approved Appearance,
+Cards, VIP, Harness, Chat messages, presentation core, and presentation NFR.
+Judge found that Match's funded timing control shares the underfunded
+account's tier queue and that the displayed-fee helper accepts hidden
+text. Approval is pending to open only `Story_L9_03` and
+`AssertDisplayedFee` in `LobbyMatchTests.cs`.
+
+The Judge ceiling is active at 214 of 250 cumulative claims, with all
+original 200 claims retained. The period accounts for 63,733,130 of 70M
+input and 294,279 of 2M output tokens, at contract 88 of 120. Forty focused
+offline checks passed. Fresh Unity Red, freeze, runtime verification and
+human review are pending.
+
+Contract 88 resumed with 222 protected files and only
+`AssertVisibleThumbnail` open for the previously approved Appearance
+repair. Contract 87 approved VIP, Cards and Harness on candidate
+`58b9676de7fa6d837a231ecbec75c31337517a9f`. Judge found that the thumbnail
+helper could accept negligible combined opacity or a missing renderer.
+At contract 88 entry the current period accounted for 57,701,930 input
+and 289,927 output. Forty focused offline checks passed. Source reviews,
+fresh Unity Red and the new test freeze are pending.
+
+Contract 86 resumed from the pre-dispatch VIP source review after the user
+raised the cumulative Codex Judge ceiling from 200 to 250. All 200 prior
+claims and 1,244 ledger entries were retained. The existing ceilings are 70M
+input and 2M output for this token period, and 120 contract cycles. At
+recovery the candidate was `7106fb20a73fd5d53eab8b2b1d735f12d7c5f990`,
+with the Cards source approved and 218 source files protected. The 35 focused
+offline checks passed. No new Unity verification had run at recovery.
+
+Contract 84 resumed through native budget recovery after contract 83 stopped
+in preparation. The 70M input ceiling is active, with 2M output and a
+contract ceiling of 120. Period usage at recovery was 44,857,018 input and
+228,869 output. Recovery preserved all 1,230 prior call records, including
+27 unreconciled reservations, and the prior cycle records.
+
+Coder's third Cards patch, `0c2eab358191ecab93fd22526bc7fe567dda0365`,
+was admitted under the four-method approval before the stop. It carries
+forward with 214 protected source files. Judge found a remaining currency
+field boundary defect and approved Coder's subsequent scoped patch,
+`44e5611`, on source review. Harness and Appearance source also passed.
+The fresh VIP review found that `ContainsDistinctAmountField` incorrectly
+accepts `VIP2：.3000` as `3000`.
+
+Contract 85 retains the approved Cards bytes and protects 216 source files.
+Only the VIP threshold helper can be changed under the existing VIP
+authorization. The first author response was incomplete and charged
+138,676 input and 1,976 output tokens. Reconciliation confirmed a clean
+candidate with no partial patch. On retry, Coder repaired both numeric
+edges in `2991195`, which Judge approved for VIP. The fresh Cards review
+found that local renderer alpha alone did not account for inherited alpha.
+
+Contract 86 carries forward the approved VIP change and isolates the Cards
+repair to `IsMeasurableGraphicForCards`, under the existing method approval.
+The continuation protects 218 source files. Judge approved the Cards
+source at `7106fb20a73fd5d53eab8b2b1d735f12d7c5f990` under contract
+`f132e672d13fb038ae7a13aef9bb2dff9428b8633df8157af298c147615a4b4e`.
+The next VIP review was blocked before dispatch by the separate cumulative
+200-claim Codex Judge ceiling. The run is parked at native operational
+reconciliation. Period use is 52,952,052 input and 281,069 output.
+Remaining source reviews, behavioral Red, freeze and human review are
+pending. Focused offline checks passed (23 for Cards and native recovery,
+16 for the subsequent host checks).
+
+Earlier cycle-70 snapshots follow.
+
 Current operation: **cycle 70 repaired candidate verification**.
 Candidate `625db77bf4e75060435947d955328a729f6f87dc` is running
 `v70-step8-verify`, with all 129 tests selected. The fresh configured Judge

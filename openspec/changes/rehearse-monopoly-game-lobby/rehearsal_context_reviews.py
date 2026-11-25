@@ -71,6 +71,9 @@ def build_review_packet(workers: ContextWorkers,unit: Unit,files: dict[str,str],
     # worker narratives. Packing must retain these exact clauses in every mode.
     if hasattr(unit,'instructions'):
         mechanical=mechanical|{'unit_instructions':unit.instructions}
+    if unit.id == 'TEST-QUEUE' and mode == 'test_review' and getattr(contract, 'contract_version', 0) >= 91:
+        from queue_review_context_v91 import queue_review_inventory
+        mechanical = mechanical | {'queue_authoring_inventory': queue_review_inventory(unit, files, source_text)}
     return make_packet({'run':'monopoly-game-lobby','contract':contract.sha256,'candidate':candidate,
         'unit':unit.id,'stage':mode,'policy':policy,'packing_format_version':2,'source_filter_version':2},tuple(sources),tuple(required),mechanical,
         ownership,tuple(unit.acceptance),spec)
